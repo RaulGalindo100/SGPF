@@ -40,16 +40,21 @@
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 						<li class="nav-item active">
 						 <%if(tipoUsuario==1){%>
-                        <a class="nav-link" href="crudCatalogos.jsp">
-                           Modificar Catálogos
-                        </a>
-                    <% } %>
+                           <a class="nav-link" href="crudCatalogos.jsp">
+                             Modificar Catálogos
+                           </a>
+                         <% } %>
 
 						</li>
+                        <li>
+                          <a href="crudCatalogos.jsp">
+                            <input type="Submit" value="Gestionar "/>
+                          </a>
+                        </li>
 						<li class="nav-item active">
-						 <%if(tipoUsuario==1){%>
-                        <a class="nav-link" href="gestionUsuarios">
-                            Gestionar Usuarios
+						  <%if(tipoUsuario==1){%>
+                            <a class="nav-link" href="gestionUsuarios">
+                              Gestionar Usuarios
                         </a>
                     <% } %>
 						</li>
