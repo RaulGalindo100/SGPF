@@ -26,7 +26,7 @@
 		</div>
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<!-- 
+				<!--
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarTogglerDemo02"
 					aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -44,7 +44,7 @@
                            Modificar Catálogos
                         </a>
                     <% } %>
-							
+
 						</li>
 						<li class="nav-item active">
 						 <%if(tipoUsuario==1){%>
@@ -98,7 +98,7 @@
 						<%
 								}
 							%>
-					
+
 					<tbody>
 				</table>
 			</div>
