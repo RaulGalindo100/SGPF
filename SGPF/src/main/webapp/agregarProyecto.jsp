@@ -7,14 +7,21 @@
     </head>
     <body>
         <h1>Nuevo</h1>
-        <form action="AgregarProyecto" method="POST">
             <table>
+            <form action="AgregarProyecto" method="POST">
             <tr>
                 <td>Nombre: <input type="text" name="nombreProyecto" required></td>
-                <td> <input type="submit" value="Submit"> </td>
+                <td> <input type="submit" value="Submit"> </td></form>
+            </tr>
+            <tr>
+                <td>
+                    <a href="proyectos.jsp">
+                        <input type="submit" value="Cancelar">
+                    </a>
+                </td>
             </tr>
         </table>
-        </form>
+        
         
     </body>
 </html>
