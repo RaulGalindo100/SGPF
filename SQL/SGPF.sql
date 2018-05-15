@@ -212,6 +212,7 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`interUP` (
   `idinterUP` INT NOT NULL AUTO_INCREMENT,
   `idusuario` INT NOT NULL,
   `idproyecto` INT NOT NULL,
+  UNIQUE(`idusuario`,`idproyecto`),
   PRIMARY KEY (`idinterUP`),
   INDEX `idusuario_idx` (`idusuario` ASC),
   UNIQUE (`idusuario`,`idproyecto`),
