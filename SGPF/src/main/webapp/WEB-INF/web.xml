@@ -141,6 +141,23 @@
         <servlet-name>agregarUsuario</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.agregarUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>gestionUsuariosProyectos</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.gestionUsuariosProyectos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>agregandoUsuarioProyecto</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.agregandoUsuarioProyecto</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>agregandoUsuarioProyecto</servlet-name>
+        <url-pattern>/agregandoUsuarioProyecto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>gestionUsuariosProyectos</servlet-name>
+        <url-pattern>/gestionUsuariosProyectos</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>agregarUsuario</servlet-name>
         <url-pattern>/agregarUsuario</url-pattern>

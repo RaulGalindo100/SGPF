@@ -40,27 +40,31 @@
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				  <li class="nav-item active">
 					<%if(tipoUsuario==1){%>
-                      <a class="nav-link" href="crudCatalogos.jsp">
-                        Modificar Catálogos
-                      </a>
-                    <% } %>
-
+                                        <a class="nav-link" href="crudCatalogos.jsp">
+                                            Modificar Catálogos
+                                        </a>
+                                        <% } %>
 				  </li>
 				  <li class="nav-item active">
-                    <%if(tipoUsuario == 1){%>
-                      <a class="nav-link" href="gestionUsuarios">
-                        Gestionar Usuarios
-                      </a>
-                    <% } %>
+                                  <%if(tipoUsuario == 1){%>
+                                  <a class="nav-link" href="gestionUsuarios">
+                                        Gestionar Usuarios
+                                  </a>
+                                  <% } %>
 				  </li>
 				  <li class="nav-item active">
 					<%
 					if (tipoUsuario == 1 || tipoUsuario == 2) {
 					%> <a class="nav-link" href="agregarProyecto.jsp">Nuevo
-					Proyecto</a> <%
- 	                             }
-                                 %>
+					Proyecto</a> <% } %>
 				  </li>
+                                  <%if(tipoUsuario == 1){%>
+                                  <li class="nav-item active">
+                                    <a class="nav-link" href="gestionUsuariosProyectos">
+                                        Gestionar Usuarios-Proyectos
+                                    </a>
+                                  </li>
+                                  <% } %>
 				</ul>
 				<form class="col-md-2" action="cerrarSesion" method="post">
 						<input class="btn btn-outline-success my-2 my-sm-0" type="submit"
