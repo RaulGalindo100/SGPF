@@ -99,12 +99,6 @@
 				<h2>Lista de Actividades</h2>
 			</div>
 			<div class="table-responsive">
-				<form action="agregarActividad" method="post">
-					<input type="hidden" name="idProcesoFuncional"
-						value="<%=detalle.getIdprocesoFuncional()%>"> <input
-						class="btn btn-outline-info" type="submit"
-						value="Agregar Actividad" />
-				</form>
 				<table class="table ">
 
 					<thead>

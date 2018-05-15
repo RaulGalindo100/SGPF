@@ -48,7 +48,9 @@
 							<% } %>
 						</li>
 						<li class="nav-item active">
+							<%if(tipoUsuario!=3 && p.getEstatus()==1){ %>
 							<a class="nav-link" href="agregaPF.jsp">Agregar PF</a>
+							<%} %>
 						</li>
 					</ul>
 					
@@ -106,11 +108,13 @@
 							<td><a
 								href="BuscaProcesoFuncional?idprocesoFuncional=<%=inter.getIdprocesoFuncional()%>"><%=inter.getNomPF()%></a></td>
 							<td>
+								<%if(tipoUsuario!=3 && p.getEstatus()==1){ %>
 								<form action="eliminaPF" method="post">
 									<input type="hidden" name="idPF"
-										value="<%=inter.getIdprocesoFuncional()%>"> <input
-										class="btn btn-outline-info" type="submit" value="Eliminar">
+										value="<%=inter.getIdprocesoFuncional()%>"> 
+										<input class="btn btn-outline-info" type="submit" value="Eliminar">
 								</form>
+								<%} %>
 							</td>
 						</tr>
 
