@@ -26,7 +26,7 @@
 		</div>
 		<div class="container">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<!-- 
+				<!--
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarTogglerDemo02"
 					aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -36,33 +36,33 @@
 				 -->
 
 
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-						<li class="nav-item active">
-						 <%if(tipoUsuario==1){%>
-                        <a class="nav-link" href="crudCatalogos.jsp">
-                           Modificar Catálogos
-                        </a>
+			  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				  <li class="nav-item active">
+					<%if(tipoUsuario==1){%>
+                      <a class="nav-link" href="crudCatalogos.jsp">
+                        Modificar Catálogos
+                      </a>
                     <% } %>
-							
-						</li>
-						<li class="nav-item active">
-						 <%if(tipoUsuario==1){%>
-                        <a class="nav-link" href="gestionUsuarios">
-                            Gestionar Usuarios
-                        </a>
+
+				  </li>
+				  <li class="nav-item active">
+                    <%if(tipoUsuario == 1){%>
+                      <a class="nav-link" href="gestionUsuarios">
+                        Gestionar Usuarios
+                      </a>
                     <% } %>
-						</li>
-						<li class="nav-item active">
-							<%
-								if (tipoUsuario == 1 || tipoUsuario == 2) {
-							%> <a class="nav-link" href="agregarProyecto.jsp">Nuevo
-								Proyecto</a> <%
- 	}
- %>
-						</li>
-					</ul>
-					<form class="col-md-2" action="cerrarSesion" method="post">
+				  </li>
+				  <li class="nav-item active">
+					<%
+					if (tipoUsuario == 1 || tipoUsuario == 2) {
+					%> <a class="nav-link" href="agregarProyecto.jsp">Nuevo
+					Proyecto</a> <%
+ 	                             }
+                                 %>
+				  </li>
+				</ul>
+				<form class="col-md-2" action="cerrarSesion" method="post">
 						<input class="btn btn-outline-success my-2 my-sm-0" type="submit"
 							value="Cerrar Sesión">
 					</form>
@@ -98,7 +98,7 @@
 						<%
 								}
 							%>
-					
+
 					<tbody>
 				</table>
 			</div>
