@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unam.mx.SGPF.model;
 
 import java.io.Serializable;
@@ -18,18 +13,17 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-
-/**
- *
- * @author juan
- */
 @Entity
 @Table(catalog = "SGPF", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubProceso.findAll", query = "SELECT s FROM SubProceso s")
     , @NamedQuery(name = "SubProceso.findByIdsubProceso", query = "SELECT s FROM SubProceso s WHERE s.idsubProceso = :idsubProceso")
+    , @NamedQuery(name = "SubProceso.findSPByActividadyPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :procesoFuncional and s.actividad = :actividad")    
     , @NamedQuery(name = "SubProces.findByFlujoAl", query = "SELECT s FROM SubProceso s WHERE s.flujoAl = :flujoAl")
+    , @NamedQuery(name = "SubProceso.findSPByIDPForder",query="select s from SubProceso s where s.idprocesoFuncional=:idPF group by s.actividad,s.indice,s.idusuarioFuncional,s.idaccion,s.idgrupoDato,s.descripcion,s.idsubProceso,s.flujoAl order by s.actividad,s.indice")
+    , @NamedQuery(name = "SubProceso.findSPByActividadyIdPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idprocesoFuncional AND s.actividad = :actividad")
+    , @NamedQuery(name = "SubProceso.findSPByActividad", query="SELECT s FROM SubProceso s where s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findByDescripcion", query = "SELECT s FROM SubProceso s WHERE s.descripcion = :descripcion")
     , @NamedQuery(name = "SubProceso.findByActividad", query = "SELECT s FROM SubProceso s WHERE s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findByIndice", query = "SELECT s FROM SubProceso s WHERE s.indice = :indice")})

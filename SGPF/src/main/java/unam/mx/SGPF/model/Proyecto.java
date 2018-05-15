@@ -167,7 +167,7 @@ public class Proyecto implements Serializable {
     @JoinColumn(name = "idmodCalidad", referencedColumnName = "idmodCalidad", nullable = false)
     @ManyToOne(optional = false)
     private ModCalidad idmodCalidad;
-    @JoinColumn(name = "idsectoorOrganizacion", referencedColumnName = "idsectorOrganizacion", nullable = false)
+    @JoinColumn(name = "idsectorOrganizacion", referencedColumnName = "idsectorOrganizacion", nullable = false)
     @ManyToOne(optional = false)
     private SectorOrganizacion idsectorOrganizacion;
     @JoinColumn(name = "idtipoOrganizacion", referencedColumnName = "idtipoOrganizacion", nullable = false)

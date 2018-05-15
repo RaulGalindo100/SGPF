@@ -26,37 +26,37 @@
                         Movimiento de datos:
                     </td>
                     <td>
-                        <%if(accion.getMovDatos().equalsIgnoreCase("E")){%>
+                        <%if(accion.getMovDatos().equals("E")){%>
                         <select name="movDatos">
                             <option value="E" selected>E</option>
                             <option value="X">X</option>
                             <option value="R">R</option>
                             <option value="W">W</option>
-                            <option value="M">X*</option>
+                            <option value="S">S</option>
                         </select>
-                        <%}else{if(accion.getMovDatos().equalsIgnoreCase("X")){%>
+                        <%}else{if(accion.getMovDatos().equals("X")){%>
                         <select name="movDatos">
                             <option value="E">E</option>
                             <option value="X" selected>X</option>
                             <option value="R">R</option>
                             <option value="W">W</option>
-                            <option value="M">X*</option>
+                            <option value="S">S</option>
                         </select>
-                        <%}else{if(accion.getMovDatos().equalsIgnoreCase("R")){%>
+                        <%}else{if(accion.getMovDatos().equals("R")){%>
                         <select name="movDatos">
                             <option value="E">E</option>
                             <option value="X">X</option>
                             <option value="R" selected>R</option>
                             <option value="W">W</option>
-                            <option value="M">X*</option>
+                            <option value="S">S</option>
                         </select>
-                        <%}else{if(accion.getMovDatos().equalsIgnoreCase("W")){%>
+                        <%}else{if(accion.getMovDatos().equals("W")){%>
                         <select name="movDatos">
                             <option value="E">E</option>
                             <option value="X">X</option>
                             <option value="R">R</option>
                             <option value="W" selected>W</option>
-                            <option value="M">X*</option>
+                            <option value="S">S</option>
                         </select>
                         <%}else{%>
                         <select name="movDatos">
@@ -64,7 +64,7 @@
                             <option value="X">X</option>
                             <option value="R">R</option>
                             <option value="W">W</option>
-                            <option value="M" selected>X*-</option>
+                            <option value="S" selected>S</option>
                         </select>
                         <%}}}}%>
                     </td>

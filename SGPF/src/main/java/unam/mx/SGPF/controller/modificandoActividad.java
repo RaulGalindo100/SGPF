@@ -20,7 +20,7 @@ import unam.mx.SGPF.model.controller.SubProcesoJpaController;
 import unam.mx.SGPF.model.controller.UsuarioFuncionalJpaController;
 
 public class modificandoActividad extends HttpServlet {
-     @Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String redireccion = "";
@@ -35,7 +35,7 @@ public class modificandoActividad extends HttpServlet {
         String flujoAl_ = request.getParameter("flujoAl");
         
         short b = 0;
-        if (flujoAl_=="1")
+        if ("1".equals(flujoAl_))
             b=1;
         subProcesoMod.setFlujoAl(b);
         subProcesoMod.setDescripcion(descripcionActividad);
@@ -54,23 +54,23 @@ public class modificandoActividad extends HttpServlet {
         
         subProcesoMod.setActividad(NombreActividad);
         
+        SubProcesoJpaController aux = new SubProcesoJpaController(EntityProvider.provider());
+        List<SubProceso> ListSubProcesos = aux.findSPByActividad(OldActividad);
         try{
-            SubProcesoJpaController aux = new SubProcesoJpaController(EntityProvider.provider());
-            List<SubProceso> ListSubProcesos = aux.findSPByActividad(OldActividad);
             aux.edit(subProcesoMod);
-            for(SubProceso iterador : ListSubProcesos){
-                subProcesoMod = iterador;
-                subProcesoMod.setActividad(NombreActividad);
-                //subProcesoMod.setIdsubProceso(iterador.getIdsubProceso());
-                aux.edit(subProcesoMod);
-            }
+            if(ListSubProcesos.size()>1 && !OldActividad.equalsIgnoreCase(NombreActividad))
+                for(SubProceso iterador : ListSubProcesos){
+                    iterador.setActividad(NombreActividad);
+                    aux.edit(iterador);
+                }
+            redireccion="detallePF.jsp";
             
         }catch(Exception e){
-            redireccion="modificaActividad.jsp";
+            e.printStackTrace();
+            redireccion="proyectos.jsp";
             return;
         }
         finally{
-            redireccion="detallePF.jsp";
             ProcesoFuncional PF = (ProcesoFuncional) session.getAttribute("pfDetalle");
         
             ProcesoFuncionalJpaController pfjpa = new ProcesoFuncionalJpaController(EntityProvider.provider());
