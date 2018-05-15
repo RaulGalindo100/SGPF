@@ -82,12 +82,12 @@
 							<td><%=detalle.getNomPF()%></td>
 						</tr>
 						<tr>
-							<th scope="col">DescripciÃ³n:</th>
+							<th scope="col">Descripción:</th>
 							<td><%=detalle.getDescripcion()%></td>
 						</tr>
 						<tr>
 							<th scope="col">Evento desencadenante</th>
-							<td><%=detalle.geteventoDes()%></td>
+							<td><%=detalle.getEventoDes()%></td>
 						</tr>
 					<tbody>
 				</table>
@@ -107,8 +107,8 @@
 							<th scope="col">#</th>
 							<th scope="col">Actividad</th>
 							<th scope="col">Usuario funcional</th>
-							<th scope="col">AcciÃ³n</th>
-							<th scope="col">DescripciÃ³n</th>
+							<th scope="col">Acción</th>
+							<th scope="col">Descripción</th>
 							<th scope="col">Grupo de datos</th>
 							<th scope="col" colspan="2">Opciones</th>
 						</tr>

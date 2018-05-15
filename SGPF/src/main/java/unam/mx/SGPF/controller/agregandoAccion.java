@@ -17,13 +17,13 @@ public class agregandoAccion extends HttpServlet{
         String movDatos = request.getParameter("movDatos");
         String descripcion = request.getParameter("descripcion");
         Short activo = 1;
-        
+
         Accion accion = new Accion();
         accion.setNomAccion(nombreAccion);
-        accion.setMovDatos(movDatos);
+        accion.setMovDatos(movDatos.trim().charAt(0));
         accion.setDescripcion(descripcion);
         accion.setActivo(activo);
-        
+
     	AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
     	try{
             ajpa.create(accion);
@@ -32,6 +32,6 @@ public class agregandoAccion extends HttpServlet{
         }finally{
             response.sendRedirect("acciones");
         }
-       
+
     }
 }

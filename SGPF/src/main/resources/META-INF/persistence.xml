@@ -10,6 +10,26 @@
     <class>unam.mx.SGPF.model.SubProceso</class>
     <class>unam.mx.SGPF.model.InterUP</class>
     <class>unam.mx.SGPF.model.Proyecto</class>
+    <class>unam.mx.SGPF.model.ArqProyecto</class>
+    <class>unam.mx.SGPF.model.Subproceso</class>
+    <class>unam.mx.SGPF.model.Accion_1</class>
+    <class>unam.mx.SGPF.model.TipoOrganizacion</class>
+    <class>unam.mx.SGPF.model.Grupodato</class>
+    <class>unam.mx.SGPF.model.MarcoPosUsa</class>
+    <class>unam.mx.SGPF.model.ModCalidad</class>
+    <class>unam.mx.SGPF.model.TipoCapDes</class>
+    <class>unam.mx.SGPF.model.ConfInfo</class>
+    <class>unam.mx.SGPF.model.MetDesarrollo</class>
+    <class>unam.mx.SGPF.model.SisOpe</class>
+    <class>unam.mx.SGPF.model.SectorOrganizacion</class>
+    <class>unam.mx.SGPF.model.BaseDatos</class>
+    <class>unam.mx.SGPF.model.TamOrg</class>
+    <class>unam.mx.SGPF.model.TipodeDesarrollo</class>
+    <class>unam.mx.SGPF.model.MetMedicion</class>
+    <class>unam.mx.SGPF.model.Procesofuncional</class>
+    <class>unam.mx.SGPF.model.Usuariofuncional</class>
+    <class>unam.mx.SGPF.model.Escala</class>
+    <class>unam.mx.SGPF.model.Lenguaje</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/SGPF?zeroDateTimeBehavior=convertToNull"/>

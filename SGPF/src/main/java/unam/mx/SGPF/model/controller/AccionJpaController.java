@@ -6,16 +6,16 @@
 package unam.mx.SGPF.model.controller;
 
 import java.io.Serializable;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import unam.mx.SGPF.model.SubProceso;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import unam.mx.SGPF.model.Accion;
+import unam.mx.SGPF.model.SubProceso;
 import unam.mx.SGPF.model.controller.exceptions.IllegalOrphanException;
 import unam.mx.SGPF.model.controller.exceptions.NonexistentEntityException;
 
@@ -184,7 +184,7 @@ public class AccionJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 
     public int getAccionCount() {
         EntityManager em = getEntityManager();

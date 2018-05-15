@@ -16,14 +16,16 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-
 @Entity
-@Table(catalog = "SGPF", schema = "")
+@Table(name = "accion", catalog = "SGPF", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Accion.findAll", query = "SELECT a FROM Accion a")
     , @NamedQuery(name = "Accion.findByIdaccion", query = "SELECT a FROM Accion a WHERE a.idaccion = :idaccion")
-    , @NamedQuery(name = "Accion.findByNomAccion", query = "SELECT a FROM Accion a WHERE a.nomAccion = :nomAccion")})
+    , @NamedQuery(name = "Accion.findByNomAccion", query = "SELECT a FROM Accion a WHERE a.nomAccion = :nomAccion")
+    , @NamedQuery(name = "Accion.findByMovDatos", query = "SELECT a FROM Accion a WHERE a.movDatos = :movDatos")
+    , @NamedQuery(name = "Accion.findByDescripcion", query = "SELECT a FROM Accion a WHERE a.descripcion = :descripcion")
+    , @NamedQuery(name = "Accion.findByActivo", query = "SELECT a FROM Accion a WHERE a.activo = :activo")})
 public class Accion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,48 +37,17 @@ public class Accion implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String nomAccion;
-    @Column(nullable = false, length = 1)
-    private String movDatos;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private Character movDatos;
+    @Basic(optional = false)
     @Column(nullable = false, length = 250)
     private String descripcion;
+    @Basic(optional = false)
     @Column(nullable = false)
     private short activo;
-    public Accion(Integer idaccion, String nomAccion, String movDatos, String descripcion, short activo,
-			List<SubProceso> subProcesoList) {
-		this.idaccion = idaccion;
-		this.nomAccion = nomAccion;
-		this.movDatos = movDatos;
-		this.descripcion = descripcion;
-		this.activo = activo;
-		this.subProcesoList = subProcesoList;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public short getActivo() {
-		return activo;
-	}
-
-	public void setActivo(short activo) {
-		this.activo = activo;
-	}
-
-	public String getMovDatos() {
-		return movDatos;
-	}
-
-	public void setMovDatos(String movDatos) {
-		this.movDatos = movDatos;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccion")
-    private List<SubProceso> subProcesoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccion")
+    private List<SubProceso> subprocesoList;
 
     public Accion() {
     }
@@ -85,9 +56,12 @@ public class Accion implements Serializable {
         this.idaccion = idaccion;
     }
 
-    public Accion(Integer idaccion, String nomAccion) {
+    public Accion(Integer idaccion, String nomAccion, Character movDatos, String descripcion, short activo) {
         this.idaccion = idaccion;
         this.nomAccion = nomAccion;
+        this.movDatos = movDatos;
+        this.descripcion = descripcion;
+        this.activo = activo;
     }
 
     public Integer getIdaccion() {
@@ -106,13 +80,37 @@ public class Accion implements Serializable {
         this.nomAccion = nomAccion;
     }
 
-    @XmlTransient
-    public List<SubProceso> getSubProcesoList() {
-        return subProcesoList;
+    public Character getMovDatos() {
+        return movDatos;
     }
 
-    public void setSubProcesoList(List<SubProceso> subProcesoList) {
-        this.subProcesoList = subProcesoList;
+    public void setMovDatos(Character movDatos) {
+        this.movDatos = movDatos;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public short getActivo() {
+        return activo;
+    }
+
+    public void setActivo(short activo) {
+        this.activo = activo;
+    }
+
+    @XmlTransient
+    public List<SubProceso> getSubProcesoList() {
+        return subprocesoList;
+    }
+
+    public void setSubProcesoList(List<SubProceso> subprocesoList) {
+        this.subprocesoList = subprocesoList;
     }
 
     @Override

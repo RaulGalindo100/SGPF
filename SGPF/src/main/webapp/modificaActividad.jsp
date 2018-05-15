@@ -25,8 +25,12 @@
             <td>
                 Actividad:
             </td>
-            <td>
+            <td><%if(subProcesoMod.getActividad().equals("Inicio de Proceso Funcional")){%>
+                    <input type="hidden" name="actividad" value ="<%=subProcesoMod.getActividad()%>">
+                    <%=subProcesoMod.getActividad()%>
+                <%}else{%>
                 <input type="text" name="actividad" value ="<%=subProcesoMod.getActividad()%>" required>
+                <%}%>
             </td>
             <td>
                 Descripción:

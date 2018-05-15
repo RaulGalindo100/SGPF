@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unam.mx.SGPF.model;
 
 import java.io.Serializable;
@@ -18,21 +13,20 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-
-
 @Entity
-@Table(name="SubProceso")
+@Table(catalog = "SGPF", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubProceso.findAll", query = "SELECT s FROM SubProceso s")
     , @NamedQuery(name = "SubProceso.findByIdsubProceso", query = "SELECT s FROM SubProceso s WHERE s.idsubProceso = :idsubProceso")
-    , @NamedQuery(name = "SubProceso.findByFlujoAl", query = "SELECT s FROM SubProceso s WHERE s.flujoAl = :flujoAl")
-    , @NamedQuery(name = "SubProceso.findSPByIdProcesoFuncional", query = "SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idPF")
-    , @NamedQuery(name = "SubProceso.findSPByActividadyIdPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idprocesoFuncional AND s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findSPByActividadyPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :procesoFuncional and s.actividad = :actividad")    
+    , @NamedQuery(name = "SubProces.findByFlujoAl", query = "SELECT s FROM SubProceso s WHERE s.flujoAl = :flujoAl")
     , @NamedQuery(name = "SubProceso.findSPByIDPForder",query="select s from SubProceso s where s.idprocesoFuncional=:idPF group by s.actividad,s.indice,s.idusuarioFuncional,s.idaccion,s.idgrupoDato,s.descripcion,s.idsubProceso,s.flujoAl order by s.actividad,s.indice")
+    , @NamedQuery(name = "SubProceso.findSPByActividadyIdPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idprocesoFuncional AND s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findSPByActividad", query="SELECT s FROM SubProceso s where s.actividad = :actividad")
-    , @NamedQuery(name = "SubProceso.findByDescripcion", query = "SELECT s FROM SubProceso s WHERE s.descripcion = :descripcion")})
+    , @NamedQuery(name = "SubProceso.findByDescripcion", query = "SELECT s FROM SubProceso s WHERE s.descripcion = :descripcion")
+    , @NamedQuery(name = "SubProceso.findByActividad", query = "SELECT s FROM SubProceso s WHERE s.actividad = :actividad")
+    , @NamedQuery(name = "SubProceso.findByIndice", query = "SELECT s FROM SubProceso s WHERE s.indice = :indice")})
 public class SubProceso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,47 +38,13 @@ public class SubProceso implements Serializable {
     private Short flujoAl;
     @Column(length = 250)
     private String descripcion;
+    @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String actividad;
+    @Basic(optional = false)
     @Column(nullable = false)
-    private Integer indice;
-    public SubProceso(Integer idsubProceso, Short flujoAl, String descripcion, String actividad, Integer indice,
-			Accion idaccion, GrupoDato idgrupoDato, ProcesoFuncional idprocesoFuncional,
-			UsuarioFuncional idusuarioFuncional) {
-		super();
-		this.idsubProceso = idsubProceso;
-		this.flujoAl = flujoAl;
-		this.descripcion = descripcion;
-		this.actividad = actividad;
-		this.indice = indice;
-		this.idaccion = idaccion;
-		this.idgrupoDato = idgrupoDato;
-		this.idprocesoFuncional = idprocesoFuncional;
-		this.idusuarioFuncional = idusuarioFuncional;
-	}
-
-	public String getActividad() {
-		return actividad;
-	}
-
-	public void setActividad(String actividad) {
-		this.actividad = actividad;
-	}
-
-	public Integer getIndice() {
-		return indice;
-	}
-
-	public void setIndice(Integer indice) {
-		this.indice = indice;
-	}
-     
-    public SubProceso(String actividad) {
-		this.actividad = actividad;
-	}
-
-
-	@JoinColumn(name = "idaccion", referencedColumnName = "idaccion", nullable = false)
+    private int indice;
+    @JoinColumn(name = "idaccion", referencedColumnName = "idaccion", nullable = false)
     @ManyToOne(optional = false)
     private Accion idaccion;
     @JoinColumn(name = "idgrupoDato", referencedColumnName = "idgrupoDato", nullable = false)
@@ -102,6 +62,12 @@ public class SubProceso implements Serializable {
 
     public SubProceso(Integer idsubProceso) {
         this.idsubProceso = idsubProceso;
+    }
+
+    public SubProceso(Integer idsubProceso, String actividad, int indice) {
+        this.idsubProceso = idsubProceso;
+        this.actividad = actividad;
+        this.indice = indice;
     }
 
     public Integer getIdsubProceso() {
@@ -126,6 +92,22 @@ public class SubProceso implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(String actividad) {
+        this.actividad = actividad;
+    }
+
+    public int getIndice() {
+        return indice;
+    }
+
+    public void setIndice(int indice) {
+        this.indice = indice;
     }
 
     public Accion getIdaccion() {

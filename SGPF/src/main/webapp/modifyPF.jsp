@@ -68,7 +68,7 @@
 								<th scope="col" style="text-align: right;">Evento desencadenante:</th>
 								<td>
 									<input type="text" name="eventoDes"
-										value="<%=detalle.geteventoDes()%>" required>
+										value="<%=detalle.getEventoDes() %>" required>
 								</td>
 							</tr>
 						</tbody>
