@@ -50,12 +50,13 @@
 								if (tipoUsuario != 3 && p.getEstatus() == 1) {
 							%>
 							<form action="agregarActividad" method="post">
-								<input type="hidden" name="idProcesoFuncional"
-									value="<%=detalle.getIdprocesoFuncional()%>"> <input class="nav-link myclass " style="color: rgba(0,0,0,.9);border-style:none;background-color:transparent; cursor:pointer; cursor: hand;"
+								<input type="hidden" name="idProcesoFuncional" value="<%=detalle.getIdprocesoFuncional()%>"> 
+								<input class="nav-link myclass " style="color: rgba(0,0,0,.9);border-style:none;background-color:transparent; cursor:pointer; cursor: hand;"
 									type="submit" value="Agregar Actividad" />
-							</form> <%
- 	}
- %>
+							</form> 
+							<%
+ 								}
+ 							%>
 
 						</li>
 						<li class="nav-item active"></li>

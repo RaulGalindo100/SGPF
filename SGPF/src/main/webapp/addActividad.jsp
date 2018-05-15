@@ -25,35 +25,57 @@ Validad ID del PF con ....
             List<SubProceso> ListaSubprocesos = (List<SubProceso>) session.getAttribute("ListaSubprocesos");
             %>
     </head>
-    <body><marquee direction="left">
-        <h1>Agregar Actividad</h1></marquee>
-    <form action="agregandoActividad" method="POST">
-    <table>
-        <tr>
-            <td>
-                Actividad:
-            </td>
-            <td>
-            <% if(ListaSubprocesos.isEmpty()){
-            %>  
-                <input type="hidden" name="actividad" value="Inicio de Proceso Funcional">
+    <body>
+    <header>
+		<div class="container">
+			<h1>Sistema Gestor de Procesos Funcionales</h1>
+		</div>
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+					</ul>
+				
+<a href="detallePF.jsp"><input class="btn btn-info"  type="submit" value="Cancelar"></a>
+			
+				</div>
+			</nav>
+			</div>
+	</header>
+<div class="container py-5">
+		<section class="row">
+			<div class="col-md-12">
+				<h1>Agregar Actividad</h1>
+			</div>
+			<div class="table-responsive ">
+			 	<form action="agregandoActividad" method="POST">
+				<table class="table">
+				<tbody>
+					<tr>
+							<th scope="col" style="text-align: right;">Actividad:</th>
+							<td>
+            	<% 
+            		if(ListaSubprocesos.isEmpty()){
+            	%>  
+                	<input type="hidden" name="actividad" value="Inicio de Proceso Funcional">
                 Inicio de Proceso Funcional
-            <%
+            	<%
                 }else{
-            %>
-                <input type="text" name="actividad" required>    
-            <% } %>
+            	%>
+                	<input type="text" name="actividad" required>    
+            	<% } %>
             </td>
-            <td>
-                Descripción:
-            </td>
-            <td>
+					</tr>
+					<tr>
+							<th scope="col" style="text-align: right;">Descripción:</th>
+							<td>
                 <input type="text" name="descripcion" required>
-            </td>
-            <td>
-                Usuario Funcional:
-            </td>
-            <td>
+            	</td>
+					</tr>
+					<tr>
+							<th scope="col" style="text-align: right;">Usuario funcional:</th>
+							<td>
                 <select name="usuarioFuncional" required>
                     <%
                         List<UsuarioFuncional> usuarioFuncionalCat = (List<UsuarioFuncional>) session.getAttribute("ufCatalogo");
@@ -68,11 +90,11 @@ Validad ID del PF con ....
                         }
                         %>
                 </select>
-            </td>
-            <td>
-                Acción:
-            </td>
-            <td>
+            	</td>
+					</tr>
+					<tr>
+							<th scope="col" style="text-align: right;">Acción:</th>
+							<td>
                 <select name="accion" required>
                     <%
                         List<Accion> accionesCat = (List<Accion>) session.getAttribute("accCatalogo");
@@ -88,10 +110,10 @@ Validad ID del PF con ....
                         %>
                 </select>
             </td>
-            <td>
-                Grupo de Datos:
-            </td>
-            <td>
+					</tr>
+					<tr>
+							<th scope="col" style="text-align: right;">Grupo de datos:</th>
+							<td>
                 <select name="grupoDatos" required>
                     <%
                         List<GrupoDato> grupoDatoCat = (List<GrupoDato>)session.getAttribute("grupoDatosCatalogo");
@@ -107,23 +129,23 @@ Validad ID del PF con ....
                         %>
                 </select>
             </td>
-
-            <td>
-                Flujo Alterno
-            </td>
-            <td>
+					</tr>
+					<tr>
+							<th scope="col" style="text-align: right;">Flujo alterno:</th>
+							<td>
                 <input type="checkbox" name="flujoAl" value="true">
-            </td>
-        </tr>
-    </table>
-    <br>
-    <br>
-    <input type="submit" value="Agregar Actividad"/></a>
-    </form>
-    <br>
-    <br>
-    <a href="detallePF.jsp"><input type="submit" value="Cancelar"></a>
-    
+            	</td>
+					</tr>
+				</tbody>
+				</table>
+				<input class="btn btn-outline-info" type="submit" value="Guardar"/>
+				
+				</form>
+				
+			</div>
+			</section>
+</div>
+        
     	<script src="js/jquery.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
