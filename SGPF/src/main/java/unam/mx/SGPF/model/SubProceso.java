@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author miguel
+ * @author juan
  */
 @Entity
 @Table(catalog = "SGPF", schema = "")

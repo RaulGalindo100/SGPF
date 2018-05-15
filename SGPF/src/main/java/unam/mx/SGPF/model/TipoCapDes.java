@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author miguel
+ * @author juan
  */
 @Entity
 @Table(catalog = "SGPF", schema = "")

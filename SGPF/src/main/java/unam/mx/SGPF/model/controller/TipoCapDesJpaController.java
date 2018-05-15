@@ -21,7 +21,7 @@ import unam.mx.SGPF.model.controller.exceptions.NonexistentEntityException;
 
 /**
  *
- * @author miguel
+ * @author juan
  */
 public class TipoCapDesJpaController implements Serializable {
 

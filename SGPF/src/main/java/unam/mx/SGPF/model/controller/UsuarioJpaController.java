@@ -21,7 +21,7 @@ import unam.mx.SGPF.model.controller.exceptions.NonexistentEntityException;
 
 /**
  *
- * @author miguel
+ * @author juan
  */
 public class UsuarioJpaController implements Serializable {
 

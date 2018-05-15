@@ -10,7 +10,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author miguel
+ * @author juan
  */
 public class EntityProvider {
 
