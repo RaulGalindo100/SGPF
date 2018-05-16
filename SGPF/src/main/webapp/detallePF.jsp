@@ -26,7 +26,7 @@
 <body>
 	<%
 		ProcesoFuncional detalle = (ProcesoFuncional) session.getAttribute("pfDetalle");
-		List<SubProceso> spList = (List<SubProceso>) session.getAttribute("subProc");
+		List<SubProceso> spList = (List<SubProceso>) session.getAttribute("subProc"); 
 		int tipoUsuario = Integer.parseInt(session.getAttribute("tipoUsuario").toString());
 		Proyecto p = (Proyecto) session.getAttribute("proy");
 	%>
