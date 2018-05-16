@@ -44,10 +44,10 @@
 		</div>
 	</header>
 	
-<div class="container py-5">
+<div class="container">
 		<section class="row">
 			<div class="col-md-12">
-				<h1>Administración de Catálogos</h1>
+				<h2>Administración de Catálogos</h2>
 			</div>
 		</section>
 </div>

@@ -42,10 +42,10 @@
 			</nav>
 		</div>
 	</header>
-	<div class="container py-5">
+	<div class="container">
 		<section class="row">
 			<div class="col-md-12">
-				<h1>Administración de Acciones</h1>
+				<h2>Administración de Acciones</h2>
 			</div>
 			<div class="table-responsive ">
 				<table class="table ">
@@ -58,6 +58,7 @@
 							<th></th>
 							<th></th>
 						</tr>
+						</thead>
 					<tbody>
 						<%
 							for (Accion accion : acciones) {

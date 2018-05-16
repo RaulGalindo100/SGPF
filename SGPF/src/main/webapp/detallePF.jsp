@@ -5,10 +5,12 @@
 <%@page import="unam.mx.SGPF.model.GrupoDato"%>
 <%@page import="unam.mx.SGPF.model.SubProceso"%>
 <%@page import="java.util.List"%>
+<%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type"
+	content="text/html; charset=windows-1252">
 
 <title>Detalle Proceso Funcional</title>
 <meta name="viewport"
@@ -50,20 +52,21 @@
 								if (tipoUsuario != 3 && p.getEstatus() == 1) {
 							%>
 							<form action="agregarActividad" method="post">
-								<input type="hidden" name="idProcesoFuncional" value="<%=detalle.getIdprocesoFuncional()%>"> 
-								<input class="nav-link myclass " style="color: rgba(0,0,0,.9);border-style:none;background-color:transparent; cursor:pointer; cursor: hand;"
+								<input type="hidden" name="idProcesoFuncional"
+									value="<%=detalle.getIdprocesoFuncional()%>"> <input
+									class="nav-link myclass "
+									style="color: rgba(0, 0, 0, .9); border-style: none; background-color: transparent; cursor: pointer; cursor: hand;"
 									type="submit" value="Agregar Actividad" />
-							</form> 
-							<%
- 								}
- 							%>
+							</form> <%
+ 	}
+ %>
 
 						</li>
 						<li class="nav-item active"></li>
 					</ul>
 
 					<a class="btn btn-outline-success my-2 my-sm-0"
-						href="detalleProyecto.jsp">Back to Detail</a>
+						href="detalleProyecto.jsp">Regresar</a>
 
 				</div>
 			</nav>
@@ -72,7 +75,7 @@
 	<div class="container py-5">
 		<section class="row">
 			<div class="col-md-12">
-				<h1>Detalle de Proceso Funcional</h1>
+				<h2>Detalle de Proceso Funcional</h2>
 			</div>
 			<div class="table-responsive ">
 				<table class="table ">
@@ -97,7 +100,7 @@
 	<div class="container py-5">
 		<section class="row">
 			<div class="col-md-12">
-				<h2>Lista de Actividades</h2>
+				<h3>Lista de Actividades</h3>
 			</div>
 			<div class="table-responsive">
 				<table class="table ">
@@ -106,9 +109,10 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Actividad</th>
+							<th scope="col">Descripción</th>
 							<th scope="col">Usuario funcional</th>
 							<th scope="col">Acción</th>
-							<th scope="col">Descripción</th>
+
 							<th scope="col">Grupo de datos</th>
 							<th scope="col" colspan="2">Opciones</th>
 						</tr>
@@ -124,63 +128,76 @@
 								acc = inter.getIdaccion();
 								gd = inter.getIdgrupoDato();
 						%>
-							<tr>
+						<tr>
 							<%
 								if (inter.getIndice() == 1) {
 							%>
-								<td><%=inter.getIdsubProceso()%></td>
-								<td><%=inter.getActividad()%></td>
-								<td><%=uf.getNomUF()%></td>
-								<td><%=acc.getNomAccion()%></td>
-								<td><%=inter.getDescripcion()%></td>
-								<td><%=gd.getNomGD()%></td>		
-								<%
-							 	if (tipoUsuario != 3 && p.getEstatus() == 1) {
-								%>
-								<td>
+							<td><%=inter.getIdsubProceso()%></td>
+							<td><%=inter.getActividad()%></td>
+							<td><%=inter.getDescripcion()%></td>
+							<td><%=uf.getNomUF()%></td>
+							<td><%=acc.getNomAccion()%></td>
+
+							<td><%=gd.getNomGD()%></td>
+							<%
+								if (tipoUsuario != 3 && p.getEstatus() == 1) {
+							%>
+							<td>
+								<div class="btn-group-vertical btn-group-sm" role="group">
 									<form action="modActividad" method="POST">
-										<input type="hidden" name="idSubProceso" value="<%=inter.getIdsubProceso()%>"/> 
-										<input class="btn btn-outline-info" type="submit" value="Modificar" />
-									</form> 
-								</td>
-								<td>
-									<form action="addSubProceso" method="POST">
-										<input type="hidden" name="idSubProceso" value="<%=inter.getIdsubProceso()%>" /> 
-										<input class="btn btn-outline-info" type="submit" value="Agregar SP" />
-									</form> 
-								</td>
-								<td>
+										<input type="hidden" name="idSubProceso"
+											value="<%=inter.getIdsubProceso()%>" /> <input
+											class="btn btn-outline-info .btn-sm" style="font-size: 10pt;"
+											type="submit" value="Modificar" />
+									</form>
 									<%
-									if (inter.getActividad() == "Inicio de Proceso Funcional" && inter.getIndice() == 1) {
+										if (!inter.getActividad().equals("Inicio de Proceso Funcional") && inter.getIndice() == 1) {
 									%>
 									<form action="eliActividad" method="POST">
-										<input type="hidden" name="idSubProceso"value="<%=inter.getIdsubProceso()%>" /> 
-										<input class="btn btn-outline-info" type="submit" value="Eliminar" />
-									</form> 
+										<input type="hidden" name="idSubProceso"
+											value="<%=inter.getIdsubProceso()%>" /> <input
+											class="btn btn-outline-info .btn-sm" style="font-size: 10pt;"
+											type="submit" value="Eliminar" />
+									</form>
 									<%
-									}
-									%> 
-								</td>
-								<%
-								}
-								%>
+										}
+									%>
+									<form action="addSubProceso" method="POST">
+										<input type="hidden" name="idSubProceso"
+											value="<%=inter.getIdsubProceso()%>" /> <input
+											class="btn btn-outline-info .btn-sm" style="font-size: 10pt;"
+											type="submit" value="Agregar SP" />
+									</form>
+
+								</div>
+
+							</td>
 							<%
-							} else {
+								}
+							%>
+							<%
+								} else {
 							%>
 							<td><%=inter.getIdsubProceso()%></td>
 							<td></td>
+							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
-							<td><%=inter.getDescripcion()%></td>
+
 							<td><%=gd.getNomGD()%></td>
-							<td></td>
+
 							<td>
-								<%if(tipoUsuario!=3&&p.getEstatus()==1){%>
+								<%
+									if (tipoUsuario != 3 && p.getEstatus() == 1) {
+								%>
 								<form action="eliSubproceso" method="POST">
 									<input type="hidden" name="idSubProceso"
 										value="<%=inter.getIdsubProceso()%>" /> <input
-										class="btn btn-outline-info" type="submit" value="Eliminar SP" />
-								</form> <% } %>
+										class="btn btn-outline-info" style="font-size: 10pt;"
+										type="submit" value="Eliminar SP" />
+								</form> <%
+ 	}
+ %>
 							</td>
 							<%
 								}

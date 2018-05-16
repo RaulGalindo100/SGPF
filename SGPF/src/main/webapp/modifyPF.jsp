@@ -39,46 +39,36 @@
 			</nav>
 			</div>
 	</header>
-	<div class="container py-5">
-		<section class="row">
+	<div class="container ">
+		<div class="row">
 			<div class="col-md-12">
-				<h1>Modifica Proceso Funcional</h1>
+				<h2>Modifica Proceso Funcional</h2>
 			</div>
-			<div class="table-responsive">
+		</div>
+		<div class="row">
+			<div class="col-md-8">
 				<form action="actualizarPF" method="POST">
-					<table class="table">
-						<tbody>
-							<tr>
-								<th scope="col" style="text-align: right;">Nombre Proceso Funcional:</th>
-								<td>
-									<input type="hidden" name="idProcesoFuncional"
+					<div class="form-group">
+						<label>Nombre del Grupo</label>
+						<input type="hidden" name="idProcesoFuncional"
 										value="<%=detalle.getIdprocesoFuncional()%>"> 
-									<input type="text" name="nombreProcesoFuncional"
+									<input class="form-control" type="text" name="nombreProcesoFuncional"
 										value="<%=detalle.getNomPF()%>" required>
-								</td>
-							</tr>
-							<tr>
-								<th scope="col" style="text-align: right;">Descripción:</th>
-								<td>
-									<input type="text" name="descripcionPF"
-										value="<%=detalle.getDescripcion()%>" required>
-								</td>
-							</tr>
-							<tr>
-								<th scope="col" style="text-align: right;">Evento desencadenante:</th>
-								<td>
-									<input type="text" name="eventoDes"
+					</div>
+					<div class="form-group">
+						<label>Evento desencadenante</label>
+						<input class="form-control" type="text" name="eventoDes"
 										value="<%=detalle.geteventoDes()%>" required>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+					</div>
+					<div class="form-group">
+						<label>Descripción</label>
+						<textarea class="form-control" name="descripcionPF" rows="3" required><%=detalle.getDescripcion()%></textarea>					
+					</div>
 					<input class="btn btn-outline-info" type="submit" value="Guardar" />
 				</form>
 			</div>
-			
-		</section>
-	</div>
+		</div>
+</div>
 
 	<script src="js/jquery.js"></script>
 	<script
