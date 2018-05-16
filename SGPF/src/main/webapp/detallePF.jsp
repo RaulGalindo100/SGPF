@@ -85,7 +85,7 @@
 							<td><%=detalle.getNomPF()%></td>
 						</tr>
 						<tr>
-							<th scope="col">Descripci�n:</th>
+							<th scope="col">Descripción:</th>
 							<td><%=detalle.getDescripcion()%></td>
 						</tr>
 						<tr>
@@ -113,7 +113,7 @@
 							<th scope="col">Usuario funcional</th>
 							<th scope="col">Acción</th>
 							<th scope="col">Grupo de datos</th>
-							<th scope="col" colspan="2">Opciones</th>
+							<th scope="col" colspan="2"></th>
 						</tr>
 					</thead>
 
@@ -142,35 +142,42 @@
 								if (tipoUsuario != 3 && p.getEstatus() == 1) {
 							%>
 							<td>
-								<div class="btn-group-vertical btn-group-sm" role="group">
-									<form action="modActividad" method="POST">
-										<input type="hidden" name="idSubProceso"
-											value="<%=inter.getIdsubProceso()%>" /> <input
-											class="btn btn-outline-info .btn-sm" style="font-size: 10pt;"
-											type="submit" value="Modificar" />
-									</form>
-									<%
-										if (!inter.getActividad().equals("Inicio de Proceso Funcional") && inter.getIndice() == 1) {
-									%>
-									<form action="eliActividad" method="POST">
-										<input type="hidden" name="idSubProceso"
-											value="<%=inter.getIdsubProceso()%>" /> <input
-											class="btn btn-outline-info .btn-sm" style="font-size: 10pt;"
-											type="submit" value="Eliminar" />
-									</form>
-									<%
-										}
-									%>
-									<form action="addSubProceso" method="POST">
-										<input type="hidden" name="idSubProceso"
-											value="<%=inter.getIdsubProceso()%>" /> <input
-											class="btn btn-outline-info .btn-sm" style="font-size: 10pt;"
-											type="submit" value="Agregar SP" />
-									</form>
-
+								<div class="dropdown">
+									<button
+										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle"
+										type="button" id="dropdownMenu2" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false">Opciones</button>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+										<form action="modActividad" method="POST">
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>" /> <input
+												class="dropdown-item btn btn-outline-info .btn-sm"
+												style="font-size: 10pt;" type="submit" value="Modificar" />
+										</form>
+										<%
+											if (!inter.getActividad().equals("Inicio de Proceso Funcional") && inter.getIndice() == 1) {
+										%>
+										<form action="eliActividad" method="POST">
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>" /> <input
+												class="dropdown-item btn btn-outline-info .btn-sm"
+												style="font-size: 10pt;" type="submit" value="Eliminar" />
+										</form>
+										<%
+											}
+										%>
+										<div class="dropdown-divider"></div>
+										<form action="addSubProceso" method="POST">
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>" /> <input
+												class="dropdown-item btn btn-outline-info .btn-sm"
+												style="font-size: 10pt;" type="submit" value="Agregar SP" />
+										</form>
+									</div>
 								</div>
 
 							</td>
+							<!--  -->
 							<%
 								}
 							%>
@@ -185,18 +192,30 @@
 
 							<td><%=gd.getNomGD()%></td>
 
-							<td>
-								<%
-									if (tipoUsuario != 3 && p.getEstatus() == 1) {
-								%>
-								<form action="eliSubproceso" method="POST">
-									<input type="hidden" name="idSubProceso"
-										value="<%=inter.getIdsubProceso()%>" /> <input
-										class="btn btn-outline-info" style="font-size: 10pt;"
-										type="submit" value="Eliminar SP" />
-								</form> <%
- 	}
- %>
+							<td>	
+							<div class="dropdown">
+									<button
+										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle"
+										type="button" id="dropdownMenu2" data-toggle="dropdown"
+										aria-haspopup="true" aria-expanded="false">Opciones</button>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+										<%
+											if (tipoUsuario != 3 && p.getEstatus() == 1) {
+										%>
+										<form action="eliSubproceso" method="POST">
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>" /> <input
+												class="dropdown-item btn btn-outline-info" style="font-size: 10pt;"
+												type="submit" value="Eliminar SP" />
+										</form>
+										<%
+											}
+										%>
+										<div class="dropdown-divider"></div>
+
+									</div>
+								</div>
+
 							</td>
 							<%
 								}
@@ -213,6 +232,7 @@
 	</div>
 
 	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.bundle.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
