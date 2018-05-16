@@ -25,9 +25,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByNomUsuario", query = "SELECT u FROM Usuario u WHERE u.nomUsuario = :nomUsuario")
     , @NamedQuery(name = "Usuario.findByPwdUsuario", query = "SELECT u FROM Usuario u WHERE u.pwdUsuario = :pwdUsuario")
     , @NamedQuery(name = "Usuario.findByUsuTipo1", query = "SELECT u FROM Usuario u WHERE u.usuTipo1 = :usuTipo1")
+    , @NamedQuery(name = "Usuario.findActiveUsers", query = "SELECT u FROM Usuario u WHERE u.usuTipo1 is not null OR u.usuTipo2 is not null or u.usuTipo3 is not null ")    
     , @NamedQuery(name = "Usuario.findByUsuTipo2", query = "SELECT u FROM Usuario u WHERE u.usuTipo2 = :usuTipo2")
     , @NamedQuery(name = "Usuario.findByUsuTipo3", query = "SELECT u FROM Usuario u WHERE u.usuTipo3 = :usuTipo3")
-    , @NamedQuery(name = "Usuario.findByUSuarioAndPassword", query = "SELECT u from Usuario u WHERE u.nomUsuario = :usuario and u.pwdUsuario = :password")})
+    , @NamedQuery(name = "Usuario.findByUSuarioAndPassword", query = "SELECT u from Usuario u WHERE u.nomUsuario = :usuario and u.pwdUsuario = :password and (u.usuTipo1 is not null OR u.usuTipo2 is not null or u.usuTipo3 is not null)")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;

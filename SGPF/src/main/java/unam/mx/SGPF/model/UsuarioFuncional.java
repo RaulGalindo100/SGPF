@@ -23,15 +23,17 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author miguel
+ * @author juan
  */
 @Entity
-@Table(name = "usuarioFuncional")
+@Table(catalog = "SGPF", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "UsuarioFuncional.findAll", query = "SELECT u FROM UsuarioFuncional u")
     , @NamedQuery(name = "UsuarioFuncional.findByIdusuarioFuncional", query = "SELECT u FROM UsuarioFuncional u WHERE u.idusuarioFuncional = :idusuarioFuncional")
-    , @NamedQuery(name = "UsuarioFuncional.findByNomUF", query = "SELECT u FROM UsuarioFuncional u WHERE u.nomUF = :nomUF")})
+    , @NamedQuery(name = "UsuarioFuncional.findByNomUF", query = "SELECT u FROM UsuarioFuncional u WHERE u.nomUF = :nomUF")
+    , @NamedQuery(name = "UsuarioFuncional.findByDescripcion", query = "SELECT u FROM UsuarioFuncional u WHERE u.descripcion = :descripcion")
+    , @NamedQuery(name = "UsuarioFuncional.findByActivo", query = "SELECT u FROM UsuarioFuncional u WHERE u.activo = :activo")})
 public class UsuarioFuncional implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,38 +45,14 @@ public class UsuarioFuncional implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String nomUF;
+    @Basic(optional = false)
     @Column(nullable = false, length = 250)
     private String descripcion;
+    @Basic(optional = false)
     @Column(nullable = false)
     private short activo;
-    public UsuarioFuncional(Integer idusuarioFuncional, String nomUF, String descripcion, short activo,
-			List<SubProceso> subProcesoList) {
-		super();
-		this.idusuarioFuncional = idusuarioFuncional;
-		this.nomUF = nomUF;
-		this.descripcion = descripcion;
-		this.activo = activo;
-		this.subProcesoList = subProcesoList;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public short getActivo() {
-		return activo;
-	}
-
-	public void setActivo(short activo) {
-		this.activo = activo;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuarioFuncional")
-    private List<SubProceso> subProcesoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuarioFuncional")
+    private List<SubProceso> subprocesoList;
 
     public UsuarioFuncional() {
     }
@@ -83,9 +61,11 @@ public class UsuarioFuncional implements Serializable {
         this.idusuarioFuncional = idusuarioFuncional;
     }
 
-    public UsuarioFuncional(Integer idusuarioFuncional, String nomUF) {
+    public UsuarioFuncional(Integer idusuarioFuncional, String nomUF, String descripcion, short activo) {
         this.idusuarioFuncional = idusuarioFuncional;
         this.nomUF = nomUF;
+        this.descripcion = descripcion;
+        this.activo = activo;
     }
 
     public Integer getIdusuarioFuncional() {
@@ -104,13 +84,29 @@ public class UsuarioFuncional implements Serializable {
         this.nomUF = nomUF;
     }
 
-    @XmlTransient
-    public List<SubProceso> getSubProcesoList() {
-        return subProcesoList;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setSubProcesoList(List<SubProceso> subProcesoList) {
-        this.subProcesoList = subProcesoList;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public short getActivo() {
+        return activo;
+    }
+
+    public void setActivo(short activo) {
+        this.activo = activo;
+    }
+
+    @XmlTransient
+    public List<SubProceso> getSubProcesoList() {
+        return subprocesoList;
+    }
+
+    public void setSubProcesoList(List<SubProceso> subprocesoList) {
+        this.subprocesoList = subprocesoList;
     }
 
     @Override

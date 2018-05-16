@@ -17,13 +17,13 @@ public class modificandoAccion extends HttpServlet{
         String movDatos = request.getParameter("movDatos");
         String descripcion = request.getParameter("descripcion");
         int idAccion = Integer.parseInt(request.getParameter("idAccion"));
-        
+
         AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
         Accion accion = ajpa.findAccion(idAccion);
         accion.setNomAccion(nombreAccion);
-        accion.setMovDatos(movDatos);
+        accion.setMovDatos(movDatos.trim().charAt(0));
         accion.setDescripcion(descripcion);
-        
+
     	try{
             ajpa.edit(accion);
         }catch(Exception e){
@@ -31,9 +31,9 @@ public class modificandoAccion extends HttpServlet{
         }finally{
             response.sendRedirect("acciones");
         }
-       
+
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -41,13 +41,13 @@ public class modificandoAccion extends HttpServlet{
         String movDatos = request.getParameter("movDatos");
         String descripcion = request.getParameter("descripcion");
         int idAccion = Integer.parseInt(request.getParameter("idAccion"));
-        
+
         AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
         Accion accion = ajpa.findAccion(idAccion);
         accion.setNomAccion(nombreAccion);
-        accion.setMovDatos(movDatos);
+        accion.setMovDatos(movDatos.trim().charAt(0));
         accion.setDescripcion(descripcion);
-        
+
     	try{
             ajpa.edit(accion);
         }catch(Exception e){
@@ -55,6 +55,6 @@ public class modificandoAccion extends HttpServlet{
         }finally{
             response.sendRedirect("acciones");
         }
-       
+
     }
 }

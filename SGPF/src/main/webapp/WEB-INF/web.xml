@@ -149,7 +149,15 @@
         <servlet-name>agregandoUsuarioProyecto</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.agregandoUsuarioProyecto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>agregaProyecto</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.agregaProyecto</servlet-class>
+    </servlet>
     
+    <servlet-mapping>
+        <servlet-name>agregaProyecto</servlet-name>
+        <url-pattern>/agregaProyecto</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>agregandoUsuarioProyecto</servlet-name>
         <url-pattern>/agregandoUsuarioProyecto</url-pattern>

@@ -24,7 +24,7 @@
                 <td>Descripción: </td><td><input type="text" value="<%=detalle.getDescripcion()%>" name="descripcionPF" required> </td>
             </tr>
              <tr>
-                <td>Evento Desencadenante: </td><td><input type="text" value="<%=detalle.geteventoDes()%>" name="eventoDes" required> </td>
+                <td>Evento Desencadenante: </td><td><input type="text" value="<%=detalle.getEventoDes()%>" name="eventoDes" required> </td>
             </tr>
             <tr>
                 <td><input type="submit" value="Save"/></td><td></td>

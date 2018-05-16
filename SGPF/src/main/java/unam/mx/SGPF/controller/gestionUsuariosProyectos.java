@@ -23,7 +23,7 @@ public class gestionUsuariosProyectos extends HttpServlet{
         InterUPJpaController ijpa = new InterUPJpaController(EntityProvider.provider());
         ProyectoJpaController pjpa = new ProyectoJpaController(EntityProvider.provider());
         List<InterUP> ListaInterUP = (List<InterUP>)  ijpa.findInterUPEntities();
-        List<Usuario> ListaUsuario = (List<Usuario>) ujpa.findUsuarioEntities();
+        List<Usuario> ListaUsuario = (List<Usuario>) ujpa.getUsuariosActivos();
         List<Proyecto> ListaProyectos = (List<Proyecto>) pjpa.findProyectoEntities();
         HttpSession session = request.getSession(true);
         session.setAttribute("ListaInterUP", ListaInterUP);

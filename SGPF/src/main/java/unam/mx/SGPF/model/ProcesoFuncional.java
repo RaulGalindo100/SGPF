@@ -56,14 +56,15 @@ public class ProcesoFuncional implements Serializable {
     private String eventoDes;
     @Basic(optional = false)
     @Column(nullable = false)
-    private short activo;
-    @Column(nullable = false)
     private int tamPF;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idprocesoFuncional")
-    private List<SubProceso> subProcesoList;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private short activo;
     @JoinColumn(name = "idproyecto", referencedColumnName = "idproyecto", nullable = false)
     @ManyToOne(optional = false)
     private Proyecto idproyecto;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idprocesoFuncional")
+    private List<SubProceso> subprocesoList;
 
     public ProcesoFuncional() {
     }
@@ -72,30 +73,15 @@ public class ProcesoFuncional implements Serializable {
         this.idprocesoFuncional = idprocesoFuncional;
     }
 
-    public ProcesoFuncional(Integer idprocesoFuncional, String nomPF, String descripcion, String eventoDes, int tamPF) {
+    public ProcesoFuncional(Integer idprocesoFuncional, String nomPF, String descripcion, String eventoDes, int tamPF, short activo) {
         this.idprocesoFuncional = idprocesoFuncional;
         this.nomPF = nomPF;
         this.descripcion = descripcion;
         this.eventoDes = eventoDes;
         this.tamPF = tamPF;
-    }
-
-    public String getEventoDes() {
-        return eventoDes;
-    }
-
-    public void setEventoDes(String eventoDes) {
-        this.eventoDes = eventoDes;
-    }
-
-    public short getActivo() {
-        return activo;
-    }
-
-    public void setActivo(short activo) {
         this.activo = activo;
     }
-    
+
     public Integer getIdprocesoFuncional() {
         return idprocesoFuncional;
     }
@@ -120,11 +106,11 @@ public class ProcesoFuncional implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String geteventoDes() {
+    public String getEventoDes() {
         return eventoDes;
     }
 
-    public void seteventoDes(String eventoDes) {
+    public void setEventoDes(String eventoDes) {
         this.eventoDes = eventoDes;
     }
 
@@ -136,13 +122,12 @@ public class ProcesoFuncional implements Serializable {
         this.tamPF = tamPF;
     }
 
-    @XmlTransient
-    public List<SubProceso> getSubProcesoList() {
-        return subProcesoList;
+    public short getActivo() {
+        return activo;
     }
 
-    public void setSubProcesoList(List<SubProceso> subProcesoList) {
-        this.subProcesoList = subProcesoList;
+    public void setActivo(short activo) {
+        this.activo = activo;
     }
 
     public Proyecto getIdproyecto() {
@@ -151,6 +136,15 @@ public class ProcesoFuncional implements Serializable {
 
     public void setIdproyecto(Proyecto idproyecto) {
         this.idproyecto = idproyecto;
+    }
+
+    @XmlTransient
+    public List<SubProceso> getSubProcesoList() {
+        return subprocesoList;
+    }
+
+    public void setSubProcesoList(List<SubProceso> subprocesoList) {
+        this.subprocesoList = subprocesoList;
     }
 
     @Override

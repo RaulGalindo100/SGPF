@@ -21,7 +21,7 @@ import unam.mx.SGPF.model.controller.exceptions.NonexistentEntityException;
 
 /**
  *
- * @author miguel
+ * @author juan
  */
 public class UsuarioJpaController implements Serializable {
 
@@ -210,5 +210,13 @@ public class UsuarioJpaController implements Serializable {
         }
         return (Usuario) q.getSingleResult();
     }
-
+    
+    public List<Usuario> getUsuariosActivos() {
+        EntityManager em = getEntityManager();
+        Query q = em.createNamedQuery("Usuario.findActiveUsers");
+        if (q.getResultList().isEmpty()) {
+            return null;
+        }
+        return (List<Usuario>) q.getResultList();
+    }
 }

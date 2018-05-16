@@ -28,7 +28,7 @@
 <body>
 	<%
 		ProcesoFuncional detalle = (ProcesoFuncional) session.getAttribute("pfDetalle");
-		List<SubProceso> spList = (List<SubProceso>) session.getAttribute("subProc");
+		List<SubProceso> spList = (List<SubProceso>) session.getAttribute("subProc"); 
 		int tipoUsuario = Integer.parseInt(session.getAttribute("tipoUsuario").toString());
 		Proyecto p = (Proyecto) session.getAttribute("proy");
 	%>
@@ -85,12 +85,12 @@
 							<td><%=detalle.getNomPF()%></td>
 						</tr>
 						<tr>
-							<th scope="col">Descripción:</th>
+							<th scope="col">Descripci�n:</th>
 							<td><%=detalle.getDescripcion()%></td>
 						</tr>
 						<tr>
 							<th scope="col">Evento desencadenante</th>
-							<td><%=detalle.geteventoDes()%></td>
+							<td><%=detalle.getEventoDes()%></td>
 						</tr>
 					<tbody>
 				</table>
@@ -112,7 +112,6 @@
 							<th scope="col">Descripción</th>
 							<th scope="col">Usuario funcional</th>
 							<th scope="col">Acción</th>
-
 							<th scope="col">Grupo de datos</th>
 							<th scope="col" colspan="2">Opciones</th>
 						</tr>

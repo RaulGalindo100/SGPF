@@ -64,6 +64,7 @@
 						<label>Descripción</label>
 						<textarea class="form-control" name="descripcionPF" rows="3" required><%=detalle.getDescripcion()%></textarea>					
 					</div>
+
 					<input class="btn btn-outline-info" type="submit" value="Guardar" />
 				</form>
 			</div>

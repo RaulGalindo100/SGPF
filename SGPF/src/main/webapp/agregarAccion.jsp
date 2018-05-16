@@ -56,7 +56,7 @@
 						<option value="X">X</option>
 						<option value="R">R</option>
 						<option value="W">W</option>
-						<option value="M">X*</option>
+						<option value="S">S</option>
 					</select>
 				</div>
 				<div class="form-group">
