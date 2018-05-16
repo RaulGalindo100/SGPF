@@ -25,7 +25,7 @@
            List<MetDesarrollo> ListaMetDesarrollo =(List<MetDesarrollo>) session.getAttribute("ListaMetDesarrollo");
            List<MetMedicion> ListaMetMedicon = (List<MetMedicion>) session.getAttribute("ListaMetMedicon");
            List<SisOpe> ListaSisOpe = (List<SisOpe>) session.getAttribute("ListaSisOpe");
-           List<TipodeDesarrollo> ListaTipoDes = (List<TipodeDesarrollo>) session.getAttribute("ListaTipoDes");
+           List<TipodeDesarrollo> ListaTipoDes = (List<TipodeDesarrollo>) session.getAttribute("ListaTipoDes1");
            List<Lenguaje> ListaLenguaje = (List<Lenguaje>) session.getAttribute("ListaLenguaje");
            List<ModCalidad> ListaModCalidad = (List<ModCalidad>) session.getAttribute("ListaModCalidad");
            List<BaseDatos> ListaBaseDatos = (List<BaseDatos>) session.getAttribute("ListaBaseDatos");
@@ -115,7 +115,8 @@
                 <td>Tipo de Desarrollo:</td>
                 <td>
                     <select name="IdTipodeDesarrollo">
-                        <%for(TipodeDesarrollo i : ListaTipoDes){%>
+                        <%List<TipodeDesarrollo> ListaTipoDes2 = (List<TipodeDesarrollo>) session.getAttribute("ListaTipoDes");%>
+                        <%for(TipodeDesarrollo i : ListaTipoDes2){%>
                         <option value="<%=i.getIdTipodeDesarrollo()%>">
                             <%=i.getTipodeDesarrollo()%>
                         </option>

@@ -26,8 +26,8 @@
         <servlet-class>unam.mx.SGPF.controller.BuscaProcesoFuncional</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AgregarProyecto</servlet-name>
-        <servlet-class>unam.mx.SGPF.controller.AgregarProyecto</servlet-class>
+        <servlet-name>agregarProyecto</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.agregarProyecto</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>acciones</servlet-name>
@@ -315,8 +315,8 @@
         <url-pattern>/BuscaProcesoFuncional</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AgregarProyecto</servlet-name>
-        <url-pattern>/AgregarProyecto</url-pattern>
+        <servlet-name>agregarProyecto</servlet-name>
+        <url-pattern>/agregarProyecto</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>modActividad</servlet-name>

@@ -49,7 +49,7 @@
 						<li class="nav-item active">
 							<%
 					if (tipoUsuario == 1 || tipoUsuario == 2) {
-					%> <a class="nav-link" href="agregarProyecto.jsp">Nuevo
+					%> <a class="nav-link" href="agregaProyecto">Nuevo
 								Proyecto</a> <% } %>
 						</li>
 						<%if(tipoUsuario == 1){%>
