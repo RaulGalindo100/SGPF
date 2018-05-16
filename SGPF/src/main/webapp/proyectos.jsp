@@ -36,38 +36,30 @@
 				 -->
 
 
-			  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				  <li class="nav-item active">
-					<%if(tipoUsuario==1){%>
-                                        <a class="nav-link" href="crudCatalogos.jsp">
-                                            Modificar Catálogos
-                                        </a>
-                                        <% } %>
-				  </li>
-				  <li class="nav-item active">
-                                  <%if(tipoUsuario == 1){%>
-                                  <a class="nav-link" href="gestionUsuarios">
-                                        Gestionar Usuarios
-                                  </a>
-                                  <% } %>
-				  </li>
-				  <li class="nav-item active">
-					<%
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+						<li class="nav-item active">
+							<%if(tipoUsuario==1){%> <a class="nav-link"
+							href="crudCatalogos.jsp"> Modificar Catálogos </a> <% } %>
+						</li>
+						<li class="nav-item active">
+							<%if(tipoUsuario == 1){%> <a class="nav-link"
+							href="gestionUsuarios"> Gestionar Usuarios </a> <% } %>
+						</li>
+						<li class="nav-item active">
+							<%
 					if (tipoUsuario == 1 || tipoUsuario == 2) {
-					%> <a class="nav-link" href="agregaProyecto">Nuevo
-					Proyecto</a> <% } %>
-				  </li>
-                                  <%if(tipoUsuario == 1){%>
-                                  <li class="nav-item active">
-                                    <a class="nav-link" href="gestionUsuariosProyectos">
-                                        Gestionar Usuarios-Proyectos
-                                    </a>
-                                  </li>
-                                  <% } %>
-				</ul>
-				<form class="col-md-2" action="cerrarSesion" method="post">
-						<input class="btn btn-outline-success my-2 my-sm-0" type="submit"
+					%> <a class="nav-link" href="agregarProyecto.jsp">Nuevo
+								Proyecto</a> <% } %>
+						</li>
+						<%if(tipoUsuario == 1){%>
+						<li class="nav-item active"><a class="nav-link"
+							href="gestionUsuariosProyectos"> Gestionar Usuarios-Proyectos
+						</a></li>
+						<% } %>
+					</ul>
+					<form class="col-md-2" action="cerrarSesion" method="post">
+						<input class="btn btn-outline-dark" type="submit"
 							value="Cerrar Sesión">
 					</form>
 				</div>
@@ -78,7 +70,7 @@
 	<div class="container py-5">
 		<section class="row">
 			<div class="col-md-12">
-				<h1>Proyectos</h1>
+				<h2>Proyectos</h2>
 			</div>
 
 			<div class="table-responsive">
@@ -102,7 +94,7 @@
 						<%
 								}
 							%>
-
+					
 					<tbody>
 				</table>
 			</div>

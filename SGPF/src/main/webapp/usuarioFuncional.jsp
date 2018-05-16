@@ -6,54 +6,112 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title>Administración de UF</title>
+        <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="css/estilos.css">
     </head>
     <body>
-        <h1>Administración de Usuarios Funcionales!</h1>
-        <%
-            List<UsuarioFuncional> uf = (List<UsuarioFuncional>) session.getAttribute("usuarioFuncional");
-        %>
-        <table>
-            <tr>
-                <td>Nombre del Usuario Funcional</td>
-                <td>Descripción</td>
-                <td>Activo</td>
-            </tr>
-        <%
-    	for(UsuarioFuncional iter : uf) { 
-        %>
-            <tr>
-                <td><%=iter.getNomUF()%></td>
-                <td><%=iter.getDescripcion()%></td>
-                <td><%if(iter.getActivo()==1){%>Si<%}else{%>No<%}%></td>
-                <%if(iter.getActivo()==1){%>
-                    <td>
-                        <a href="EliminaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Eliminar</a>
-                    </td>
-                <% }else{ %>
-                    <td>
-                        <a href="EliminaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Activar</a>
-                    </td>
-                <% } %>
-                <%if(iter.getActivo()==1){%>
-                    <td>
-                        <a href="modificaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Modificar</a>
-                    </td>
-                <% } %>
-            </tr>
-            <%
-                }
-            %>
+    <header>
+		<div class="container">
+			<h1>Sistema Gestor de Procesos Funcionales</h1>
+		</div>
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item active">
+					 <a class="nav-link" href="agregarUF.jsp">Agregar Usuario</a>
+					</li>
+	
+					</ul>
+					<a href="crudCatalogos.jsp"><input class="btn btn-info"
+						type="submit" value="Regresar"></a>
+				</div>
+			</nav>
+		</div>
+	</header>
+	 <%
+   	List<UsuarioFuncional> uf = (List<UsuarioFuncional>) session.getAttribute("usuarioFuncional");
+	 %>
+	<div class="container py-5">
+		<section class="row">
+			<div class="col-md-12">
+				<h2>Administración de Usuarios Funcionales</h2>
+			</div>
+			<div class="table-responsive ">
+				<table class="table ">
+					<thead>
+						<tr>
+							<th scope="col">Nombre del Usuario Funcional</th>
+							<th scope="col">Descripción</th>
+							<th scope="col">Activo</th>
+							<th scope="col" colspan=2>Opciones</th>
+							
+						</tr>
+						</thead>
+					<tbody>
+						<%
+							for (UsuarioFuncional iter : uf) {
+						%>
+						<tr>
+							<td><%=iter.getNomUF()%></td>
+							<td><%=iter.getDescripcion()%></td>
+							<td>
+								<%
+									if (iter.getActivo() == 1) {
+								%>Si<%
+									} else {
+								%>No<%
+									}
+								%>
+							</td>
+							<%
+								if (iter.getActivo() == 1) {
+							%>
+							<td><a class="btn btn-outline-info"
+								href="EliminaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Eliminar</a>
+							</td>
+							<%
+								} else {
+							%>
+							<td><a class="btn btn-outline-info"
+								href="EliminaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Activar</a>
+							</td>
+							<%
+								}
+							%>
+							<%
+								if (iter.getActivo() == 1) {
+							%>
+							<td><a class="btn btn-outline-info"
+								href="modificaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Modificar</a>
+							</td>
+							<%
+								}
+							%>
+						</tr>
+						<%
+							}
+						%>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+	
+      
+        
         </table>
-    <table>
-        <tr>
-            <td>
-                <a href="agregarUF.jsp"><input type="Submit" value="Agregar Usuario"/></a>
-            </td>
-            <td>
-                <a href="crudCatalogos.jsp"><input type="submit" value="Regresar"></a>
-            </td>
-        </tr>
-    </table>
-
+ 
+    
+	<script src="js/jquery.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
     </body>
 </html>

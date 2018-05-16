@@ -19,3 +19,6 @@ header{
   cursor:pointer;
   cursor: hand;
 }
+a:hover {
+    color: hotpink;
+}

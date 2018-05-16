@@ -40,7 +40,7 @@
 	<div class="container py-5">
 		<section class="row">
 			<div class="col-md-12">
-				<h1>Modifica el Proyecto</h1>
+				<h2>Modifica el Proyecto</h2>
 			</div>
 			<div class="table-responsive">
 				

@@ -54,7 +54,7 @@
 						</li>
 					</ul>
 					
-					<a class="btn btn-outline-success my-2 my-sm-0" href="proyectos.jsp">Back to Projects</a>
+					<a class="btn btn-outline-success my-2 my-sm-0" href="proyectos.jsp">Regresar</a>
 
 				</div>
 			</nav>
@@ -64,7 +64,7 @@
 	<div class="container py-5">
 		<section class="row">
 			<div class="col-md-12">
-				<h1>Detalle proyecto</h1>
+				<h2>Detalle proyecto</h2>
 			</div>
 			<div class="table-responsive ">
 				<table class="table ">
@@ -127,6 +127,10 @@
 			</div>
 		</section>
 	</div>
-
+	<script src="js/jquery.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
 </body>
 </html>

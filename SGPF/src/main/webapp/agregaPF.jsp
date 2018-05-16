@@ -41,39 +41,37 @@
 			</nav>
 		</div>
 </header>
-<div class="container py-5">
-	<section class="row">
+<div class="container">
+	<div class="row">
 		<div class="col-md-12">
-			<h1>Agrega Proceso Funcional</h1>
+			<h2>Agrega Proceso Funcional</h2>
 		</div>
-		<div class="table-responsive">
+	</div>
+	<div class="row">
+			<div class="col-md-8">
 			<form action="agregarPF" method="POST">
-				<table class="table">
-					<tbody>
-						<tr>
-							<th scope="col" style="text-align: right;">Nombre Proceso
-								funcional:</th>
-							<td><input type="text" name="nombrePF" required></td>
-						</tr>
-						<tr>
-							<th scope="col" style="text-align: right;">Descripción:</th>
-							<td><input type="text" name="descripcioPF" required></td>
-						</tr>
-						<tr>
-							<th scope="col" style="text-align: right;">Evento
-								desencadenante:</th>
-							<td><input type="text" name="eventoDes" required> <input
-								type="hidden" name="idProyecto" value="<%=p.getIdproyecto()%>">
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="form-group">
+						<label>Nombre Proceso funcional</label>
+						<input class="form-control" type="text" name="nombrePF" required>
+				</div>
+				<div class="form-group">
+						<label>Evento desencadenante</label>
+						<input type="hidden" name="idProyecto" value="<%=p.getIdproyecto()%>">
+						<input class="form-control" type="text" name="eventoDes" required> 
+				</div>
+				<div class="form-group">
+						<label>Descripción</label>
+						<textarea class="form-control" name="descripcioPF" rows="3"></textarea>
+				</div>
 				<input class="btn btn-outline-info" type="submit" value="Guardar">
 			</form>
-		</div>
-	</section>
+			</div>
+	</div>
 </div>
-
-
+	<script src="js/jquery.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
 </body>
 </html>
