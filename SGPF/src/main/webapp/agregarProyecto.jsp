@@ -39,17 +39,11 @@
 	<meta name="viewport"
 	content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
 <!--===============================================================================================-->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet"	href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="css/estilos.css">
     </head>
     <body>
-
-
     <header>
 		<div class="container">
 			<h1>Sistema Gestor de Procesos Funcionales</h1>
@@ -96,6 +90,7 @@
                 <td> <input type="text" name="nombreProyecto" required></td>
                 <td>Año:</td>
                 <td><select name="anio">
+                        <option value=""> - Selecciona - </option>
                         <option value="2015">2015</option>
                         <option value="2016">2016</option>
                         <option value="2017">2017</option>
@@ -105,7 +100,9 @@
                     </select>
                 </td>
                 <td>¿Se puso en operación?:</td>
-                <td><select name="operProy">
+                <td>
+                    <select name="operProy">
+                        <option value=""> - Selecciona - </option>
                         <option value="1">Si</option>
                         <option value="0">No</option>
                     </select>
@@ -114,33 +111,30 @@
             <tr>
                 <td>Tipo de Desarrollo:</td>
                 <td>
+                    
                     <select name="IdTipodeDesarrollo">
+
                         <%List<TipodeDesarrollo> ListaTipoDes2 = (List<TipodeDesarrollo>) session.getAttribute("ListaTipoDes");%>
                         <%for(TipodeDesarrollo i : ListaTipoDes2){%>
                         <option value="<%=i.getIdTipodeDesarrollo()%>">
                             <%=i.getTipodeDesarrollo()%>
+
                         </option>
-                        <%}%>
+                        <%   }    %>
                     </select>
                 </td>
                 <td>Sector de la Organización Usuaria:</td>
                 <td>
                     <select name="IdsectorOrganizacion">
-                        <%for(SectorOrganizacion i : ListaSectorOrganizacion){%>
-                        <option value="<%=i.getIdsectorOrganizacion()%>">
-                            <%=i.getSectorOrganizacion()%>
-                        </option>
-                        <%}%>
+                        <option value="null"> - Selecciona - </option>
+                        
                     </select>
                 </td>
                 <td>Tipo Organización Usuaria:</td>
                 <td>
                     <select name="IdtipoOrganizacion">
-                        <%for(TipoOrganizacion i : ListaTipoOrg){%>
-                        <option value="<%=i.getIdtipoOrganizacion() %>">
-                            <%=i.getTipoOrganizacion() %>
-                        </option>
-                        <%}%>
+                        <option value="null"> - Selecciona - </option>
+                        
                     </select>
                 </td>
             </tr>
@@ -148,38 +142,27 @@
                 <td>Tipo de Capacidad de Desarrollo usada:</td>
                 <td>
                     <select name="IdtipoCapDes">
-                        <%for(TipoCapDes i : ListaTipoCapDes){%>
-                        <option value="<%=i.getIdtipoCapDes()%>">
-                            <%=i.getTipoCapDes()%>
-                        </option>
-                        <%}%>
+                        <option value="null"> - Selecciona - </option>
                     </select>
                 </td>
                 <td>Tamaño de la Organización que desarrolló el software:</td>
                 <td>
                     <select name="IdtamOrgDes">
-                        <%for(TamOrg i : ListaTamOrg){%>
-                        <option value="<%=i.getIdtamOrgDes()%>">
-                            <%=i.getTamOrgDes()%>
-                        </option>
-                        <%}%>
+                        <option value="null"> - Selecciona - </option>
                     </select>
                 </td>
                 <td>Tamaño de la Organización que usaria el software:</td>
                 <td>
                     <select name="tamOrgUsa">
-                        <%for(TamOrg i : ListaTamOrg){%>
-                        <option value="<%=i.getIdtamOrgDes()%>">
-                            <%=i.getTamOrgDes()%>
-                        </option>
-                        <%}%>
+                        <option value="null"> - Selecciona - </option>
+                        
                     </select>
                 </td>
-            </tr>
+            </tr></form>
         </table>    
         </div>
         <table><tr>
-            <td> <input type="submit" value="Submit"> </td>
+                <td> <input type="submit" value="Submit"> </td>
             </tr>
             <tr>
                 <td>
