@@ -168,7 +168,6 @@ public class TipodeDesarrolloJpaController implements Serializable {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
             cq.select(cq.from(TipodeDesarrollo.class));
             Query q = em.createQuery(cq);
-            System.out.print("Haciendo la consulta");
             if (!all) {
                 q.setMaxResults(maxResults);
                 q.setFirstResult(firstResult);

@@ -67,7 +67,6 @@ public class agregaProyecto extends HttpServlet{
         
         TipodeDesarrolloJpaController tipoDesJpa = new TipodeDesarrolloJpaController(EntityProvider.provider());
         List<TipodeDesarrollo> ListaTipoDes = tipoDesJpa.findTipodeDesarrolloEntities();
-        if(ListaTipoDes.isEmpty()){System.out.println("Lista vacia");}else{System.out.println("Lista OK");}
         session.setAttribute("ListaTipoDes", ListaTipoDes);
         
         LenguajeJpaController lenguajeJpa = new LenguajeJpaController(EntityProvider.provider());
