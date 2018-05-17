@@ -91,6 +91,10 @@
 							<td><a
 								href="BuscaProyecto?idProyecto=<%=p.getIdproyecto()%>"><%=p.getNomProy()%></a></td>
 							<td><%=p.getEstatus()%></td>
+                                                        <td>
+                                                            <a href="GeneraReporte?idProyecto=<%=p.getIdproyecto()%>">
+                                                                <input  type="submit" value="Generar Reporte">
+                                                            </a></td>
 						</tr>
 						<%
 								}
