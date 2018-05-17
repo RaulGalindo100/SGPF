@@ -31,6 +31,7 @@
 		List<SubProceso> spList = (List<SubProceso>) session.getAttribute("subProc"); 
 		int tipoUsuario = Integer.parseInt(session.getAttribute("tipoUsuario").toString());
 		Proyecto p = (Proyecto) session.getAttribute("proy");
+                int contador = 0;
 	%>
 	<header>
 		<div class="container">
@@ -120,6 +121,7 @@
 					<tbody>
 						<%
 							for (SubProceso inter : spList) {
+                                                                contador++;
 								UsuarioFuncional uf = new UsuarioFuncional();
 								Accion acc = new Accion();
 								GrupoDato gd = new GrupoDato();
@@ -131,7 +133,7 @@
 							<%
 								if (inter.getIndice() == 1) {
 							%>
-							<td><%=inter.getIdsubProceso()%></td>
+							<td><%=contador%></td>
 							<td><%=inter.getActividad()%></td>
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
@@ -186,7 +188,7 @@
 							<%
 								} else {
 							%>
-							<td><%=inter.getIdsubProceso()%></td>
+							<td><%=contador%></td>
 							<td></td>
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
