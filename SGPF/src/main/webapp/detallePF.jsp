@@ -225,12 +225,12 @@
 												style="font-size: 10pt;" type="submit"
 												value="Agregar SP Después" />
 										</form>
-										<form action="eliSubproceso" method="POST">
+										<!--  form action="eliSubproceso" method="POST">
 											<input type="hidden" name="idSubProceso"
 												value="<%=inter.getIdsubProceso()%>" /> <input
 												class="dropdown-item btn btn-outline-info"
 												style="font-size: 10pt;" type="submit" value="Eliminar SP" />
-										</form>
+										</form-->
 										<%
 											}
 										%>
@@ -244,7 +244,7 @@
 									<!-- Trigger the modal with a button -->
 									<button type="button" class="btn btn-outline-info"
 										style="font-size: 10pt;" data-toggle="modal"
-										data-target="#myModal">Eliminar</button>
+										data-target="#myModal">Eliminar SP</button>
 									<!-- Modal -->
 									<div class="modal fade" id="myModal" role="dialog">
 										<div class="modal-dialog">
