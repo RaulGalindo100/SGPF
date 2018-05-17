@@ -144,7 +144,7 @@
 							<td>
 								<div class="dropdown">
 									<button
-										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle"
+										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle" style="font-size: 10pt;"
 										type="button" id="dropdownMenu2" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">Opciones</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -192,29 +192,53 @@
 
 							<td><%=gd.getNomGD()%></td>
 
-							<td>	
-							<div class="dropdown">
+							<td>
+								<%
+											if (tipoUsuario != 3 && p.getEstatus() == 1) {
+										%>
+										<!-- 
+										<div class="dropdown">
 									<button
-										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle"
+										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle" style="font-size: 10pt;"
 										type="button" id="dropdownMenu2" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">Opciones</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-										<%
-											if (tipoUsuario != 3 && p.getEstatus() == 1) {
-										%>
-										<form action="eliSubproceso" method="POST">
-											<input type="hidden" name="idSubProceso"
-												value="<%=inter.getIdsubProceso()%>" /> <input
-												class="dropdown-item btn btn-outline-info" style="font-size: 10pt;"
-												type="submit" value="Eliminar SP" />
-										</form>
-										<%
-											}
-										%>
 										<div class="dropdown-divider"></div>
-
 									</div>
 								</div>
+										 -->
+								
+								<div class="container">
+									<!-- Trigger the modal with a button -->
+									<button type="button"
+										class="btn btn-outline-info"
+										style="font-size: 10pt;" data-toggle="modal"
+										data-target="#myModal">Eliminar</button>
+									<!-- Modal -->
+									<div class="modal fade" id="myModal" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-body">
+													<p>El Sub-Proceso será eliminado.</p>
+												</div>
+												<div class="modal-footer">
+													<form action="eliSubproceso" method="POST">
+														<input type="hidden" name="idSubProceso"
+															value="<%=inter.getIdsubProceso()%>" /> <input
+															class="btn btn-outline-info" type="submit"
+															value="Aceptar" />
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> <%
+											}
+										%>
+
+
+
 
 							</td>
 							<%

@@ -25,9 +25,11 @@ public class eliminaPF extends HttpServlet{
             short a=0;
             procesoFuncional.setActivo(a);
             pfjpa.edit(procesoFuncional);
+            //pfjpa.destroy(procesoFuncional.getIdprocesoFuncional());
             HttpSession session = request.getSession(true);
             session.setAttribute("idProyecto", procesoFuncional.getIdproyecto());
-            redireccion = "e_ProcesoFuncional.jsp";
+            redireccion = "proyectos.jsp";
+            //redireccion = redireccion.concat(Integer.toString(proyecto.getIdproyecto()));
         } catch (Exception e) {
             e.printStackTrace();
             redireccion = "proyectos.jsp";

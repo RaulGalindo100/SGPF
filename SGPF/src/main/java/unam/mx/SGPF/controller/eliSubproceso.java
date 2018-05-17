@@ -24,7 +24,9 @@ public class eliSubproceso extends HttpServlet {
             SubProcesoJPA.destroy(idSubProceso);
             HttpSession session = request.getSession(true);
             session.setAttribute("idPF", idPF);
-            redireccion = "eliminadoSubProceso.jsp";
+            //redireccion = "eliminadoSubProceso.jsp";
+            redireccion = "BuscaProcesoFuncional?idprocesoFuncional=";
+            redireccion = redireccion.concat(Integer.toString(idPF));
         }catch(Exception e){
             e.printStackTrace();
         }finally{
