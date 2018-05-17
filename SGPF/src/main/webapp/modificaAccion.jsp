@@ -31,7 +31,7 @@
 
 					</ul>
 
-					<a href="acciones.jsp"> <input class="btn btn-info"
+					<a href="acciones"> <input class="btn btn-info"
 						type="submit" value="Cancelar">
 					</a>
 				</div>
@@ -55,47 +55,47 @@
 					<div class="form-group">
 						<label>Movimiento de datos</label>
 						<%
-							if (accion.getMovDatos().equalsIgnoreCase("E")) {
+							if (accion.getMovDatos().equals("E")) {
 						%>
 						<select class="form-control" name="movDatos">
 							<option value="E" selected>E</option>
 							<option value="X">X</option>
 							<option value="R">R</option>
 							<option value="W">W</option>
-							<option value="M">X*</option>
+							<option value="S">S</option>
 						</select>
 						<%
 							} else {
-								if (accion.getMovDatos().equalsIgnoreCase("X")) {
+								if (accion.getMovDatos().equals("X")) {
 						%>
 						<select class="form-control" name="movDatos">
 							<option value="E">E</option>
 							<option value="X" selected>X</option>
 							<option value="R">R</option>
 							<option value="W">W</option>
-							<option value="M">X*</option>
+							<option value="S">S</option>
 						</select>
 						<%
 							} else {
-									if (accion.getMovDatos().equalsIgnoreCase("R")) {
+									if (accion.getMovDatos().equals("R")) {
 						%>
 						<select class="form-control" name="movDatos">
 							<option value="E">E</option>
 							<option value="X">X</option>
 							<option value="R" selected>R</option>
 							<option value="W">W</option>
-							<option value="M">X*</option>
+							<option value="S">S</option>
 						</select>
 						<%
 							} else {
-										if (accion.getMovDatos().equalsIgnoreCase("W")) {
+										if (accion.getMovDatos().equals("W")) {
 						%>
 						<select class="form-control" name="movDatos">
 							<option value="E">E</option>
 							<option value="X">X</option>
 							<option value="R">R</option>
 							<option value="W" selected>W</option>
-							<option value="M">X*</option>
+							<option value="S">S</option>
 						</select>
 						<%
 							} else {
@@ -105,7 +105,7 @@
 							<option value="X">X</option>
 							<option value="R">R</option>
 							<option value="W">W</option>
-							<option value="M" selected>X*-</option>
+							<option value="S" selected>S</option>
 						</select>
 						<%
 							}

@@ -62,9 +62,20 @@
 			<div class="col-md-8">
 				<form action="modificandoActividad" method="POST">
 					<div class="form-group">
-						<label>Actividad</label> <input class="form-control" type="text"
+						<label>Actividad</label> 
+                                                
+                                                <%if(subProcesoMod.getActividad().equals("Inicio de Proceso Funcional")){%>
+                                                <input type="hidden"
+							name="actividad" value="<%=subProcesoMod.getActividad()%>"
+							>
+                                                <input class="form-control" type="text"
+							 value="<%=subProcesoMod.getActividad()%>"
+							disabled>
+                                                <%}else{%>
+                                                 <input class="form-control" type="text"
 							name="actividad" value="<%=subProcesoMod.getActividad()%>"
 							required>
+                                                <%}%>
 					</div>
 					<div class="form-group">
 						<label>Descripción</label> <input class="form-control" type="text"

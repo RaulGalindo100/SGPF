@@ -55,8 +55,11 @@
 			<div class="col-md-8">
 				<form action="agregandoSubProceso" method="POST">
 					<div class="form-group">
-						<label>Actividad</label> <input class="form-control" type="text"
-							name="actividad" value="<%=SubProceso.getActividad()%>" disabled>
+						<label>Actividad</label>
+                                                <input  type="hidden"
+							name="actividad" value="<%=SubProceso.getActividad()%>">
+                                                <input class="form-control" type="text"
+							 value="<%=SubProceso.getActividad()%>" disabled>
 					</div>
 					<div class="form-group">
 						<label>Descripción</label>

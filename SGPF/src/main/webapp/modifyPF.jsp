@@ -58,7 +58,7 @@
 					<div class="form-group">
 						<label>Evento desencadenante</label>
 						<input class="form-control" type="text" name="eventoDes"
-										value="<%=detalle.geteventoDes()%>" required>
+										value="<%=detalle.getEventoDes()%>" required>
 					</div>
 					<div class="form-group">
 						<label>Descripción</label>

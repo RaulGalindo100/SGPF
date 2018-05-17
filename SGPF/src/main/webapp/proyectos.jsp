@@ -17,7 +17,8 @@
 </head>
 <%
         List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");
-        int tipoUsuario = Integer.parseInt(session.getAttribute("tipoUsuario").toString());
+        
+        int tipoUsuario = Integer.parseInt(String.format("%s", session.getAttribute("tipoUsuario")));
     %>
 <body>
 	<header>
