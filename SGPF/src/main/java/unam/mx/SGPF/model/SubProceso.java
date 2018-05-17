@@ -45,6 +45,9 @@ public class SubProceso implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private int indice;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private int indiceActividad;
     @JoinColumn(name = "idaccion", referencedColumnName = "idaccion", nullable = false)
     @ManyToOne(optional = false)
     private Accion idaccion;
@@ -69,6 +72,14 @@ public class SubProceso implements Serializable {
         this.idsubProceso = idsubProceso;
         this.actividad = actividad;
         this.indice = indice;
+    }
+    
+    public int getIndiceActividad() {
+        return indiceActividad;
+    }
+
+    public void setIndiceActividad(int indiceActividad) {
+        this.indiceActividad = indiceActividad;
     }
 
     public Integer getIdsubProceso() {
