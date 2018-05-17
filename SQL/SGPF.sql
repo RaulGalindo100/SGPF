@@ -463,6 +463,7 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`usuariofuncional` (
   `nomUF` VARCHAR(45) NOT NULL,
   `descripcion` VARCHAR(250) NOT NULL,
   `activo` TINYINT NOT NULL,
+  `usuarioSistema` TINYINT NOT NULL,
   PRIMARY KEY (`idusuarioFuncional`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 5
@@ -484,6 +485,7 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`subproceso` (
   `idprocesoFuncional` INT NOT NULL,
   `actividad` VARCHAR(45) NOT NULL,
   `indice` INT NOT NULL,
+  `indiceActividad` INT NOT NULL,
   PRIMARY KEY (`idsubProceso`),
   INDEX `idusuarioFuncional_idx` (`idusuarioFuncional` ASC),
   INDEX `idaccion_idx` (`idaccion` ASC),
@@ -569,9 +571,9 @@ INSERT INTO `accion` VALUES (1,'ingresaSz','M','entrada de datos',1),(2,'envia',
 
 INSERT INTO `grupodato` VALUES (1,'estudianteR','Estudiante del IIMAZ',0),(2,'Juano','Sisg',1),(3,'','',1),(4,'','',1),(5,'','',1),(6,'','',1),(7,'df','',1),(8,'fe','ef',1),(9,'Juano','Feith',1),(10,'Peio','kbjhb',1);
 
-INSERT INTO `usuariofuncional` VALUES (1,'Registradores','Registrador del IIMAST',1),(2,'C-Reg','Sistema C-Reg',1),(3,'Registrador','Registrador C-Reg',1),(4,'Juano','FHKLI',1);
+INSERT INTO `usuariofuncional` VALUES (1,'Registradores','Registrador del IIMAST',1,1),(2,'C-Reg','Sistema C-Reg',1,1),(3,'Registrador','Registrador C-Reg',1,1),(4,'Juano','FHKLI',1,1);
 
-INSERT INTO `subproceso` VALUES (1,0,'los datos de',2,1,1,2,'Inicio de PF',1),(2,0,'los datos de',2,1,1,2,'Inicio de PF',2),(3,0,'los datos de',2,1,1,2,'Valida',1),(4,0,'los datos de',2,1,1,2,'Valida',2),(5,1,'canjlewnlk',1,1,2,5,'Inicio de Proceso Funcional',1),(6,1,'caenew',1,1,2,5,'Inicio de Proceso Funcional',2);
+INSERT INTO `subproceso` VALUES (1,0,'los datos de',2,1,1,2,'Inicio de PF',1,1),(2,0,'los datos de',2,1,1,2,'Inicio de PF',2,1),(3,0,'los datos de',2,1,1,2,'Valida',1,1),(4,0,'los datos de',2,1,1,2,'Valida',2,1),(5,1,'canjlewnlk',1,1,2,5,'Inicio de Proceso Funcional',1,1),(6,1,'caenew',1,1,2,5,'Inicio de Proceso Funcional',2,1);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
