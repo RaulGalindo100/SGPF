@@ -202,9 +202,26 @@
 										<%
 											if (tipoUsuario != 3 && p.getEstatus() == 1) {
 										%>
+										<form action="addSubProceso" method="POST">
+                                                                                        <input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>"/>
+											<input type="hidden" name="opcion"
+												value="1"/> <input
+												class="dropdown-item btn btn-outline-info" style="font-size: 10pt;"
+												type="submit" value="Agregar SP Antes" />
+										</form>
+										<form action="addSubProceso" method="POST">
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>"/>
+                                                                                        <input type="hidden" name="opcion"
+												value="2" /><input
+												class="dropdown-item btn btn-outline-info" style="font-size: 10pt;"
+												type="submit" value="Agregar SP Después"/>
+										</form>
 										<form action="eliSubproceso" method="POST">
 											<input type="hidden" name="idSubProceso"
-												value="<%=inter.getIdsubProceso()%>" /> <input
+												value="<%=inter.getIdsubProceso()%>" />
+                                                                                        <input
 												class="dropdown-item btn btn-outline-info" style="font-size: 10pt;"
 												type="submit" value="Eliminar SP" />
 										</form>
