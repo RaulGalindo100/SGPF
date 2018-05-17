@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "SubProceso.findByIdsubProceso", query = "SELECT s FROM SubProceso s WHERE s.idsubProceso = :idsubProceso")
     , @NamedQuery(name = "SubProceso.findSPByActividadyPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :procesoFuncional and s.actividad = :actividad")    
     , @NamedQuery(name = "SubProces.findByFlujoAl", query = "SELECT s FROM SubProceso s WHERE s.flujoAl = :flujoAl")
+    , @NamedQuery(name = "SubProceso.findSPByIdProcesoFuncional", query = "SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idPF")
     , @NamedQuery(name = "SubProceso.findSPByIDPForder",query="select s from SubProceso s where s.idprocesoFuncional=:idPF group by s.actividad,s.indice,s.idusuarioFuncional,s.idaccion,s.idgrupoDato,s.descripcion,s.idsubProceso,s.flujoAl order by s.actividad,s.indice")
     , @NamedQuery(name = "SubProceso.findSPByActividadyIdPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idprocesoFuncional AND s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findSPByActividad", query="SELECT s FROM SubProceso s where s.actividad = :actividad")
@@ -44,6 +45,9 @@ public class SubProceso implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private int indice;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private int indiceActividad;
     @JoinColumn(name = "idaccion", referencedColumnName = "idaccion", nullable = false)
     @ManyToOne(optional = false)
     private Accion idaccion;
@@ -68,6 +72,14 @@ public class SubProceso implements Serializable {
         this.idsubProceso = idsubProceso;
         this.actividad = actividad;
         this.indice = indice;
+    }
+    
+    public int getIndiceActividad() {
+        return indiceActividad;
+    }
+
+    public void setIndiceActividad(int indiceActividad) {
+        this.indiceActividad = indiceActividad;
     }
 
     public Integer getIdsubProceso() {

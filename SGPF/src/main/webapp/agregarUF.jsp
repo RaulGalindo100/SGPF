@@ -51,6 +51,11 @@
 						<label>Descripción del Usuario Funcional</label>
 						<textarea class="form-control" name="descripcionUF" rows="3" required></textarea>
 					</div>
+					<div class="form-group">
+                                                <input class="form-check-input" type="checkbox" name="usuarioSistema"
+							value="true"> <label class="form-check-label">
+                                                    Otro Sistema UF</label>
+					</div>
 					<input class="btn btn-outline-info" type="submit" value="Guardar">
 				</form>
 			</div>

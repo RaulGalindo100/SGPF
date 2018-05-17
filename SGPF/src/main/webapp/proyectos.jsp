@@ -50,8 +50,7 @@
 						<li class="nav-item active">
 							<%
 					if (tipoUsuario == 1 || tipoUsuario == 2) {
-					%> <a class="nav-link" href="agregaProyecto">Nuevo
-								Proyecto</a> <% } %>
+					%> <a class="nav-link" href="agregaProyecto">Nuevo Proyecto</a> <% } %>
 						</li>
 						<%if(tipoUsuario == 1){%>
 						<li class="nav-item active"><a class="nav-link"
@@ -80,6 +79,7 @@
 						<tr>
 							<th scope="col">Nombre Proyecto</th>
 							<th scope="col">Estado</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -91,6 +91,10 @@
 							<td><a
 								href="BuscaProyecto?idProyecto=<%=p.getIdproyecto()%>"><%=p.getNomProy()%></a></td>
 							<td><%=p.getEstatus()%></td>
+							<td><a
+								href="GeneraReporte?idProyecto=<%=p.getIdproyecto()%>"> <input class="btn btn-outline-info .btn-sm"
+									type="submit" value="Generar Reporte">
+							</a></td>
 						</tr>
 						<%
 								}

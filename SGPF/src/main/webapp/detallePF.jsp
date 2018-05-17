@@ -109,9 +109,9 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Actividad</th>
-							<th scope="col">DescripciÃ³n</th>
+							<th scope="col">Descripción</th>
 							<th scope="col">Usuario funcional</th>
-							<th scope="col">AcciÃ³n</th>
+							<th scope="col">Acción</th>
 							<th scope="col">Grupo de datos</th>
 							<th scope="col" colspan="2"></th>
 						</tr>
@@ -144,9 +144,10 @@
 							<td>
 								<div class="dropdown">
 									<button
-										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle" style="font-size: 10pt;"
-										type="button" id="dropdownMenu2" data-toggle="dropdown"
-										aria-haspopup="true" aria-expanded="false">Opciones</button>
+										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle"
+										style="font-size: 10pt;" type="button" id="dropdownMenu2"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">Opciones</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 										<form action="modActividad" method="POST">
 											<input type="hidden" name="idSubProceso"
@@ -196,22 +197,52 @@
 								<%
 											if (tipoUsuario != 3 && p.getEstatus() == 1) {
 										%>
-										<!-- 
-										<div class="dropdown">
+
+								<div class="dropdown">
 									<button
-										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle" style="font-size: 10pt;"
-										type="button" id="dropdownMenu2" data-toggle="dropdown"
-										aria-haspopup="true" aria-expanded="false">Opciones</button>
+										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle"
+										style="font-size: 10pt;" type="button" id="dropdownMenu2"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">Opciones</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+										<%
+											if (tipoUsuario != 3 && p.getEstatus() == 1) {
+										%>
+										<form action="addSubProceso" method="POST">
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>" /> <input type="hidden"
+												name="opcion" value="1" /> <input
+												class="dropdown-item btn btn-outline-info"
+												style="font-size: 10pt;" type="submit"
+												value="Agregar SP Antes" />
+										</form>
+										<form action="addSubProceso" method="POST">
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>" /> <input type="hidden"
+												name="opcion" value="2" /><input
+												class="dropdown-item btn btn-outline-info"
+												style="font-size: 10pt;" type="submit"
+												value="Agregar SP Después" />
+										</form>
+										<form action="eliSubproceso" method="POST">
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>" /> <input
+												class="dropdown-item btn btn-outline-info"
+												style="font-size: 10pt;" type="submit" value="Eliminar SP" />
+										</form>
+										<%
+											}
+										%>
+
 										<div class="dropdown-divider"></div>
 									</div>
 								</div>
-										 -->
-								
+
+
 								<div class="container">
 									<!-- Trigger the modal with a button -->
-									<button type="button"
-										class="btn btn-outline-info"
+									<button type="button" class="btn btn-outline-info"
 										style="font-size: 10pt;" data-toggle="modal"
 										data-target="#myModal">Eliminar</button>
 									<!-- Modal -->

@@ -157,7 +157,15 @@
         <servlet-name>agregaProyecto</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.agregaProyecto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GeneraReporte</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.GeneraReporte</servlet-class>
+    </servlet>
     
+    <servlet-mapping>
+        <servlet-name>GeneraReporte</servlet-name>
+        <url-pattern>/GeneraReporte</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>agregaProyecto</servlet-name>
         <url-pattern>/agregaProyecto</url-pattern>
