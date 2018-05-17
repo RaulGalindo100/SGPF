@@ -26,6 +26,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "SubProceso.findSPByActividadyIdPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idprocesoFuncional AND s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findSPByActividad", query="SELECT s FROM SubProceso s where s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findByDescripcion", query = "SELECT s FROM SubProceso s WHERE s.descripcion = :descripcion")
+    , @NamedQuery(name = "SubProceso.findAddUp", query = "SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idPF and s.actividad = :act and s.indice >= :ind")
+    , @NamedQuery(name = "SubProceso.findAddDown", query = "SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idPF and s.actividad = :act and s.indice > :ind")
     , @NamedQuery(name = "SubProceso.findByActividad", query = "SELECT s FROM SubProceso s WHERE s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findByIndice", query = "SELECT s FROM SubProceso s WHERE s.indice = :indice")})
 public class SubProceso implements Serializable {

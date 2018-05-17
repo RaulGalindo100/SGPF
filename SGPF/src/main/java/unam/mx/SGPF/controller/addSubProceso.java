@@ -27,6 +27,7 @@ public class addSubProceso extends HttpServlet{
         HttpSession session = request.getSession(true);
         session.setAttribute("SubProceso", SubProceso);
         session.setAttribute("opcionSPDetallePF", opcion);
+        session.setAttribute("idSPDetallePF", idSubProceso);
         
         response.sendRedirect("addSubProceso.jsp");
         

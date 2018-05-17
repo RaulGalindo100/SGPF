@@ -294,4 +294,22 @@ public class SubProcesoJpaController implements Serializable {
    	.setParameter("idPF", pf);
    	return q.getResultList();
    }    
+    public List<SubProceso> findAddUp(Integer idPF,String Actividad, Integer indice){
+   	EntityManager em = getEntityManager();
+   	ProcesoFuncional pf = new ProcesoFuncional(idPF);
+   	Query q = em.createNamedQuery("SubProceso.findAddUp")
+   	.setParameter("idPF", pf)
+        .setParameter("act", Actividad)
+        .setParameter("ind", indice);
+   	return q.getResultList();
+   }    
+    public List<SubProceso> findAddDown(Integer idPF,String Actividad, Integer indice){
+   	EntityManager em = getEntityManager();
+   	ProcesoFuncional pf = new ProcesoFuncional(idPF);
+   	Query q = em.createNamedQuery("SubProceso.findAddDown")
+   	.setParameter("idPF", pf)
+        .setParameter("act", Actividad)
+        .setParameter("ind", indice);
+   	return q.getResultList();
+   }    
 }

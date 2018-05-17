@@ -169,6 +169,7 @@
 										%>
 										<div class="dropdown-divider"></div>
 										<form action="addSubProceso" method="POST">
+                                                                                        <input type="hidden" name="opcion" value="2" />
 											<input type="hidden" name="idSubProceso"
 												value="<%=inter.getIdsubProceso()%>" /> <input
 												class="dropdown-item btn btn-outline-info .btn-sm"

@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="css/estilos.css">
 <%
 	SubProceso SubProceso = (SubProceso) session.getAttribute("SubProceso");
+	
 %>
 </head>
 <body>
