@@ -49,7 +49,7 @@ public class agregandoSubProceso extends HttpServlet {
         List<SubProceso> subProceso = subPjpa.findSPByActividadyPF(NombreActividad, PF);
         aux.setIndice(subProceso.size() + 1);
         short b = 0;
-        if (flujoAl_ == null) {
+        if (flujoAl_ != null) {
             b = 1;
         }
         aux.setFlujoAl(b);
@@ -106,6 +106,12 @@ public class agregandoSubProceso extends HttpServlet {
         SubProcesoJpaController spjpa = new SubProcesoJpaController(EntityProvider.provider());
         List<SubProceso> sp = spjpa.findSPByIDPForder(PF.getIdprocesoFuncional());
         session.setAttribute("subProc", sp);
+        
+        List<SubProceso> flujoAl = spjpa.findSPByIDPForderFlujoAl(PF.getIdprocesoFuncional());
+        int flujoAlternos = 0;
+        if(!flujoAl.isEmpty())
+            flujoAlternos = 1;
+        session.setAttribute("flujoAlternos", flujoAlternos);
         response.sendRedirect(redireccion);
     }
 }

@@ -36,7 +36,13 @@ public class BuscaProcesoFuncional extends HttpServlet{
         SubProcesoJpaController spjpa = new SubProcesoJpaController(EntityProvider.provider());
         //List<SubProceso> sp = spjpa.findSPByIdProcesoFuncional(idPf);
         List<SubProceso> sp = spjpa.findSPByIDPForder(idPf);
+        List<SubProceso> flujoAl = spjpa.findSPByIDPForderFlujoAl(idPf);
+        int flujoAlternos = 0;
+        if(!flujoAl.isEmpty())
+            flujoAlternos = 1;
         session.setAttribute("subProc", sp);
+        session.setAttribute("flujoAlternos", flujoAlternos);
+        
         //
        
         UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());

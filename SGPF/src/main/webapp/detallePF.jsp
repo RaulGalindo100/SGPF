@@ -30,8 +30,10 @@
             ProcesoFuncional detalle = (ProcesoFuncional) session.getAttribute("pfDetalle");
             List<SubProceso> spList = (List<SubProceso>) session.getAttribute("subProc");
             int tipoUsuario = Integer.parseInt(session.getAttribute("tipoUsuario").toString());
+            int flujoAlternos = Integer.parseInt(session.getAttribute("flujoAlternos").toString());
             Proyecto p = (Proyecto) session.getAttribute("proy");
             int contador = 0;
+            int contador2 = 0;
         %>
         <header>
             <div class="container">
@@ -121,7 +123,6 @@
                         <tbody>
                             <%
                                 for (SubProceso inter : spList) {
-                                    contador++;
                                     UsuarioFuncional uf = new UsuarioFuncional();
                                     Accion acc = new Accion();
                                     GrupoDato gd = new GrupoDato();
@@ -131,15 +132,13 @@
                             %>
                             <tr>
                                 <%
-                                    if (inter.getIndice() == 1) {
+                                    if (inter.getIndice() == 1) { contador++;
                                 %>
                                 <td><%=contador%></td>
-                                <td><%=inter.getIdsubProceso()%></td>
                                 <td><%=inter.getActividad()%></td>
                                 <td><%=inter.getDescripcion()%></td>
                                 <td><%=uf.getNomUF()%></td>
                                 <td><%=acc.getNomAccion()%></td>
-
                                 <td><%=gd.getNomGD()%></td>
                                 <%
                                     if (tipoUsuario != 3 && p.getEstatus() == 1) {
@@ -190,12 +189,10 @@
                                 } else {
                                 %>
                                 <td><%=contador%></td>
-                                <td><%=inter.getIdsubProceso()%></td>
                                 <td></td>
                                 <td><%=inter.getDescripcion()%></td>
                                 <td><%=uf.getNomUF()%></td>
                                 <td><%=acc.getNomAccion()%></td>
-
                                 <td><%=gd.getNomGD()%></td>
 
                                 <td>
@@ -247,7 +244,7 @@
                                                             <input type="hidden" name="idSubProceso"
                                                                    value="<%=inter.getIdsubProceso()%>" /> 
                                                             <input type="submit"
-                                                                   value="Aceptar" />
+                                                                   value="Eliminar" />
                                                         </form>
 <!--
                                     <div class="container">
@@ -290,7 +287,50 @@
                 </div>
             </section>
         </div>
-
+    <%if(flujoAlternos == 1){%>
+        <div class="container py-5">
+            <section class="row">
+                <div class="col-md-12">
+                    <h2>Flujos Alternos</h2>
+                </div>
+                <div class="table-responsive ">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Actividad</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Usuario funcional</th>
+                                <th scope="col">Acción</th>
+                                <th scope="col">Grupo de datos</th>
+                                    <th scope="col" colspan="2"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                                for (SubProceso inter : spList) {
+                                    UsuarioFuncional uf = new UsuarioFuncional();
+                                    Accion acc = new Accion();
+                                    GrupoDato gd = new GrupoDato();
+                                    uf = inter.getIdusuarioFuncional();
+                                    acc = inter.getIdaccion();
+                                    gd = inter.getIdgrupoDato();
+                                if(inter.getFlujoAl()==1){ contador2++;
+                            %>
+                            <tr>
+                                <td><%=contador2%></td>
+                                <td><%=inter.getActividad()%></td>
+                                <td><%=inter.getDescripcion()%></td>
+                                <td><%=uf.getNomUF()%></td>
+                                <td><%=acc.getNomAccion()%></td>
+                                <td><%=gd.getNomGD()%></td>
+                            </tr>
+                            <% }} %>
+                    </table>
+                </div>
+            </section>
+        </div>
+        <%}%>
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.bundle.js"></script>
         <script
