@@ -5,10 +5,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import unam.mx.SGPF.model.EntityProvider;
-import unam.mx.SGPF.model.SubProceso;
-import unam.mx.SGPF.model.controller.SubProcesoJpaController;
 
 public class eliSubproceso extends HttpServlet {
      @Override
@@ -17,7 +13,8 @@ public class eliSubproceso extends HttpServlet {
         String redireccion="";
         String eliminar="E-L-I-M-I-N-A-D-O";
         int idSubProceso = Integer.parseInt(request.getParameter("idSubProceso"));
-         System.out.println("ID Cachado >> "+idSubProceso);/*
+         System.out.println("ID Cachado >> "+idSubProceso);
+        /*
         SubProcesoJpaController SubProcesoJPA = new SubProcesoJpaController(EntityProvider.provider());
         SubProceso aux = SubProcesoJPA.findSubProceso(idSubProceso);
         aux.setActividad(eliminar);

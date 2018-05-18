@@ -243,17 +243,21 @@
                                             <div class="dropdown-divider"></div>
                                         </div>
                                     </div>
-
-
+<form action="eliSubproceso" method="POST">
+                                                            <input type="hidden" name="idSubProceso"
+                                                                   value="<%=inter.getIdsubProceso()%>" /> 
+                                                            <input type="submit"
+                                                                   value="Aceptar" />
+                                                        </form>
+<!--
                                     <div class="container">
-                                        <!-- Trigger the modal with a button -->
                                         <button type="button" class="btn btn-outline-info"
                                                 style="font-size: 10pt;" data-toggle="modal"
                                                 data-target="#myModal">Eliminar SP</button>
-                                        <!-- Modal -->
+
                                         <div class="modal fade" id="myModal" role="dialog">
                                             <div class="modal-dialog">
-                                                <!-- Modal content-->
+                                                
                                                 <div class="modal-content">
                                                     <div class="modal-body">
                                                         <p>El Sub-Proceso será eliminado.</p>
@@ -269,13 +273,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> <%
+
+                                    </div> --><%
                                         }
                                     %>
-
-
-
-
                                 </td>
                                 <%
                                     }
@@ -284,7 +285,6 @@
                             <%
                                 }
                             %>
-
                         <tbody>
                     </table>
                 </div>
