@@ -130,11 +130,7 @@ Validad ID del PF con ....
 							%>
 						</select>
 					</div>
-					<div class="form-group">
-						<input class="form-check-input" type="checkbox" name="flujoAl"
-							value="true"> <label class="form-check-label">Flujo
-							alterno</label>
-					</div>
+
 					<input class="btn btn-outline-info" type="submit" value="Guardar" />
 				</form>
 

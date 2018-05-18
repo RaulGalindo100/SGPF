@@ -31,7 +31,6 @@ public class agregandoActividad extends HttpServlet {
         int idUsuarioFuncional = Integer.parseInt(request.getParameter("usuarioFuncional"));
         int idAccion = Integer.parseInt(request.getParameter("accion"));
         int idGrupoDatos = Integer.parseInt(request.getParameter("grupoDatos"));
-        String flujoAl_ = request.getParameter("flujoAl");
         SubProcesoJpaController subPjpa = new SubProcesoJpaController(EntityProvider.provider());
         HttpSession session = request.getSession(true);
         ProcesoFuncional PF = (ProcesoFuncional) session.getAttribute("pfDetalle");
@@ -39,9 +38,7 @@ public class agregandoActividad extends HttpServlet {
             redireccion = "e_ExisteActividad.jsp";
     
         //OBTENER EL OBJETO PF PARA OBTENER IDPROY
-        ProcesoFuncional detalle = (ProcesoFuncional) session.getAttribute("pfDetalle");
-        
-        
+        ProcesoFuncional detalle = (ProcesoFuncional) session.getAttribute("pfDetalle");   
 
         SubProceso aux = new SubProceso();
         aux.setActividad(NombreActividad);
@@ -50,10 +47,12 @@ public class agregandoActividad extends HttpServlet {
         
         List<SubProceso> subProceso = subPjpa.findSPByActividadyPF(NombreActividad,detalle);
         aux.setIndice(subProceso.size()+1);
-            
+        List<SubProceso> subProcesoIndActiv = subPjpa.findSPByActividad_PF(detalle);
+        if(subProcesoIndActiv.isEmpty())
+            aux.setIndiceActividad(1);
+        else
+            aux.setIndiceActividad(subProcesoIndActiv.size()+1);
         short b = 0;
-        if (flujoAl_==null)
-            b=1;
         aux.setFlujoAl(b);
         
         UsuarioFuncionalJpaController usuarioFuncional = new UsuarioFuncionalJpaController(EntityProvider.provider());

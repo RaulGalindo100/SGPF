@@ -244,6 +244,15 @@ public class SubProcesoJpaController implements Serializable {
     	return q.getResultList();
     }
     
+    public List<SubProceso> findSPByActividad_PF(ProcesoFuncional PF){
+    	EntityManager em = getEntityManager();
+        int indice = 1;
+    	Query q = em.createNamedQuery("SubProceso.findSPByActividad_PF")
+    			.setParameter("procesoFuncional", PF)
+                        .setParameter("indice", indice);
+    	return q.getResultList();
+    }
+    
     
     public List<SubProceso> findSPByActividad(String actividad){
     	EntityManager em = getEntityManager();
