@@ -84,6 +84,7 @@ public class agregandoSubProceso extends HttpServlet {
             List<SubProceso> subProc = subPjpa.findAddDown(PF.getIdprocesoFuncional(), NombreActividad, auxSP.getIndice());
             aux.setIndice(auxSP.getIndice()+1);
             subPjpa.create(aux);
+            if(!subProc.isEmpty())
             for (SubProceso subP : subProc) {
                 subP.setIndice(subP.getIndice()+1);
                 try {
@@ -94,7 +95,7 @@ public class agregandoSubProceso extends HttpServlet {
                 } finally {
                     redireccion = "detallePF.jsp";
                 }
-            }
+            }else redireccion = "detallePF.jsp";
         }
 
         ProcesoFuncionalJpaController pfjpa = new ProcesoFuncionalJpaController(EntityProvider.provider());
