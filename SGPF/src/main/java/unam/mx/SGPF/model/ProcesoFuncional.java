@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "ProcesoFuncional.findAll", query = "SELECT p FROM ProcesoFuncional p")
     , @NamedQuery(name = "ProcesoFuncional.findByIdprocesoFuncional", query = "SELECT p FROM ProcesoFuncional p WHERE p.idprocesoFuncional = :idprocesoFuncional")
-    , @NamedQuery(name = "ProcesoFuncional.findByIdproyecto", query = "SELECT p FROM ProcesoFuncional p WHERE p.idproyecto = :idproyecto")
+    , @NamedQuery(name = "ProcesoFuncional.findByIdproyecto", query = "SELECT p FROM ProcesoFuncional p WHERE p.idproyecto = :idproyecto AND p.activo=:activo")
     , @NamedQuery(name = "ProcesoFuncional.findByNomPF", query = "SELECT p FROM ProcesoFuncional p WHERE p.nomPF = :nomPF")
     , @NamedQuery(name = "ProcesoFuncional.findByIdProyectoActivo", query = "SELECT p FROM ProcesoFuncional p WHERE p.idproyecto=:idproyecto AND p.activo=:activo")
     //, @NamedQuery(name = "ProcesoFuncional.eliminaPF", query = "UPDATE ProcesoFuncional p SET p.activo=:activo WHERE p.idprocesoFuncional=:idPF")
