@@ -507,6 +507,30 @@ ENGINE = InnoDB
 AUTO_INCREMENT = 11
 DEFAULT CHARACTER SET = utf8;
 
+
+CREATE TABLE IF NOT EXISTS `SGPF`.`historico` (
+  `idhistorico` INT NOT NULL AUTO_INCREMENT,
+  `idProy` INT NOT NULL,
+  `nombreProy` VARCHAR(45) NOT NULL,
+  `alcanceProy` VARCHAR(45) NOT NULL,
+  `nombrePF` VARCHAR(45) NOT NULL,
+  `descripcionPF` VARCHAR(45) NOT NULL,
+  `tamanioPF` INT NOT NULL,
+  `eventoDesPF` VARCHAR(45) NOT NULL,
+  `descripcionSP` VARCHAR(45) NOT NULL,
+  `fecha` DATE NOT NULL,
+  `nombreGD` VARCHAR(45) NOT NULL,
+  `descripcionGD` VARCHAR(45) NOT NULL,
+  `nombreUF` VARCHAR(45) NOT NULL,
+  `descripcionUF` VARCHAR(45) NOT NULL,
+  `usuarioSistemaUF` VARCHAR(45) NOT NULL,
+  `nombreAccion` VARCHAR(45) NOT NULL,
+  `movDatos` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idhistorico`))
+ENGINE = InnoDB 
+AUTO_INCREMENT = 9 
+DEFAULT CHARACTER SET = utf8;
+
 INSERT INTO TipodeDesarrollo(TipodeDesarrollo) VALUES("Nuevo Desarrollo"),("Mejora/Mantenimiento Correctivo"),
 ("Mejora/Mantenimiento Preventivo"),("Rediseño (Re­development)"),("Otro");
 
