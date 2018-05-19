@@ -244,6 +244,15 @@ public class SubProcesoJpaController implements Serializable {
     	return q.getResultList();
     }
     
+    public List<SubProceso> findSPByActividad_PF(ProcesoFuncional PF){
+    	EntityManager em = getEntityManager();
+        int indice = 1;
+    	Query q = em.createNamedQuery("SubProceso.findSPByActividad_PF")
+    			.setParameter("procesoFuncional", PF)
+                        .setParameter("indice", indice);
+    	return q.getResultList();
+    }
+    
     
     public List<SubProceso> findSPByActividad(String actividad){
     	EntityManager em = getEntityManager();
@@ -259,6 +268,16 @@ public class SubProcesoJpaController implements Serializable {
     	ProcesoFuncional pf = new ProcesoFuncional(idPF);
     	Query q = em.createNamedQuery("SubProceso.findSPByIDPForder")
     			.setParameter("idPF", pf);
+    	return q.getResultList();
+    }
+    
+    public List<SubProceso> findSPByIDPForderFlujoAl(Integer idPF){
+    	EntityManager em = getEntityManager();
+    	ProcesoFuncional pf = new ProcesoFuncional(idPF);
+        Short flujo = 1;
+    	Query q = em.createNamedQuery("SubProceso.findSPByIDPForderFlujoAl")
+    			.setParameter("idPF", pf)
+    			.setParameter("flujoAl", flujo);
     	return q.getResultList();
     }
     
@@ -292,6 +311,24 @@ public class SubProcesoJpaController implements Serializable {
    	ProcesoFuncional pf = new ProcesoFuncional(idPF);
    	Query q = em.createNamedQuery("SubProceso.findSPByIdProcesoFuncional")
    	.setParameter("idPF", pf);
+   	return q.getResultList();
+   }    
+    public List<SubProceso> findAddUp(Integer idPF,String Actividad, Integer indice){
+   	EntityManager em = getEntityManager();
+   	ProcesoFuncional pf = new ProcesoFuncional(idPF);
+   	Query q = em.createNamedQuery("SubProceso.findAddUp")
+   	.setParameter("idPF", pf)
+        .setParameter("act", Actividad)
+        .setParameter("ind", indice);
+   	return q.getResultList();
+   }    
+    public List<SubProceso> findAddDown(Integer idPF,String Actividad, Integer indice){
+   	EntityManager em = getEntityManager();
+   	ProcesoFuncional pf = new ProcesoFuncional(idPF);
+   	Query q = em.createNamedQuery("SubProceso.findAddDown")
+   	.setParameter("idPF", pf)
+        .setParameter("act", Actividad)
+        .setParameter("ind", indice);
    	return q.getResultList();
    }    
 }

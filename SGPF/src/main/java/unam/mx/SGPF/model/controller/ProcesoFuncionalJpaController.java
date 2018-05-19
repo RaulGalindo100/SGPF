@@ -232,8 +232,10 @@ public class ProcesoFuncionalJpaController implements Serializable {
     public List<ProcesoFuncional> findPFByIdProyecto(Integer idProyecto){
     	EntityManager em = getEntityManager();
     	Proyecto p = new Proyecto(idProyecto);
+        Short b = 1;
     	Query q = em.createNamedQuery("ProcesoFuncional.findByIdproyecto")
-    			     .setParameter("idproyecto", p);
+    			     .setParameter("idproyecto", p)
+                             .setParameter("activo", b);
     	return q.getResultList();
     }
 

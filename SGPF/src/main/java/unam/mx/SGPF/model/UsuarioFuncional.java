@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unam.mx.SGPF.model;
 
 import java.io.Serializable;
@@ -21,10 +16,6 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author juan
- */
 @Entity
 @Table(catalog = "SGPF", schema = "")
 @XmlRootElement
@@ -51,6 +42,9 @@ public class UsuarioFuncional implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private short activo;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private short usuarioSistema;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuarioFuncional")
     private List<SubProceso> subprocesoList;
 
@@ -74,6 +68,16 @@ public class UsuarioFuncional implements Serializable {
 
     public void setIdusuarioFuncional(Integer idusuarioFuncional) {
         this.idusuarioFuncional = idusuarioFuncional;
+    }
+    
+    
+    public short getUsuarioSistema() {
+        return usuarioSistema;
+    }
+    
+    
+    public void setUsuarioSistema(short usuarioSistema) {
+        this.usuarioSistema = usuarioSistema;
     }
 
     public String getNomUF() {

@@ -18,12 +18,16 @@ public class addSubProceso extends HttpServlet{
         //cachar IDdelSubProceso que lo manda llamar y mandarlo para cacharlo con POST en el addSubProceso.jsp
         
         int idSubProceso = Integer.parseInt(request.getParameter("idSubProceso"));
-        
+        int opcion = Integer.parseInt(request.getParameter("opcion"));
         SubProcesoJpaController SubProcesoJPA = new SubProcesoJpaController(EntityProvider.provider());
         SubProceso SubProceso = SubProcesoJPA.findSubProceso(idSubProceso);
+       
+        
         
         HttpSession session = request.getSession(true);
         session.setAttribute("SubProceso", SubProceso);
+        session.setAttribute("opcionSPDetallePF", opcion);
+        session.setAttribute("idSPDetallePF", idSubProceso);
         
         response.sendRedirect("addSubProceso.jsp");
         

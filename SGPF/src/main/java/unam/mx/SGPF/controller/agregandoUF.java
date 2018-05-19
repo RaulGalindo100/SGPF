@@ -5,12 +5,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import unam.mx.SGPF.model.Accion;
 import unam.mx.SGPF.model.EntityProvider;
-import unam.mx.SGPF.model.GrupoDato;
 import unam.mx.SGPF.model.UsuarioFuncional;
-import unam.mx.SGPF.model.controller.AccionJpaController;
-import unam.mx.SGPF.model.controller.GrupoDatoJpaController;
 import unam.mx.SGPF.model.controller.UsuarioFuncionalJpaController;
 
 public class agregandoUF extends HttpServlet{
@@ -19,13 +15,18 @@ public class agregandoUF extends HttpServlet{
             throws ServletException, IOException {
     	String nombreUF = request.getParameter("nombreUF");
         String descripcionUF = request.getParameter("descripcionUF");
+        String aux = request.getParameter("usuarioSistema");
+        Short usuarioSistema = 0;
+        if(aux!=null){
+            usuarioSistema = 1;
+        }
         Short activo = 1;
         
         UsuarioFuncional usuarioFuncional = new UsuarioFuncional();
         usuarioFuncional.setNomUF(nombreUF);
         usuarioFuncional.setDescripcion(descripcionUF);
         usuarioFuncional.setActivo(activo);
-        
+        usuarioFuncional.setUsuarioSistema(usuarioSistema);
     	UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
     	try{
             ufjpa.create(usuarioFuncional);

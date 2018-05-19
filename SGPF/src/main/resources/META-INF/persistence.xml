@@ -30,6 +30,7 @@
     <class>unam.mx.SGPF.model.Usuariofuncional</class>
     <class>unam.mx.SGPF.model.Escala</class>
     <class>unam.mx.SGPF.model.Lenguaje</class>
+    <class>unam.mx.SGPF.model.Historico</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/SGPF?zeroDateTimeBehavior=convertToNull"/>

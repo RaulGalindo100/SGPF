@@ -72,23 +72,23 @@ public class GeneraReporte extends HttpServlet {
             document.add(new Paragraph("   "));
             document.add(new Paragraph("1.  DATOS DEL PROYECTO"));
             document.add(new Paragraph("    Nombre del Proyecto: " + proy.getNomProy()));
-            document.add(new Paragraph("    Número Total de Procesos Funcionales: " + listaPF.size()));
-            document.add(new Paragraph("    Propósito del Proyecto: " + proy.getProposito()));
+            document.add(new Paragraph("    NÃºmero Total de Procesos Funcionales: " + listaPF.size()));
+            document.add(new Paragraph("    PropÃ³sito del Proyecto: " + proy.getProposito()));
             document.add(new Paragraph("    Alcance del Proyecto: " + proy.getAlcance()));
-            document.add(new Paragraph("    Año del Proyecto: " + proy.getAnioProy()));
+            document.add(new Paragraph("    AÃ±o del Proyecto: " + proy.getAnioProy()));
             //document.add(new Paragraph("    Arquitectura del Proyecto: " + proy.getAlcance() ));
             document.add(new Paragraph("  "));
             document.add(new Paragraph("  "));
             //Fin Datos del Proyecto
 
-            //Resumen Medición /#PF, #UF, #GD, MD Totales (tabla, porcentaje) , Diag Ctx Total, Matriz FP
-            document.add(new Paragraph("2.  RESUMEN DE MEDICIÓN"));
+            //Resumen MediciÃ³n /#PF, #UF, #GD, MD Totales (tabla, porcentaje) , Diag Ctx Total, Matriz FP
+            document.add(new Paragraph("2.  RESUMEN DE MEDICIÃ“N"));
 
             //# Procesos Funcionales
             document.add(new Paragraph("    Procesos Funcionales"));
             int pfCont = 1;
             for (ProcesoFuncional pf : listaPF) {
-                document.add(new Paragraph("    " + pfCont + ") " + pf.getNomPF() + ". Descripción: " + pf.getDescripcion()));
+                document.add(new Paragraph("    " + pfCont + ") " + pf.getNomPF() + ". DescripciÃ³n: " + pf.getDescripcion()));
                 pfCont++;
             }
             //Fin #Procesos Funcionales
@@ -97,6 +97,7 @@ public class GeneraReporte extends HttpServlet {
             document.add(new Paragraph("  "));
             document.add(new Paragraph("    Usuarios Funcionales"));
 
+<<<<<<< HEAD
             List<UsuarioFuncional> listaUF = new ArrayList<>();
             SubProcesoJpaController spjpa2 = new SubProcesoJpaController(EntityProvider.provider());
             List<SubProceso> subProcesos2 = spjpa2.findSPByIdProcesoFuncionalR(listaPF.get(0).getIdprocesoFuncional());
@@ -744,7 +745,7 @@ public class GeneraReporte extends HttpServlet {
                 }
                 //Fin Diagrama de Secuencia
 
-                //Diagrama de Actividades
+//                //Diagrama de Actividades
 //                Image image = Image.getInstance(userFunc2);
 //                image.setAbsolutePosition(630, 435);
 //                document.add(image);
@@ -788,6 +789,9 @@ public class GeneraReporte extends HttpServlet {
                 //Fin Diagrama de Actividades
             }
             //Fin Información Detalla por Proceso Funcional
+//                //Fin Diagrama de Actividades
+//            }
+//            //Fin Informacion Detalla por Proceso Funcional
 
             document.close();
             archivo.flush();

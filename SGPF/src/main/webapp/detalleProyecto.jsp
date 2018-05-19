@@ -21,7 +21,7 @@
 <%
      List<ProcesoFuncional> pfs = (List<ProcesoFuncional>) session.getAttribute("procFunc");
   	 Proyecto p = (Proyecto) session.getAttribute("proy"); 
-         int tipoUsuario = Integer.parseInt(session.getAttribute("tipoUsuario").toString());
+     int tipoUsuario = Integer.parseInt(session.getAttribute("tipoUsuario").toString());
   %>
 <body>
 	<header>
@@ -106,15 +106,37 @@
 						<tr>
 							<th>Nombre del Proceso Funcional:</th>
 							<td><a
-								href="BuscaProcesoFuncional?idprocesoFuncional=<%=inter.getIdprocesoFuncional()%>"><%=inter.getNomPF()%></a></td>
+								href="BuscaProcesoFuncional?idprocesoFuncional=<%=inter.getIdprocesoFuncional()%>"><%=inter.getNomPF()%></a>
+							</td>
 							<td>
 								<%if(tipoUsuario!=3 && p.getEstatus()==1){ %>
-								<form action="eliminaPF" method="post">
-									<input type="hidden" name="idPF"
-										value="<%=inter.getIdprocesoFuncional()%>"> 
-										<input class="btn btn-outline-info" type="submit" value="Eliminar">
-								</form>
-								<%} %>
+									<!-- 
+									<input class="btn btn-outline-info" type="submit" value="Eliminar" data-dismiss="modal">
+									 -->
+									<div class="container">
+										<!-- Trigger the modal with a button -->
+										<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#myModal">
+										Eliminar
+										</button>
+										<!-- Modal -->
+										<div class="modal fade" id="myModal" role="dialog">
+											<div class="modal-dialog">
+												<!-- Modal content-->
+												<div class="modal-content">
+													<div class="modal-body">
+														<p>El Proceso Funcional será eliminado. </p>
+													</div>
+													<div class="modal-footer">
+													<form action="eliminaPF" method="post">
+														<input type="hidden" name="idPF" value="<%=inter.getIdprocesoFuncional()%>"> 
+														<input class="btn btn-outline-info" type="submit" value="Aceptar" >
+													</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								 <%} %>
 							</td>
 						</tr>
 
@@ -127,7 +149,10 @@
 			</div>
 		</section>
 	</div>
+	
+
 	<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.bundle.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"

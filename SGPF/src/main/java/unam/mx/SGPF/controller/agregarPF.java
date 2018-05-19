@@ -41,7 +41,6 @@ public class agregarPF extends HttpServlet {
             PFjpa.create(aux);
         } catch (Exception e) {
             e.printStackTrace();
-            //Aqui debe mandar un mensaje de error
         }
         HttpSession session = request.getSession(true);
 
