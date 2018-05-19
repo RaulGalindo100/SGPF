@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unam.mx.SGPF.model.controller;
 
 import java.io.Serializable;
@@ -16,10 +11,6 @@ import javax.persistence.criteria.Root;
 import unam.mx.SGPF.model.Historico;
 import unam.mx.SGPF.model.controller.exceptions.NonexistentEntityException;
 
-/**
- *
- * @author jlopez
- */
 public class HistoricoJpaController implements Serializable {
 
     public HistoricoJpaController(EntityManagerFactory emf) {

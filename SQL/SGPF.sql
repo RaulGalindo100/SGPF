@@ -526,6 +526,7 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`historico` (
   `usuarioSistemaUF` VARCHAR(45) NOT NULL,
   `nombreAccion` VARCHAR(45) NOT NULL,
   `movDatos` VARCHAR(45) NOT NULL,
+  `proposito` VARCHAR(250) NOT NULL,
   PRIMARY KEY (`idhistorico`))
 ENGINE = InnoDB 
 AUTO_INCREMENT = 9 
