@@ -1,7 +1,6 @@
 package unam.mx.SGPF.controller;
 
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +18,7 @@ public class eliminaPF extends HttpServlet{
     	//VARIABLES QUE PROVIENEN DEL FORM modificaPF.jsp
         String redireccion = "";
         int idPF = Integer.parseInt(request.getParameter("idPF"));
+        int idProy = Integer.parseInt(request.getParameter("idProyecto"));
         ProcesoFuncionalJpaController pfjpa = new ProcesoFuncionalJpaController(EntityProvider.provider());
         ProcesoFuncional procesoFuncional = pfjpa.findProcesoFuncional(idPF);
         try {
@@ -28,11 +28,12 @@ public class eliminaPF extends HttpServlet{
             //pfjpa.destroy(procesoFuncional.getIdprocesoFuncional());
             HttpSession session = request.getSession(true);
             session.setAttribute("idProyecto", procesoFuncional.getIdproyecto());
-            redireccion = "proyectos.jsp";
-            //redireccion = redireccion.concat(Integer.toString(proyecto.getIdproyecto()));
+            redireccion = "BuscaProyecto?idProyecto=";
+            redireccion = redireccion.concat(Integer.toString(idProy));
         } catch (Exception e) {
             e.printStackTrace();
-            redireccion = "proyectos.jsp";
+            redireccion = "BuscaProyecto?idProyecto=";
+            redireccion = redireccion.concat(Integer.toString(idProy));
             return;
         } finally {
             response.sendRedirect(redireccion);

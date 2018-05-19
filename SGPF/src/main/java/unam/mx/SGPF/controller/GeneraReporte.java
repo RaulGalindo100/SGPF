@@ -41,10 +41,6 @@ import unam.mx.SGPF.model.controller.ProyectoJpaController;
 import unam.mx.SGPF.model.controller.SubProcesoJpaController;
 import unam.mx.SGPF.model.controller.UsuarioFuncionalJpaController;
 
-/**
- *
- * @author raulg
- */
 @WebServlet("/matriz.pdf.pdf")
 public class GeneraReporte extends HttpServlet {
 
@@ -525,11 +521,9 @@ public class GeneraReporte extends HttpServlet {
                     historico.setDescripcionGD(grupoDato.getDescripcion());
                     historico.setNombreUF(usuario.getNomUF());
                     historico.setDescripcionUF(usuario.getDescripcion());
-                    if(usuario.getUsuarioSistema() == 0) {
-                        historico.setUsuarioSistemaUF("0");
-                    } else {
-                        historico.setUsuarioSistemaUF("1");
-                    }
+                   
+                        historico.setUsuarioSistemaUF(usuario.getUsuarioSistema());
+                   
                     historico.setNombreAccion(accion.getNomAccion());
                     historico.setMovDatos(String.format("%c", accion.getMovDatos()));
                     
@@ -845,7 +839,7 @@ public class GeneraReporte extends HttpServlet {
             System.out.println("Este es el error en el objeto 2: " + ex.getMessage());
         }
 
-        File file = new File("C:\\Users\\raulg\\OneDrive\\Documentos\\UNAM Sem-2\\Medición de Software\\Proyecto SGPF\\SGPF\\SGPF\\results\\matriz.pdf");
+        File file = new File("C:\\Users\\jlope\\Documents\\NetBeansProjects\\SGPF\\SGPF\\results\\matriz.pdf");
         response.setHeader("Content-Type", getServletContext().getMimeType(file.getName()));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"matriz.pdf\"");

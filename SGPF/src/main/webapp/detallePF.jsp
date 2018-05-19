@@ -56,7 +56,9 @@
                                 %>
                                 <form action="agregarActividad" method="post">
                                     <input type="hidden" name="idProcesoFuncional"
-                                           value="<%=detalle.getIdprocesoFuncional()%>"> <input
+                                           value="<%=detalle.getIdprocesoFuncional()%>"> 
+                                    <input type="hidden" name="idProyecto" value="<%=p.getIdproyecto()%>">
+                                    <input
                                            class="nav-link myclass "
                                            style="color: rgba(0, 0, 0, .9); border-style: none; background-color: transparent; cursor: pointer; cursor: hand;"
                                            type="submit" value="Agregar Actividad" />
@@ -186,7 +188,7 @@
                                     }
                                 %>
                                 <%
-                                } else {
+                                } else {contador++;
                                 %>
                                 <td><%=contador%></td>
                                 <td></td>
@@ -240,19 +242,13 @@
                                             <div class="dropdown-divider"></div>
                                         </div>
                                     </div>
-<form action="eliSubproceso" method="POST">
-                                                            <input type="hidden" name="idSubProceso"
-                                                                   value="<%=inter.getIdsubProceso()%>" /> 
-                                                            <input type="submit"
-                                                                   value="Eliminar" />
-                                                        </form>
-<!--
+
                                     <div class="container">
                                         <button type="button" class="btn btn-outline-info"
                                                 style="font-size: 10pt;" data-toggle="modal"
-                                                data-target="#myModal">Eliminar SP</button>
+                                                data-target="#myModal-<%=inter.getIdsubProceso()%>">Eliminar SP</button>
 
-                                        <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal fade" id="myModal-<%=inter.getIdsubProceso()%>" role="dialog">
                                             <div class="modal-dialog">
                                                 
                                                 <div class="modal-content">
@@ -271,7 +267,7 @@
                                             </div>
                                         </div>
 
-                                    </div> --><%
+                                    </div> <%
                                         }
                                     %>
                                 </td>
