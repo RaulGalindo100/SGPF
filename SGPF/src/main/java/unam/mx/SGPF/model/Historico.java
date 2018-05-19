@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package unam.mx.SGPF.model;
 
 import java.io.Serializable;
@@ -20,10 +15,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author jlopez
- */
 @Entity
 @Table(name = "historico", catalog = "SGPF", schema = "")
 @XmlRootElement
@@ -103,6 +94,9 @@ public class Historico implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false, length = 45)
     private String movDatos;
+    @Basic(optional = false)
+    @Column(nullable = false, length = 250)
+    private String proposito;
 
     public Historico() {
     }
@@ -266,6 +260,15 @@ public class Historico implements Serializable {
     public void setMovDatos(String movDatos) {
         this.movDatos = movDatos;
     }
+    
+    public String getProposito() {
+        return proposito;
+    }
+
+    public void setProposito(String proposito) {
+        this.proposito = proposito;
+    }
+
 
     @Override
     public int hashCode() {
