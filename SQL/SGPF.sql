@@ -598,6 +598,8 @@ INSERT INTO `usuariofuncional` VALUES (1,'Registradores','Registrador del IIMAST
 
 INSERT INTO `subproceso` VALUES (1,0,'los datos de',2,1,1,2,'Inicio de PF',1,1),(2,0,'los datos de',2,1,1,2,'Inicio de PF',2,1),(3,0,'los datos de',2,1,1,2,'Valida',1,1),(4,0,'los datos de',2,1,1,2,'Valida',2,1),(5,1,'canjlewnlk',1,1,2,5,'Inicio de Proceso Funcional',1,1),(6,1,'caenew',1,1,2,5,'Inicio de Proceso Funcional',2,1);
 
+update procesoFuncional set activo = 1;
+UPDATE  proyecto set estatus = 1;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

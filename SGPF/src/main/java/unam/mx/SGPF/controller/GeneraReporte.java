@@ -86,7 +86,7 @@ public class GeneraReporte extends HttpServlet {
             document.add(new Paragraph("    Procesos Funcionales"));
             int pfCont = 1;
             for (ProcesoFuncional pf : listaPF) {
-                document.add(new Paragraph("    " + pfCont + ") " + pf.getNomPF() + ". DescripciÃ³n: " + pf.getDescripcion()));
+                document.add(new Paragraph("    " + pfCont + ") " + pf.getNomPF() + ". Descripción: " + pf.getDescripcion()));
                 pfCont++;
             }
             //Fin #Procesos Funcionales
