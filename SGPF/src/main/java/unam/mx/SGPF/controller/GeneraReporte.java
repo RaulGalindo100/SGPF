@@ -28,12 +28,14 @@ import javax.servlet.http.HttpSession;
 import unam.mx.SGPF.model.Accion;
 import unam.mx.SGPF.model.EntityProvider;
 import unam.mx.SGPF.model.GrupoDato;
+import unam.mx.SGPF.model.Historico;
 import unam.mx.SGPF.model.ProcesoFuncional;
 import unam.mx.SGPF.model.Proyecto;
 import unam.mx.SGPF.model.SubProceso;
 import unam.mx.SGPF.model.UsuarioFuncional;
 import unam.mx.SGPF.model.controller.AccionJpaController;
 import unam.mx.SGPF.model.controller.GrupoDatoJpaController;
+import unam.mx.SGPF.model.controller.HistoricoJpaController;
 import unam.mx.SGPF.model.controller.ProcesoFuncionalJpaController;
 import unam.mx.SGPF.model.controller.ProyectoJpaController;
 import unam.mx.SGPF.model.controller.SubProcesoJpaController;
@@ -96,8 +98,7 @@ public class GeneraReporte extends HttpServlet {
             //#UF
             document.add(new Paragraph("  "));
             document.add(new Paragraph("    Usuarios Funcionales"));
-
-<<<<<<< HEAD
+            
             List<UsuarioFuncional> listaUF = new ArrayList<>();
             SubProcesoJpaController spjpa2 = new SubProcesoJpaController(EntityProvider.provider());
             List<SubProceso> subProcesos2 = spjpa2.findSPByIdProcesoFuncionalR(listaPF.get(0).getIdprocesoFuncional());
@@ -507,8 +508,31 @@ public class GeneraReporte extends HttpServlet {
                     auxi++;
                     
                     //Inserciones en Històrico
+                    HistoricoJpaController hjpac = new HistoricoJpaController(EntityProvider.provider());
+                    Historico historico = new Historico();
+                    historico.setIdProy(proy.getIdproyecto());
+                    historico.setNombreProy(proy.getNomProy());
+                    historico.setAlcanceProy(proy.getAlcance());
+                    historico.setNombrePF(proceso.getNomPF());
+                    historico.setDescripcionPF(proceso.getDescripcion());
+                    historico.setTamanioPF(proceso.getTamPF());
+                    historico.setEventoDesPF(proceso.getEventoDes());
+                    historico.setDescripcionSP(sub.getDescripcion());
+                    Date fecha = new Date();
+                    historico.setFecha(fecha);
+                    historico.setNombreGD(grupoDato.getNomGD());
+                    historico.setDescripcionGD(grupoDato.getDescripcion());
+                    historico.setNombreUF(usuario.getNomUF());
+                    historico.setDescripcionUF(usuario.getDescripcion());
+                    if(usuario.getUsuarioSistema() == 0) {
+                        historico.setUsuarioSistemaUF("0");
+                    } else {
+                        historico.setUsuarioSistemaUF("1");
+                    }
+                    historico.setNombreAccion(accion.getNomAccion());
+                    historico.setMovDatos(String.format("%c", accion.getMovDatos()));
                     
-                                        
+                    hjpac.create(historico);
                     //Fin de Inserciones en Històrico
                 }
 
@@ -542,6 +566,7 @@ public class GeneraReporte extends HttpServlet {
             table.addCell(cellSuma);
 
             document.add(table);
+            
             //Fin de creación de matriz
             //Fin Resumen Medición
 
