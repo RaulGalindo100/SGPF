@@ -512,6 +512,7 @@ public class GeneraReporte extends HttpServlet {
                     Historico historico = new Historico();
                     historico.setIdProy(proy.getIdproyecto());
                     historico.setNombreProy(proy.getNomProy());
+                    historico.setProposito(proy.getProposito());
                     historico.setAlcanceProy(proy.getAlcance());
                     historico.setNombrePF(proceso.getNomPF());
                     historico.setDescripcionPF(proceso.getDescripcion());
