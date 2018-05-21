@@ -27,7 +27,7 @@
 
 					</ul>
 
-					<a href="grupoDatos.jsp"> <input class="btn btn-info"
+					<a href="grupoDatos.jsp"> <input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 						type="submit" value="Cancelar">
 					</a>
 
@@ -52,7 +52,7 @@
 					<label>Descripción</label>
 					<textarea class="form-control" name="descripcionGD" rows="3"></textarea>
 				</div>
-				<input class="btn btn-outline-info" type="submit" value="Guardar">
+				<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Guardar">
 				</form>
 			</div>
 		</div>

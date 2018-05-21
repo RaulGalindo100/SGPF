@@ -52,7 +52,7 @@
 						</li>
 					</ul>
 
-					<a class="btn btn-outline-success my-2 my-sm-0"
+					<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 						href="proyectos.jsp">Regresar</a>
 
 				</div>
@@ -73,7 +73,7 @@
 				<%=p.getNomProy()%>
 			</div>
 			<div class="col-md-4">
-				<button class="btn btn-outline-info" data-toggle="collapse"
+				<button class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-toggle="collapse"
 					data-target="#demo">Más detalle</button>
 			</div>
 		</div>
@@ -84,14 +84,14 @@
 					<div class="row">
 						<div class="col-md-8">Información de proyecto</div>
 						<div class="col-md-2">
-							<button class="btn btn-outline-info" data-toggle="collapse"
+							<button class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-toggle="collapse"
 								data-target="#infoProy">Más</button>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-8">
 							<div id="infoProy" class="collapse">
-								<table class="table " style="border-width: 2px; border-style: solid; border-color: #17a2b8;">
+								<table class="table " style="border-width: 2px; border-style: solid; border-color: #2c3e50;">
 									<tbody>
 										<tr>
 											<td>Propósito:</td>
@@ -140,14 +140,14 @@
 					<div class="row">
 						<div class="col-md-8">Contexto de desarrollo</div>
 						<div class="col-md-2">
-							<button class="btn btn-outline-info" data-toggle="collapse"
+							<button class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-toggle="collapse"
 								data-target="#contDes">Más</button>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-8">
 							<div id="contDes" class="collapse">
-								<table class="table " style="border-width: 2px; border-style: solid; border-color: #17a2b8;">
+								<table class="table " style="border-width: 2px; border-style: solid; border-color: #2c3e50;">
 									<tbody>
 										<tr>
 											<td>Arquitectura de Proyecto</td>
@@ -207,14 +207,14 @@
 					<div class="row">
 						<div class="col-md-8">Información de recursos</div>
 						<div class="col-md-2">
-							<button class="btn btn-outline-info" data-toggle="collapse"
+							<button class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-toggle="collapse"
 								data-target="#infoRec">Más</button>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-8">
 							<div id="infoRec" class="collapse">
-								<table class="table " style="border-width: 2px; border-style: solid; border-color: #17a2b8;">
+								<table class="table " style="border-width: 2px; border-style: solid; border-color: #2c3e50;">
 									<tbody>
 										<tr>
 											<td>Duración del Proyecto</td>
@@ -289,14 +289,14 @@
 					<div class="row">
 						<div class="col-md-8">Tamaño funcional</div>
 						<div class="col-md-2">
-							<button class="btn btn-outline-info" data-toggle="collapse"
+							<button class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-toggle="collapse"
 								data-target="#tamFun">Más</button>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-8">
 							<div id="tamFun" class="collapse">
-								<table class="table" style="border-width: 2px; border-style: solid; border-color: #17a2b8;">
+								<table class="table" style="border-width: 2px; border-style: solid; border-color: #2c3e50;">
 									<tbody>
 									<tr>
 											<td>Método de Medición</td>
@@ -369,7 +369,7 @@
 									 -->
 								<div class="container">
 									<!-- Trigger the modal with a button -->
-									<button type="button" class="btn btn-outline-info"
+									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 										data-toggle="modal"
 										data-target="#myModal-<%=inter.getIdprocesoFuncional()%>">
 										Eliminar</button>
@@ -381,15 +381,17 @@
 											<div class="modal-content">
 												<div class="modal-body">
 													<p>El Proceso Funcional será eliminado.</p>
+													<p>¿Desea continuar?
 												</div>
 												<div class="modal-footer">
 													<form action="eliminaPF" method="post">
                                                                                                             <input type="hidden" name="idProyecto" value="<%=p.getIdproyecto()%>">
 														<input type="hidden" name="idPF"
 															value="<%=inter.getIdprocesoFuncional()%>"> <input
-															class="btn btn-outline-info" type="submit"
+															class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit"
 															value="Eliminar">
 													</form>
+													<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
 												</div>
 											</div>
 										</div>

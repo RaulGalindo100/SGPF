@@ -23,34 +23,53 @@
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 						<li class="nav-item active">
-							<form action="acciones" method="post">
-								<input class="nav-link myclass" style="color: rgba(0,0,0,.9);border-style:none;background-color:transparent; cursor:pointer; cursor: hand;"  type="Submit" value="Acciones" />
-							</form>
+							
 						</li>
 						<li class="nav-item active">
-							<form action="usuarioFuncional" method="post">
-					<input class="nav-link myclass" style="color: rgba(0,0,0,.9);border-style:none;background-color:transparent; cursor:pointer; cursor: hand;"  type="Submit" value="Usuario Funcional" />
-				</form>
+							
 						</li>
 						<li class="nav-item active">
-							<form action="grupoDatos" method="post">
-					<input class="nav-link myclass" style="color: rgba(0,0,0,.9);border-style:none;background-color:transparent; cursor:pointer; cursor: hand;"  type="Submit" value="Grupo de Datos" />
-				</form>
+							
 						</li>
 					</ul>
-					<a class="btn btn-outline-success my-2 my-sm-0" href="proyectos.jsp">Regresar</a>
+					<a class="btn btn-outline-info .btn-sm text-white"
+						style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+						href="proyectos.jsp">Regresar</a>
 				</div>
 			</nav>
 		</div>
 	</header>
-	
-<div class="container">
-		<section class="row">
+
+	<div class="container">
+		<div class="row">
 			<div class="col-md-12">
-				<h2>Administración de Catálogos</h2>
+				<h2>Gestión de Catálogos</h2>
 			</div>
-		</section>
-</div>
+		</div>
+		<div class="row">
+				<div class="col-md-auto">
+					<form action="acciones" method="post">
+								<input class="btn btn-outline-info .btn-sm text-white"
+						style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+									type="Submit" value="Gestión de Acciones" />
+							</form>
+				</div>
+				<div class="col-md-auto">
+					<form action="usuarioFuncional" method="post">
+								<input class="btn btn-outline-info .btn-sm text-white"
+						style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+									type="Submit" value="Gestión de Usuario Funcional" />
+							</form>
+				</div>
+				<div class="col-md-auto">
+					<form action="grupoDatos" method="post">
+								<input class="btn btn-outline-info .btn-sm text-white"
+						style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+									type="Submit" value="Gestión de Grupo de Datos" />
+							</form>
+				</div>
+			</div>
+	</div>
 
 	<script src="js/jquery.js"></script>
 	<script

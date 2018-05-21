@@ -59,7 +59,7 @@
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 					</ul>
-					<a href="proyectos.jsp"> <input class="btn btn-info"
+					<a href="proyectos.jsp"> <input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 						type="submit" value="Cancelar">
 					</a>
 				</div>
@@ -81,7 +81,7 @@
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-10 text-right">
-					<input class="btn btn-outline-info" type="submit" value="Guardar" />
+					<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Guardar" />
 				</div>
 				<div class="col-md-1"></div>
 
@@ -94,19 +94,19 @@
 				<div class="col-md-10">
 
 					<div class="container"
-						style="border-width: 2px; border-style: solid; color: #17a2b8;">
+						>
 						<ul class="nav nav-tabs">
-							<li class="active"><a class="btn btn-outline-info"
-								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+							<li class="active"><a class="btn btn-outline-info" 
+								style="font-size: 12pt; border-style: none; font-color: #2c3e50;" data-toggle="tab"
 								href="#home">Información de proyecto</a></li>
 							<li><a class="btn btn-outline-info"
-								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+								style="font-size: 12pt; border-style: none;" data-toggle="tab"
 								href="#menu1">Contexto de desarrollo</a></li>
 							<li><a class="btn btn-outline-info"
-								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+								style="font-size: 12pt; border-style: none;" data-toggle="tab"
 								href="#menu2">Información de recursos</a></li>
 							<li><a class="btn btn-outline-info"
-								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+								style="font-size: 12pt; border-style: none;" data-toggle="tab"
 								href="#menu3">Tamaño Funcional</a></li>
 
 						</ul>
@@ -204,6 +204,7 @@
 
 									</select>
 								</div>
+								<div class="form-group text-right">Continua con la pestaña de: Contexto de desarrollo</div>
 							</div>
 							<div id="menu1" class="tab-pane fade">
 								<h3>Contexto de Desarrollo</h3>
@@ -308,6 +309,7 @@
 										<%}%>
 									</select>
 								</div>
+								<div class="form-group text-right">Continua con la pestaña de: Información de recursos</div>
 							</div>
 							<div id="menu2" class="tab-pane fade">
 								<h3>Información de Recursos</h3>
@@ -390,6 +392,7 @@
 										class="form-control" type="text" name="costImpleDesProy"
 										required>
 								</div>
+								<div class="form-group text-right">Continua con la pestaña de: Tamaño Funcional</div>
 							</div>
 							<div id="menu3" class="tab-pane fade">
 								<h3>Tamaño Funcional</h3>

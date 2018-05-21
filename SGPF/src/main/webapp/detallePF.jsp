@@ -46,7 +46,7 @@
                             <li class="nav-item active">
                                 <%
                                     if (tipoUsuario != 3 && p.getEstatus() == 1) {
-                                %> <a class="nav-link" href="modifyPF.jsp">Modificar PF</a> <%
+                                %> <a class="nav-link border-top-0 border-bottom-0 border-right-0" href="modifyPF.jsp">Modificar PF</a> <%
                                     }
                                 %>
                             </li>
@@ -59,7 +59,7 @@
                                            value="<%=detalle.getIdprocesoFuncional()%>"> 
                                     <input type="hidden" name="idProyecto" value="<%=p.getIdproyecto()%>">
                                     <input
-                                        class="nav-link myclass "
+                                        class="nav-link border-top-0 border-bottom-0 border-right-0"
                                         style="color: rgba(0, 0, 0, .9); border-style: none; background-color: transparent; cursor: pointer; cursor: hand;"
                                         type="submit" value="Agregar Actividad" />
                                 </form> <%
@@ -70,7 +70,7 @@
                             <li class="nav-item active"></li>
                         </ul>
 
-                        <a class="btn btn-outline-success my-2 my-sm-0"
+                        <a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
                            href="detalleProyecto.jsp">Regresar</a>
 
                     </div>
@@ -150,8 +150,9 @@
                                 <td>
                                     <div class="dropdown">
                                         <button
-                                            class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle"
-                                            style="font-size: 10pt;" type="button" id="dropdownMenu2"
+                                            class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle text-white"
+                                            
+                                            style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="button" id="dropdownMenu2"
                                             data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">Opciones</button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -208,8 +209,9 @@
 
                                     <div class="dropdown">
                                         <button
-                                            class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle"
-                                            style="font-size: 10pt;" type="button" id="dropdownMenu2"
+                                            class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle text-white"
+                                            
+                                            style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="button" id="dropdownMenu2"
                                             data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">Agregar</button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -254,7 +256,7 @@
                                         if (tipoUsuario != 3 && p.getEstatus() == 1) {
                                     %>
                                     <div class="container">
-                                        <button type="button" class="btn btn-outline-info"
+                                        <button type="button" class="btn btn-outline-info .btn-sm text-white" style=" font-size: 10pt;border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
                                                 style="font-size: 10pt;" data-toggle="modal"
                                                 data-target="#myModal-<%=inter.getIdsubProceso()%>">Eliminar SP</button>
 
@@ -264,13 +266,15 @@
                                                 <div class="modal-content">
                                                     <div class="modal-body">
                                                         <p>El Sub-Proceso será eliminado.</p>
+                                                        <p>¿Desea continuar?</p>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <form action="eliSubproceso" method="POST">
                                                             <input type="hidden" name="idSubProceso"
                                                                    value="<%=inter.getIdsubProceso()%>" /> 
-                                                            <input class="btn btn-outline-info" type="submit"
+                                                            <input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit"
                                                                    value="Aceptar" />
+                                                                   <button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
                                                         </form>
                                                     </div>
                                                 </div>

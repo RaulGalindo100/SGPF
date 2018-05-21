@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1252">
-<title>Agrega PF</title>
+<title>Agregar PF</title>
 <meta name="viewport"
 	content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
 <!--===============================================================================================-->
@@ -35,7 +35,7 @@
 					<form action="BuscaProyecto" method="POST">
 						<input type="hidden" name="idProyecto"
 							value="<%=p.getIdproyecto()%>"> <input
-							class="btn btn-info" type="submit" value="Cancelar">
+							class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Cancelar">
 					</form>
 				</div>
 			</nav>
@@ -44,7 +44,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h2>Agrega Proceso Funcional</h2>
+			<h2>Agregar Proceso Funcional</h2>
 		</div>
 	</div>
 	<div class="row">
@@ -63,7 +63,7 @@
 						<label>Descripción</label>
 						<textarea class="form-control" name="descripcioPF" rows="3"></textarea>
 				</div>
-				<input class="btn btn-outline-info" type="submit" value="Guardar">
+				<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Guardar">
 			</form>
 			</div>
 	</div>

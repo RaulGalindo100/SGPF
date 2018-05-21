@@ -64,7 +64,7 @@
 					<form action="BuscaProyecto" method="POST">
 						<input type="hidden" name="idProyecto"
 							value="<%=p.getIdproyecto()%>"> <input
-							class="btn btn-info" type="submit" value="Cancelar">
+							class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Cancelar">
 					</form>
 
 				</div>
@@ -75,7 +75,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Modifica el Proyecto</h2>
+				<h2>Modificar Proyecto</h2>
 			</div>
 		</div>
 		<!-- 
@@ -86,7 +86,7 @@
 				<div class="col-md-1"><input type="hidden"
 										name="idProyecto" value="<%=p.getIdproyecto()%>" required></div>
 				<div class="col-md-10 text-right">
-					<input class="btn btn-outline-info" type="submit" value="Guardar" />
+					<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Guardar" />
 				</div>
 				<div class="col-md-1"></div>
 			</div>
@@ -98,19 +98,19 @@
 				<div class="col-md-10">
 
 					<div class="container"
-						style="border-width: 2px; border-style: solid; color: #17a2b8;">
+					>
 						<ul class="nav nav-tabs">
 							<li class="active"><a class="btn btn-outline-info"
-								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+								style="font-size: 12pt; border-style: none;" data-toggle="tab"
 								href="#home">Información de proyecto</a></li>
 							<li><a class="btn btn-outline-info"
-								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+								style="font-size: 12pt; border-style: none;" data-toggle="tab"
 								href="#menu1">Contexto de desarrollo</a></li>
 							<li><a class="btn btn-outline-info"
-								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+								style="font-size: 12pt; border-style: none;" data-toggle="tab"
 								href="#menu2">Información de recursos</a></li>
 							<li><a class="btn btn-outline-info"
-								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+								style="font-size: 12pt; border-style: none;" data-toggle="tab"
 								href="#menu3">Tamaño Funcional</a></li>
 
 						</ul>
@@ -229,6 +229,7 @@
 
 									</select>
 								</div>
+								<div class="form-group text-right">Continua con la pestaña de: Contexto de desarrollo</div>
 							</div>
 							<!-- del id home -->
 							<div id="menu1" class="tab-pane fade">
@@ -353,7 +354,7 @@
 										<%}%>
 									</select>
 								</div>
-
+								<div class="form-group text-right">Continua con la pestaña de: Información de recursos</div>
 							</div>
 							<!-- del menu1 -->
 							<div id="menu2" class="tab-pane fade">
@@ -448,6 +449,7 @@
 										class="form-control" type="text" name="costImpleDesProy"
 										value="<%=p.getCostImpleDesProy() %>" required>
 								</div>
+								<div class="form-group text-right">Continua con la pestaña de: Tamaño Funcional</div>
 							</div>
 							<!-- del menu 2 -->
 							<div id="menu3" class="tab-pane fade">
@@ -489,7 +491,7 @@
                   name="expeMedMetProy" value="<%=p.getExpeMedMetProy() %>" required>
               </div>
 								
-								
+							
 							</div>
 							<!-- del menu 3 -->
 

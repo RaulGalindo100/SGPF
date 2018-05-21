@@ -15,9 +15,8 @@
 	href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="css/estilos.css">
 </head>
-<%
+		<%
         List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");
-        
         int tipoUsuario = Integer.parseInt(String.format("%s", session.getAttribute("tipoUsuario")));
     %>
 <body>
@@ -39,27 +38,28 @@
 
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-						<li class="nav-item active">
-							<%if(tipoUsuario==1){%> <a class="nav-link"
-							href="crudCatalogos.jsp"> Modificar Catálogos </a> <% } %>
-						</li>
-						<li class="nav-item active">
-							<%if(tipoUsuario == 1){%> <a class="nav-link"
-							href="gestionUsuarios"> Gestionar Usuarios </a> <% } %>
-						</li>
-						<li class="nav-item active">
+					<li class="nav-item active">
 							<%
 					if (tipoUsuario == 1 || tipoUsuario == 2) {
-					%> <a class="nav-link" href="agregaProyecto">Nuevo Proyecto</a> <% } %>
+					%> <a class="nav-link" href="agregaProyecto">Agregar Proyecto</a> <% } %>
 						</li>
+						<li class="nav-item active">
+							<%if(tipoUsuario==1){%> <a class="nav-link" 
+							href="crudCatalogos.jsp"> Gestión de Catálogos </a> <% } %>
+						</li>
+						<li class="nav-item active ">
+							<%if(tipoUsuario == 1){%> <a class="nav-link" 
+							href="gestionUsuarios"> Gestión de Usuarios </a> <% } %>
+						</li>
+						
 						<%if(tipoUsuario == 1){%>
-						<li class="nav-item active"><a class="nav-link"
-							href="gestionUsuariosProyectos"> Gestionar Usuarios-Proyectos
+						<li class="nav-item active"><a class="nav-link" 
+							href="gestionUsuariosProyectos"> Gestión de Usuarios-Proyectos
 						</a></li>
 						<% } %>
 					</ul>
 					<form class="col-md-2" action="cerrarSesion" method="post">
-						<input class="btn btn-outline-dark" type="submit"
+						<input class="btn btn-outline-info .btn-sm text-white" type="submit" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 							value="Cerrar Sesión">
 					</form>
 				</div>
@@ -92,8 +92,8 @@
 								href="BuscaProyecto?idProyecto=<%=p.getIdproyecto()%>"><%=p.getNomProy()%></a></td>
 							<td><%=p.getEstatus()%></td>
 							<td><a
-								href="GeneraReporte?idProyecto=<%=p.getIdproyecto()%>"> <input class="btn btn-outline-info .btn-sm"
-									type="submit" value="Generar Reporte">
+								href="GeneraReporte?idProyecto=<%=p.getIdproyecto()%>"> <input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+									type="submit" value="Generar Reporte" ">
 							</a></td>
 						</tr>
 						<%

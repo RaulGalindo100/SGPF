@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Modifica Acción</title>
+        <title>Modificar Acción</title>
         <meta name="viewport"
               content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
         <!--===============================================================================================-->
@@ -31,7 +31,7 @@
 
                         </ul>
 
-                        <a href="acciones"> <input class="btn btn-info"
+                        <a href="acciones"> <input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
                                                    type="submit" value="Cancelar">
                         </a>
                     </div>
@@ -41,7 +41,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Modifica Acción</h2>
+                    <h2>Modificar Acción</h2>
                 </div>
             </div>
             <div class="row">
@@ -122,7 +122,7 @@
 
                         <div class="container">
                             <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-outline-info"
+                            <button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
                                     data-toggle="modal"
                                     data-target="#modiAcc">
                                 Modificar</button>
@@ -133,10 +133,11 @@
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             <p>Estos cambios se aplicarán a todos los Procesos Funcionales que utilizan ésta acción.</p>
+                                            <p>¿Desea continuar?</p>
                                         </div>
                                         <div class="modal-footer">
-                                            <input class="btn btn-outline-info" type="submit" value="Aceptar">
-
+                                            <input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Aceptar">
+<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
                                         </div>
                                     </div>
                                 </div>

@@ -34,7 +34,7 @@
 						</li>
 					</ul>
 					
-					<a class="btn btn-outline-success my-2 my-sm-0" href="proyectos.jsp">Regresar</a>
+					<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" href="proyectos.jsp">Regresar</a>
 				</div>
 			</nav>
 		</div>
@@ -68,7 +68,7 @@
                 </td>
                 <td>
                     <a href="modificarUsuario?idUsuario=<%=usuario.getIdusuario()%>">
-                        <input class="btn btn-outline-info" type="submit" value="Modificar">
+                        <input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Modificar">
                     </a>
                 </td>
 

@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Admnistración de acciones</title>
+<title>Gestión de acciones</title>
 <meta name="viewport"
 	content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
 <!--===============================================================================================-->
@@ -36,7 +36,7 @@
 					</li>
 	
 					</ul>
-					<a href="crudCatalogos.jsp"><input class="btn btn-info"
+					<a href="crudCatalogos.jsp"><input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 						type="submit" value="Regresar"></a>
 				</div>
 			</nav>
@@ -45,7 +45,7 @@
 	<div class="container">
 		<section class="row">
 			<div class="col-md-12">
-				<h2>Administración de Acciones</h2>
+				<h2>Gestión de Acciones</h2>
 			</div>
 			<div class="table-responsive ">
 				<table class="table ">
@@ -83,7 +83,7 @@
 							%>
 							<div class="container">
 									<!-- Trigger the modal with a button -->
-									<button type="button" class="btn btn-outline-info"
+									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 										data-toggle="modal"
 										data-target="#myModal-<%=accion.getIdaccion()%>">
 										Desactivar</button>
@@ -97,8 +97,9 @@
 													<p>La acción será desactivada.</p>
 												</div>
 												<div class="modal-footer">
-													<a class="btn btn-outline-info"
+													<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 								href="EliminaAccion?idAccion=<%=accion.getIdaccion()%>">Aceptar</a>
+								<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
 												</div>
 											</div>
 										</div>
@@ -112,7 +113,7 @@
 							%>
 							<div class="container">
 									<!-- Trigger the modal with a button -->
-									<button type="button" class="btn btn-outline-info"
+									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 										data-toggle="modal"
 										data-target="#myModal-<%=accion.getIdaccion()%>">
 										Activar</button>
@@ -126,8 +127,9 @@
 													<p>La acción será activada.</p>
 												</div>
 												<div class="modal-footer">
-													<a class="btn btn-outline-info"
+													<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 								href="EliminaAccion?idAccion=<%=accion.getIdaccion()%>">Aceptar</a>
+								<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
 												</div>
 											</div>
 										</div>
@@ -143,7 +145,7 @@
 								if (accion.getActivo() == 1) {
 							%>
 							
-								<a class="btn btn-outline-info"
+								<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 								href="modificaAccion?idAccion=<%=accion.getIdaccion()%>">Modificar</a>
 							
 							<%

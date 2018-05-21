@@ -32,7 +32,7 @@
 
 					</ul>
 
-					<a href="gestionUsuarios.jsp"> <input class="btn btn-info"
+					<a href="gestionUsuarios.jsp"> <input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 						type="submit" value="Cancelar">
 					</a>
 				</div>
@@ -42,7 +42,7 @@
 	<div class="container ">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Modificar usuario</h2>
+				<h2>Modificar Usuario</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -93,7 +93,7 @@
 						<input class="form-check-input" type="checkbox" name="eliminaUsuario" value="yes">
 						<label class="form-check-label">¿Eliminar Usuario?</label> 
 					</div>
-					<input class="btn btn-outline-info" type="submit" value="Guardar">
+					<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Guardar">
 				</form>
 			</div>
 		</div>

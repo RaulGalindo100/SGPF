@@ -40,7 +40,7 @@
 					<form action="BuscaProcesoFuncional" method="POST">
 						<input type="hidden" name="idprocesoFuncional"
 							value="<%=SubProceso.getIdprocesoFuncional().getIdprocesoFuncional()%>" />
-						<input class="btn btn-info" type="submit" value="Cancelar" />
+						<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Cancelar" />
 					</form>
 				</div>
 			</nav>
@@ -127,7 +127,7 @@
 							value="true"> <label class="form-check-label">Flujo
 							alterno</label>
 					</div>
-					<input class="btn btn-outline-info" type="submit" value="Guardar" />
+					<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Guardar" />
 				</form>
 			</div>
 		</div>

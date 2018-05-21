@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1252">
-<title>Modifica Proceso Funcional</title>
+<title>Modificar Proceso Funcional</title>
 <meta name="viewport"
 	content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
 <!--===============================================================================================-->
@@ -32,7 +32,7 @@
 					</ul>
 					<form action="BuscaProcesoFuncional?idprocesoFuncional=<%=detalle.getIdprocesoFuncional()%>"
 							method="POST">
-							<input  class="btn btn-info" type="submit" value="Cancelar" />
+							<input  class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Cancelar" />
 					</form>
 
 				</div>
@@ -42,7 +42,7 @@
 	<div class="container ">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Modifica Proceso Funcional</h2>
+				<h2>Modificar Proceso Funcional</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -65,7 +65,7 @@
 						<textarea class="form-control" name="descripcionPF" rows="3" required><%=detalle.getDescripcion()%></textarea>					
 					</div>
 
-					<input class="btn btn-outline-info" type="submit" value="Guardar" />
+					<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Guardar" />
 				</form>
 			</div>
 		</div>

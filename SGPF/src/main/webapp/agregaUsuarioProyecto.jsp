@@ -35,7 +35,7 @@
 
 					</ul>
 					<a href="gestionaUsuariosProyectos.jsp"> <input
-						class="btn btn-info" type="submit" value="Cancelar">
+						class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Cancelar">
 					</a>
 				</div>
 			</nav>
@@ -44,7 +44,7 @@
 	<div class="container ">
 		<div class="row">
 			<div class="col-md-12">
-				<h2>Agrega Relación Usuario Proyecto</h2>
+				<h2>Agregar Relación Usuario Proyecto</h2>
 			</div>
 		</div>
 		<div class="row">
@@ -74,7 +74,7 @@
 							%>
 						</select>
 					</div>
-					<input class="btn btn-outline-info" type="submit" value="Gurardar">
+					<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Gurardar">
 				</form>
 			</div>
 		</div>

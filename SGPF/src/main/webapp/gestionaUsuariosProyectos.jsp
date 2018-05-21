@@ -32,7 +32,7 @@
 							href="agregaUsuarioProyecto.jsp">Agregar relación</a></li>
 					</ul>
 
-					<a class="btn btn-outline-success my-2 my-sm-0"
+					<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 						href="proyectos.jsp">Regresar</a>
 
 				</div>
@@ -42,7 +42,7 @@
 	<div class="container py-5">
 		<section class="row">
 			<div class="col-md-12">
-				<h2>Gestiona Usuarios Proyectos</h2>
+				<h2>Gestión de Usuarios Proyectos</h2>
 			</div>
 			<div class="table-responsive">
 				<table class="table ">

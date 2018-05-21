@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>Administración de UF</title>
+        <title>Gestión de UF</title>
         <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -28,7 +28,7 @@
 					</li>
 	
 					</ul>
-					<a href="crudCatalogos.jsp"><input class="btn btn-info"
+					<a href="crudCatalogos.jsp"><input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 						type="submit" value="Regresar"></a>
 				</div>
 			</nav>
@@ -40,7 +40,7 @@
 	<div class="container py-5">
 		<section class="row">
 			<div class="col-md-12">
-				<h2>Administración de Usuarios Funcionales</h2>
+				<h2>Gestión de Usuarios Funcionales</h2>
 			</div>
 			<div class="table-responsive ">
 				<table class="table ">
@@ -76,7 +76,7 @@
 							
 							<div class="container">
 									<!-- Trigger the modal with a button -->
-									<button type="button" class="btn btn-outline-info"
+									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 										data-toggle="modal"
 										data-target="#myModal-<%=iter.getIdusuarioFuncional()%>">
 										Desactivar</button>
@@ -90,8 +90,9 @@
 													<p>El usuario funcional será desactivado.</p>
 												</div>
 												<div class="modal-footer">
-													<a class="btn btn-outline-info"
+													<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 								href="EliminaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Aceptar</a>
+								<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
 												</div>
 											</div>
 										</div>
@@ -105,7 +106,7 @@
 							<td>
 							<div class="container">
 									<!-- Trigger the modal with a button -->
-									<button type="button" class="btn btn-outline-info"
+									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 										data-toggle="modal"
 										data-target="#myModal-<%=iter.getIdusuarioFuncional()%>">
 										Activar</button>
@@ -119,8 +120,9 @@
 													<p>El usuario funcional será activado.</p>
 												</div>
 												<div class="modal-footer">
-													<a class="btn btn-outline-info"
+													<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 								href="EliminaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Aceptar</a>
+								<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
 												</div>
 											</div>
 										</div>
@@ -134,7 +136,7 @@
 							<%
 								if (iter.getActivo() == 1) {
 							%>
-							<td><a class="btn btn-outline-info"
+							<td><a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 								href="modificaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Modificar</a>
 							</td>
 							<%
