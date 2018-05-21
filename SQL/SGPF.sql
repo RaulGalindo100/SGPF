@@ -533,7 +533,7 @@ DEFAULT CHARACTER SET = utf8;
 INSERT INTO TipodeDesarrollo(TipodeDesarrollo) VALUES("Nuevo Desarrollo"),("Mejora/Mantenimiento Correctivo"),
 ("Mejora/Mantenimiento Preventivo"),("Rediseño (Re­development)"),("Otro");
 
-INSERT INTO sectorOrganizacion(sectorOrganizacion) VALUES("Gobierno Federa"),("Gobierno Estatal"),("Gobierno Local"),
+INSERT INTO sectorOrganizacion(sectorOrganizacion) VALUES("Gobierno Federal"),("Gobierno Estatal"),("Gobierno Local"),
 ("Privado"),("Otro");
 
 INSERT INTO tipoOrganizacion(tipoOrganizacion) VALUES("Energía"),("Banca"),("Seguros"),("Software y Computación"),

@@ -86,7 +86,7 @@ public class GeneraReporte extends HttpServlet {
             document.add(new Paragraph("    Procesos Funcionales"));
             int pfCont = 1;
             for (ProcesoFuncional pf : listaPF) {
-                document.add(new Paragraph("    " + pfCont + ") " + pf.getNomPF() + ". Descripci髇: " + pf.getDescripcion()));
+                document.add(new Paragraph("    " + pfCont + ") " + pf.getNomPF() + ". Descripci贸n: " + pf.getDescripcion()));
                 pfCont++;
             }
             //Fin #Procesos Funcionales
@@ -121,7 +121,7 @@ public class GeneraReporte extends HttpServlet {
 
             pfCont = 1;
             for (UsuarioFuncional listaFinal : listaUF) {
-                document.add(new Paragraph("    " + pfCont + ") " + listaFinal.getNomUF() + ". Descripci髇: " + listaFinal.getDescripcion()));
+                document.add(new Paragraph("    " + pfCont + ") " + listaFinal.getNomUF() + ". Descripci贸n: " + listaFinal.getDescripcion()));
                 pfCont++;
             }
             //Fin #UF
@@ -155,7 +155,7 @@ public class GeneraReporte extends HttpServlet {
 
             pfCont = 1;
             for (GrupoDato listaFinal : listaGD) {
-                document.add(new Paragraph("    " + pfCont + ") " + listaFinal.getNomGD() + ". Descripci髇: " + listaFinal.getDescripcion()));
+                document.add(new Paragraph("    " + pfCont + ") " + listaFinal.getNomGD() + ". Descripci贸n: " + listaFinal.getDescripcion()));
                 pfCont++;
             }
             //Fin #GD
@@ -347,7 +347,7 @@ public class GeneraReporte extends HttpServlet {
 
             //Creacion de Matriz
             document.newPage();
-            document.add(new Paragraph("                                                                   Formato Para Medici髇 y Rastreo de Requerimientos"));
+            document.add(new Paragraph("                                                                   Formato Para Medici贸n y Rastreo de Requerimientos"));
             document.add(new Paragraph("  "));
             PdfPTable table = new PdfPTable(9);
             table.setTotalWidth(800f);
@@ -382,7 +382,7 @@ public class GeneraReporte extends HttpServlet {
             cell6.setBackgroundColor(BaseColor.YELLOW);
             table.addCell(cell6);
 
-            Phrase p7 = new Phrase("Descripci髇 de Subproceso");
+            Phrase p7 = new Phrase("Descripci贸n de Subproceso");
             PdfPCell cell7 = new PdfPCell(p7);
             cell7.setNoWrap(false);
             cell7.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -503,7 +503,7 @@ public class GeneraReporte extends HttpServlet {
 
                     auxi++;
                     
-                    //Inserciones en Hist騬ico
+                    //Inserciones en Hist貌rico
                     HistoricoJpaController hjpac = new HistoricoJpaController(EntityProvider.provider());
                     Historico historico = new Historico();
                     historico.setIdProy(proy.getIdproyecto());
@@ -528,7 +528,7 @@ public class GeneraReporte extends HttpServlet {
                     historico.setMovDatos(String.format("%c", accion.getMovDatos()));
                     
                     hjpac.create(historico);
-                    //Fin de Inserciones en Hist騬ico
+                    //Fin de Inserciones en Hist貌rico
                 }
 
                 table.addCell("");
@@ -562,19 +562,19 @@ public class GeneraReporte extends HttpServlet {
 
             document.add(table);
             
-            //Fin de creaci髇 de matriz
-            //Fin Resumen Medici髇
+            //Fin de creaci贸n de matriz
+            //Fin Resumen Medici贸n
 
-            //Secci髇 3: Informaci髇 Detalla Proceso Funcional (Nombre PF, Desc. PF, Diag. Act., Diag. Ctx., Diag. Sec.
+            //Secci贸n 3: Informaci贸n Detalla Proceso Funcional (Nombre PF, Desc. PF, Diag. Act., Diag. Ctx., Diag. Sec.
             document.add(new Paragraph("  "));
             document.add(new Paragraph("  "));
-            document.add(new Paragraph("3. INFORMACI覰 DETALLADA POR PROCESO FUNCIONAL"));
+            document.add(new Paragraph("3. INFORMACI脫N DETALLADA POR PROCESO FUNCIONAL"));
             document.add(new Paragraph("  "));
 
             for (ProcesoFuncional proc : listaPF) {
                 document.newPage();
                 document.add(new Paragraph("    Nombre: " + proc.getNomPF()));
-                document.add(new Paragraph("    Descripci髇: " + proc.getDescripcion()));
+                document.add(new Paragraph("    Descripci贸n: " + proc.getDescripcion()));
                 document.add(new Paragraph("   "));
 
                 //Sumatoria de MD
@@ -808,7 +808,7 @@ public class GeneraReporte extends HttpServlet {
 //                under4.restoreState();
                 //Fin Diagrama de Actividades
             }
-            //Fin Informaci髇 Detalla por Proceso Funcional
+            //Fin Informaci贸n Detalla por Proceso Funcional
 //                //Fin Diagrama de Actividades
 //            }
 //            //Fin Informacion Detalla por Proceso Funcional
