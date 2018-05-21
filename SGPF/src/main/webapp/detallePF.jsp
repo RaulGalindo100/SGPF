@@ -56,10 +56,12 @@
                                 %>
                                 <form action="agregarActividad" method="post">
                                     <input type="hidden" name="idProcesoFuncional"
-                                           value="<%=detalle.getIdprocesoFuncional()%>"> <input
-                                           class="nav-link myclass "
-                                           style="color: rgba(0, 0, 0, .9); border-style: none; background-color: transparent; cursor: pointer; cursor: hand;"
-                                           type="submit" value="Agregar Actividad" />
+                                           value="<%=detalle.getIdprocesoFuncional()%>"> 
+                                    <input type="hidden" name="idProyecto" value="<%=p.getIdproyecto()%>">
+                                    <input
+                                        class="nav-link myclass "
+                                        style="color: rgba(0, 0, 0, .9); border-style: none; background-color: transparent; cursor: pointer; cursor: hand;"
+                                        type="submit" value="Agregar Actividad" />
                                 </form> <%
                                     }
                                 %>
@@ -88,7 +90,7 @@
                                 <td><%=detalle.getNomPF()%></td>
                             </tr>
                             <tr>
-                                <th scope="col">DescripciÃ³n:</th>
+                                <th scope="col">Descripción:</th>
                                 <td><%=detalle.getDescripcion()%></td>
                             </tr>
                             <tr>
@@ -116,7 +118,8 @@
                                 <th scope="col">Usuario funcional</th>
                                 <th scope="col">Acción</th>
                                 <th scope="col">Grupo de datos</th>
-                                <th scope="col" colspan="2"></th>
+                                <th scope="col"></th>
+                                <th scope="col"><th>
                             </tr>
                         </thead>
 
@@ -132,7 +135,8 @@
                             %>
                             <tr>
                                 <%
-                                    if (inter.getIndice() == 1) { contador++;
+                                    if (inter.getIndice() == 1) {
+                                        contador++;
                                 %>
                                 <td><%=contador%></td>
                                 <td><%=inter.getActividad()%></td>
@@ -175,18 +179,20 @@
                                                 <input type="hidden" name="idSubProceso"
                                                        value="<%=inter.getIdsubProceso()%>" /> <input
                                                        class="dropdown-item btn btn-outline-info .btn-sm"
-                                                       style="font-size: 10pt;" type="submit" value="Agregar SP" />
+                                                       style="font-size: 10pt;" type="submit" value="Agregar SP Después" />
                                             </form>
                                         </div>
                                     </div>
 
                                 </td>
+                                <td></td>
                                 <!--  -->
                                 <%
                                     }
                                 %>
                                 <%
                                 } else {
+                                    contador++;
                                 %>
                                 <td><%=contador%></td>
                                 <td></td>
@@ -205,7 +211,7 @@
                                             class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle"
                                             style="font-size: 10pt;" type="button" id="dropdownMenu2"
                                             data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">Opciones</button>
+                                            aria-expanded="false">Agregar</button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
                                             <%
@@ -236,25 +242,25 @@
                                             <%
                                                 }
                                             %>
-
-                                            <div class="dropdown-divider"></div>
                                         </div>
                                     </div>
-<form action="eliSubproceso" method="POST">
-                                                            <input type="hidden" name="idSubProceso"
-                                                                   value="<%=inter.getIdsubProceso()%>" /> 
-                                                            <input type="submit"
-                                                                   value="Eliminar" />
-                                                        </form>
-<!--
+
+                                    <%
+                                        }
+                                    %>
+                                </td>
+                                <td>
+                                    <%
+                                        if (tipoUsuario != 3 && p.getEstatus() == 1) {
+                                    %>
                                     <div class="container">
                                         <button type="button" class="btn btn-outline-info"
                                                 style="font-size: 10pt;" data-toggle="modal"
-                                                data-target="#myModal">Eliminar SP</button>
+                                                data-target="#myModal-<%=inter.getIdsubProceso()%>">Eliminar SP</button>
 
-                                        <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal fade" id="myModal-<%=inter.getIdsubProceso()%>" role="dialog">
                                             <div class="modal-dialog">
-                                                
+
                                                 <div class="modal-content">
                                                     <div class="modal-body">
                                                         <p>El Sub-Proceso será eliminado.</p>
@@ -271,9 +277,11 @@
                                             </div>
                                         </div>
 
-                                    </div> --><%
+                                    </div> 
+                                    <%
                                         }
                                     %>
+
                                 </td>
                                 <%
                                     }
@@ -287,7 +295,7 @@
                 </div>
             </section>
         </div>
-    <%if(flujoAlternos == 1){%>
+        <%if (flujoAlternos == 1) {%>
         <div class="container py-5">
             <section class="row">
                 <div class="col-md-12">
@@ -303,7 +311,7 @@
                                 <th scope="col">Usuario funcional</th>
                                 <th scope="col">Acción</th>
                                 <th scope="col">Grupo de datos</th>
-                                    <th scope="col" colspan="2"></th>
+                                <th scope="col" colspan="2"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -315,7 +323,8 @@
                                     uf = inter.getIdusuarioFuncional();
                                     acc = inter.getIdaccion();
                                     gd = inter.getIdgrupoDato();
-                                if(inter.getFlujoAl()==1){ contador2++;
+                                    if (inter.getFlujoAl() == 1) {
+                                        contador2++;
                             %>
                             <tr>
                                 <td><%=contador2%></td>
@@ -325,7 +334,8 @@
                                 <td><%=acc.getNomAccion()%></td>
                                 <td><%=gd.getNomGD()%></td>
                             </tr>
-                            <% }} %>
+                            <% }
+                                } %>
                     </table>
                 </div>
             </section>

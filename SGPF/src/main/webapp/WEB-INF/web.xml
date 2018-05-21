@@ -161,7 +161,14 @@
         <servlet-name>GeneraReporte</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.GeneraReporte</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>modificaProy</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.modificaProy</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>modificaProy</servlet-name>
+        <url-pattern>/modificaProy</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GeneraReporte</servlet-name>
         <url-pattern>/GeneraReporte</url-pattern>

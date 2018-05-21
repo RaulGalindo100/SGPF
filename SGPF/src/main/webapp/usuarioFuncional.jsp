@@ -72,14 +72,61 @@
 							<%
 								if (iter.getActivo() == 1) {
 							%>
-							<td><a class="btn btn-outline-info"
-								href="EliminaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Eliminar</a>
+							<td>
+							
+							<div class="container">
+									<!-- Trigger the modal with a button -->
+									<button type="button" class="btn btn-outline-info"
+										data-toggle="modal"
+										data-target="#myModal-<%=iter.getIdusuarioFuncional()%>">
+										Desactivar</button>
+									<!-- Modal -->
+									<div class="modal fade"
+										id="myModal-<%=iter.getIdusuarioFuncional()%>" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-body">
+													<p>El usuario funcional será desactivado.</p>
+												</div>
+												<div class="modal-footer">
+													<a class="btn btn-outline-info"
+								href="EliminaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Aceptar</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							
 							</td>
 							<%
 								} else {
 							%>
-							<td><a class="btn btn-outline-info"
-								href="EliminaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Activar</a>
+							<td>
+							<div class="container">
+									<!-- Trigger the modal with a button -->
+									<button type="button" class="btn btn-outline-info"
+										data-toggle="modal"
+										data-target="#myModal-<%=iter.getIdusuarioFuncional()%>">
+										Activar</button>
+									<!-- Modal -->
+									<div class="modal fade"
+										id="myModal-<%=iter.getIdusuarioFuncional()%>" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-body">
+													<p>El usuario funcional será activado.</p>
+												</div>
+												<div class="modal-footer">
+													<a class="btn btn-outline-info"
+								href="EliminaUF?idUF=<%=iter.getIdusuarioFuncional()%>">Aceptar</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							
 							</td>
 							<%
 								}

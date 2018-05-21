@@ -56,34 +56,70 @@
 						</tr>
 					</thead>
 					<tbody>
-					 <% for(GrupoDato iter : grupoDatos){  %>
-            <tr>
-                <td>
-                    <%=iter.getNomGD()%>
-                </td>
-                <td>
-                    <%=iter.getDescripcion()%>
-                </td>
-                <% if(iter.getActivo()==1){%>
-                    <td>
-                        Si
-                    </td>
-                    <td>
-                        <a class="btn btn-outline-info" href="EliminaGrupoDato?idGrupoDato=<%=iter.getIdgrupoDato()%>">Eliminar</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-outline-info" href="modificaGrupoDato?idGrupoDato=<%=iter.getIdgrupoDato()%>">Modificar</a>
-                    </td>
-                <%}else{%>
-                    <td>
-                        No
-                    </td>
-                    <td>
-                        <a class="btn btn-outline-info" href="EliminaGrupoDato?idGrupoDato=<%=iter.getIdgrupoDato()%>">Activar</a>
-                    </td>
-                <% } %>
-            </tr>
-            <% } %>
+						<% for(GrupoDato iter : grupoDatos){  %>
+						<tr>
+							<td><%=iter.getNomGD()%></td>
+							<td><%=iter.getDescripcion()%></td>
+							<% if(iter.getActivo()==1){%>
+							<td>Si</td>
+							<td>
+								<div class="container">
+									<!-- Trigger the modal with a button -->
+									<button type="button" class="btn btn-outline-info"
+										data-toggle="modal"
+										data-target="#myModal-<%=iter.getIdgrupoDato()%>">
+										Desactivar</button>
+									<!-- Modal -->
+									<div class="modal fade"
+										id="myModal-<%=iter.getIdgrupoDato()%>" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-body">
+													<p>El grupo de datos será desactivado.</p>
+												</div>
+												<div class="modal-footer">
+													<a class="btn btn-outline-info"
+														href="EliminaGrupoDato?idGrupoDato=<%=iter.getIdgrupoDato()%>">Aceptar</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td><a class="btn btn-outline-info"
+								href="modificaGrupoDato?idGrupoDato=<%=iter.getIdgrupoDato()%>">Modificar</a>
+							</td>
+							<%}else{%>
+							<td>No</td>
+							<td>
+								<div class="container">
+									<!-- Trigger the modal with a button -->
+									<button type="button" class="btn btn-outline-info"
+										data-toggle="modal"
+										data-target="#myModal-<%=iter.getIdgrupoDato()%>">
+										Activar</button>
+									<!-- Modal -->
+									<div class="modal fade"
+										id="myModal-<%=iter.getIdgrupoDato()%>" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-body">
+													<p>El grupo de datos será activado.</p>
+												</div>
+												<div class="modal-footer">
+													<a class="btn btn-outline-info"
+								href="EliminaGrupoDato?idGrupoDato=<%=iter.getIdgrupoDato()%>">Aceptar</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> 
+							</td>
+							<% } %>
+						</tr>
+						<% } %>
 					</tbody>
 				</table>
 			</div>

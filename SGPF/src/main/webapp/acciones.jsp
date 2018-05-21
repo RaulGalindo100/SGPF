@@ -81,16 +81,59 @@
 							<%
 								if (accion.getActivo() == 1) {
 							%>
-								<a class="btn btn-outline-info"
-								href="EliminaAccion?idAccion=<%=accion.getIdaccion()%>">Eliminar</a>
+							<div class="container">
+									<!-- Trigger the modal with a button -->
+									<button type="button" class="btn btn-outline-info"
+										data-toggle="modal"
+										data-target="#myModal-<%=accion.getIdaccion()%>">
+										Desactivar</button>
+									<!-- Modal -->
+									<div class="modal fade"
+										id="myModal-<%=accion.getIdaccion()%>" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-body">
+													<p>La acción será desactivada.</p>
+												</div>
+												<div class="modal-footer">
+													<a class="btn btn-outline-info"
+								href="EliminaAccion?idAccion=<%=accion.getIdaccion()%>">Aceptar</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
 							</td>
 							<td>
 							<%
 								} else {
 							%>
-							
-								<a class="btn btn-outline-info"
-								href="EliminaAccion?idAccion=<%=accion.getIdaccion()%>">Activar</a>
+							<div class="container">
+									<!-- Trigger the modal with a button -->
+									<button type="button" class="btn btn-outline-info"
+										data-toggle="modal"
+										data-target="#myModal-<%=accion.getIdaccion()%>">
+										Activar</button>
+									<!-- Modal -->
+									<div class="modal fade"
+										id="myModal-<%=accion.getIdaccion()%>" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-body">
+													<p>La acción será activada.</p>
+												</div>
+												<div class="modal-footer">
+													<a class="btn btn-outline-info"
+								href="EliminaAccion?idAccion=<%=accion.getIdaccion()%>">Aceptar</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
 							</td>
 							<td>
 							<%

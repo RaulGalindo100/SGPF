@@ -49,50 +49,50 @@ public class Historico implements Serializable {
     @Column(nullable = false)
     private int idProy;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     private String nombreProy;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     private String alcanceProy;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     private String nombrePF;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     private String descripcionPF;
     @Basic(optional = false)
     @Column(nullable = false)
     private int tamanioPF;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     private String eventoDesPF;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     private String descripcionSP;
     @Basic(optional = false)
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date fecha;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     private String nombreGD;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     private String descripcionGD;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     private String nombreUF;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     private String descripcionUF;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
-    private String usuarioSistemaUF;
+    @Column(nullable = false)
+    private Short usuarioSistemaUF;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 250)
     private String nombreAccion;
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 1)
     private String movDatos;
     @Basic(optional = false)
     @Column(nullable = false, length = 250)
@@ -105,26 +105,7 @@ public class Historico implements Serializable {
         this.idhistorico = idhistorico;
     }
 
-    public Historico(Integer idhistorico, int idProy, String nombreProy, String alcanceProy, String nombrePF, String descripcionPF, int tamanioPF, String eventoDesPF, String descripcionSP, Date fecha, String nombreGD, String descripcionGD, String nombreUF, String descripcionUF, String usuarioSistemaUF, String nombreAccion, String movDatos) {
-        this.idhistorico = idhistorico;
-        this.idProy = idProy;
-        this.nombreProy = nombreProy;
-        this.alcanceProy = alcanceProy;
-        this.nombrePF = nombrePF;
-        this.descripcionPF = descripcionPF;
-        this.tamanioPF = tamanioPF;
-        this.eventoDesPF = eventoDesPF;
-        this.descripcionSP = descripcionSP;
-        this.fecha = fecha;
-        this.nombreGD = nombreGD;
-        this.descripcionGD = descripcionGD;
-        this.nombreUF = nombreUF;
-        this.descripcionUF = descripcionUF;
-        this.usuarioSistemaUF = usuarioSistemaUF;
-        this.nombreAccion = nombreAccion;
-        this.movDatos = movDatos;
-    }
-
+   
     public Integer getIdhistorico() {
         return idhistorico;
     }
@@ -237,11 +218,11 @@ public class Historico implements Serializable {
         this.descripcionUF = descripcionUF;
     }
 
-    public String getUsuarioSistemaUF() {
+    public Short getUsuarioSistemaUF() {
         return usuarioSistemaUF;
     }
 
-    public void setUsuarioSistemaUF(String usuarioSistemaUF) {
+    public void setUsuarioSistemaUF(Short usuarioSistemaUF) {
         this.usuarioSistemaUF = usuarioSistemaUF;
     }
 

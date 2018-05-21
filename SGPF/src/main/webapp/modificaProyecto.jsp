@@ -1,20 +1,55 @@
 <%@page import="unam.mx.SGPF.model.Proyecto"%>
+<%@page import="unam.mx.SGPF.model.Escala"%>
+<%@page import="unam.mx.SGPF.model.MarcoPosUsa"%>
+<%@page import="unam.mx.SGPF.model.TamOrg"%>
+<%@page import="unam.mx.SGPF.model.TipoCapDes"%>
+<%@page import="unam.mx.SGPF.model.TipoOrganizacion"%>
+<%@page import="unam.mx.SGPF.model.SectorOrganizacion"%>
+<%@page import="unam.mx.SGPF.model.BaseDatos"%>
+<%@page import="unam.mx.SGPF.model.ModCalidad"%>
+<%@page import="unam.mx.SGPF.model.Lenguaje"%>
+<%@page import="unam.mx.SGPF.model.TipodeDesarrollo"%>
+<%@page import="unam.mx.SGPF.model.SisOpe"%>
+<%@page import="unam.mx.SGPF.model.MetMedicion"%>
+<%@page import="unam.mx.SGPF.model.MetDesarrollo"%>
+<%@page import="unam.mx.SGPF.model.ArqProyecto"%>
+<%@page import="unam.mx.SGPF.model.ConfInfo"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Modifica Proyecto</title>
-<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
+<meta name="viewport"
+	content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
 <!--===============================================================================================-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="css/estilos.css">
+
 </head>
 <body>
-<%
+	<%
 					Proyecto p = (Proyecto) session.getAttribute("proy");
+	List<ConfInfo> ListaConfInfo = (List<ConfInfo>) session.getAttribute("ListaConfInfo");
+    List<ArqProyecto> ListaArqProyecto = (List<ArqProyecto>) session.getAttribute("ListaArqProyecto");
+    List<MetDesarrollo> ListaMetDesarrollo =(List<MetDesarrollo>) session.getAttribute("ListaMetDesarrollo");
+    List<MetMedicion> ListaMetMedicon = (List<MetMedicion>) session.getAttribute("ListaMetMedicon");
+    List<SisOpe> ListaSisOpe = (List<SisOpe>) session.getAttribute("ListaSisOpe");
+    List<TipodeDesarrollo> ListaTipoDes = (List<TipodeDesarrollo>) session.getAttribute("ListaTipoDes");
+    List<Lenguaje> ListaLenguaje = (List<Lenguaje>) session.getAttribute("ListaLenguaje");
+    List<ModCalidad> ListaModCalidad = (List<ModCalidad>) session.getAttribute("ListaModCalidad");
+    List<BaseDatos> ListaBaseDatos = (List<BaseDatos>) session.getAttribute("ListaBaseDatos");
+    List<SectorOrganizacion> ListaSectorOrganizacion = (List<SectorOrganizacion>) session.getAttribute("ListaSectorOrganizacion");
+    List<TipoOrganizacion> ListaTipoOrg = (List<TipoOrganizacion>) session.getAttribute("ListaTipoOrg");
+    List<TipoCapDes> ListaTipoCapDes = (List<TipoCapDes>) session.getAttribute("ListaTipoCapDes");
+    List<TamOrg> ListaTamOrg = (List<TamOrg>) session.getAttribute("ListaTamOrg");
+    List<MarcoPosUsa> ListaMarcoPosUsa = (List<MarcoPosUsa>) session.getAttribute("ListaMarcoPosUsa");
+    List<Escala> ListaEscala = (List<Escala>) session.getAttribute("ListaEscala");
 				%>
 	<header>
 		<div class="container">
@@ -26,45 +61,452 @@
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 					</ul>
-				<form action="BuscaProyecto" method="POST">
+					<form action="BuscaProyecto" method="POST">
 						<input type="hidden" name="idProyecto"
-							value="<%=p.getIdproyecto()%>"> 
-						<input class="btn btn-info" 
-							type="submit" value="Cancelar">
+							value="<%=p.getIdproyecto()%>"> <input
+							class="btn btn-info" type="submit" value="Cancelar">
 					</form>
 
 				</div>
 			</nav>
-			</div>
+		</div>
 	</header>
-	<div class="container py-5">
-		<section class="row">
+
+	<div class="container">
+		<div class="row">
 			<div class="col-md-12">
 				<h2>Modifica el Proyecto</h2>
 			</div>
-			<div class="table-responsive">
-				
-				<form action="actualizaRproyectO" method="POST">
-					<table class="table">
-						<tbody>
-							<tr>
-								<td>Id:</td>
-								<td><input type="hidden" name="idProyecto"
-									value="<%=p.getIdproyecto()%>"> <%=p.getIdproyecto()%></td>
-							</tr>
-							<tr>
-								<td>Nombre:</td>
-								<td><input type="text" name="nombreProyecto"
-									value="<%=p.getNomProy()%>" required></td>
-							</tr>
-						</tbody>
-					</table>
+		</div>
+		<!-- 
+		<input class="form-control" >
+		 -->
+		<form action="actualizaRproyectO" method="POST">
+			<div class="row">
+				<div class="col-md-1"><input type="hidden"
+										name="idProyecto" value="<%=p.getIdproyecto()%>" required></div>
+				<div class="col-md-10 text-right">
 					<input class="btn btn-outline-info" type="submit" value="Guardar" />
-					
-				</form>
+				</div>
+				<div class="col-md-1"></div>
 			</div>
-		</section>
+			<div class="row">
+				<div class="col-md-1"></div>
+
+
+
+				<div class="col-md-10">
+
+					<div class="container"
+						style="border-width: 2px; border-style: solid; color: #17a2b8;">
+						<ul class="nav nav-tabs">
+							<li class="active"><a class="btn btn-outline-info"
+								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+								href="#home">Información de proyecto</a></li>
+							<li><a class="btn btn-outline-info"
+								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+								href="#menu1">Contexto de desarrollo</a></li>
+							<li><a class="btn btn-outline-info"
+								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+								href="#menu2">Información de recursos</a></li>
+							<li><a class="btn btn-outline-info"
+								style="font-size: 10pt; border-style: none;" data-toggle="tab"
+								href="#menu3">Tamaño Funcional</a></li>
+
+						</ul>
+
+						<div class="tab-content">
+							<div id="home" class="tab-pane active">
+								<h3>Información del Proyecto</h3>
+								<div class="form-group">
+									<label>Nombre del Proyecto</label> <input type="hidden"
+										name="idProy" value="<%=p.getIdproyecto()%>"> <input
+										class="form-control" type="text" name="nombreProyecto"
+										value="<%=p.getNomProy()%>" required>
+								</div>
+								<div class="form-group">
+									<label>Propósito</label> <input class="form-control"
+										type="text" name="proposito" value="<%=p.getProposito()%>"
+										required>
+								</div>
+								<div class="form-group">
+									<label>Alcance</label> <input class="form-control" type="text"
+										name="alcance" value="<%=p.getAlcance()%>" required>
+								</div>
+								<div class="form-group">
+									<label>Año</label> <select class="form-control"
+										style="width: 80px" name="anio">
+										<option value="2015" <%if(p.getAnioProy().equals("2015")){%>
+											selected <%  } %>>2015</option>
+										<option value="2016" <%if(p.getAnioProy().equals("2016")){%>
+											selected <%  } %>>2016</option>
+										<option value="2017" <%if(p.getAnioProy().equals("2017")){%>
+											selected <%  } %>>2017</option>
+										<option value="2018" <%if(p.getAnioProy().equals("2018")){%>
+											selected <%  } %>>2018</option>
+										<option value="2019" <%if(p.getAnioProy().equals("2019")){%>
+											selected <%  } %>>2019</option>
+										<option value="2020" <%if(p.getAnioProy().equals("2020")){%>
+											selected <%  } %>>2020</option>
+									</select> <label>¿Se puso en operación?</label> <select
+										class="form-control" style="width: 80px" name="operProy">
+										<option value="1" <%if(p.getOperProy() == 1){%> selected
+											<%  } %>>Si</option>
+										<option value="0" <%if(p.getOperProy() == 0){%> selected
+											<%  } %>>No</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Tipo Desarrollo</label> <select class="form-control"
+										name="IdTipodeDesarrollo">
+										<%for(TipodeDesarrollo i : ListaTipoDes){%>
+										<option value="<%=i.getIdTipodeDesarrollo()%>"
+											<%if(p.getIdTipoDesarrollo().getIdTipodeDesarrollo() == i.getIdTipodeDesarrollo()){%>
+											selected <%  } %>>
+											<%=i.getTipodeDesarrollo()%>
+										</option>
+										<%   }    %>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Sector de la Organización Usuaria</label> <select
+										class="form-control" name="IdsectorOrganizacion">
+										<%for(SectorOrganizacion iter : ListaSectorOrganizacion){%>
+										<option value="<%=iter.getIdsectorOrganizacion()%>"
+											<%if(p.getIdsectorOrganizacion().getIdsectorOrganizacion()== iter.getIdsectorOrganizacion()){%>
+											selected <%  } %>>
+											<%=iter.getSectorOrganizacion()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Tipo Organización Usuaria</label> <select
+										class="form-control" name="IdtipoOrganizacion">
+										<%for(TipoOrganizacion i : ListaTipoOrg){%>
+										<option value="<%=i.getIdtipoOrganizacion() %>"
+											<%if(p.getIdtipoOrganizacion().getIdtipoOrganizacion()== i.getIdtipoOrganizacion()){%>
+											selected <%  } %>>
+											<%=i.getTipoOrganizacion() %>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Tipo de Capacidad de Desarrollo usada</label> <select
+										class="form-control" name="IdtipoCapDes">
+										<%for(TipoCapDes i : ListaTipoCapDes){%>
+										<option value="<%=i.getIdtipoCapDes()%>"
+											<%if(p.getIdtipoCapDes().getIdtipoCapDes()== i.getIdtipoCapDes()){%>
+											selected <%  } %>>
+											<%=i.getTipoCapDes()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Tamaño de la Organización que desarrolló el
+										software</label> <select class="form-control" name="IdtamOrgDes">
+										<%for(TamOrg i : ListaTamOrg){%>
+										<option value="<%=i.getIdtamOrgDes()%>"
+											<%if(p.getIdtamOrgDes().getIdtamOrgDes()== i.getIdtamOrgDes()){%>
+											selected <%  } %>>
+											<%=i.getTamOrgDes()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Tamaño de la Organización que usaria el software</label>
+									<select class="form-control" name="tamOrgUsa">
+										<%for(TamOrg i : ListaTamOrg){%>
+										<option value="<%=i.getIdtamOrgDes()%>"
+											<%if(p.getTamOrgUsa().getIdtamOrgDes() == i.getIdtamOrgDes() ){%>
+											selected <%  } %>>
+											<%=i.getTamOrgDes()%>
+										</option>
+										<%}%>
+
+									</select>
+								</div>
+							</div>
+							<!-- del id home -->
+							<div id="menu1" class="tab-pane fade">
+								<h3>Contexto de Desarrollo</h3>
+								<div class="form-group">
+									<label>Arquitectura de Proyecto</label> <select
+										class="form-control" name="idarqProyecto">
+										<%for(ArqProyecto i : ListaArqProyecto){%>
+										<option value="<%=i.getIdarqProyecto()%>"
+											<%if(p.getIdarqProyecto().getIdarqProyecto()== i.getIdarqProyecto()){%>
+											selected <%  } %>>
+											<%=i.getArqProyecto()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Lenguaje Principal de Programación</label> <select
+										class="form-control" name="Idlenguaje">
+										<%for(Lenguaje i : ListaLenguaje){%>
+										<option value="<%=i.getIdlenguaje()%>"
+											<%if(p.getIdlenguaje().getIdlenguaje()== i.getIdlenguaje()){%>
+											selected <%  } %>>
+											<%=i.getLenguaje()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Sistema Operativo Principal</label> <select
+										class="form-control" name="idsisOpe">
+										<%for(SisOpe i : ListaSisOpe){%>
+										<option value="<%=i.getIdsisOpe()%>"
+											<%if(p.getIdsisOpe().getIdsisOpe()== i.getIdsisOpe()){%>
+											selected <%  } %>>
+											<%=i.getSisOpe()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Base de Datos</label> <select class="form-control"
+										name="IdbaseDatos">
+										<%for(BaseDatos i : ListaBaseDatos){%>
+										<option value="<%=i.getIdbaseDatos()%>"
+											<%if(p.getIdbaseDatos().getIdbaseDatos()== i.getIdbaseDatos()){%>
+											selected <%  } %>>
+											<%=i.getBaseDatos()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>¿Se utilizó una herramienta CASE?</label> <select
+										class="form-control" style="width: 80px" name="usoCase">
+										<option value="1" <%if(p.getOperProy() == 1){%> selected
+											<%  } %>>Si</option>
+										<option value="0" <%if(p.getOperProy() == 0){%> selected
+											<%  } %>>No</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Ciclo de Vida Utilizado</label> <select
+										class="form-control" name="IdmetDesarrollo">
+										<%for(MetDesarrollo i : ListaMetDesarrollo){%>
+										<option value="<%=i.getIdmetDesarrollo()%>"
+											<%if(p.getIdmetDesarrollo().getIdmetDesarrollo()== i.getIdmetDesarrollo()){%>
+											selected <%  } %>>
+											<%=i.getMetDesarrollo()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Marco de Procesos Utilizado</label> <select
+										class="form-control" name="IdmarcoPosUsao">
+										<%for(MarcoPosUsa i : ListaMarcoPosUsa){%>
+										<option value="<%=i.getIdmarcoPosUsa()%>"
+											<%if(p.getIdmarcoPosUsa().getIdmarcoPosUsa()== i.getIdmarcoPosUsa()){%>
+											selected <%  } %>>
+											<%=i.getMarcoPosUsa()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Modelo de Calidad Utilizado</label> <select
+										class="form-control" name="IdmodCalidad">
+										<%for(ModCalidad i : ListaModCalidad){%>
+										<option value="<%=i.getIdmodCalidad()%>"
+											<%if(p.getIdmodCalidad().getIdmodCalidad()== i.getIdmodCalidad()){%>
+											selected <%  } %>>
+											<%=i.getModCalidad()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>¿Tiene Certificación en el Modelo de Calidad?</label> <select
+										class="form-control" style="width: 80px"
+										name="medidorCertProy">
+										<option value="1" <%if(p.getMedidorCertProy() == 1){%> selected
+											<%  } %>>Si</option>
+										<option value="0" <%if(p.getMedidorCertProy() == 0){%> selected
+											<%  } %>>No</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>Comentar la certificación</label> <input
+										class="form-control" type="text" name="comCertModelo"
+										value="<%=p.getComCertModelo()%>" required>
+								</div>
+								<div class="form-group">
+									<label>Contabilidad de la información</label> <select
+										class="form-control" name="IdconfInfo">
+										<%for(ConfInfo i : ListaConfInfo){%>
+										<option value="<%=i.getIdconfInfo() %>"
+											<%if(p.getIdconfInfo().getIdconfInfo()== i.getIdconfInfo()){%>
+											selected <%  } %>>
+											<%=i.getConfInfo() %>
+										</option>
+										<%}%>
+									</select>
+								</div>
+
+							</div>
+							<!-- del menu1 -->
+							<div id="menu2" class="tab-pane fade">
+								<h3>Información de Recursos</h3>
+								<div class="form-group ">
+									<label>Duración del Proyecto</label>
+									<div class="form-inline">
+										<input class="form-control" type="text" name="duraProy"
+											value="<%=p.getDuraProy()%>" required>
+
+										<!-- <label>Escala</label> -->
+										<select class="form-control" name="Idescala">
+											<%for(Escala i : ListaEscala){%>
+											<option value="<%=i.getIdescala() %>"
+												<%if(p.getIdescala().getIdescala()== i.getIdescala()){%>
+												selected <%  } %>>
+												<%=i.getEscala() %>
+											</option>
+											<%}%>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>Esfuerzo Total del Proyecto [hh]</label> <input
+										class="form-control" type="text" name="esfuTotProy"
+										value="<%=p.getEsfuTotProy()%>" required>
+								</div>
+								<div class="form-group">
+									<label>Esfuerzo de Planeación [hh]</label> <input
+										class="form-control" type="text" name="esfuPlaneProy"
+										value="<%=p.getEsfuPlaneProy()%>" required>
+								</div>
+								<div class="form-group">
+									<label>Esfuerzo de Especificación de Requerimientos
+										[hh]</label> <input class="form-control" type="text"
+										name="esfuEsReqProy" value="<%=p.getEsfuEsReqProy() %>"
+										required>
+								</div>
+								<div class="form-group">
+									<label>Esfuerzo de Análisis y Diseño [hh]</label> <input
+										class="form-control" type="text" name="esfuAnaDisProy"
+										value="<%=p.getEsfuAnaDisProy() %>" required>
+								</div>
+								<div class="form-group">
+									<label>Esfuerzo de Construcción [hh]</label> <input
+										class="form-control" type="text" name="esfuConstProy"
+										value="<%=p.getEsfuConstProy()%>" required>
+								</div>
+								<div class="form-group">
+									<label>Esfuerzo de Pruebas [hh]</label> <input
+										class="form-control" type="text" name="esfuPrueProy"
+										value="<%=p.getEsfuPrueProy() %>" required>
+								</div>
+								<div class="form-group">
+									<label>Esfuerzo de Implementación / Despliegue [hh]</label> <input
+										class="form-control" type="text" name="esfuImpleDesProy"
+										value="<%=p.getEsfuImpleDesProy() %>" required>
+								</div>
+								<div class="form-group">
+									<label>Costo Total del Proyecto $(MNX)</label> <input
+										class="form-control" type="text" name="costTotProy"
+										value="<%=p.getCostTotProy()  %>" required>
+								</div>
+
+								<div class="form-group">
+									<label>Costo de Planeación $(MNX)</label> <input
+										class="form-control" type="text" name="costPlanProy"
+										value="<%=p.getCostPlanProy()%>" required>
+								</div>
+								<div class="form-group">
+									<label>Costo de Especificación de Requerimientos $(MNX)</label>
+									<input class="form-control" type="text" name="costEsReqProy"
+										value="<%=p.getCostEsReqProy() %>" required>
+								</div>
+								<div class="form-group">
+									<label>Costo de Análisis y Diseño $(MNX)</label> <input
+										class="form-control" type="text" name="costAnaDisProy"
+										value="<%=p.getCostAnaDisProy() %>" required>
+								</div>
+								<div class="form-group">
+									<label>Costo de Construcción $(MNX)</label> <input
+										class="form-control" type="text" name="costConstProy"
+										value="<%=p.getCostConstProy() %>" required>
+								</div>
+								<div class="form-group">
+									<label>Costo de Pruebas $(MNX)</label> <input
+										class="form-control" type="text" name="costPrueProy"
+										value="<%=p.getCostPrueProy()  %>" required>
+								</div>
+								<div class="form-group">
+									<label>Costo de Implementación / Despliegue $(MNX)</label> <input
+										class="form-control" type="text" name="costImpleDesProy"
+										value="<%=p.getCostImpleDesProy() %>" required>
+								</div>
+							</div>
+							<!-- del menu 2 -->
+							<div id="menu3" class="tab-pane fade">
+								<h3>Tamaño Funcional</h3>
+								<div class="form-group">
+									<label>Método de Medición</label> <label></label> <select
+										class="form-control" name="IdmetMedicion">
+										<%for(MetMedicion i : ListaMetMedicon){%>
+										<option value="<%=i.getIdmetMedicion() %>" <%if(p.getIdmetMedicion().getIdmetMedicion()== i.getIdmetMedicion()){%> selected<%  } %>>
+											<%=i.getMetMedicion() %>
+										</option>
+										<%}%>
+									</select>
+								</div>
+								<div class="form-group">
+                <label>Tamaño Funcional medido utilizando el estándar
+                  seleccionado</label> <input class="form-control" type="text"
+                  name="tamFunProy" value="<%=p.getTamFunProy()%>"required>
+              </div>
+              <div class="form-group">
+                <label>Function Points Ajustados (si el método utiliado
+                  lo permite)</label> <input class="form-control" type="text"
+                  name="fpAjusProy" value="<%=p.getFpAjusProy() %>" required>
+              </div>
+              <div class="form-group">
+                <label>El medidor de software está certifiado en el
+                  Método Utilizado</label> <select class="form-control" style="width: 80px"
+                  name="certModelo">
+                  <option value="1" <%if(p.getCertModelo() == 1){%> selected
+											<%  } %>>Si</option>
+                  <option value="0" <%if(p.getCertModelo() == 0){%> selected
+											<%  } %>>No</option>
+                </select>
+
+              </div>
+              <div class="form-group">
+                <label>Experiencia en años del medidor utilizando el
+                  método</label> <input class="form-control" type="text"
+                  name="expeMedMetProy" value="<%=p.getExpeMedMetProy() %>" required>
+              </div>
+								
+								
+							</div>
+							<!-- del menu 3 -->
+
+
+						</div>
+						<!-- tab-container -->
+					</div>
+					<!-- del container -->
+
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+		</form>
 	</div>
+
+
+
 
 
 	<script src="js/jquery.js"></script>
