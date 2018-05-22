@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@Table(catalog = "SGPF", schema = "")
+@Table(name = "usuariofuncional", catalog = "SGPF", schema = "")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "UsuarioFuncional.findAll", query = "SELECT u FROM UsuarioFuncional u")
@@ -69,13 +69,13 @@ public class UsuarioFuncional implements Serializable {
     public void setIdusuarioFuncional(Integer idusuarioFuncional) {
         this.idusuarioFuncional = idusuarioFuncional;
     }
-    
-    
+
+
     public short getUsuarioSistema() {
         return usuarioSistema;
     }
-    
-    
+
+
     public void setUsuarioSistema(short usuarioSistema) {
         this.usuarioSistema = usuarioSistema;
     }
