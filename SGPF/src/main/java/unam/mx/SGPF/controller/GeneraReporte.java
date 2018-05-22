@@ -427,7 +427,7 @@ public class GeneraReporte extends HttpServlet {
             document.add(img6);
             document.add(img7);
 
-            PdfContentByte under2 = writer.getDirectContentUnder();
+            PdfContentByte under2 = writer.getDirectContentUnder(); 
             under2.saveState();
             under2.setColorStroke(BaseColor.BLUE);
             under2.roundRectangle(335, 265, 180, 120, 10);
@@ -670,7 +670,7 @@ public class GeneraReporte extends HttpServlet {
             document.add(new Paragraph("  "));
             document.add(new Paragraph("  "));
             document.add(new Paragraph("  "));
-            document.add(new Paragraph("    3. INFORMACI�N DETALLADA POR PROCESO FUNCIONAL", fontNormal2));
+            document.add(new Paragraph("    3. INFORMACIÓN DETALLADA POR PROCESO FUNCIONAL", fontNormal2));
             document.add(new Paragraph("  "));
 
             for (ProcesoFuncional proc : listaPF) {
@@ -726,7 +726,6 @@ public class GeneraReporte extends HttpServlet {
                 for (SubProceso sub : subProcesos) {
                     AccionJpaController acjpa = new AccionJpaController(EntityProvider.provider());
                     Accion accion = acjpa.findAccion(sub.getIdaccion().getIdaccion());
-
                     if (String.format("%s", accion.getMovDatos()).equals("E")) {
                         sumaE = sumaE + 1;
                     } else if (String.format("%s", accion.getMovDatos()).equals("X")) {
@@ -943,7 +942,9 @@ public class GeneraReporte extends HttpServlet {
             System.out.println("Este es el error en el objeto 2: " + ex.getMessage());
         }
 
-        File file = new File("C:\\Users\\jlope\\Documents\\NetBeansProjects\\SGPF\\SGPF\\results\\matriz.pdf");
+        String SEP = File.separator; 
+        String archivo = System.getProperty("user.dir") + SEP + "results" + SEP + "matriz.pdf";
+        File file = new File(archivo);
         response.setHeader("Content-Type", getServletContext().getMimeType(file.getName()));
         response.setHeader("Content-Length", String.valueOf(file.length()));
         response.setHeader("Content-Disposition", "inline; filename=\"matriz.pdf\"");
