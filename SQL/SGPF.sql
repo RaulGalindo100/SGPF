@@ -415,9 +415,9 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `SGPF`.`interup`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SGPF`.`interup` ;
+DROP TABLE IF EXISTS `SGPF`.`interUP` ;
 
-CREATE TABLE IF NOT EXISTS `SGPF`.`interup` (
+CREATE TABLE IF NOT EXISTS `SGPF`.`interUP` (
   `idinterUP` INT(11) NOT NULL AUTO_INCREMENT,
   `idusuario` INT(11) NOT NULL,
   `idproyecto` INT(11) NOT NULL,
@@ -572,7 +572,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `SGPF`.`flujoAlterno` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`flujoAlterno` (
-  `idflujoAlterno` INT NOT NULL AUTO_INCREMENT,
+  `idflujoAlterno` INT(11) NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(250) NOT NULL,
   `idusuarioFuncional` INT(11) NULL,
   `idaccion` INT(11) NULL,
