@@ -5,6 +5,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Schema SGPF
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `SGPF` ;
@@ -21,11 +24,11 @@ USE `SGPF` ;
 DROP TABLE IF EXISTS `SGPF`.`accion` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`accion` (
-  `idaccion` INT NOT NULL AUTO_INCREMENT,
+  `idaccion` INT(11) NOT NULL AUTO_INCREMENT,
   `nomAccion` VARCHAR(45) NOT NULL,
   `movDatos` CHAR(1) NOT NULL,
   `descripcion` VARCHAR(250) NOT NULL,
-  `activo` TINYINT NOT NULL,
+  `activo` TINYINT(4) NOT NULL,
   PRIMARY KEY (`idaccion`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 9
@@ -38,10 +41,10 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `SGPF`.`grupodato` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`grupodato` (
-  `idgrupoDato` INT NOT NULL AUTO_INCREMENT,
+  `idgrupoDato` INT(11) NOT NULL AUTO_INCREMENT,
   `nomGD` VARCHAR(45) NOT NULL,
   `descripcion` VARCHAR(250) NOT NULL,
-  `activo` TINYINT NOT NULL,
+  `activo` TINYINT(4) NOT NULL,
   PRIMARY KEY (`idgrupoDato`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 11
@@ -91,7 +94,7 @@ DROP TABLE IF EXISTS `SGPF`.`tipoCapDes` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`tipoCapDes` (
   `idtipoCapDes` INT NOT NULL AUTO_INCREMENT,
-  `tipoCapDes` VARCHAR(60) NOT NULL,
+  `tipoCapDes` VARCHAR(250) NOT NULL,
   PRIMARY KEY (`idtipoCapDes`))
 ENGINE = InnoDB;
 
@@ -228,58 +231,61 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`confInfo` (
 ENGINE = InnoDB;
 
 
-
 -- -----------------------------------------------------
 -- Table `SGPF`.`proyecto`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `SGPF`.`proyecto` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`proyecto` (
-  `idproyecto` INT NOT NULL AUTO_INCREMENT,
-  `nomProy` VARCHAR(60) NOT NULL,
-  `anioProy` VARCHAR(4) NOT NULL,
-  `operProy` TINYINT NOT NULL,
-  `duraProy` DECIMAL(9,2) NOT NULL,
-  `esfuTotProy` DECIMAL(9,2) NOT NULL,
-  `esfuPlaneProy` DECIMAL(9,2) NOT NULL,
-  `esfuEsReqProy` DECIMAL(9,2) NOT NULL,
-  `esfuAnaDisProy` DECIMAL(9,2) NOT NULL,
-  `esfuConstProy` DECIMAL(9,2) NOT NULL,
-  `esfuPrueProy` DECIMAL(9,2) NOT NULL,
-  `esfuImpleDesProy` DECIMAL(9,2) NOT NULL,
-  `costTotProy` DECIMAL(9,2) NOT NULL,
-  `costEsReqProy` DECIMAL(9,2) NOT NULL,
-  `costAnaDisProy` DECIMAL(9,2) NOT NULL,
-  `costConstProy` DECIMAL(9,2) NOT NULL,
-  `costPrueProy` DECIMAL(9,2) NOT NULL,
-  `costImpleDesProy` DECIMAL(9,2) NOT NULL,
-  `tamFunProy` DECIMAL(9,2) NOT NULL,
-  `fpAjusProy` DECIMAL(9,2) NOT NULL,
-  `medidorCertProy` TINYINT NOT NULL,
-  `expeMedMetProy` INT NOT NULL,
-  `usoCase` TINYINT NOT NULL,
-  `certModelo` TINYINT NOT NULL,
-  `comCertModelo` VARCHAR(250) NOT NULL,
-  `costPlanProy` DECIMAL(11,2) NOT NULL,
-  `idconfInfo` INT NOT NULL,
-  `idarqProyecto` INT NOT NULL,
-  `idmetDesarrollo` INT NOT NULL,
-  `idmetMedicion` INT NOT NULL,
-  `idsisOpe` INT NOT NULL,
-  `idTipoDesarrollo` INT NOT NULL,
-  `idlenguaje` INT NOT NULL,
-  `idmodCalidad` INT NOT NULL,
-  `idbaseDatos` INT NOT NULL,
-  `idsectorOrganizacion` INT NOT NULL,
-  `estatus` TINYINT NOT NULL,
-  `idtipoOrganizacion` INT NOT NULL,
-  `idtipoCapDes` INT NOT NULL,
-  `idtamOrgDes` INT NOT NULL,
-  `tamOrgUsa` INT NOT NULL,
-  `idmarcoPosUsa` INT NOT NULL,
-  `idescala` INT NOT NULL,
-  `proposito` VARCHAR(250) NOT NULL,
-  `alcance` VARCHAR(250) NOT NULL,
+  `idproyecto` INT(11) NOT NULL AUTO_INCREMENT,
+  `nomProy` VARCHAR(60) NULL,
+  `anioProy` VARCHAR(4) NULL,
+  `operProy` TINYINT(4) NULL,
+  `duraProy` DECIMAL(9,2) NULL,
+  `esfuTotProy` DECIMAL(9,2) NULL,
+  `esfuPlaneProy` DECIMAL(9,2) NULL,
+  `esfuEsReqProy` DECIMAL(9,2) NULL,
+  `esfuAnaDisProy` DECIMAL(9,2) NULL,
+  `esfuConstProy` DECIMAL(9,2) NULL,
+  `esfuPrueProy` DECIMAL(9,2) NULL,
+  `esfuImpleDesProy` DECIMAL(9,2) NULL,
+  `costTotProy` DECIMAL(9,2) NULL,
+  `costEsReqProy` DECIMAL(9,2) NULL,
+  `costAnaDisProy` DECIMAL(9,2) NULL,
+  `costConstProy` DECIMAL(9,2) NULL,
+  `costPrueProy` DECIMAL(9,2) NULL,
+  `costImpleDesProy` DECIMAL(9,2) NULL,
+  `tamFunProy` DECIMAL(9,2) NULL,
+  `fpAjusProy` DECIMAL(9,2) NULL,
+  `medidorCertProy` TINYINT(4) NULL,
+  `expeMedMetProy` INT(11) NULL,
+  `usoCase` TINYINT(4) NULL,
+  `certModelo` TINYINT(4) NULL,
+  `comCertModelo` VARCHAR(250) NULL,
+  `costPlanProy` DECIMAL(11,2) NULL,
+  `idconfInfo` INT NULL,
+  `idarqProyecto` INT NULL,
+  `idmetDesarrollo` INT NULL,
+  `idmetMedicion` INT NULL,
+  `idsisOpe` INT NULL,
+  `idTipoDesarrollo` INT NULL,
+  `idlenguaje` INT NULL,
+  `idmodCalidad` INT NULL,
+  `idbaseDatos` INT NULL,
+  `idsectorOrganizacion` INT NULL,
+  `estatus` TINYINT(4) NULL,
+  `idtipoOrganizacion` INT NULL,
+  `idtipoCapDes` INT NULL,
+  `idtamOrgDes` INT NULL,
+  `tamOrgUsa` INT NULL,
+  `idmarcoPosUsa` INT NULL,
+  `idescala` INT NULL,
+  `proposito` VARCHAR(250) NULL,
+  `alcance` VARCHAR(250) NULL,
+  `estimacionCosto` DECIMAL(9,2) NULL,
+  `estimacionEsfuerzo` DECIMAL(9,2) NULL,
+  `estimacionDuracion` DECIMAL(9,2) NULL,
+  `idescalaEstimacionDuracion` INT NULL,
   PRIMARY KEY (`idproyecto`),
   INDEX `idTipoDesarrollo_fk_idx` (`idTipoDesarrollo` ASC),
   INDEX `sectorOrganizacion_fk_idx` (`idsectorOrganizacion` ASC),
@@ -296,6 +302,7 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`proyecto` (
   INDEX `modCalidad_fk_idx` (`idmodCalidad` ASC),
   INDEX `escala_fk_idx` (`idescala` ASC),
   INDEX `metMedicion_fk_idx` (`idmetMedicion` ASC),
+  INDEX `idescalaEstimacionDuracion_fk_idx` (`idescalaEstimacionDuracion` ASC),
   CONSTRAINT `TipoDesarrollo_fk`
     FOREIGN KEY (`idTipoDesarrollo`)
     REFERENCES `SGPF`.`TipodeDesarrollo` (`idTipodeDesarrollo`)
@@ -375,6 +382,11 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`proyecto` (
     FOREIGN KEY (`idmetMedicion`)
     REFERENCES `SGPF`.`metMedicion` (`idmetMedicion`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `idescalaEstimacionDuracion_fk`
+    FOREIGN KEY (`idescalaEstimacionDuracion`)
+    REFERENCES `SGPF`.`escala` (`idescala`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 AUTO_INCREMENT = 5
@@ -387,12 +399,13 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `SGPF`.`usuario` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`usuario` (
-  `idusuario` INT NOT NULL AUTO_INCREMENT,
+  `idusuario` INT(11) NOT NULL AUTO_INCREMENT,
   `nomUsuario` VARCHAR(45) NOT NULL,
   `pwdUsuario` VARCHAR(45) NOT NULL,
-  `usuTipo1` TINYINT NULL DEFAULT NULL,
-  `usuTipo2` TINYINT NULL DEFAULT NULL,
-  `usuTipo3` TINYINT NULL DEFAULT NULL,
+  `usuTipo1` TINYINT(4) NULL DEFAULT NULL,
+  `usuTipo2` TINYINT(4) NULL DEFAULT NULL,
+  `usuTipo3` TINYINT(4) NULL DEFAULT NULL,
+  `activo` TINYINT(4) NOT NULL,
   PRIMARY KEY (`idusuario`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 4
@@ -402,12 +415,12 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `SGPF`.`interup`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `SGPF`.`interUP` ;
+DROP TABLE IF EXISTS `SGPF`.`interup` ;
 
-CREATE TABLE IF NOT EXISTS `SGPF`.`interUP` (
-  `idinterUP` INT NOT NULL AUTO_INCREMENT,
-  `idusuario` INT NOT NULL,
-  `idproyecto` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `SGPF`.`interup` (
+  `idinterUP` INT(11) NOT NULL AUTO_INCREMENT,
+  `idusuario` INT(11) NOT NULL,
+  `idproyecto` INT(11) NOT NULL,
   PRIMARY KEY (`idinterUP`),
   INDEX `idusuario_idx` (`idusuario` ASC),
   INDEX `idproyecto_idx` (`idproyecto` ASC),
@@ -429,13 +442,13 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `SGPF`.`procesofuncional` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`procesofuncional` (
-  `idprocesoFuncional` INT NOT NULL AUTO_INCREMENT,
+  `idprocesoFuncional` INT(11) NOT NULL AUTO_INCREMENT,
   `nomPF` VARCHAR(45) NOT NULL,
   `descripcion` VARCHAR(250) NOT NULL,
   `eventoDes` VARCHAR(250) NOT NULL,
-  `idproyecto` INT NOT NULL,
-  `tamPF` INT NOT NULL,
-  `activo` TINYINT NOT NULL,
+  `idproyecto` INT(11) NOT NULL,
+  `tamPF` INT(11) NOT NULL,
+  `activo` TINYINT(4) NOT NULL,
   PRIMARY KEY (`idprocesoFuncional`),
   INDEX `idproyecto_idx` (`idproyecto` ASC),
   CONSTRAINT `idproyecto`
@@ -452,10 +465,10 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `SGPF`.`usuariofuncional` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`usuariofuncional` (
-  `idusuarioFuncional` INT NOT NULL AUTO_INCREMENT,
+  `idusuarioFuncional` INT(11) NOT NULL AUTO_INCREMENT,
   `nomUF` VARCHAR(45) NOT NULL,
   `descripcion` VARCHAR(250) NOT NULL,
-  `activo` TINYINT NOT NULL,
+  `activo` TINYINT(4) NOT NULL,
   `usuarioSistema` TINYINT NOT NULL,
   PRIMARY KEY (`idusuarioFuncional`))
 ENGINE = InnoDB
@@ -469,15 +482,14 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `SGPF`.`subproceso` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`subproceso` (
-  `idsubProceso` INT NOT NULL AUTO_INCREMENT,
-  `flujoAl` TINYINT NULL DEFAULT NULL,
-  `descripcion` VARCHAR(250) NULL DEFAULT NULL,
-  `idusuarioFuncional` INT NOT NULL,
-  `idaccion` INT NOT NULL,
-  `idgrupoDato` INT NOT NULL,
-  `idprocesoFuncional` INT NOT NULL,
+  `idsubProceso` INT(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(250) NOT NULL,
+  `idusuarioFuncional` INT(11) NOT NULL,
+  `idaccion` INT(11) NOT NULL,
+  `idgrupoDato` INT(11) NOT NULL,
+  `idprocesoFuncional` INT(11) NOT NULL,
   `actividad` VARCHAR(45) NOT NULL,
-  `indice` INT NOT NULL,
+  `indice` INT(11) NOT NULL,
   `indiceActividad` INT NOT NULL,
   PRIMARY KEY (`idsubProceso`),
   INDEX `idusuarioFuncional_idx` (`idusuarioFuncional` ASC),
@@ -507,13 +519,13 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `SGPF`.`historico` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`historico` (
-  `idhistorico` INT NOT NULL AUTO_INCREMENT,
+  `idhistorico` INT NOT NULL,
   `idProy` INT NOT NULL,
   `nombreProy` VARCHAR(250) NOT NULL,
   `alcanceProy` VARCHAR(250) NOT NULL,
   `nombrePF` VARCHAR(250) NOT NULL,
   `descripcionPF` VARCHAR(250) NOT NULL,
-  `tamanioPF` INT NOT NULL,
+  `tamanio` INT NOT NULL,
   `eventoDesPF` VARCHAR(250) NOT NULL,
   `descripcionSP` VARCHAR(250) NOT NULL,
   `fecha` DATE NOT NULL,
@@ -526,9 +538,73 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`historico` (
   `nombreAccion` VARCHAR(250) NOT NULL,
   `movDatos` CHAR(1) NOT NULL,
   PRIMARY KEY (`idhistorico`))
-ENGINE = InnoDB 
-AUTO_INCREMENT = 11 
-DEFAULT CHARACTER SET = utf8;
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `SGPF`.`subprocesoGrupoDato`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `SGPF`.`subprocesoGrupoDato` ;
+
+CREATE TABLE IF NOT EXISTS `SGPF`.`subprocesoGrupoDato` (
+  `idsubprocesoGrupoDato` INT NOT NULL AUTO_INCREMENT,
+  `idGrupoDato` INT NOT NULL,
+  `idSubProceso` INT NOT NULL,
+  PRIMARY KEY (`idsubprocesoGrupoDato`),
+  INDEX `SubProceso_GrupoDato_Fk_idx` (`idGrupoDato` ASC),
+  INDEX `subProceso_SubProceso_fk_idx` (`idSubProceso` ASC),
+  CONSTRAINT `SubProceso_GrupoDato_Fk`
+    FOREIGN KEY (`idGrupoDato`)
+    REFERENCES `SGPF`.`grupodato` (`idgrupoDato`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `subProceso_SubProceso_fk`
+    FOREIGN KEY (`idSubProceso`)
+    REFERENCES `SGPF`.`subproceso` (`idsubProceso`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `SGPF`.`flujoAlterno`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `SGPF`.`flujoAlterno` ;
+
+CREATE TABLE IF NOT EXISTS `SGPF`.`flujoAlterno` (
+  `idflujoAlterno` INT NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(250) NOT NULL,
+  `idusuarioFuncional` INT(11) NULL,
+  `idaccion` INT(11) NULL,
+  `idgrupoDato` INT(11) NULL,
+  `idprocesoFuncional` INT(11) NULL,
+  `actividad` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idflujoAlterno`),
+  INDEX `FA_idusuarioFuncional_fk_idx` (`idusuarioFuncional` ASC),
+  INDEX `FA_idaccion_fk_idx` (`idaccion` ASC),
+  INDEX `FA_idgrupoDato_fk_idx` (`idgrupoDato` ASC),
+  INDEX `FA_idprocesoFuncional_fk_idx` (`idprocesoFuncional` ASC),
+  CONSTRAINT `FA_idusuarioFuncional_fk`
+    FOREIGN KEY (`idusuarioFuncional`)
+    REFERENCES `SGPF`.`usuariofuncional` (`idusuarioFuncional`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FA_idaccion_fk`
+    FOREIGN KEY (`idaccion`)
+    REFERENCES `SGPF`.`accion` (`idaccion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FA_idgrupoDato_fk`
+    FOREIGN KEY (`idgrupoDato`)
+    REFERENCES `SGPF`.`grupodato` (`idgrupoDato`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FA_idprocesoFuncional_fk`
+    FOREIGN KEY (`idprocesoFuncional`)
+    REFERENCES `SGPF`.`procesofuncional` (`idprocesoFuncional`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 INSERT INTO TipodeDesarrollo(TipodeDesarrollo) VALUES("Nuevo Desarrollo"),("Mejora/Mantenimiento Correctivo"),
 ("Mejora/Mantenimiento Preventivo"),("Rediseño (Re­development)"),("Otro");
@@ -574,12 +650,12 @@ INSERT INTO escala(escala) VALUES("Días"),("Semanas"),("Meses"),("Años");
 INSERT INTO metMedicion(metMedicion) VALUES("COSMIC ISO 19761"),("IFPUG ISO 20926"),("MKII ISO 20698"),("NESMA ISO 24570"),
 ("FISMA ISO29881");
 
-INSERT INTO `usuario` VALUES (1,'Olga','pass',1,NULL,NULL),(2,'Juan','pass',NULL,1,NULL),(3,'Pancho','pass',NULL,NULL,1);
+INSERT INTO `usuario` VALUES (1,'Olga','pass',1,NULL,NULL,1),(2,'Juan','pass',NULL,1,NULL,1),(3,'Pancho','pass',NULL,NULL,1,1);
 
-INSERT INTO `proyecto` VALUES (1,'C-Reg','1993',1,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,1,10,1,0,'foo',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'abcdef','abcdefg'),
-                              (2,'SGPF','1993',1,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,1,10,1,0,'foo',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'abcdef','abcdefg'),
-                              (3,'Olgasss','2015',1,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,1,1,1,1,'Olgasss',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'abcdef','abcdefg'),
-                              (4,'C-Reg691ffeaafe23','2015',1,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,0.24,1,1,1,1,'C-Reg69123',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'abcdef','abcdefg');
+INSERT INTO `proyecto` VALUES (1,'C-Reg','1993',1,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,1,0,1,1,'foo',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Propósito','Alcance',10.21,11.33,14.26,1),
+                              (2,'SGPF','1993',1,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,1,0,1,1,'foo',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Propósito','Alcance',10.21,11.33,14.26,1),
+                              (3,'Olgasss','2015',1,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,1,0,1,1,'Olgasss',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Propósito','Alcance',10.21,11.33,14.26,1),
+                              (4,'C-Reg691ffeaafe23','2015',1,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,1,0,1,1,'C-Reg69123',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Propósito','Alcance',10.21,11.33,14.26,1);
 
 INSERT INTO `interUP` VALUES (1,1,1),(2,1,2),(3,2,2),(4,1,3),(5,2,1),(6,3,2),(7,3,1);
 
@@ -596,12 +672,9 @@ INSERT INTO `grupodato` VALUES (1,'estudianteR','Estudiante del IIMAZ',0),(2,'Ju
 
 INSERT INTO `usuariofuncional` VALUES (1,'Registradores','Registrador del IIMAST',1,1),(2,'C-Reg','Sistema C-Reg',1,1),(3,'Registrador','Registrador C-Reg',1,1),(4,'Juano','FHKLI',1,1);
 
-INSERT INTO `subproceso` VALUES (1,0,'los datos de',2,1,1,2,'Inicio de PF',1,1),(2,0,'los datos de',2,1,1,2,'Inicio de PF',2,1),(3,0,'los datos de',2,1,1,2,'Valida',1,1),(4,0,'los datos de',2,1,1,2,'Valida',2,1),(5,1,'canjlewnlk',1,1,2,5,'Inicio de Proceso Funcional',1,1),(6,1,'caenew',1,1,2,5,'Inicio de Proceso Funcional',2,1);
+INSERT INTO `subproceso` VALUES (1,'los datos de',2,1,1,2,'Inicio de PF',1,1),(2,'los datos de',2,1,1,2,'Inicio de PF',2,1),(3,'los datos de',2,1,1,2,'Valida',1,1),(4,'los datos de',2,1,1,2,'Valida',2,1),(5,'canjlewnlk',1,1,2,5,'Inicio de Proceso Funcional',1,1),(6,'caenew',1,1,2,5,'Inicio de Proceso Funcional',2,1);
 
-update procesoFuncional set activo = 1;
-UPDATE  proyecto set estatus = 1;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
 COMMIT;
