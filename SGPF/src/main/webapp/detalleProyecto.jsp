@@ -36,16 +36,6 @@
 							<%if(tipoUsuario!=3 && p.getEstatus()==1){%> <a class="nav-link"
 							href="modificaProy">Modificar Proyecto</a> <% } %>
 						</li>
-						<li class="nav-item activ">
-							<% if(tipoUsuario!=3){%>
-							<form action="eliminaProyecto" method="post">
-								<input type="hidden" name="idProyecto"
-									value="<%=p.getIdproyecto()%>"> <input
-									class="nav-link myclass "
-									style="color: rgba(0, 0, 0, .9); border-style: none; background-color: transparent; cursor: pointer; cursor: hand;"
-									type="submit" value="Cambiar Estatus" />
-							</form> <% } %>
-						</li>
 						<li class="nav-item active">
 							<%if(tipoUsuario!=3 && p.getEstatus()==1){ %> <a class="nav-link"
 							href="agregaPF.jsp">Agregar PF</a> <%} %>
@@ -93,16 +83,9 @@
 							<div id="infoProy" class="collapse">
 								<table class="table " style="border-width: 2px; border-style: solid; border-color: #2c3e50;">
 									<tbody>
+									
 										<tr>
-											<td>Propósito:</td>
-											<td><%=p.getProposito() %></td>
-										</tr>
-										<tr>
-											<td>Alcance:</td>
-											<td><%=p.getAlcance()%></td>
-										</tr>
-										<tr>
-											<td>Año:</td>
+											<td>Año de realización del proyecto</td>
 											<td><%=p.getAnioProy() %></td>
 										</tr>
 										<tr>
@@ -298,6 +281,14 @@
 							<div id="tamFun" class="collapse">
 								<table class="table" style="border-width: 2px; border-style: solid; border-color: #2c3e50;">
 									<tbody>
+										<tr>
+											<td>Propósito de la medición</td>
+											<td><%=p.getProposito() %></td>
+										</tr>
+										<tr>
+											<td>Alcance de la medición</td>
+											<td><%=p.getAlcance()%></td>
+										</tr>
 									<tr>
 											<td>Método de Medición</td>
 											<td><%=p.getIdmetMedicion().getMetMedicion() %></td>

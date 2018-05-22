@@ -124,17 +124,9 @@
 										class="form-control" type="text" name="nombreProyecto"
 										value="<%=p.getNomProy()%>" required>
 								</div>
+								
 								<div class="form-group">
-									<label>Propósito</label> <input class="form-control"
-										type="text" name="proposito" value="<%=p.getProposito()%>"
-										required>
-								</div>
-								<div class="form-group">
-									<label>Alcance</label> <input class="form-control" type="text"
-										name="alcance" value="<%=p.getAlcance()%>" required>
-								</div>
-								<div class="form-group">
-									<label>Año</label> <select class="form-control"
+									<label>Año de realización del proyecto</label> <select class="form-control"
 										style="width: 80px" name="anio">
 										<option value="2015" <%if(p.getAnioProy().equals("2015")){%>
 											selected <%  } %>>2015</option>
@@ -454,6 +446,15 @@
 							<!-- del menu 2 -->
 							<div id="menu3" class="tab-pane fade">
 								<h3>Tamaño Funcional</h3>
+								<div class="form-group">
+									<label>Propósito de la medición</label> <input class="form-control"
+										type="text" name="proposito" value="<%=p.getProposito()%>"
+										required>
+								</div>
+								<div class="form-group">
+									<label>Alcance de la medición</label> <input class="form-control" type="text"
+										name="alcance" value="<%=p.getAlcance()%>" required>
+								</div>
 								<div class="form-group">
 									<label>Método de Medición</label> <label></label> <select
 										class="form-control" name="IdmetMedicion">

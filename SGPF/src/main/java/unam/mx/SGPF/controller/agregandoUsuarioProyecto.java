@@ -32,7 +32,8 @@ public class agregandoUsuarioProyecto extends HttpServlet{
            ijpa.create(interUP);
            redireccion="gestionUsuariosProyectos";
         }catch(Exception e){
-           redireccion="e_gestionUsuariosProyectos.jsp";
+           redireccion="agregaUsuarioProyecto.jsp?error=1";
+           e.printStackTrace();
         }finally{
             response.sendRedirect(redireccion);
         }

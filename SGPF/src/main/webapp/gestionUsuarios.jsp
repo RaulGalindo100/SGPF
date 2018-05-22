@@ -52,6 +52,7 @@
 								<th scope="col">Nombre</th>
 								<th scope="col">Tipo usuario</th>
 								<th scope="col">Opciones</th>
+								<th scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -66,6 +67,71 @@
                     <%}else{if(usuario.getUsuTipo3()!=null){%>Consultor
                     <%}else{%> = Inactivo = <%}}}%>
                 </td>
+                <td>
+                	<%
+								//if (usuario.getActivo() == 1) { 
+							%>
+							<td>
+							
+							<div class="container">
+									<!-- Trigger the modal with a button -->
+									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										data-toggle="modal"
+										data-target="#myDesUF-<%=usuario.getIdusuario()%>">
+										Desactivar</button>
+									<!-- Modal -->
+									<div class="modal fade"
+										id="myDesUF-<%=usuario.getIdusuario()%>" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-body">
+													<p>El usuario será desactivado.</p>
+												</div>
+												<div class="modal-footer">
+													<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+								href="EliminaUF?idUF=<%=usuario.getIdusuario()%>">Aceptar</a>
+								<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							
+							</td>
+							<%
+							//	} else {
+							%>
+							<td>
+							<div class="container">
+									<!-- Trigger the modal with a button -->
+									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										data-toggle="modal"
+										data-target="#myModal-<%=usuario.getIdusuario()%>">
+										Activar</button>
+									<!-- Modal -->
+									<div class="modal fade"
+										id="myModal-<%=usuario.getIdusuario()%>" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-body">
+													<p>El usuario funcional será activado.</p>
+												</div>
+												<div class="modal-footer">
+													<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+								href="EliminaUF?idUF=<%=usuario.getIdusuario()%>">Aceptar</a>
+								<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							
+							</td>
+							<%
+							//	}
+							%>
                 <td>
                     <a href="modificarUsuario?idUsuario=<%=usuario.getIdusuario()%>">
                         <input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Modificar">

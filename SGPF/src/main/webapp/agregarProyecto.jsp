@@ -118,16 +118,9 @@
 									<label>Nombre del Proyecto</label> <input class="form-control"
 										type="text" name="nombreProyecto" required>
 								</div>
+								
 								<div class="form-group">
-									<label>Propósito</label> <input class="form-control"
-										type="text" name="proposito" required>
-								</div>
-								<div class="form-group">
-									<label>Alcance</label> <input class="form-control" type="text"
-										name="alcance" required>
-								</div>
-								<div class="form-group">
-									<label>Año</label> <select class="form-control"
+									<label>Año de realización del proyecto</label> <select class="form-control"
 										style="width: 80px" name="anio">
 										<option value="2015">2015</option>
 										<option value="2016">2016</option>
@@ -396,6 +389,14 @@
 							</div>
 							<div id="menu3" class="tab-pane fade">
 								<h3>Tamaño Funcional</h3>
+								<div class="form-group">
+									<label>Propósito</label> <input class="form-control"
+										type="text" name="proposito" required>
+								</div>
+								<div class="form-group">
+									<label>Alcance</label> <input class="form-control" type="text"
+										name="alcance" required>
+								</div>
 								<div class="form-group">
 									<label>Método de Medición</label>
 									<label></label> <select class="form-control"
