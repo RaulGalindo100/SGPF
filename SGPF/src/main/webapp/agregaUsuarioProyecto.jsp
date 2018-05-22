@@ -11,6 +11,8 @@
 <%
 	List<Usuario> ListaUsuario = (List<Usuario>) session.getAttribute("ListaUsuario");
 	List<Proyecto> ListaProyectos = (List<Proyecto>) session.getAttribute("ListaProyectos");
+	String result=request.getParameter("error");
+	
 %>
 <meta name="viewport"
 	content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
@@ -35,7 +37,9 @@
 
 					</ul>
 					<a href="gestionaUsuariosProyectos.jsp"> <input
-						class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Cancelar">
+						class="btn btn-outline-info .btn-sm text-white"
+						style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+						type="submit" value="Cancelar">
 					</a>
 				</div>
 			</nav>
@@ -45,6 +49,21 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2>Agregar Relación Usuario Proyecto</h2>
+
+				<%
+								if (result!=null && result.equals("1")) {
+							%>
+				<div class="alert alert-warning alert-dismissible fade show"
+					role="alert">
+					<strong>Ésta relación ya existe.</strong>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<%
+								}
+							%>
 			</div>
 		</div>
 		<div class="row">
@@ -74,11 +93,17 @@
 							%>
 						</select>
 					</div>
-					<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Gurardar">
+					<input class="btn btn-outline-info .btn-sm text-white"
+						style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+						type="submit" value="Gurardar">
 				</form>
 			</div>
 		</div>
 	</div>
+
+
+
+
 	<script src="js/jquery.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
