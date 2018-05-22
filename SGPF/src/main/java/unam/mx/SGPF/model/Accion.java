@@ -28,6 +28,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Accion.findByActivo", query = "SELECT a FROM Accion a WHERE a.activo = :activo")})
 public class Accion implements Serializable {
 
+    @OneToMany(mappedBy = "idaccion")
+    private List<FlujoAlterno> flujoAlternoList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -136,6 +139,15 @@ public class Accion implements Serializable {
     @Override
     public String toString() {
         return "unam.mx.SGPF.model.Accion[ idaccion=" + idaccion + " ]";
+    }
+
+    @XmlTransient
+    public List<FlujoAlterno> getFlujoAlternoList() {
+        return flujoAlternoList;
+    }
+
+    public void setFlujoAlternoList(List<FlujoAlterno> flujoAlternoList) {
+        this.flujoAlternoList = flujoAlternoList;
     }
 
 }

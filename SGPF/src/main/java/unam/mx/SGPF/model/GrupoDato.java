@@ -30,6 +30,11 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "GrupoDato.findByNomGD", query = "SELECT g FROM GrupoDato g WHERE g.nomGD = :nomGD")})
 public class GrupoDato implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGrupoDato")
+    private List<SubprocesoGrupoDato> subprocesoGrupoDatoList;
+    @OneToMany(mappedBy = "idgrupoDato")
+    private List<FlujoAlterno> flujoAlternoList;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -131,6 +136,24 @@ public class GrupoDato implements Serializable {
     @Override
     public String toString() {
         return "unam.mx.SGPF.model.GrupoDato[ idgrupoDato=" + idgrupoDato + " ]";
+    }
+
+    @XmlTransient
+    public List<SubprocesoGrupoDato> getSubprocesoGrupoDatoList() {
+        return subprocesoGrupoDatoList;
+    }
+
+    public void setSubprocesoGrupoDatoList(List<SubprocesoGrupoDato> subprocesoGrupoDatoList) {
+        this.subprocesoGrupoDatoList = subprocesoGrupoDatoList;
+    }
+
+    @XmlTransient
+    public List<FlujoAlterno> getFlujoAlternoList() {
+        return flujoAlternoList;
+    }
+
+    public void setFlujoAlternoList(List<FlujoAlterno> flujoAlternoList) {
+        this.flujoAlternoList = flujoAlternoList;
     }
 
 }

@@ -39,7 +39,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "ProcesoFuncional.findByTamPF", query = "SELECT p FROM ProcesoFuncional p WHERE p.tamPF = :tamPF")})
 public class ProcesoFuncional implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -60,6 +59,9 @@ public class ProcesoFuncional implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private short activo;
+    @OneToMany(mappedBy = "idprocesoFuncional")
+    private List<FlujoAlterno> flujoAlternoList;
+    private static final long serialVersionUID = 1L;
     @JoinColumn(name = "idproyecto", referencedColumnName = "idproyecto", nullable = false)
     @ManyToOne(optional = false)
     private Proyecto idproyecto;
@@ -170,6 +172,15 @@ public class ProcesoFuncional implements Serializable {
     @Override
     public String toString() {
         return "unam.mx.SGPF.model.ProcesoFuncional[ idprocesoFuncional=" + idprocesoFuncional + " ]";
+    }
+
+    @XmlTransient
+    public List<FlujoAlterno> getFlujoAlternoList() {
+        return flujoAlternoList;
+    }
+
+    public void setFlujoAlternoList(List<FlujoAlterno> flujoAlternoList) {
+        this.flujoAlternoList = flujoAlternoList;
     }
 
 }

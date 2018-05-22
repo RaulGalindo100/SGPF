@@ -177,6 +177,17 @@ public class Proyecto implements Serializable {
     @ManyToOne(optional = false)
     private SisOpe idsisOpe;
 
+    @Column(precision = 9, scale = 2)
+    private BigDecimal estimacionCosto;
+    @Column(precision = 9, scale = 2)
+    private BigDecimal estimacionEsfuerzo;
+    @Column(precision = 9, scale = 2)
+    private BigDecimal estimacionDuracion;
+    @JoinColumn(name = "idescalaEstimacionDuracion", referencedColumnName = "idescala")
+    @ManyToOne
+    private Escala idescalaEstimacionDuracion;
+
+
     public Proyecto() {
     }
 
@@ -589,6 +600,38 @@ public class Proyecto implements Serializable {
 
     public void setIdsisOpe(SisOpe idsisOpe) {
         this.idsisOpe = idsisOpe;
+    }
+
+    public BigDecimal getEstimacionCosto() {
+        return estimacionCosto;
+    }
+
+    public void setEstimacionCosto(BigDecimal estimacionCosto) {
+        this.estimacionCosto = estimacionCosto;
+    }
+
+    public BigDecimal getEstimacionEsfuerzo() {
+        return estimacionEsfuerzo;
+    }
+
+    public void setEstimacionEsfuerzo(BigDecimal estimacionEsfuerzo) {
+        this.estimacionEsfuerzo = estimacionEsfuerzo;
+    }
+
+    public BigDecimal getEstimacionDuracion() {
+        return estimacionDuracion;
+    }
+
+    public void setEstimacionDuracion(BigDecimal estimacionDuracion) {
+        this.estimacionDuracion = estimacionDuracion;
+    }
+
+    public Escala getIdescalaEstimacionDuracion() {
+        return idescalaEstimacionDuracion;
+    }
+
+    public void setIdescalaEstimacionDuracion(Escala idescalaEstimacionDuracion) {
+        this.idescalaEstimacionDuracion = idescalaEstimacionDuracion;
     }
 
 }
