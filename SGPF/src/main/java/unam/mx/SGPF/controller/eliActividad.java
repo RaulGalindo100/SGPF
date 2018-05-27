@@ -1,6 +1,7 @@
 package unam.mx.SGPF.controller;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +20,15 @@ public class eliActividad extends HttpServlet{
         int idSubProceso = Integer.parseInt(request.getParameter("idSubProceso"));
         
         SubProcesoJpaController SubProcesoJPA = new SubProcesoJpaController(EntityProvider.provider());
+        SubProceso aux = SubProcesoJPA.findSubProceso(idSubProceso);
+        List<SubProceso> listaSPEliminar = SubProcesoJPA.findSPByActividadyPF(aux.getActividad(),aux.getIdprocesoFuncional());
         try{
             SubProcesoJPA.destroy(idSubProceso);
+            if(listaSPEliminar!=null && !listaSPEliminar.isEmpty())
+            listaSPEliminar.forEach((action) -> {
+                //Eliminar Flujos Alternos
+                try{SubProcesoJPA.destroy(action.getIdsubProceso());}catch(Exception J){}
+            });
         }catch(Exception e){
             e.printStackTrace();
         }finally{

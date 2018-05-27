@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "SubProceso.findSPByIdProcesoFuncional", query = "SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idPF")
     , @NamedQuery(name = "SubProceso.findSPByIDPForder",query="select s from SubProceso s where s.idprocesoFuncional=:idPF group by s.idprocesoFuncional,s.indiceActividad,s.indice,s.idusuarioFuncional,s.actividad,s.idaccion,s.idgrupoDato,s.descripcion,s.idsubProceso order by s.idprocesoFuncional, s.indiceActividad,s.indice")
     , @NamedQuery(name = "SubProceso.findSPByIDPForderFlujoAl",query="select s from SubProceso s where s.idprocesoFuncional=:idPF group by s.idprocesoFuncional,s.indiceActividad,s.indice,s.idusuarioFuncional,s.actividad,s.idaccion,s.idgrupoDato,s.descripcion,s.idsubProceso order by s.idprocesoFuncional, s.indiceActividad,s.indice")
+    , @NamedQuery(name = "SubProceso.findSPByActividadMayorAIndice",query="select s from SubProceso s where s.idprocesoFuncional=:idPF and s.actividad=:actividad and s.indice>:indice  group by s.idprocesoFuncional,s.indice order by s.idprocesoFuncional, s.indice")
     , @NamedQuery(name = "SubProceso.findSPByActividadyIdPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idprocesoFuncional AND s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findSPByActividad", query="SELECT s FROM SubProceso s where s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findByDescripcion", query = "SELECT s FROM SubProceso s WHERE s.descripcion = :descripcion")

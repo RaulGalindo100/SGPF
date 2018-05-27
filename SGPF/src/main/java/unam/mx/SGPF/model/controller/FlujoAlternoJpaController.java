@@ -234,4 +234,5 @@ public class FlujoAlternoJpaController implements Serializable {
         return (List<FlujoAlterno>) q.getResultList();
     }
 
+
 }
