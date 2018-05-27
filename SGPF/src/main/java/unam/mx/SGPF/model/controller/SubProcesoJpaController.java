@@ -1,9 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package unam.mx.SGPF.model.controller;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
@@ -11,10 +13,20 @@ import javax.persistence.criteria.Root;
 import unam.mx.SGPF.model.Accion;
 import unam.mx.SGPF.model.GrupoDato;
 import unam.mx.SGPF.model.ProcesoFuncional;
-import unam.mx.SGPF.model.SubProceso;
 import unam.mx.SGPF.model.UsuarioFuncional;
+import unam.mx.SGPF.model.SubprocesoGrupoDato;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import unam.mx.SGPF.model.SubProceso;
+import unam.mx.SGPF.model.controller.exceptions.IllegalOrphanException;
 import unam.mx.SGPF.model.controller.exceptions.NonexistentEntityException;
 
+/**
+ *
+ * @author jlope
+ */
 public class SubProcesoJpaController implements Serializable {
 
     public SubProcesoJpaController(EntityManagerFactory emf) {
@@ -27,6 +39,9 @@ public class SubProcesoJpaController implements Serializable {
     }
 
     public void create(SubProceso subProceso) {
+        if (subProceso.getSubprocesoGrupoDatoList() == null) {
+            subProceso.setSubprocesoGrupoDatoList(new ArrayList<SubprocesoGrupoDato>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -51,6 +66,12 @@ public class SubProcesoJpaController implements Serializable {
                 idusuarioFuncional = em.getReference(idusuarioFuncional.getClass(), idusuarioFuncional.getIdusuarioFuncional());
                 subProceso.setIdusuarioFuncional(idusuarioFuncional);
             }
+            List<SubprocesoGrupoDato> attachedSubprocesoGrupoDatoList = new ArrayList<SubprocesoGrupoDato>();
+            for (SubprocesoGrupoDato subprocesoGrupoDatoListSubprocesoGrupoDatoToAttach : subProceso.getSubprocesoGrupoDatoList()) {
+                subprocesoGrupoDatoListSubprocesoGrupoDatoToAttach = em.getReference(subprocesoGrupoDatoListSubprocesoGrupoDatoToAttach.getClass(), subprocesoGrupoDatoListSubprocesoGrupoDatoToAttach.getIdsubprocesoGrupoDato());
+                attachedSubprocesoGrupoDatoList.add(subprocesoGrupoDatoListSubprocesoGrupoDatoToAttach);
+            }
+            subProceso.setSubprocesoGrupoDatoList(attachedSubprocesoGrupoDatoList);
             em.persist(subProceso);
             if (idaccion != null) {
                 idaccion.getSubProcesoList().add(subProceso);
@@ -68,6 +89,15 @@ public class SubProcesoJpaController implements Serializable {
                 idusuarioFuncional.getSubProcesoList().add(subProceso);
                 idusuarioFuncional = em.merge(idusuarioFuncional);
             }
+            for (SubprocesoGrupoDato subprocesoGrupoDatoListSubprocesoGrupoDato : subProceso.getSubprocesoGrupoDatoList()) {
+                SubProceso oldIdSubProcesoOfSubprocesoGrupoDatoListSubprocesoGrupoDato = subprocesoGrupoDatoListSubprocesoGrupoDato.getIdSubProceso();
+                subprocesoGrupoDatoListSubprocesoGrupoDato.setIdSubProceso(subProceso);
+                subprocesoGrupoDatoListSubprocesoGrupoDato = em.merge(subprocesoGrupoDatoListSubprocesoGrupoDato);
+                if (oldIdSubProcesoOfSubprocesoGrupoDatoListSubprocesoGrupoDato != null) {
+                    oldIdSubProcesoOfSubprocesoGrupoDatoListSubprocesoGrupoDato.getSubprocesoGrupoDatoList().remove(subprocesoGrupoDatoListSubprocesoGrupoDato);
+                    oldIdSubProcesoOfSubprocesoGrupoDatoListSubprocesoGrupoDato = em.merge(oldIdSubProcesoOfSubprocesoGrupoDatoListSubprocesoGrupoDato);
+                }
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -76,7 +106,7 @@ public class SubProcesoJpaController implements Serializable {
         }
     }
 
-    public void edit(SubProceso subProceso) throws NonexistentEntityException, Exception {
+    public void edit(SubProceso subProceso) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -90,6 +120,20 @@ public class SubProcesoJpaController implements Serializable {
             ProcesoFuncional idprocesoFuncionalNew = subProceso.getIdprocesoFuncional();
             UsuarioFuncional idusuarioFuncionalOld = persistentSubProceso.getIdusuarioFuncional();
             UsuarioFuncional idusuarioFuncionalNew = subProceso.getIdusuarioFuncional();
+            List<SubprocesoGrupoDato> subprocesoGrupoDatoListOld = persistentSubProceso.getSubprocesoGrupoDatoList();
+            List<SubprocesoGrupoDato> subprocesoGrupoDatoListNew = subProceso.getSubprocesoGrupoDatoList();
+            List<String> illegalOrphanMessages = null;
+            for (SubprocesoGrupoDato subprocesoGrupoDatoListOldSubprocesoGrupoDato : subprocesoGrupoDatoListOld) {
+                if (!subprocesoGrupoDatoListNew.contains(subprocesoGrupoDatoListOldSubprocesoGrupoDato)) {
+                    if (illegalOrphanMessages == null) {
+                        illegalOrphanMessages = new ArrayList<String>();
+                    }
+                    illegalOrphanMessages.add("You must retain SubprocesoGrupoDato " + subprocesoGrupoDatoListOldSubprocesoGrupoDato + " since its idSubProceso field is not nullable.");
+                }
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
+            }
             if (idaccionNew != null) {
                 idaccionNew = em.getReference(idaccionNew.getClass(), idaccionNew.getIdaccion());
                 subProceso.setIdaccion(idaccionNew);
@@ -106,6 +150,13 @@ public class SubProcesoJpaController implements Serializable {
                 idusuarioFuncionalNew = em.getReference(idusuarioFuncionalNew.getClass(), idusuarioFuncionalNew.getIdusuarioFuncional());
                 subProceso.setIdusuarioFuncional(idusuarioFuncionalNew);
             }
+            List<SubprocesoGrupoDato> attachedSubprocesoGrupoDatoListNew = new ArrayList<SubprocesoGrupoDato>();
+            for (SubprocesoGrupoDato subprocesoGrupoDatoListNewSubprocesoGrupoDatoToAttach : subprocesoGrupoDatoListNew) {
+                subprocesoGrupoDatoListNewSubprocesoGrupoDatoToAttach = em.getReference(subprocesoGrupoDatoListNewSubprocesoGrupoDatoToAttach.getClass(), subprocesoGrupoDatoListNewSubprocesoGrupoDatoToAttach.getIdsubprocesoGrupoDato());
+                attachedSubprocesoGrupoDatoListNew.add(subprocesoGrupoDatoListNewSubprocesoGrupoDatoToAttach);
+            }
+            subprocesoGrupoDatoListNew = attachedSubprocesoGrupoDatoListNew;
+            subProceso.setSubprocesoGrupoDatoList(subprocesoGrupoDatoListNew);
             subProceso = em.merge(subProceso);
             if (idaccionOld != null && !idaccionOld.equals(idaccionNew)) {
                 idaccionOld.getSubProcesoList().remove(subProceso);
@@ -139,6 +190,17 @@ public class SubProcesoJpaController implements Serializable {
                 idusuarioFuncionalNew.getSubProcesoList().add(subProceso);
                 idusuarioFuncionalNew = em.merge(idusuarioFuncionalNew);
             }
+            for (SubprocesoGrupoDato subprocesoGrupoDatoListNewSubprocesoGrupoDato : subprocesoGrupoDatoListNew) {
+                if (!subprocesoGrupoDatoListOld.contains(subprocesoGrupoDatoListNewSubprocesoGrupoDato)) {
+                    SubProceso oldIdSubProcesoOfSubprocesoGrupoDatoListNewSubprocesoGrupoDato = subprocesoGrupoDatoListNewSubprocesoGrupoDato.getIdSubProceso();
+                    subprocesoGrupoDatoListNewSubprocesoGrupoDato.setIdSubProceso(subProceso);
+                    subprocesoGrupoDatoListNewSubprocesoGrupoDato = em.merge(subprocesoGrupoDatoListNewSubprocesoGrupoDato);
+                    if (oldIdSubProcesoOfSubprocesoGrupoDatoListNewSubprocesoGrupoDato != null && !oldIdSubProcesoOfSubprocesoGrupoDatoListNewSubprocesoGrupoDato.equals(subProceso)) {
+                        oldIdSubProcesoOfSubprocesoGrupoDatoListNewSubprocesoGrupoDato.getSubprocesoGrupoDatoList().remove(subprocesoGrupoDatoListNewSubprocesoGrupoDato);
+                        oldIdSubProcesoOfSubprocesoGrupoDatoListNewSubprocesoGrupoDato = em.merge(oldIdSubProcesoOfSubprocesoGrupoDatoListNewSubprocesoGrupoDato);
+                    }
+                }
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -156,7 +218,7 @@ public class SubProcesoJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws NonexistentEntityException {
+    public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -167,6 +229,17 @@ public class SubProcesoJpaController implements Serializable {
                 subProceso.getIdsubProceso();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The subProceso with id " + id + " no longer exists.", enfe);
+            }
+            List<String> illegalOrphanMessages = null;
+            List<SubprocesoGrupoDato> subprocesoGrupoDatoListOrphanCheck = subProceso.getSubprocesoGrupoDatoList();
+            for (SubprocesoGrupoDato subprocesoGrupoDatoListOrphanCheckSubprocesoGrupoDato : subprocesoGrupoDatoListOrphanCheck) {
+                if (illegalOrphanMessages == null) {
+                    illegalOrphanMessages = new ArrayList<String>();
+                }
+                illegalOrphanMessages.add("This SubProceso (" + subProceso + ") cannot be destroyed since the SubprocesoGrupoDato " + subprocesoGrupoDatoListOrphanCheckSubprocesoGrupoDato + " in its subprocesoGrupoDatoList field has a non-nullable idSubProceso field.");
+            }
+            if (illegalOrphanMessages != null) {
+                throw new IllegalOrphanException(illegalOrphanMessages);
             }
             Accion idaccion = subProceso.getIdaccion();
             if (idaccion != null) {
@@ -216,6 +289,28 @@ public class SubProcesoJpaController implements Serializable {
                 q.setFirstResult(firstResult);
             }
             return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public SubProceso findSubProceso(Integer id) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.find(SubProceso.class, id);
+        } finally {
+            em.close();
+        }
+    }
+
+    public int getSubProcesoCount() {
+        EntityManager em = getEntityManager();
+        try {
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            Root<SubProceso> rt = cq.from(SubProceso.class);
+            cq.select(em.getCriteriaBuilder().count(rt));
+            Query q = em.createQuery(cq);
+            return ((Long) q.getSingleResult()).intValue();
         } finally {
             em.close();
         }
@@ -281,39 +376,14 @@ public class SubProcesoJpaController implements Serializable {
     	return q.getResultList();
     }
     
-
-    public SubProceso findSubProceso(Integer id) {
-        EntityManager em = getEntityManager();
-        try {
-            return em.find(SubProceso.class, id);
-        } finally {
-            em.close();
-        }
-    }
-
-    public int getSubProcesoCount() {
-        EntityManager em = getEntityManager();
-        try {
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<SubProceso> rt = cq.from(SubProceso.class);
-            cq.select(em.getCriteriaBuilder().count(rt));
-            Query q = em.createQuery(cq);
-            return ((Long) q.getSingleResult()).intValue();
-        } finally {
-            em.close();
-        }
-        
-        
-    }
-    
-    public List<SubProceso> findSPByIdProcesoFuncionalR(Integer idPF){
+     public List<SubProceso> findSPByIdProcesoFuncionalR(Integer idPF){
    	EntityManager em = getEntityManager();
    	ProcesoFuncional pf = new ProcesoFuncional(idPF);
    	Query q = em.createNamedQuery("SubProceso.findSPByIdProcesoFuncional")
    	.setParameter("idPF", pf);
    	return q.getResultList();
    }    
-    public List<SubProceso> findAddUp(Integer idPF,String Actividad, Integer indice){
+     public List<SubProceso> findAddUp(Integer idPF,String Actividad, Integer indice){
    	EntityManager em = getEntityManager();
    	ProcesoFuncional pf = new ProcesoFuncional(idPF);
    	Query q = em.createNamedQuery("SubProceso.findAddUp")

@@ -59,8 +59,8 @@ public class ProcesoFuncional implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private short activo;
-    @OneToMany(mappedBy = "idprocesoFuncional")
-    private List<FlujoAlterno> flujoAlternoList;
+//        @OneToMany(mappedBy = "idprocesoFuncional")
+//        private List<FlujoAlterno> flujoAlternoList;
     private static final long serialVersionUID = 1L;
     @JoinColumn(name = "idproyecto", referencedColumnName = "idproyecto", nullable = false)
     @ManyToOne(optional = false)
@@ -174,13 +174,13 @@ public class ProcesoFuncional implements Serializable {
         return "unam.mx.SGPF.model.ProcesoFuncional[ idprocesoFuncional=" + idprocesoFuncional + " ]";
     }
 
-    @XmlTransient
-    public List<FlujoAlterno> getFlujoAlternoList() {
-        return flujoAlternoList;
-    }
-
-    public void setFlujoAlternoList(List<FlujoAlterno> flujoAlternoList) {
-        this.flujoAlternoList = flujoAlternoList;
-    }
+//    @XmlTransient
+//    public List<FlujoAlterno> getFlujoAlternoList() {
+//        return flujoAlternoList;
+//    }
+//
+//    public void setFlujoAlternoList(List<FlujoAlterno> flujoAlternoList) {
+//        this.flujoAlternoList = flujoAlternoList;
+//    }
 
 }

@@ -1,6 +1,7 @@
 package unam.mx.SGPF.controller;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,11 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import unam.mx.SGPF.model.Accion;
 import unam.mx.SGPF.model.EntityProvider;
+import unam.mx.SGPF.model.FlujoAlterno;
 import unam.mx.SGPF.model.GrupoDato;
 import unam.mx.SGPF.model.ProcesoFuncional;
 import unam.mx.SGPF.model.SubProceso;
 import unam.mx.SGPF.model.UsuarioFuncional;
 import unam.mx.SGPF.model.controller.AccionJpaController;
+import unam.mx.SGPF.model.controller.FlujoAlternoJpaController;
 import unam.mx.SGPF.model.controller.GrupoDatoJpaController;
 import unam.mx.SGPF.model.controller.ProcesoFuncionalJpaController;
 import unam.mx.SGPF.model.controller.SubProcesoJpaController;
@@ -35,7 +38,6 @@ public class agregandoSubProceso extends HttpServlet {
         int idUsuarioFuncional = Integer.parseInt(request.getParameter("usuarioFuncional"));
         int idAccion = Integer.parseInt(request.getParameter("accion"));
         int idGrupoDatos = Integer.parseInt(request.getParameter("grupoDatos"));
-        String flujoAl_ = request.getParameter("flujoAl");
         SubProcesoJpaController subPjpa = new SubProcesoJpaController(EntityProvider.provider());
         ProcesoFuncional PF = (ProcesoFuncional) session.getAttribute("pfDetalle");
         SubProceso auxSP = subPjpa.findSubProceso(idSP);
@@ -48,11 +50,6 @@ public class agregandoSubProceso extends HttpServlet {
 
         List<SubProceso> subProceso = subPjpa.findSPByActividadyPF(NombreActividad, PF);
         aux.setIndice(subProceso.size() + 1);
-        short b = 0;
-        if (flujoAl_ != null) {
-            b = 1;
-        }
-        aux.setFlujoAl(b);
 
         UsuarioFuncionalJpaController usuarioFuncional = new UsuarioFuncionalJpaController(EntityProvider.provider());
         UsuarioFuncional MiUsuarioFuncional = usuarioFuncional.findUsuarioFuncional(idUsuarioFuncional);
@@ -106,8 +103,14 @@ public class agregandoSubProceso extends HttpServlet {
         SubProcesoJpaController spjpa = new SubProcesoJpaController(EntityProvider.provider());
         List<SubProceso> sp = spjpa.findSPByIDPForder(PF.getIdprocesoFuncional());
         session.setAttribute("subProc", sp);
+        FlujoAlternoJpaController fajpa = new FlujoAlternoJpaController(EntityProvider.provider());
+        List<FlujoAlterno> flujoAl = Collections.emptyList();
+        for(SubProceso inter : sp){
+            List<FlujoAlterno> flujoAlterno ;
+            flujoAlterno = fajpa.findByIdSubProceso(inter);
+            flujoAl.addAll(flujoAl);
+        }
         
-        List<SubProceso> flujoAl = spjpa.findSPByIDPForderFlujoAl(PF.getIdprocesoFuncional());
         int flujoAlternos = 0;
         if(!flujoAl.isEmpty())
             flujoAlternos = 1;

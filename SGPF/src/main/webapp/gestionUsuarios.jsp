@@ -68,9 +68,8 @@
                     <%}else{%> = Inactivo = <%}}}%>
                 </td>
                 <td>
-                	<%
-								//if (usuario.getActivo() == 1) { 
-							%>
+						<% if (usuario.getActivo() == 1) { %>
+
 							<td>
 							
 							<div class="container">
@@ -90,7 +89,7 @@
 												</div>
 												<div class="modal-footer">
 													<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
-								href="EliminaUF?idUF=<%=usuario.getIdusuario()%>">Aceptar</a>
+								href="modificaUsuario?idUsuario=<%=usuario.getIdusuario()%>">Aceptar</a>
 								<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
 												</div>
 											</div>
@@ -100,7 +99,7 @@
 							
 							</td>
 							<%
-							//	} else {
+								} else {
 							%>
 							<td>
 							<div class="container">
@@ -120,7 +119,7 @@
 												</div>
 												<div class="modal-footer">
 													<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
-								href="EliminaUF?idUF=<%=usuario.getIdusuario()%>">Aceptar</a>
+								href="modificaUsuario?idUsuario=<%=usuario.getIdusuario()%>">Aceptar</a>
 								<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
 												</div>
 											</div>
@@ -130,7 +129,7 @@
 							
 							</td>
 							<%
-							//	}
+								}
 							%>
                 <td>
                     <a href="modificarUsuario?idUsuario=<%=usuario.getIdusuario()%>">

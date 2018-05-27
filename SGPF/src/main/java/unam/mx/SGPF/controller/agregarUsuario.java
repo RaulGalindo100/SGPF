@@ -33,6 +33,8 @@ public class agregarUsuario extends HttpServlet{
                 usuario.setUsuTipo3(aux);
                 break;
         }
+        short a = 1;
+        usuario.setActivo(a);
         try{
         ujpa.create(usuario);
         }catch(Exception e){

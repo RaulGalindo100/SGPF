@@ -32,12 +32,7 @@ public class modificandoActividad extends HttpServlet {
         int idUsuarioFuncional = Integer.parseInt(request.getParameter("usuarioFuncional"));
         int idAccion = Integer.parseInt(request.getParameter("accion"));
         int idGrupoDatos = Integer.parseInt(request.getParameter("grupoDatos"));
-        String flujoAl_ = request.getParameter("flujoAl");
-        
-        short b = 0;
-        if ("1".equals(flujoAl_))
-            b=1;
-        subProcesoMod.setFlujoAl(b);
+
         subProcesoMod.setDescripcion(descripcionActividad);
         
         UsuarioFuncionalJpaController usuarioFuncional = new UsuarioFuncionalJpaController(EntityProvider.provider());

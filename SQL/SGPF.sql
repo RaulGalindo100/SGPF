@@ -577,13 +577,13 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`flujoAlterno` (
   `idusuarioFuncional` INT(11) NULL,
   `idaccion` INT(11) NULL,
   `idgrupoDato` INT(11) NULL,
-  `idprocesoFuncional` INT(11) NULL,
+  `idsubProceso` INT(11) NULL,
   `actividad` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idflujoAlterno`),
   INDEX `FA_idusuarioFuncional_fk_idx` (`idusuarioFuncional` ASC),
   INDEX `FA_idaccion_fk_idx` (`idaccion` ASC),
   INDEX `FA_idgrupoDato_fk_idx` (`idgrupoDato` ASC),
-  INDEX `FA_idprocesoFuncional_fk_idx` (`idprocesoFuncional` ASC),
+  INDEX `FA_idsubProceso_fk_idx` (`idsubProceso` ASC),
   CONSTRAINT `FA_idusuarioFuncional_fk`
     FOREIGN KEY (`idusuarioFuncional`)
     REFERENCES `SGPF`.`usuariofuncional` (`idusuarioFuncional`)
@@ -599,9 +599,9 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`flujoAlterno` (
     REFERENCES `SGPF`.`grupodato` (`idgrupoDato`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `FA_idprocesoFuncional_fk`
-    FOREIGN KEY (`idprocesoFuncional`)
-    REFERENCES `SGPF`.`procesofuncional` (`idprocesoFuncional`)
+  CONSTRAINT `FA_idsubProceso_fk`
+    FOREIGN KEY (`idsubProceso`)
+    REFERENCES `SGPF`.`subProceso` (`idsubProceso`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

@@ -52,8 +52,6 @@ public class agregandoActividad extends HttpServlet {
             aux.setIndiceActividad(1);
         else
             aux.setIndiceActividad(subProcesoIndActiv.size()+1);
-        short b = 0;
-        aux.setFlujoAl(b);
         
         UsuarioFuncionalJpaController usuarioFuncional = new UsuarioFuncionalJpaController(EntityProvider.provider());
         UsuarioFuncional MiUsuarioFuncional = usuarioFuncional.findUsuarioFuncional(idUsuarioFuncional);

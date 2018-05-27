@@ -1,3 +1,7 @@
+<%@page import="unam.mx.SGPF.model.controller.SubProcesoJpaController"%>
+<%@page import="unam.mx.SGPF.model.EntityProvider"%>
+<%@page import="unam.mx.SGPF.model.controller.ProcesoFuncionalJpaController"%>
+<%@page import="unam.mx.SGPF.model.FlujoAlterno"%>
 <%@page import="unam.mx.SGPF.model.Proyecto"%>
 <%@page import="unam.mx.SGPF.model.ProcesoFuncional"%>
 <%@page import="unam.mx.SGPF.model.UsuarioFuncional"%>
@@ -31,6 +35,7 @@
             List<SubProceso> spList = (List<SubProceso>) session.getAttribute("subProc");
             int tipoUsuario = Integer.parseInt(session.getAttribute("tipoUsuario").toString());
             int flujoAlternos = Integer.parseInt(session.getAttribute("flujoAlternos").toString());
+            List<FlujoAlterno> listaFlujoAlterno = (List<FlujoAlterno>) session.getAttribute("ListaflujoAlternos");
             Proyecto p = (Proyecto) session.getAttribute("proy");
             int contador = 0;
             int contador2 = 0;
@@ -312,6 +317,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Actividad</th>
                                 <th scope="col">Descripción</th>
+                                <th scope="col">Indice de SP</th>
                                 <th scope="col">Usuario funcional</th>
                                 <th scope="col">Acción</th>
                                 <th scope="col">Grupo de datos</th>
@@ -320,26 +326,24 @@
                         </thead>
                         <tbody>
                             <%
-                                for (SubProceso inter : spList) {
-                                    UsuarioFuncional uf = new UsuarioFuncional();
-                                    Accion acc = new Accion();
-                                    GrupoDato gd = new GrupoDato();
-                                    uf = inter.getIdusuarioFuncional();
-                                    acc = inter.getIdaccion();
-                                    gd = inter.getIdgrupoDato();
-                                    if (inter.getFlujoAl() == 1) {
-                                        contador2++;
+                                SubProcesoJpaController spjpa = new SubProcesoJpaController(EntityProvider.provider());
+                                for (FlujoAlterno inter : listaFlujoAlterno) {
+                                    SubProceso pf = spjpa.findSubProceso(inter.getIdsubProceso().getIdsubProceso());
+                                    UsuarioFuncional uf = inter.getIdusuarioFuncional();
+                                    Accion acc = inter.getIdaccion();
+                                    GrupoDato gd = inter.getIdgrupoDato();
+                                    contador2++;
                             %>
                             <tr>
                                 <td><%=contador2%></td>
                                 <td><%=inter.getActividad()%></td>
                                 <td><%=inter.getDescripcion()%></td>
+                                <td><%=pf.getIndice() %></td>
                                 <td><%=uf.getNomUF()%></td>
                                 <td><%=acc.getNomAccion()%></td>
                                 <td><%=gd.getNomGD()%></td>
                             </tr>
-                            <% }
-                                } %>
+                            <% } %>
                     </table>
                 </div>
             </section>

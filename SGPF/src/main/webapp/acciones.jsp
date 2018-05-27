@@ -52,9 +52,10 @@
 					<thead>
 						<tr>
 							<th scope="col">Nombre de la acción</th>
-							<th scope="col">Movimiento de datos</th>
-							<th scope="col">Descripción</th>
-							<th scope="col">Activo</th>
+                                                        <th scope="col">Descripción</th>
+							<th scope="col">Movimiento de datos relacionado</th>
+							
+							<th scope="col">Activa</th>
 							<th></th>
 							<th></th>
 						</tr>
@@ -65,8 +66,9 @@
 						%>
 						<tr>
 							<td><%=accion.getNomAccion()%></td>
+                                                        <td><%=accion.getDescripcion()%></td>
 							<td><%=accion.getMovDatos()%></td>
-							<td><%=accion.getDescripcion()%></td>
+							
 							<td>
 								<%
 									if (accion.getActivo() == 1) {

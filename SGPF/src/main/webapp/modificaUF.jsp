@@ -55,6 +55,17 @@
                             <textarea class="form-control" name="descripcionUF" rows="3" required><%=uf.getDescripcion()%></textarea>
 
                         </div>
+                            <div class="form-group">
+                                                <% if(uf.getUsuarioSistema()==1){%>
+                                                <input class="form-check-input" type="checkbox" name="usuarioSistema"
+                                                       checked value="true"> <label class="form-check-label">
+                                                    Otro Sistema UF</label>
+                                                <%} else {%>
+                                                <input class="form-check-input" type="checkbox" name="usuarioSistema"
+							value="true"> <label class="form-check-label">
+                                                    Otro Sistema UF</label>
+                                                <% } %>
+					</div>
                             <div class="container">
                             <!-- Trigger the modal with a button -->
                             <button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"

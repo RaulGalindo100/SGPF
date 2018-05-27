@@ -163,23 +163,7 @@
 							%>
 						</select>
 					</div>
-					<div class="form-group">
-
-						<%
-							if (subProcesoMod.getFlujoAl().equals(1)) {
-						%>
-						<input class="form-check-input" type="checkbox" name="flujoAl"
-							value="true" checked>
-						<%
-							} else {
-						%>
-						<input class="form-check-input" type="checkbox" name="flujoAl"
-							value="true">
-						<%
-							}
-						%>
-						<label class="form-check-label">Flujo alterno</label>
-					</div>
+					
 					<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Guardar" />
 				</form>
 			</div>

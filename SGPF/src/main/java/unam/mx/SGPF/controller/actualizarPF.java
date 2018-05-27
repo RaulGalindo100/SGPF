@@ -6,6 +6,7 @@
 package unam.mx.SGPF.controller;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import unam.mx.SGPF.model.EntityProvider;
 import unam.mx.SGPF.model.ProcesoFuncional;
+import unam.mx.SGPF.model.Proyecto;
 import unam.mx.SGPF.model.controller.ProcesoFuncionalJpaController;
 
 public class actualizarPF extends HttpServlet {
@@ -39,6 +41,8 @@ public class actualizarPF extends HttpServlet {
         pf.setNomPF(nombrePF);
         pf.setDescripcion(descripcionPF);
         pf.setEventoDes(eventoDes);
+        
+        
 
         try {
             pfjpa.edit(pf);
@@ -48,6 +52,9 @@ public class actualizarPF extends HttpServlet {
             redireccion = "modificaPF.jsp";
             return;
         } finally {
+            Proyecto p = (Proyecto) session.getAttribute("proy");
+    	//List<ProcesoFuncional> pf = pfjpa.findPFByIdProyectoActivo(idProyecto);
+            session.setAttribute("pfDetalle", pf);
             redireccion = "detallePF.jsp";
             response.sendRedirect(redireccion);
         }

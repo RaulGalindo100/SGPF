@@ -25,10 +25,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "SubProceso.findByIdsubProceso", query = "SELECT s FROM SubProceso s WHERE s.idsubProceso = :idsubProceso")
     , @NamedQuery(name = "SubProceso.findSPByActividadyPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :procesoFuncional and s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findSPByActividad_PF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :procesoFuncional and s.indice = :indice")
-    , @NamedQuery(name = "SubProces.findByFlujoAl", query = "SELECT s FROM SubProceso s WHERE s.flujoAl = :flujoAl")
     , @NamedQuery(name = "SubProceso.findSPByIdProcesoFuncional", query = "SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idPF")
-    , @NamedQuery(name = "SubProceso.findSPByIDPForder",query="select s from SubProceso s where s.idprocesoFuncional=:idPF group by s.idprocesoFuncional,s.indiceActividad,s.indice,s.idusuarioFuncional,s.actividad,s.idaccion,s.idgrupoDato,s.descripcion,s.idsubProceso,s.flujoAl order by s.idprocesoFuncional, s.indiceActividad,s.indice")
-    , @NamedQuery(name = "SubProceso.findSPByIDPForderFlujoAl",query="select s from SubProceso s where s.idprocesoFuncional=:idPF and s.flujoAl = :flujoAl group by s.idprocesoFuncional,s.indiceActividad,s.indice,s.idusuarioFuncional,s.actividad,s.idaccion,s.idgrupoDato,s.descripcion,s.idsubProceso,s.flujoAl order by s.idprocesoFuncional, s.indiceActividad,s.indice")
+    , @NamedQuery(name = "SubProceso.findSPByIDPForder",query="select s from SubProceso s where s.idprocesoFuncional=:idPF group by s.idprocesoFuncional,s.indiceActividad,s.indice,s.idusuarioFuncional,s.actividad,s.idaccion,s.idgrupoDato,s.descripcion,s.idsubProceso order by s.idprocesoFuncional, s.indiceActividad,s.indice")
+    , @NamedQuery(name = "SubProceso.findSPByIDPForderFlujoAl",query="select s from SubProceso s where s.idprocesoFuncional=:idPF group by s.idprocesoFuncional,s.indiceActividad,s.indice,s.idusuarioFuncional,s.actividad,s.idaccion,s.idgrupoDato,s.descripcion,s.idsubProceso order by s.idprocesoFuncional, s.indiceActividad,s.indice")
     , @NamedQuery(name = "SubProceso.findSPByActividadyIdPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idprocesoFuncional AND s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findSPByActividad", query="SELECT s FROM SubProceso s where s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findByDescripcion", query = "SELECT s FROM SubProceso s WHERE s.descripcion = :descripcion")
@@ -40,6 +39,7 @@ public class SubProceso implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSubProceso")
     private List<SubprocesoGrupoDato> subprocesoGrupoDatoList;
+//    private List<FlujoAlterno> flujoAlternoList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,7 +47,6 @@ public class SubProceso implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private Integer idsubProceso;
-    private Short flujoAl;
     @Column(length = 250)
     private String descripcion;
     @Basic(optional = false)
@@ -99,14 +98,6 @@ public class SubProceso implements Serializable {
 
     public void setIdsubProceso(Integer idsubProceso) {
         this.idsubProceso = idsubProceso;
-    }
-
-    public Short getFlujoAl() {
-        return flujoAl;
-    }
-
-    public void setFlujoAl(Short flujoAl) {
-        this.flujoAl = flujoAl;
     }
 
     public String getDescripcion() {
@@ -194,6 +185,11 @@ public class SubProceso implements Serializable {
     public List<SubprocesoGrupoDato> getSubprocesoGrupoDatoList() {
         return subprocesoGrupoDatoList;
     }
+    
+//    @XmlTransient
+//    public List<FlujoAlterno> getFlujoAlternoList() {
+//        return flujoAlternoList;
+//    }
 
     public void setSubprocesoGrupoDatoList(List<SubprocesoGrupoDato> subprocesoGrupoDatoList) {
         this.subprocesoGrupoDatoList = subprocesoGrupoDatoList;

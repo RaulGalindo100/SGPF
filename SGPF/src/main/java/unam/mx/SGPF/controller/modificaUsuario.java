@@ -57,4 +57,31 @@ public class modificaUsuario extends HttpServlet {
             response.sendRedirect("gestionUsuarios");
         }
     }
+    
+     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int IdUsuario = Integer.parseInt(request.getParameter("idUsuario").toString());
+        
+        UsuarioJpaController ujpa = new UsuarioJpaController(EntityProvider.provider());
+        Usuario usuario = ujpa.findUsuario(IdUsuario);
+        
+        short b = 0;
+        if(usuario.getActivo() == 1)
+            usuario.setActivo(b);
+        else{
+            b = 1;
+            usuario.setActivo(b);
+        }
+        
+            
+        try{
+            ujpa.edit(usuario);
+        }catch(Exception e){
+        
+        }finally{
+            HttpSession session = request.getSession(true);
+            response.sendRedirect("gestionUsuarios");
+        }
+    }
 }

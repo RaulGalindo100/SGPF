@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,10 +21,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author miguel
- */
 @Entity
 @Table(name = "flujoAlterno", catalog = "SGPF", schema = "")
 @XmlRootElement
@@ -30,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "FlujoAlterno.findAll", query = "SELECT f FROM FlujoAlterno f")
     , @NamedQuery(name = "FlujoAlterno.findByIdflujoAlterno", query = "SELECT f FROM FlujoAlterno f WHERE f.idflujoAlterno = :idflujoAlterno")
     , @NamedQuery(name = "FlujoAlterno.findByDescripcion", query = "SELECT f FROM FlujoAlterno f WHERE f.descripcion = :descripcion")
+    , @NamedQuery(name = "FlujoAlterno.findByIdSubProceso", query = "SELECT f FROM FlujoAlterno f WHERE f.idsubProceso = :idsubProceso group by f.actividad order by f.actividad")
     , @NamedQuery(name = "FlujoAlterno.findByActividad", query = "SELECT f FROM FlujoAlterno f WHERE f.actividad = :actividad")})
 public class FlujoAlterno implements Serializable {
 
@@ -51,9 +50,11 @@ public class FlujoAlterno implements Serializable {
     @JoinColumn(name = "idgrupoDato", referencedColumnName = "idgrupoDato")
     @ManyToOne
     private GrupoDato idgrupoDato;
-    @JoinColumn(name = "idprocesoFuncional", referencedColumnName = "idprocesoFuncional")
+//    @JoinColumn(name = "idprocesoFuncional", referencedColumnName = "idprocesoFuncional")
+//    @ManyToOne
+    @JoinColumn(name = "idsubProceso", referencedColumnName = "idsubProceso")
     @ManyToOne
-    private ProcesoFuncional idprocesoFuncional;
+    private SubProceso idsubProceso;
     @JoinColumn(name = "idusuarioFuncional", referencedColumnName = "idusuarioFuncional")
     @ManyToOne
     private UsuarioFuncional idusuarioFuncional;
@@ -111,12 +112,12 @@ public class FlujoAlterno implements Serializable {
         this.idgrupoDato = idgrupoDato;
     }
 
-    public ProcesoFuncional getIdprocesoFuncional() {
-        return idprocesoFuncional;
+    public SubProceso getIdsubProceso() {
+        return idsubProceso;
     }
 
-    public void setIdprocesoFuncional(ProcesoFuncional idprocesoFuncional) {
-        this.idprocesoFuncional = idprocesoFuncional;
+    public void setIdsubProceso(SubProceso idsubProceso) {
+        this.idsubProceso = idsubProceso;
     }
 
     public UsuarioFuncional getIdusuarioFuncional() {
@@ -126,6 +127,14 @@ public class FlujoAlterno implements Serializable {
     public void setIdusuarioFuncional(UsuarioFuncional idusuarioFuncional) {
         this.idusuarioFuncional = idusuarioFuncional;
     }
+    
+   // private EntityManagerFactory emf = null;
+    
+    //public EntityManager getEntityManager() {
+      //  return emf.createEntityManager();
+    //}
+    
+    
 
     @Override
     public int hashCode() {
@@ -146,6 +155,8 @@ public class FlujoAlterno implements Serializable {
         }
         return true;
     }
+    
+    
 
     @Override
     public String toString() {
