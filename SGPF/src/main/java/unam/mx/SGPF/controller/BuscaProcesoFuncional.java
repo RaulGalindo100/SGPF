@@ -72,6 +72,9 @@ public class BuscaProcesoFuncional extends HttpServlet{
         GrupoDatoJpaController gruposDatos = new GrupoDatoJpaController(EntityProvider.provider());
         List<GrupoDato> grupoDatos = (List<GrupoDato>) gruposDatos.findGrupoDatoEntities();
         session.setAttribute("grupoDatosCatalogo", grupoDatos);
+
+    	List<ProcesoFuncional> pf = pfjpa.findPFByIdProyectoActivo(pfDetalle.getIdproyecto().getIdproyecto());
+        session.setAttribute("procFunc", pf);
         
         response.sendRedirect("detallePF.jsp");
     }
@@ -120,7 +123,9 @@ public class BuscaProcesoFuncional extends HttpServlet{
         GrupoDatoJpaController gruposDatos = new GrupoDatoJpaController(EntityProvider.provider());
         List<GrupoDato> grupoDatos = (List<GrupoDato>) gruposDatos.findGrupoDatoEntities();
         session.setAttribute("grupoDatosCatalogo", grupoDatos);
-       
+        
+        List<ProcesoFuncional> pf = pfjpa.findPFByIdProyectoActivo(pfDetalle.getIdproyecto().getIdproyecto());
+        session.setAttribute("procFunc", pf);
         
         response.sendRedirect("detallePF.jsp");
     }

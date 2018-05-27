@@ -108,7 +108,11 @@ public class agregandoSubProceso extends HttpServlet {
         for(SubProceso inter : sp){
             List<FlujoAlterno> flujoAlterno ;
             flujoAlterno = fajpa.findByIdSubProceso(inter);
-            flujoAl.addAll(flujoAl);
+            if(flujoAlterno!=null && !flujoAlterno.isEmpty()){
+                flujoAl.addAll(flujoAlterno);
+            }
+            
+//            flujoAl.addAll(flujoAl);
         }
         
         int flujoAlternos = 0;
