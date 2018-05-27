@@ -587,23 +587,23 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`flujoAlterno` (
   CONSTRAINT `FA_idusuarioFuncional_fk`
     FOREIGN KEY (`idusuarioFuncional`)
     REFERENCES `SGPF`.`usuariofuncional` (`idusuarioFuncional`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `FA_idaccion_fk`
     FOREIGN KEY (`idaccion`)
     REFERENCES `SGPF`.`accion` (`idaccion`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `FA_idgrupoDato_fk`
     FOREIGN KEY (`idgrupoDato`)
     REFERENCES `SGPF`.`grupodato` (`idgrupoDato`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `FA_idsubProceso_fk`
     FOREIGN KEY (`idsubProceso`)
     REFERENCES `SGPF`.`subproceso` (`idsubProceso`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 INSERT INTO TipodeDesarrollo(TipodeDesarrollo) VALUES("Nuevo Desarrollo"),("Mejora/Mantenimiento Correctivo"),
