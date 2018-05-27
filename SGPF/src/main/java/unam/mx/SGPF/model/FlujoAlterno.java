@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "FlujoAlterno.findAll", query = "SELECT f FROM FlujoAlterno f")
     , @NamedQuery(name = "FlujoAlterno.findByIdflujoAlterno", query = "SELECT f FROM FlujoAlterno f WHERE f.idflujoAlterno = :idflujoAlterno")
     , @NamedQuery(name = "FlujoAlterno.findByDescripcion", query = "SELECT f FROM FlujoAlterno f WHERE f.descripcion = :descripcion")
-    , @NamedQuery(name = "FlujoAlterno.findByIdSubProceso", query = "SELECT f FROM FlujoAlterno f WHERE f.idsubProceso = :idsubProceso group by f.actividad order by f.actividad")
+    , @NamedQuery(name = "FlujoAlterno.findByIdSubProceso", query = "SELECT distinct f FROM FlujoAlterno f WHERE f.idsubProceso = :idsubProceso order by f.actividad")
     , @NamedQuery(name = "FlujoAlterno.findByActividad", query = "SELECT f FROM FlujoAlterno f WHERE f.actividad = :actividad")})
 public class FlujoAlterno implements Serializable {
 
@@ -50,8 +50,6 @@ public class FlujoAlterno implements Serializable {
     @JoinColumn(name = "idgrupoDato", referencedColumnName = "idgrupoDato")
     @ManyToOne
     private GrupoDato idgrupoDato;
-//    @JoinColumn(name = "idprocesoFuncional", referencedColumnName = "idprocesoFuncional")
-//    @ManyToOne
     @JoinColumn(name = "idsubProceso", referencedColumnName = "idsubProceso")
     @ManyToOne
     private SubProceso idsubProceso;
@@ -127,14 +125,6 @@ public class FlujoAlterno implements Serializable {
     public void setIdusuarioFuncional(UsuarioFuncional idusuarioFuncional) {
         this.idusuarioFuncional = idusuarioFuncional;
     }
-    
-   // private EntityManagerFactory emf = null;
-    
-    //public EntityManager getEntityManager() {
-      //  return emf.createEntityManager();
-    //}
-    
-    
 
     @Override
     public int hashCode() {
@@ -155,8 +145,6 @@ public class FlujoAlterno implements Serializable {
         }
         return true;
     }
-    
-    
 
     @Override
     public String toString() {
