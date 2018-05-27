@@ -1,7 +1,6 @@
 package unam.mx.SGPF.controller;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,13 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import unam.mx.SGPF.model.Accion;
 import unam.mx.SGPF.model.EntityProvider;
-import unam.mx.SGPF.model.FlujoAlterno;
 import unam.mx.SGPF.model.GrupoDato;
 import unam.mx.SGPF.model.ProcesoFuncional;
 import unam.mx.SGPF.model.SubProceso;
 import unam.mx.SGPF.model.UsuarioFuncional;
 import unam.mx.SGPF.model.controller.AccionJpaController;
-import unam.mx.SGPF.model.controller.FlujoAlternoJpaController;
 import unam.mx.SGPF.model.controller.GrupoDatoJpaController;
 import unam.mx.SGPF.model.controller.ProcesoFuncionalJpaController;
 import unam.mx.SGPF.model.controller.SubProcesoJpaController;
