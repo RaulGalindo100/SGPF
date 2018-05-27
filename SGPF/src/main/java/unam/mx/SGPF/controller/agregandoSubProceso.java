@@ -103,22 +103,10 @@ public class agregandoSubProceso extends HttpServlet {
         SubProcesoJpaController spjpa = new SubProcesoJpaController(EntityProvider.provider());
         List<SubProceso> sp = spjpa.findSPByIDPForder(PF.getIdprocesoFuncional());
         session.setAttribute("subProc", sp);
-        FlujoAlternoJpaController fajpa = new FlujoAlternoJpaController(EntityProvider.provider());
-        List<FlujoAlterno> flujoAl = Collections.emptyList();
-        for(SubProceso inter : sp){
-            List<FlujoAlterno> flujoAlterno ;
-            flujoAlterno = fajpa.findByIdSubProceso(inter);
-            if(flujoAlterno!=null && !flujoAlterno.isEmpty()){
-                flujoAl.addAll(flujoAlterno);
-            }
-            
-//            flujoAl.addAll(flujoAl);
-        }
-        
+
         int flujoAlternos = 0;
-        if(!flujoAl.isEmpty())
-            flujoAlternos = 1;
         session.setAttribute("flujoAlternos", flujoAlternos);
+        
         response.sendRedirect(redireccion);
     }
 }
