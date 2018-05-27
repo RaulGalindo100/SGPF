@@ -125,7 +125,8 @@ public class BuscaProcesoFuncional extends HttpServlet{
         session.setAttribute("grupoDatosCatalogo", grupoDatos);
         
         List<ProcesoFuncional> pf = pfjpa.findPFByIdProyectoActivo(pfDetalle.getIdproyecto().getIdproyecto());
-        session.setAttribute("procFunc", pf);
+        if(pf!=null && !pf.isEmpty())
+            session.setAttribute("procFunc", pf);
         
         response.sendRedirect("detallePF.jsp");
     }

@@ -29,7 +29,7 @@ public class eliSubproceso extends HttpServlet {
         if(listaFlujosAlterno!=null && !listaFlujosAlterno.isEmpty()){
             listaFlujosAlterno.forEach((iter) -> {
                 try{
-                    FlujoAlternoJPA.destroy(iter);
+                    FlujoAlternoJPA.destroy(iter.getIdflujoAlterno());
                 }catch(Exception r){}
             });
         }

@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import unam.mx.SGPF.model.EntityProvider;
+import unam.mx.SGPF.model.FlujoAlterno;
+import unam.mx.SGPF.model.ProcesoFuncional;
 import unam.mx.SGPF.model.SubProceso;
+import unam.mx.SGPF.model.controller.FlujoAlternoJpaController;
 import unam.mx.SGPF.model.controller.SubProcesoJpaController;
 
 public class eliActividad extends HttpServlet{
@@ -21,17 +24,36 @@ public class eliActividad extends HttpServlet{
         
         SubProcesoJpaController SubProcesoJPA = new SubProcesoJpaController(EntityProvider.provider());
         SubProceso aux = SubProcesoJPA.findSubProceso(idSubProceso);
+        int indiceAnteriorActividad = aux.getIndiceActividad();
+        int idPFAnterior = aux.getIdprocesoFuncional().getIdprocesoFuncional();
+        ProcesoFuncional PF_Actual = aux.getIdprocesoFuncional();
         List<SubProceso> listaSPEliminar = SubProcesoJPA.findSPByActividadyPF(aux.getActividad(),aux.getIdprocesoFuncional());
+        FlujoAlternoJpaController FlujoAlternoJPA = new FlujoAlternoJpaController(EntityProvider.provider());
         try{
-            SubProcesoJPA.destroy(idSubProceso);
             if(listaSPEliminar!=null && !listaSPEliminar.isEmpty())
             listaSPEliminar.forEach((action) -> {
                 //Eliminar Flujos Alternos
-                try{SubProcesoJPA.destroy(action.getIdsubProceso());}catch(Exception J){}
+                List<FlujoAlterno> listaFlujosAlterno = FlujoAlternoJPA.findByIdSubProceso(aux);
+                if(listaFlujosAlterno!=null && !listaFlujosAlterno.isEmpty()){
+                    listaFlujosAlterno.forEach((iter) -> {
+                    try{ FlujoAlternoJPA.destroy(iter.getIdflujoAlterno()); }catch(Exception r){}});
+                }
+            try{SubProcesoJPA.destroy(action.getIdsubProceso());}catch(Exception J){}
             });
+            
+            //Actualizar los índices de las actividades
+            List<SubProceso> listaSPActualizar = SubProcesoJPA.findSPByIndiceActividadMayor(idPFAnterior, indiceAnteriorActividad);
+            if(listaSPActualizar!=null && !listaSPActualizar.isEmpty())
+                listaSPActualizar.forEach((action)->{
+                    int indiceActAnterio = action.getIndiceActividad();
+                    action.setIndiceActividad(indiceActAnterio-1);
+                    try{SubProcesoJPA.edit(action);}catch(Exception e){}
+                });
         }catch(Exception e){
             e.printStackTrace();
         }finally{
+            HttpSession session = request.getSession(true);
+            session.setAttribute("PF_Actual", PF_Actual);
             response.sendRedirect("eliminadoSubProceso.jsp");   
         }
     }

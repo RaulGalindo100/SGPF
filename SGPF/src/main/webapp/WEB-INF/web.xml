@@ -165,6 +165,15 @@
         <servlet-name>modificaProy</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.modificaProy</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>eliActividad</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.eliActividad</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>eliActividad</servlet-name>
+        <url-pattern>/eliActividad</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>modificaProy</servlet-name>
         <url-pattern>/modificaProy</url-pattern>

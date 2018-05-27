@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "SubProceso.findByIdsubProceso", query = "SELECT s FROM SubProceso s WHERE s.idsubProceso = :idsubProceso")
     , @NamedQuery(name = "SubProceso.findSPByActividadyPF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :procesoFuncional and s.actividad = :actividad")
     , @NamedQuery(name = "SubProceso.findSPByActividad_PF", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :procesoFuncional and s.indice = :indice")
+    , @NamedQuery(name = "SubProceso.findSPByIndiceActividadMayor", query="SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idPF and s.indiceActividad > :indice")
     , @NamedQuery(name = "SubProceso.findSPByIdProcesoFuncional", query = "SELECT s FROM SubProceso s WHERE s.idprocesoFuncional = :idPF")
     , @NamedQuery(name = "SubProceso.findSPByIDPForder",query="select s from SubProceso s where s.idprocesoFuncional=:idPF group by s.idprocesoFuncional,s.indiceActividad,s.indice,s.idusuarioFuncional,s.actividad,s.idaccion,s.idgrupoDato,s.descripcion,s.idsubProceso order by s.idprocesoFuncional, s.indiceActividad,s.indice")
     , @NamedQuery(name = "SubProceso.findSPByIDPForderFlujoAl",query="select s from SubProceso s where s.idprocesoFuncional=:idPF group by s.idprocesoFuncional,s.indiceActividad,s.indice,s.idusuarioFuncional,s.actividad,s.idaccion,s.idgrupoDato,s.descripcion,s.idsubProceso order by s.idprocesoFuncional, s.indiceActividad,s.indice")
