@@ -601,7 +601,7 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`flujoAlterno` (
     ON UPDATE NO ACTION,
   CONSTRAINT `FA_idsubProceso_fk`
     FOREIGN KEY (`idsubProceso`)
-    REFERENCES `SGPF`.`subProceso` (`idsubProceso`)
+    REFERENCES `SGPF`.`subproceso` (`idsubProceso`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
