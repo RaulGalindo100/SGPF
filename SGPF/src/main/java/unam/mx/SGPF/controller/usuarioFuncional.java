@@ -18,7 +18,7 @@ public class usuarioFuncional extends HttpServlet{
 		HttpSession session = request.getSession(true);
 		
 		UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
-		List<UsuarioFuncional> uf = ufjpa.findUsuarioFuncionalEntities();
+		List<UsuarioFuncional> uf = ufjpa.findUsuarioFuncionalOrdered();
 		session.setAttribute("usuarioFuncional",uf);
 		
 		response.sendRedirect("usuarioFuncional.jsp");
@@ -30,7 +30,7 @@ public class usuarioFuncional extends HttpServlet{
 		HttpSession session = request.getSession(true);
 		
 		UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
-		List<UsuarioFuncional> uf = ufjpa.findUsuarioFuncionalEntities();
+		List<UsuarioFuncional> uf = ufjpa.findUsuarioFuncionalOrdered();
 		session.setAttribute("usuarioFuncional",uf);
 		
 		response.sendRedirect("usuarioFuncional.jsp");

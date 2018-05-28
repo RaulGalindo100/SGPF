@@ -18,7 +18,7 @@ public class grupoDatos extends HttpServlet{
 	HttpSession session = request.getSession(true);
 		
 	GrupoDatoJpaController gdjpa = new GrupoDatoJpaController(EntityProvider.provider());
-	List<GrupoDato> gd = gdjpa.findGrupoDatoEntities();
+	List<GrupoDato> gd = gdjpa.findGrupoDatoOrdered();
 	session.setAttribute("grupoDatos",gd);
 		
 	response.sendRedirect("grupoDatos.jsp");
@@ -30,7 +30,7 @@ public class grupoDatos extends HttpServlet{
 	HttpSession session = request.getSession(true);
 		
 	GrupoDatoJpaController gdjpa = new GrupoDatoJpaController(EntityProvider.provider());
-	List<GrupoDato> gd = gdjpa.findGrupoDatoEntities();
+	List<GrupoDato> gd = gdjpa.findGrupoDatoOrdered();
 	session.setAttribute("grupoDatos",gd);
 		
 	response.sendRedirect("grupoDatos.jsp");

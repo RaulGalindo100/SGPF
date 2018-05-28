@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "UsuarioFuncional.findByIdusuarioFuncional", query = "SELECT u FROM UsuarioFuncional u WHERE u.idusuarioFuncional = :idusuarioFuncional")
     , @NamedQuery(name = "UsuarioFuncional.findByNomUF", query = "SELECT u FROM UsuarioFuncional u WHERE u.nomUF = :nomUF")
     , @NamedQuery(name = "UsuarioFuncional.findByDescripcion", query = "SELECT u FROM UsuarioFuncional u WHERE u.descripcion = :descripcion")
+    , @NamedQuery(name = "UsuarioFuncional.findUsuarioFuncionalOrdered", query = "SELECT u FROM UsuarioFuncional u order by u.nomUF asc")
     , @NamedQuery(name = "UsuarioFuncional.findByActivo", query = "SELECT u FROM UsuarioFuncional u WHERE u.activo = :activo")})
 public class UsuarioFuncional implements Serializable {
 
