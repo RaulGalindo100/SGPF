@@ -199,5 +199,10 @@ public class GrupoDatoJpaController implements Serializable {
             em.close();
         }
     }
-
+    
+    public List<GrupoDato> findGrupoDatoOrdered(){
+    	EntityManager em = getEntityManager();
+    	Query q = em.createNamedQuery("GrupoDato.findGrupoDatoOrdered");
+    	return q.getResultList();
+    }
 }

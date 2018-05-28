@@ -198,5 +198,10 @@ public class AccionJpaController implements Serializable {
             em.close();
         }
     }
-
+    
+    public List<Accion> findAccionOrdered(){
+    	EntityManager em = getEntityManager();
+    	Query q = em.createNamedQuery("Accion.findAccionOrdered");
+    	return q.getResultList();
+    }
 }

@@ -21,7 +21,7 @@ public class acciones extends HttpServlet{
 		HttpSession session = request.getSession(true);
 		
 		AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
-		List<Accion> ac = ajpa.findAccionEntities();
+		List<Accion> ac = ajpa.findAccionOrdered();
 		session.setAttribute("action",ac);
 		
 		response.sendRedirect("acciones.jsp");
@@ -33,7 +33,7 @@ public class acciones extends HttpServlet{
 		HttpSession session = request.getSession(true);
 		
 		AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
-		List<Accion> ac = ajpa.findAccionEntities();
+		List<Accion> ac = ajpa.findAccionOrdered();
 		session.setAttribute("action",ac);
 		
 		response.sendRedirect("acciones.jsp");

@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Accion.findByIdaccion", query = "SELECT a FROM Accion a WHERE a.idaccion = :idaccion")
     , @NamedQuery(name = "Accion.findByNomAccion", query = "SELECT a FROM Accion a WHERE a.nomAccion = :nomAccion")
     , @NamedQuery(name = "Accion.findByMovDatos", query = "SELECT a FROM Accion a WHERE a.movDatos = :movDatos")
+    , @NamedQuery(name = "Accion.findAccionOrdered", query = "SELECT a FROM Accion a order by a.nomAccion asc")
     , @NamedQuery(name = "Accion.findByDescripcion", query = "SELECT a FROM Accion a WHERE a.descripcion = :descripcion")
     , @NamedQuery(name = "Accion.findByActivo", query = "SELECT a FROM Accion a WHERE a.activo = :activo")})
 public class Accion implements Serializable {

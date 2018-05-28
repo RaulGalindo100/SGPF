@@ -61,15 +61,15 @@ public class BuscaProcesoFuncional extends HttpServlet{
         //
        
         UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
-        List<UsuarioFuncional> uf = (List<UsuarioFuncional>) ufjpa.findUsuarioFuncionalEntities();
+        List<UsuarioFuncional> uf = (List<UsuarioFuncional>) ufjpa.findUsuarioFuncionalOrdered();
         session.setAttribute("ufCatalogo", uf);
         
         AccionJpaController juano = new AccionJpaController(EntityProvider.provider());
-        List<Accion> accion = (List<Accion>) juano.findAccionEntities();
+        List<Accion> accion = (List<Accion>) juano.findAccionOrdered();
         session.setAttribute("accCatalogo", accion);
 
         GrupoDatoJpaController gruposDatos = new GrupoDatoJpaController(EntityProvider.provider());
-        List<GrupoDato> grupoDatos = (List<GrupoDato>) gruposDatos.findGrupoDatoEntities();
+        List<GrupoDato> grupoDatos = (List<GrupoDato>) gruposDatos.findGrupoDatoOrdered();
         if(grupoDatos!=null && !grupoDatos.isEmpty())
             session.setAttribute("grupoDatosCatalogo", grupoDatos);
         
@@ -118,15 +118,15 @@ public class BuscaProcesoFuncional extends HttpServlet{
         session.setAttribute("flujoAlternos", flujoAlternos);
         
         UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
-        List<UsuarioFuncional> uf = (List<UsuarioFuncional>) ufjpa.findUsuarioFuncionalEntities();
+        List<UsuarioFuncional> uf = (List<UsuarioFuncional>) ufjpa.findUsuarioFuncionalOrdered();
         session.setAttribute("ufCatalogo", uf);
         
         AccionJpaController juano = new AccionJpaController(EntityProvider.provider());
-        List<Accion> accion = (List<Accion>) juano.findAccionEntities();
+        List<Accion> accion = (List<Accion>) juano.findAccionOrdered();
         session.setAttribute("accCatalogo", accion);
 
         GrupoDatoJpaController gruposDatos = new GrupoDatoJpaController(EntityProvider.provider());
-        List<GrupoDato> grupoDatos = (List<GrupoDato>) gruposDatos.findGrupoDatoEntities();
+        List<GrupoDato> grupoDatos = (List<GrupoDato>) gruposDatos.findGrupoDatoOrdered();
         session.setAttribute("grupoDatosCatalogo", grupoDatos);
         
         List<ProcesoFuncional> pf = pfjpa.findPFByIdProyectoActivo(pfDetalle.getIdproyecto().getIdproyecto());

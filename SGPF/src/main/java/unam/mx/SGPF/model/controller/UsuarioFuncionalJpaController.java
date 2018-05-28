@@ -195,5 +195,11 @@ public class UsuarioFuncionalJpaController implements Serializable {
             em.close();
         }
     }
+    
+    public List<UsuarioFuncional> findUsuarioFuncionalOrdered(){
+    	EntityManager em = getEntityManager();
+    	Query q = em.createNamedQuery("UsuarioFuncional.findUsuarioFuncionalOrdered");
+    	return q.getResultList();
+    }
 
 }
