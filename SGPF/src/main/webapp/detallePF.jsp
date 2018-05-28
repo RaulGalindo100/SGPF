@@ -256,7 +256,24 @@
 												class="dropdown-item btn btn-outline-info"
 												style="font-size: 10pt;" type="submit" value="Flujo Alterno" />
 										</form>
-										<%}%>
+
+										<form action="agregaGrupoDatos" method="POST">
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>" /> <input
+												type="hidden" name="opcion" value="4" /><input
+												class="dropdown-item btn btn-outline-info"
+												style="font-size: 10pt;" type="submit" value="Agregar Grupo de Datos" />
+										</form>
+										<!--  form action="eliSubproceso" method="POST">
+                                                    <input type="hidden" name="idSubProceso"
+                                                            value="<%=inter.getIdsubProceso()%>" /> <input
+                                                            class="dropdown-item btn btn-outline-info"
+                                                            style="font-size: 10pt;" type="submit" value="Eliminar SP" />
+                                            </form-->
+										<%
+                                                }
+                                            %>
+
 									</div>
 								</div> <%}%>
 							</td>

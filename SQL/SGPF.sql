@@ -519,7 +519,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `SGPF`.`historico` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`historico` (
-  `idhistorico` INT NOT NULL,
+  `idhistorico` INT NOT NULL AUTO_INCREMENT,,
   `idProy` INT NOT NULL,
   `nombreProy` VARCHAR(250) NOT NULL,
   `alcanceProy` VARCHAR(250) NOT NULL,
@@ -553,6 +553,7 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`subprocesoGrupoDato` (
   PRIMARY KEY (`idsubprocesoGrupoDato`),
   INDEX `SubProceso_GrupoDato_Fk_idx` (`idGrupoDato` ASC),
   INDEX `subProceso_SubProceso_fk_idx` (`idSubProceso` ASC),
+  UNIQUE INDEX `subprocesoGrupoDato_idx` (`idGrupoDato` ASC, `idSubProceso` ASC),
   CONSTRAINT `SubProceso_GrupoDato_Fk`
     FOREIGN KEY (`idGrupoDato`)
     REFERENCES `SGPF`.`grupodato` (`idgrupoDato`)

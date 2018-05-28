@@ -13,6 +13,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Agrega Grupo de Datos</title>
     </head>
+    <% 
+    int idSubProceso = (Integer) session.getAttribute("idSubProceso");
+    %>
     <body>
         <h1>Agrega Grupo de Datos!</h1>
         <table><form action="agregagndoGrupoDatos" method="post">
@@ -32,7 +35,8 @@
                 </td>
             </tr>
             <tr>
-                <td><input type="submit" value="Aceptar"></td></form>
+                <td><input type="hidden" name="idSubProceso" value="<%=idSubProceso%>">
+                    <input type="submit" value="Aceptar"></td></form>
                 <td><a href="detallePF.jsp"><input type="submit" value="Cancelar"></a></td>
             </tr>
         </table>
