@@ -177,7 +177,23 @@
         <servlet-name>agregandoFlujoAlterno</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.agregandoFlujoAlterno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>agregaGrupoDatos</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.agregaGrupoDatos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>agregagndoGrupoDatos</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.agregagndoGrupoDatos</servlet-class>
+    </servlet>
     
+    <servlet-mapping>
+        <servlet-name>agregagndoGrupoDatos</servlet-name>
+        <url-pattern>/agregagndoGrupoDatos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>agregaGrupoDatos</servlet-name>
+        <url-pattern>/agregaGrupoDatos</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>agregandoFlujoAlterno</servlet-name>
         <url-pattern>/agregandoFlujoAlterno</url-pattern>
