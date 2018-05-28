@@ -348,6 +348,16 @@ public class SubProcesoJpaController implements Serializable {
     	return q.getResultList();
     }
     
+    
+    public SubProceso findLastSP() {
+        EntityManager em = getEntityManager();
+        Query q = em.createNativeQuery("select * from subproceso order by idsubProceso desc limit 1", SubProceso.class);
+        if (q.getResultList().isEmpty()) {
+            return null;
+        }
+        return (SubProceso) q.getSingleResult();
+    }
+    
     public List<SubProceso> findSPByActividadMayorAIndice(int indice, ProcesoFuncional idPF, String actividad){
     	EntityManager em = getEntityManager();
         //System.out.println("Parametros recibidos son INDICE >> "+indice+" ACTIVIDAD >> "+actividad+" PF >> "+idPF.toString()
