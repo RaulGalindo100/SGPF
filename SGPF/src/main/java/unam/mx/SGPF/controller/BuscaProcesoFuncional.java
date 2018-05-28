@@ -26,7 +26,7 @@ public class BuscaProcesoFuncional extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
-    	Integer idPf= Integer.parseInt(request.getParameter("idprocesoFuncional"));    	
+    	Integer idPf= Integer.parseInt(request.getParameter("idprocesoFuncional").toString());    	
     	
         HttpSession session = request.getSession(true);
         

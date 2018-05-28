@@ -169,7 +169,23 @@
         <servlet-name>eliActividad</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.eliActividad</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>agregaFlujoAlterno</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.agregaFlujoAlterno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>agregandoFlujoAlterno</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.agregandoFlujoAlterno</servlet-class>
+    </servlet>
     
+    <servlet-mapping>
+        <servlet-name>agregandoFlujoAlterno</servlet-name>
+        <url-pattern>/agregandoFlujoAlterno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>agregaFlujoAlterno</servlet-name>
+        <url-pattern>/agregaFlujoAlterno</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>eliActividad</servlet-name>
         <url-pattern>/eliActividad</url-pattern>

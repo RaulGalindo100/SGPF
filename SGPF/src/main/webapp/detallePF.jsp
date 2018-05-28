@@ -180,13 +180,11 @@
 												style="font-size: 10pt;" type="submit"
 												value="Agregar SP Después" />
 										</form>
-										<form action="" method="POST">
-											<input type="hidden" name="idSubProceso"
-												value="<%=inter.getIdsubProceso()%>" /> <input
-												type="hidden" name="opcion" value="3" /><input
-												class="dropdown-item btn btn-outline-info"
-												style="font-size: 10pt;" type="submit"
-												value="Agregar Flujo Alterno" />
+										<form action="agregaFlujoAlterno" method="POST">
+											<input type="hidden" name="idSubProceso" value="<%=inter.getIdsubProceso()%>" /> 
+                                                                                        <input type="hidden" name="opcion" value="3" />
+                                                                                        <input class="dropdown-item btn btn-outline-info" style="font-size: 10pt;" type="submit"
+											value="Agregar Flujo Alterno" />
 										</form>
 									</div>
 								</div>
