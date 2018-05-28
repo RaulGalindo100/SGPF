@@ -65,14 +65,14 @@ public class agregandoFlujoAlterno extends HttpServlet{
         try{
             FlujoAlternoJPA.create(aux);
             redireccion = "BuscaProcesoFuncional?idprocesoFuncional=";
-            redireccion = redireccion.concat(Integer.toString(SubProceso.getIdsubProceso()));
+            redireccion = redireccion.concat(Integer.toString(SubProceso.getIdprocesoFuncional().getIdprocesoFuncional()));
             
         }catch(Exception e){
             redireccion = "detallePF.jsp";
         }
-        
-        response.sendRedirect(redireccion);
-        
+        finally{
+            response.sendRedirect(redireccion);
+        }
     }
     
 }

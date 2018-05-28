@@ -26,8 +26,8 @@ public class BuscaProcesoFuncional extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
-    	Integer idPf= Integer.parseInt(request.getParameter("idprocesoFuncional").toString());    	
-    	
+    	Integer idPf= Integer.parseInt(request.getParameter("idprocesoFuncional"));    	
+    	   
         HttpSession session = request.getSession(true);
         
         ////////
@@ -35,7 +35,6 @@ public class BuscaProcesoFuncional extends HttpServlet{
         ProcesoFuncional pfDetalle = pfjpa.findProcesoFuncional(idPf);
         session.setAttribute("pfDetalle", pfDetalle);
         ////
-        
         // Busca la lsita de los subprocesos
         SubProcesoJpaController spjpa = new SubProcesoJpaController(EntityProvider.provider());
         //List<SubProceso> sp = spjpa.findSPByIdProcesoFuncional(idPf);
@@ -71,10 +70,15 @@ public class BuscaProcesoFuncional extends HttpServlet{
 
         GrupoDatoJpaController gruposDatos = new GrupoDatoJpaController(EntityProvider.provider());
         List<GrupoDato> grupoDatos = (List<GrupoDato>) gruposDatos.findGrupoDatoEntities();
-        session.setAttribute("grupoDatosCatalogo", grupoDatos);
-
-    	List<ProcesoFuncional> pf = pfjpa.findPFByIdProyectoActivo(pfDetalle.getIdproyecto().getIdproyecto());
-        session.setAttribute("procFunc", pf);
+        if(grupoDatos!=null && !grupoDatos.isEmpty())
+            session.setAttribute("grupoDatosCatalogo", grupoDatos);
+        
+        if(pfDetalle!=null){
+            List<ProcesoFuncional> pf = pfjpa.findPFByIdProyectoActivo(pfDetalle.getIdproyecto().getIdproyecto());
+            if(pf!=null && !pf.isEmpty())
+                session.setAttribute("procFunc", pf);
+        
+        }
         
         response.sendRedirect("detallePF.jsp");
     }
@@ -104,7 +108,8 @@ public class BuscaProcesoFuncional extends HttpServlet{
         for(SubProceso inter : sp){
             List<FlujoAlterno> flujoAlterno ;
             flujoAlterno = fajpa.findByIdSubProceso(inter);
-            flujoAl.addAll(flujoAl);
+            if(flujoAlterno!=null && !flujoAlterno.isEmpty())
+                flujoAl.addAll(flujoAlterno);
         }
         
         int flujoAlternos = 0;
