@@ -117,9 +117,8 @@
 							<th scope="col">Usuario funcional</th>
 							<th scope="col">Acción</th>
 							<th scope="col">Grupo de datos</th>
-							<th scope="col"></th>
-							<th scope="col">
-							<th>
+							<th scope="col" colspan="2">Opciones</th>
+							<th scope="col"><th>
 						</tr>
 					</thead>
 					<tbody>
@@ -145,22 +144,16 @@
 										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle text-white"
 										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 										type="button" id="dropdownMenu2" data-toggle="dropdown"
-										aria-haspopup="true" aria-expanded="false">Opciones</button>
+										aria-haspopup="true" aria-expanded="false">Agregar</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-										<form action="modActividad" method="POST">
-											<input type="hidden" name="idSubProceso"
-												value="<%=inter.getIdsubProceso()%>" /> <input
-												class="dropdown-item btn btn-outline-info .btn-sm"
-												style="font-size: 10pt;" type="submit" value="Modificar" />
-										</form>
-										<div class="dropdown-divider"></div>
+
 										<form action="addSubProceso" method="POST">
 											<input type="hidden" name="opcion" value="2" /> <input
 												type="hidden" name="idSubProceso"
 												value="<%=inter.getIdsubProceso()%>" /> <input
 												class="dropdown-item btn btn-outline-info .btn-sm"
 												style="font-size: 10pt;" type="submit"
-												value="Agregar SP Después" />
+												value="SP Después" />
 										</form>
 										<form action="agregaFlujoAlterno" method="POST">
 											<input type="hidden" name="idSubProceso"
@@ -168,26 +161,33 @@
 												type="hidden" name="opcion" value="3" /> <input
 												class="dropdown-item btn btn-outline-info"
 												style="font-size: 10pt;" type="submit"
-												value="Agregar Flujo Alterno" />
+												value="Flujo Alterno" />
 										</form>
 										<form action="agregaGrupoDatos" method="POST">
 											<input type="hidden" name="idSubProceso" value="<%=inter.getIdsubProceso()%>" /> 
-                                                                                        <input type="hidden" name="opcion" value="4" />
-                                                                                        <input class="dropdown-item btn btn-outline-info" style="font-size: 10pt;" type="submit"
-											value="Agregar Grupo de Datos" />
+                      <input class="dropdown-item btn btn-outline-info" style="font-size: 10pt;" type="submit"
+											value="Grupo de Datos" />
 										</form>
 									</div>
 								</div>
 							</td>
 							<td>
+							<form action="modActividad" method="POST">
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>" /> <input
+												class="btn btn-outline-info .btn-sm text-white"
+												style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Modificar" />
+										</form>
+							</td>
+							<td>
+			
 								<%if (!inter.getActividad().equals("Inicio de Proceso Funcional") && inter.getIndice() == 1) {%>
 								<div class="container">
 									<button type="button"
 										class="btn btn-outline-info .btn-sm text-white"
 										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 										style="font-size: 10pt;" data-toggle="modal"
-										data-target="#eliAct-<%=inter.getIdsubProceso()%>">Eliminar
-										Act.</button>
+										data-target="#eliAct-<%=inter.getIdsubProceso()%>">Eliminar Act.</button>
 									<div class="modal fade"
 										id="eliAct-<%=inter.getIdsubProceso()%>" role="dialog">
 										<div class="modal-dialog">
@@ -200,7 +200,8 @@
 												<div class="modal-footer">
 													<form action="eliActividad" method="POST">
 														<input type="hidden" name="idSubProceso"
-															value="<%=inter.getIdsubProceso()%>" /> <input
+															value="<%=inter.getIdsubProceso()%>" />
+													 <input
 															class="btn btn-outline-info .btn-sm text-white"
 															style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 															type="submit" value="Aceptar" />
@@ -256,27 +257,19 @@
 												class="dropdown-item btn btn-outline-info"
 												style="font-size: 10pt;" type="submit" value="Flujo Alterno" />
 										</form>
-
 										<form action="agregaGrupoDatos" method="POST">
 											<input type="hidden" name="idSubProceso"
 												value="<%=inter.getIdsubProceso()%>" /> <input
 												type="hidden" name="opcion" value="4" /><input
 												class="dropdown-item btn btn-outline-info"
-												style="font-size: 10pt;" type="submit" value="Agregar Grupo de Datos" />
+												style="font-size: 10pt;" type="submit" value="Grupo de Datos" />
 										</form>
-										<!--  form action="eliSubproceso" method="POST">
-                                                    <input type="hidden" name="idSubProceso"
-                                                            value="<%=inter.getIdsubProceso()%>" /> <input
-                                                            class="dropdown-item btn btn-outline-info"
-                                                            style="font-size: 10pt;" type="submit" value="Eliminar SP" />
-                                            </form-->
-										<%
-                                                }
-                                            %>
+										<%}%>
 
 									</div>
 								</div> <%}%>
 							</td>
+							<td></td>
 							<td>
 								<%if (tipoUsuario != 3 && p.getEstatus() == 1) {%>
 								<div class="container">
