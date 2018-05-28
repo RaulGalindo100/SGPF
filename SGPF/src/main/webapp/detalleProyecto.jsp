@@ -33,11 +33,11 @@
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 						<li class="nav-item active">
-							<%if(tipoUsuario!=3 && p.getEstatus()==1){%> <a class="nav-link"
+							<%if(p.getEstatus()==1){%> <a class="nav-link"
 							href="modificaProy">Modificar Proyecto</a> <% } %>
 						</li>
 						<li class="nav-item active">
-							<%if(tipoUsuario!=3 && p.getEstatus()==1){ %> <a class="nav-link"
+							<%if(p.getEstatus()==1){ %> <a class="nav-link"
 							href="agregaPF.jsp">Agregar PF</a> <%} %>
 						</li>
 					</ul>
@@ -355,7 +355,7 @@
 								href="BuscaProcesoFuncional?idprocesoFuncional=<%=inter.getIdprocesoFuncional()%>"><%=inter.getNomPF()%></a>
 							</td>
 							<td>
-								<%if(tipoUsuario!=3 && p.getEstatus()==1){ %> <!-- 
+								<%if(p.getEstatus()==1){ %> <!-- 
 									<input class="btn btn-outline-info" type="submit" value="Eliminar" data-dismiss="modal">
 									 -->
 								<div class="container">

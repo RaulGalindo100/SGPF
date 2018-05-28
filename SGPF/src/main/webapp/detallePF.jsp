@@ -1,7 +1,6 @@
 <%@page import="unam.mx.SGPF.model.controller.SubProcesoJpaController"%>
 <%@page import="unam.mx.SGPF.model.EntityProvider"%>
-<%@page
-	import="unam.mx.SGPF.model.controller.ProcesoFuncionalJpaController"%>
+<%@page import="unam.mx.SGPF.model.controller.ProcesoFuncionalJpaController"%>
 <%@page import="unam.mx.SGPF.model.FlujoAlterno"%>
 <%@page import="unam.mx.SGPF.model.Proyecto"%>
 <%@page import="unam.mx.SGPF.model.ProcesoFuncional"%>
@@ -50,12 +49,12 @@
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 						<li class="nav-item active">
-							<%if (tipoUsuario != 3 && p.getEstatus() == 1) {%> <a
+							<%if (p.getEstatus() == 1) {%> <a
 							class="nav-link border-top-0 border-bottom-0 border-right-0"
 							href="modifyPF.jsp">Modificar PF</a> <%}%>
 						</li>
 						<li class="nav-item active">
-							<%if (tipoUsuario != 3 && p.getEstatus() == 1) { %>
+							<%if (p.getEstatus() == 1) { %>
 							<form action="agregarActividad" method="post">
 								<input type="hidden" name="idProcesoFuncional"
 									value="<%=detalle.getIdprocesoFuncional()%>"> <input
@@ -137,7 +136,7 @@
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
 							<td><%=gd.getNomGD()%></td>
-							<%if (tipoUsuario != 3 && p.getEstatus() == 1) {%>
+							<%if ( p.getEstatus() == 1) {%>
 							<td>
 								<div class="dropdown">
 									<button
@@ -226,7 +225,7 @@
 							<td><%=acc.getNomAccion()%></td>
 							<td><%=gd.getNomGD()%></td>
 							<td>
-								<%if (tipoUsuario != 3 && p.getEstatus() == 1) {%>
+								<%if (p.getEstatus() == 1) {%>
 								<div class="dropdown">
 									<button
 										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle text-white"
@@ -235,7 +234,7 @@
 										aria-haspopup="true" aria-expanded="false">Agregar</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
-										<%if (tipoUsuario != 3 && p.getEstatus() == 1) {%>
+										<%if (p.getEstatus() == 1) {%>
 										<form action="addSubProceso" method="POST">
 											<input type="hidden" name="idSubProceso"
 												value="<%=inter.getIdsubProceso()%>" /> <input
@@ -271,7 +270,7 @@
 							</td>
 							<td></td>
 							<td>
-								<%if (tipoUsuario != 3 && p.getEstatus() == 1) {%>
+								<%if ( p.getEstatus() == 1) {%>
 								<div class="container">
 									<button type="button"
 										class="btn btn-outline-info .btn-sm text-white"
