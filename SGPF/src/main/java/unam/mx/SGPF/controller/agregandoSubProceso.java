@@ -14,11 +14,13 @@ import unam.mx.SGPF.model.EntityProvider;
 import unam.mx.SGPF.model.GrupoDato;
 import unam.mx.SGPF.model.ProcesoFuncional;
 import unam.mx.SGPF.model.SubProceso;
+import unam.mx.SGPF.model.SubprocesoGrupoDato;
 import unam.mx.SGPF.model.UsuarioFuncional;
 import unam.mx.SGPF.model.controller.AccionJpaController;
 import unam.mx.SGPF.model.controller.GrupoDatoJpaController;
 import unam.mx.SGPF.model.controller.ProcesoFuncionalJpaController;
 import unam.mx.SGPF.model.controller.SubProcesoJpaController;
+import unam.mx.SGPF.model.controller.SubprocesoGrupoDatoJpaController;
 import unam.mx.SGPF.model.controller.UsuarioFuncionalJpaController;
 
 public class agregandoSubProceso extends HttpServlet {
@@ -75,6 +77,14 @@ public class agregandoSubProceso extends HttpServlet {
                     redireccion = "detallePF.jsp";
                 }
             }
+            aux = subPjpa.findLastSP();
+            SubprocesoGrupoDato aux2 = new SubprocesoGrupoDato();
+            aux2.setIdGrupoDato(MiGrupoDato);
+            aux2.setIdSubProceso(aux);
+            SubprocesoGrupoDatoJpaController spgdjpa = new SubprocesoGrupoDatoJpaController(EntityProvider.provider());
+            try{spgdjpa.create(aux2);}catch(Exception e){}
+            
+            
         } else if (opcion == 2) {
             List<SubProceso> subProc = subPjpa.findAddDown(PF.getIdprocesoFuncional(), NombreActividad, auxSP.getIndice());
             aux.setIndice(auxSP.getIndice()+1);
@@ -91,8 +101,16 @@ public class agregandoSubProceso extends HttpServlet {
                     redireccion = "detallePF.jsp";
                 }
             }else redireccion = "detallePF.jsp";
+            
+            aux = subPjpa.findLastSP();
+            SubprocesoGrupoDato aux2 = new SubprocesoGrupoDato();
+            aux2.setIdGrupoDato(MiGrupoDato);
+            aux2.setIdSubProceso(aux);
+            SubprocesoGrupoDatoJpaController spgdjpa = new SubprocesoGrupoDatoJpaController(EntityProvider.provider());
+            try{spgdjpa.create(aux2);}catch(Exception e){}
         }
-
+        
+        
         ProcesoFuncionalJpaController pfjpa = new ProcesoFuncionalJpaController(EntityProvider.provider());
         ProcesoFuncional pfDetalle = pfjpa.findProcesoFuncional(PF.getIdprocesoFuncional());
         session.setAttribute("pfDetalle", pfDetalle);
