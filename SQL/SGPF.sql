@@ -519,7 +519,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `SGPF`.`historico` ;
 
 CREATE TABLE IF NOT EXISTS `SGPF`.`historico` (
-  `idhistorico` INT NOT NULL AUTO_INCREMENT,,
+  `idhistorico` INT NOT NULL AUTO_INCREMENT,
   `idProy` INT NOT NULL,
   `nombreProy` VARCHAR(250) NOT NULL,
   `alcanceProy` VARCHAR(250) NOT NULL,
