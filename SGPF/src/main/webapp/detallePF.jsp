@@ -50,18 +50,12 @@
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 						<li class="nav-item active">
-							<%
-                                    if (tipoUsuario != 3 && p.getEstatus() == 1) {
-                                %> <a
+							<%if (tipoUsuario != 3 && p.getEstatus() == 1) {%> <a
 							class="nav-link border-top-0 border-bottom-0 border-right-0"
-							href="modifyPF.jsp">Modificar PF</a> <%
-                                    }
-                                %>
+							href="modifyPF.jsp">Modificar PF</a> <%}%>
 						</li>
 						<li class="nav-item active">
-							<%
-                                    if (tipoUsuario != 3 && p.getEstatus() == 1) {
-                                %>
+							<%if (tipoUsuario != 3 && p.getEstatus() == 1) { %>
 							<form action="agregarActividad" method="post">
 								<input type="hidden" name="idProcesoFuncional"
 									value="<%=detalle.getIdprocesoFuncional()%>"> <input
@@ -70,10 +64,7 @@
 									class="nav-link border-top-0 border-bottom-0 border-right-0"
 									style="color: rgba(0, 0, 0, .9); border-style: none; background-color: transparent; cursor: pointer; cursor: hand;"
 									type="submit" value="Agregar Actividad" />
-							</form> <%
-                                    }
-                                %>
-
+							</form> <%}%>
 						</li>
 						<li class="nav-item active"></li>
 					</ul>
@@ -118,7 +109,6 @@
 			</div>
 			<div class="table-responsive">
 				<table class="table ">
-
 					<thead>
 						<tr>
 							<th scope="col">#</th>
@@ -132,31 +122,23 @@
 							<th>
 						</tr>
 					</thead>
-
 					<tbody>
-						<%
-                                for (SubProceso inter : spList) {
-                                    UsuarioFuncional uf = new UsuarioFuncional();
-                                    Accion acc = new Accion();
-                                    GrupoDato gd = new GrupoDato();
-                                    uf = inter.getIdusuarioFuncional();
-                                    acc = inter.getIdaccion();
-                                    gd = inter.getIdgrupoDato();
-                            %>
+						<%for (SubProceso inter : spList) {
+            	UsuarioFuncional uf = new UsuarioFuncional();
+              Accion acc = new Accion();
+              GrupoDato gd = new GrupoDato();
+              uf = inter.getIdusuarioFuncional();
+              acc = inter.getIdaccion();
+              gd = inter.getIdgrupoDato();%>
 						<tr>
-							<%
-                                    if (inter.getIndice() == 1) {
-                                        contador++;
-                                %>
+							<%if (inter.getIndice() == 1) {contador++;%>
 							<td><%=contador%></td>
 							<td><%=inter.getActividad()%></td>
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
 							<td><%=gd.getNomGD()%></td>
-							<%
-                                    if (tipoUsuario != 3 && p.getEstatus() == 1) {
-                                %>
+							<%if (tipoUsuario != 3 && p.getEstatus() == 1) {%>
 							<td>
 								<div class="dropdown">
 									<button
@@ -181,10 +163,12 @@
 												value="Agregar SP Después" />
 										</form>
 										<form action="agregaFlujoAlterno" method="POST">
-											<input type="hidden" name="idSubProceso" value="<%=inter.getIdsubProceso()%>" /> 
-                                                                                        <input type="hidden" name="opcion" value="3" />
-                                                                                        <input class="dropdown-item btn btn-outline-info" style="font-size: 10pt;" type="submit"
-											value="Agregar Flujo Alterno" />
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>" /> <input
+												type="hidden" name="opcion" value="3" /> <input
+												class="dropdown-item btn btn-outline-info"
+												style="font-size: 10pt;" type="submit"
+												value="Agregar Flujo Alterno" />
 										</form>
 										<form action="agregaGrupoDatos" method="POST">
 											<input type="hidden" name="idSubProceso" value="<%=inter.getIdsubProceso()%>" /> 
@@ -194,26 +178,23 @@
 										</form>
 									</div>
 								</div>
-
 							</td>
 							<td>
-								<%
-                 if (!inter.getActividad().equals("Inicio de Proceso Funcional") && inter.getIndice() == 1) {
-               %>
+								<%if (!inter.getActividad().equals("Inicio de Proceso Funcional") && inter.getIndice() == 1) {%>
 								<div class="container">
 									<button type="button"
 										class="btn btn-outline-info .btn-sm text-white"
 										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 										style="font-size: 10pt;" data-toggle="modal"
-										data-target="#myModal-<%=inter.getIdsubProceso()%>">Eliminar Act.</button>
-
+										data-target="#myModal-<%=inter.getIdsubProceso()%>">Eliminar
+										Act.</button>
 									<div class="modal fade"
 										id="myModal-<%=inter.getIdsubProceso()%>" role="dialog">
 										<div class="modal-dialog">
-
 											<div class="modal-content">
 												<div class="modal-body">
-													<p>La Actividad será eliminada junto con todos los subprocesos que contenga.</p>
+													<p>La Actividad será eliminada junto con todos los
+														subprocesos que contenga.</p>
 													<p>¿Desea continuar?</p>
 												</div>
 												<div class="modal-footer">
@@ -228,35 +209,23 @@
 															style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 															data-dismiss="modal">Cancelar</button>
 													</form>
-
-
 												</div>
 											</div>
 										</div>
 									</div>
-
 								</div> <%} %>
 							</td>
 							<!--  -->
-							<%
-                                    }
-                                %>
-							<%
-                                } else {
-                                    contador++;
-                                %>
+							<%}%>
+							<%} else {contador++;%>
 							<td><%=contador%></td>
 							<td></td>
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
 							<td><%=gd.getNomGD()%></td>
-
 							<td>
-								<%
-                                        if (tipoUsuario != 3 && p.getEstatus() == 1) {
-                                    %>
-
+								<%if (tipoUsuario != 3 && p.getEstatus() == 1) {%>
 								<div class="dropdown">
 									<button
 										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle text-white"
@@ -265,9 +234,7 @@
 										aria-haspopup="true" aria-expanded="false">Agregar</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 
-										<%
-                                                if (tipoUsuario != 3 && p.getEstatus() == 1) {
-                                            %>
+										<%if (tipoUsuario != 3 && p.getEstatus() == 1) {%>
 										<form action="addSubProceso" method="POST">
 											<input type="hidden" name="idSubProceso"
 												value="<%=inter.getIdsubProceso()%>" /> <input
@@ -282,13 +249,14 @@
 												class="dropdown-item btn btn-outline-info"
 												style="font-size: 10pt;" type="submit" value="SP Después" />
 										</form>
-										<form action="" method="POST">
+										<form action="agregaFlujoAlterno" method="POST">
 											<input type="hidden" name="idSubProceso"
 												value="<%=inter.getIdsubProceso()%>" /> <input
 												type="hidden" name="opcion" value="3" /><input
 												class="dropdown-item btn btn-outline-info"
 												style="font-size: 10pt;" type="submit" value="Flujo Alterno" />
 										</form>
+
 										<form action="agregaGrupoDatos" method="POST">
 											<input type="hidden" name="idSubProceso"
 												value="<%=inter.getIdsubProceso()%>" /> <input
@@ -305,15 +273,12 @@
 										<%
                                                 }
                                             %>
+
 									</div>
-								</div> <%
-                                        }
-                                    %>
+								</div> <%}%>
 							</td>
 							<td>
-								<%
-                                        if (tipoUsuario != 3 && p.getEstatus() == 1) {
-                                    %>
+								<%if (tipoUsuario != 3 && p.getEstatus() == 1) {%>
 								<div class="container">
 									<button type="button"
 										class="btn btn-outline-info .btn-sm text-white"
@@ -321,11 +286,9 @@
 										style="font-size: 10pt;" data-toggle="modal"
 										data-target="#myModal-<%=inter.getIdsubProceso()%>">Eliminar
 										SP</button>
-
 									<div class="modal fade"
 										id="myModal-<%=inter.getIdsubProceso()%>" role="dialog">
 										<div class="modal-dialog">
-
 											<div class="modal-content">
 												<div class="modal-body">
 													<p>El Sub-Proceso será eliminado.</p>
@@ -347,19 +310,11 @@
 											</div>
 										</div>
 									</div>
-
-								</div> <%
-                                        }
-                                    %>
-
+								</div> <%}%>
 							</td>
-							<%
-                                    }
-                                %>
+							<%}%>
 						</tr>
-						<%
-                                }
-                            %>
+						<%}%>
 					
 					<tbody>
 				</table>
@@ -387,15 +342,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%
-                                SubProcesoJpaController spjpa = new SubProcesoJpaController(EntityProvider.provider());
-                                for (FlujoAlterno inter : listaFlujoAlterno) {
-                                    SubProceso pf = spjpa.findSubProceso(inter.getIdsubProceso().getIdsubProceso());
-                                    UsuarioFuncional uf = inter.getIdusuarioFuncional();
-                                    Accion acc = inter.getIdaccion();
-                                    GrupoDato gd = inter.getIdgrupoDato();
-                                    contador2++;
-                            %>
+						<%SubProcesoJpaController spjpa = new SubProcesoJpaController(EntityProvider.provider());
+              for (FlujoAlterno inter : listaFlujoAlterno) {
+              	SubProceso pf = spjpa.findSubProceso(inter.getIdsubProceso().getIdsubProceso());
+                UsuarioFuncional uf = inter.getIdusuarioFuncional();
+                Accion acc = inter.getIdaccion();
+                GrupoDato gd = inter.getIdgrupoDato();
+                contador2++;%>
 						<tr>
 							<td><%=contador2%></td>
 							<td><%=inter.getActividad()%></td>
