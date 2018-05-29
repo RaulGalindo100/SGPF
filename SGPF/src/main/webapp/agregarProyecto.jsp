@@ -310,7 +310,7 @@
 									<label>Duración del Proyecto</label> 
 									<div class="form-inline">
 									<input
-										class="form-control" type="text" name="duraProy" required>
+										class="form-control" type="text" name="duraProy">
 								<select class="form-control"
 										name="Idescala">
 										<%for(Escala i : ListaEscala){%>
@@ -323,79 +323,79 @@
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo Total del Proyecto [hh]</label> <input
-										class="form-control" type="text" name="esfuTotProy" required>
+										class="form-control" type="text" name="esfuTotProy" >
 								</div>
 
 								<div class="form-group">
 									<label>Esfuerzo de Planeación [hh]</label> <input
-										class="form-control" type="text" name="esfuPlaneProy" required>
+										class="form-control" type="text" name="esfuPlaneProy" >
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo de Especificación de Requerimientos
 										[hh]</label> <input class="form-control" type="text"
-										name="esfuEsReqProy" required>
+										name="esfuEsReqProy" >
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo de Análisis y Diseño [hh]</label> <input
 										class="form-control" type="text" name="esfuAnaDisProy"
-										required>
+										>
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo de Construcción [hh]</label> <input
-										class="form-control" type="text" name="esfuConstProy" required>
+										class="form-control" type="text" name="esfuConstProy" >
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo de Pruebas [hh]</label> <input
-										class="form-control" type="text" name="esfuPrueProy" required>
+										class="form-control" type="text" name="esfuPrueProy" >
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo de Implementación / Despliegue [hh]</label> <input
 										class="form-control" type="text" name="esfuImpleDesProy"
-										required>
+										>
 								</div>
 								<div class="form-group">
 									<label>Costo Total del Proyecto $(MNX)</label> <input
-										class="form-control" type="text" name="costTotProy" required>
+										class="form-control" type="text" name="costTotProy" >
 								</div>
 
 								<div class="form-group">
 									<label>Costo de Planeación $(MNX)</label> <input
-										class="form-control" type="text" name="costPlanProy" required>
+										class="form-control" type="text" name="costPlanProy" >
 								</div>
 								<div class="form-group">
 									<label>Costo de Especificación de Requerimientos $(MNX)</label>
 									<input class="form-control" type="text" name="costEsReqProy"
-										required>
+										>
 								</div>
 								<div class="form-group">
 									<label>Costo de Análisis y Diseño $(MNX)</label> <input
 										class="form-control" type="text" name="costAnaDisProy"
-										required>
+										>
 								</div>
 								<div class="form-group">
 									<label>Costo de Construcción $(MNX)</label> <input
-										class="form-control" type="text" name="costConstProy" required>
+										class="form-control" type="text" name="costConstProy" >
 								</div>
 								<div class="form-group">
 									<label>Costo de Pruebas $(MNX)</label> <input
-										class="form-control" type="text" name="costPrueProy" required>
+										class="form-control" type="text" name="costPrueProy" >
 								</div>
 								<div class="form-group">
 									<label>Costo de Implementación / Despliegue $(MNX)</label> <input
 										class="form-control" type="text" name="costImpleDesProy"
-										required>
+										>
 								</div>
 								<h3>Estimación</h3>
 								<div class="form-group">
-									<label>Costo de estimación</label> <input class="form-control" type="text" name="estimacionCosto" required>
+									<label>Costo de estimación</label> <input class="form-control" type="text" name="estimacionCosto" >
 								</div>
 								<div class="form-group">
-									<label>Esfuerzo estimado</label> <input class="form-control" type="text" name="estimacionEsfuerzo" required>
+									<label>Esfuerzo estimado</label> <input class="form-control" type="text" name="estimacionEsfuerzo" >
 								</div>
 								<div class="form-group">
 									<label>Duración estimada</label> 
 									<div class="form-inline">
-									<input class="form-control" type="text" name="estimacionDuracion" required>
+									<input class="form-control" type="text" name="estimacionDuracion" >
 									<select class="form-control"
 										name="idescalaEstimacionDuracion">
 										<%for(Escala i : ListaEscala){%>
@@ -413,11 +413,11 @@
 								<h3>Tamaño Funcional</h3>
 								<div class="form-group">
 									<label>Propósito</label> <input class="form-control"
-										type="text" name="proposito" required>
+										type="text" name="proposito" >
 								</div>
 								<div class="form-group">
 									<label>Alcance</label> <input class="form-control" type="text"
-										name="alcance" required>
+										name="alcance" >
 								</div>
 								<div class="form-group">
 									<label>Método de Medición</label>
@@ -434,12 +434,12 @@
 								<div class="form-group">
 									<label>Tamaño Funcional medido utilizando el estándar
 										seleccionado</label> <input class="form-control" type="text"
-										name="tamFunProy" required>
+										name="tamFunProy" >
 								</div>
 								<div class="form-group">
 									<label>Function Points Ajustados (si el método utiliado
 										lo permite)</label> <input class="form-control" type="text"
-										name="fpAjusProy" required>
+										name="fpAjusProy" >
 								</div>
 								<div class="form-group">
 									<label>El medidor de software está certifiado en el
@@ -453,7 +453,7 @@
 								<div class="form-group">
 									<label>Experiencia en años del medidor utilizando el
 										método</label> <input class="form-control" type="text"
-										name="expeMedMetProy" required>
+										name="expeMedMetProy" >
 								</div>
 								
 							</div>

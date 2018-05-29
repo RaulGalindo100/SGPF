@@ -362,7 +362,7 @@
 									<label>Duración del Proyecto</label>
 									<div class="form-inline">
 										<input class="form-control" type="text" name="duraProy"
-											value="<%=p.getDuraProy()%>" required>
+											value="<%=p.getDuraProy()%>" >
 
 										<!-- <label>Escala</label> -->
 										<select class="form-control" name="Idescala">
@@ -379,74 +379,74 @@
 								<div class="form-group">
 									<label>Esfuerzo Total del Proyecto [hh]</label> <input
 										class="form-control" type="text" name="esfuTotProy"
-										value="<%=p.getEsfuTotProy()%>" required>
+										value="<%=p.getEsfuTotProy()%>" >
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo de Planeación [hh]</label> <input
 										class="form-control" type="text" name="esfuPlaneProy"
-										value="<%=p.getEsfuPlaneProy()%>" required>
+										value="<%=p.getEsfuPlaneProy()%>" >
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo de Especificación de Requerimientos
 										[hh]</label> <input class="form-control" type="text"
 										name="esfuEsReqProy" value="<%=p.getEsfuEsReqProy() %>"
-										required>
+										>
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo de Análisis y Diseño [hh]</label> <input
 										class="form-control" type="text" name="esfuAnaDisProy"
-										value="<%=p.getEsfuAnaDisProy() %>" required>
+										value="<%=p.getEsfuAnaDisProy() %>" >
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo de Construcción [hh]</label> <input
 										class="form-control" type="text" name="esfuConstProy"
-										value="<%=p.getEsfuConstProy()%>" required>
+										value="<%=p.getEsfuConstProy()%>" >
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo de Pruebas [hh]</label> <input
 										class="form-control" type="text" name="esfuPrueProy"
-										value="<%=p.getEsfuPrueProy() %>" required>
+										value="<%=p.getEsfuPrueProy() %>" >
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo de Implementación / Despliegue [hh]</label> <input
 										class="form-control" type="text" name="esfuImpleDesProy"
-										value="<%=p.getEsfuImpleDesProy() %>" required>
+										value="<%=p.getEsfuImpleDesProy() %>" >
 								</div>
 								<div class="form-group">
 									<label>Costo Total del Proyecto $(MNX)</label> <input
 										class="form-control" type="text" name="costTotProy"
-										value="<%=p.getCostTotProy()  %>" required>
+										value="<%=p.getCostTotProy()  %>" >
 								</div>
 
 								<div class="form-group">
 									<label>Costo de Planeación $(MNX)</label> <input
 										class="form-control" type="text" name="costPlanProy"
-										value="<%=p.getCostPlanProy()%>" required>
+										value="<%=p.getCostPlanProy()%>" >
 								</div>
 								<div class="form-group">
 									<label>Costo de Especificación de Requerimientos $(MNX)</label>
 									<input class="form-control" type="text" name="costEsReqProy"
-										value="<%=p.getCostEsReqProy() %>" required>
+										value="<%=p.getCostEsReqProy() %>" >
 								</div>
 								<div class="form-group">
 									<label>Costo de Análisis y Diseño $(MNX)</label> <input
 										class="form-control" type="text" name="costAnaDisProy"
-										value="<%=p.getCostAnaDisProy() %>" required>
+										value="<%=p.getCostAnaDisProy() %>" >
 								</div>
 								<div class="form-group">
 									<label>Costo de Construcción $(MNX)</label> <input
 										class="form-control" type="text" name="costConstProy"
-										value="<%=p.getCostConstProy() %>" required>
+										value="<%=p.getCostConstProy() %>" >
 								</div>
 								<div class="form-group">
 									<label>Costo de Pruebas $(MNX)</label> <input
 										class="form-control" type="text" name="costPrueProy"
-										value="<%=p.getCostPrueProy()  %>" required>
+										value="<%=p.getCostPrueProy()  %>" >
 								</div>
 								<div class="form-group">
 									<label>Costo de Implementación / Despliegue $(MNX)</label> <input
 										class="form-control" type="text" name="costImpleDesProy"
-										value="<%=p.getCostImpleDesProy() %>" required>
+										value="<%=p.getCostImpleDesProy() %>" >
 								</div>
 								<h3>Estimación</h3>
 								<div class="form-group">
@@ -485,12 +485,12 @@
 								<div class="form-group">
 									<label>Propósito de la medición</label> <input
 										class="form-control" type="text" name="proposito"
-										value="<%=p.getProposito()%>" required>
+										value="<%=p.getProposito()%>" >
 								</div>
 								<div class="form-group">
 									<label>Alcance de la medición</label> <input
 										class="form-control" type="text" name="alcance"
-										value="<%=p.getAlcance()%>" required>
+										value="<%=p.getAlcance()%>" >
 								</div>
 								<div class="form-group">
 									<label>Método de Medición</label> <label></label> <select
@@ -507,12 +507,12 @@
 								<div class="form-group">
 									<label>Tamaño Funcional medido utilizando el estándar
 										seleccionado</label> <input class="form-control" type="text"
-										name="tamFunProy" value="<%=p.getTamFunProy()%>" required>
+										name="tamFunProy" value="<%=p.getTamFunProy()%>" >
 								</div>
 								<div class="form-group">
 									<label>Function Points Ajustados (si el método utiliado
 										lo permite)</label> <input class="form-control" type="text"
-										name="fpAjusProy" value="<%=p.getFpAjusProy() %>" required>
+										name="fpAjusProy" value="<%=p.getFpAjusProy() %>" >
 								</div>
 								<div class="form-group">
 									<label>El medidor de software está certifiado en el
@@ -529,7 +529,7 @@
 									<label>Experiencia en años del medidor utilizando el
 										método</label> <input class="form-control" type="text"
 										name="expeMedMetProy" value="<%=p.getExpeMedMetProy() %>"
-										required>
+										>
 								</div>
 
 
