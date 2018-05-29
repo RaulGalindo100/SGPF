@@ -185,7 +185,15 @@
         <servlet-name>agregagndoGrupoDatos</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.agregagndoGrupoDatos</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>eliFlujoAlterno</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.eliFlujoAlterno</servlet-class>
+    </servlet>
     
+    <servlet-mapping>
+        <servlet-name>eliFlujoAlterno</servlet-name>
+        <url-pattern>/eliFlujoAlterno</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>agregagndoGrupoDatos</servlet-name>
         <url-pattern>/agregagndoGrupoDatos</url-pattern>

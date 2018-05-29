@@ -19,10 +19,6 @@ import unam.mx.SGPF.model.controller.GrupoDatoJpaController;
 import unam.mx.SGPF.model.controller.SubProcesoJpaController;
 import unam.mx.SGPF.model.controller.SubprocesoGrupoDatoJpaController;
 
-/**
- *
- * @author jlope
- */
 public class agregagndoGrupoDatos extends HttpServlet{
      @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -49,8 +45,12 @@ public class agregagndoGrupoDatos extends HttpServlet{
             HttpSession session = request.getSession(true);
             SubProceso SubProceso = (SubProceso) session.getAttribute("SubProceso");
             redireccion = redireccion.concat(Integer.toString(SubProceso.getIdprocesoFuncional().getIdprocesoFuncional()));
-        }catch(Exception e){redireccion="agregaGrupoDatos.jsp?error=1";}
-        finally{response.sendRedirect(redireccion);}
+        }catch(Exception e){
+        	redireccion="agregaGrupoDatos.jsp?error=1";
+        }
+        finally{
+        	response.sendRedirect(redireccion);
+        }
         
     }
 }

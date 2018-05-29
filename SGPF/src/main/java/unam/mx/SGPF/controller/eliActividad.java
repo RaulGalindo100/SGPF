@@ -21,8 +21,9 @@ public class eliActividad extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+    	String redireccion="";
         int idSubProceso = Integer.parseInt(request.getParameter("idSubProceso"));
+        
         
         SubProcesoJpaController SubProcesoJPA = new SubProcesoJpaController(EntityProvider.provider());
         SubProceso aux = SubProcesoJPA.findSubProceso(idSubProceso);
@@ -32,6 +33,7 @@ public class eliActividad extends HttpServlet{
         List<SubProceso> listaSPEliminar = SubProcesoJPA.findSPByActividadyPF(aux.getActividad(),aux.getIdprocesoFuncional());
         FlujoAlternoJpaController FlujoAlternoJPA = new FlujoAlternoJpaController(EntityProvider.provider());
         try{
+        	int idPF = aux.getIdprocesoFuncional().getIdprocesoFuncional();
             if(listaSPEliminar!=null && !listaSPEliminar.isEmpty())
             listaSPEliminar.forEach((action) -> {
                 //Eliminar Flujos Alternos
@@ -50,6 +52,7 @@ public class eliActividad extends HttpServlet{
          
          //Elimina al subproceso
             try{SubProcesoJPA.destroy(action.getIdsubProceso());}catch(Exception J){}
+
             });
             
             //Actualizar los índices de las actividades
@@ -60,12 +63,17 @@ public class eliActividad extends HttpServlet{
                     action.setIndiceActividad(indiceActAnterio-1);
                     try{SubProcesoJPA.edit(action);}catch(Exception e){}
                 });
+            HttpSession session = request.getSession(true);
+            session.setAttribute("idPF", idPF);
+            redireccion = "BuscaProcesoFuncional?idprocesoFuncional=";
+            redireccion = redireccion.concat(Integer.toString(idPF));
         }catch(Exception e){
             e.printStackTrace();
         }finally{
             HttpSession session = request.getSession(true);
             session.setAttribute("PF_Actual", PF_Actual);
-            response.sendRedirect("eliminadoSubProceso.jsp");   
+            response.sendRedirect(redireccion);
+            //response.sendRedirect("eliminadoSubProceso.jsp");   
         }
     }
 }
