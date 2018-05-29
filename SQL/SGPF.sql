@@ -557,13 +557,13 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`subprocesoGrupoDato` (
   CONSTRAINT `SubProceso_GrupoDato_Fk`
     FOREIGN KEY (`idGrupoDato`)
     REFERENCES `SGPF`.`grupodato` (`idgrupoDato`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `subProceso_SubProceso_fk`
     FOREIGN KEY (`idSubProceso`)
     REFERENCES `SGPF`.`subproceso` (`idsubProceso`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 

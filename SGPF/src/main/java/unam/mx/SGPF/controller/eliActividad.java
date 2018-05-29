@@ -11,8 +11,10 @@ import unam.mx.SGPF.model.EntityProvider;
 import unam.mx.SGPF.model.FlujoAlterno;
 import unam.mx.SGPF.model.ProcesoFuncional;
 import unam.mx.SGPF.model.SubProceso;
+import unam.mx.SGPF.model.SubprocesoGrupoDato;
 import unam.mx.SGPF.model.controller.FlujoAlternoJpaController;
 import unam.mx.SGPF.model.controller.SubProcesoJpaController;
+import unam.mx.SGPF.model.controller.SubprocesoGrupoDatoJpaController;
 
 public class eliActividad extends HttpServlet{
     
@@ -38,6 +40,15 @@ public class eliActividad extends HttpServlet{
                     listaFlujosAlterno.forEach((iter) -> {
                     try{ FlujoAlternoJPA.destroy(iter.getIdflujoAlterno()); }catch(Exception r){}});
                 }
+                
+             //Elimina dependencias de Subproceso-grupoDato
+            SubprocesoGrupoDatoJpaController subgdJpa = new SubprocesoGrupoDatoJpaController(EntityProvider.provider());
+            List<SubprocesoGrupoDato> listaSubprocesoGrupoDato = subgdJpa.findByIdSP(aux);
+            if(listaSubprocesoGrupoDato!=null && !listaSubprocesoGrupoDato.isEmpty())
+                listaSubprocesoGrupoDato.forEach((iterador)->{
+                 try{ subgdJpa.destroy(iterador.getIdsubprocesoGrupoDato());}catch(Exception w){}});
+         
+         //Elimina al subproceso
             try{SubProcesoJPA.destroy(action.getIdsubProceso());}catch(Exception J){}
             });
             

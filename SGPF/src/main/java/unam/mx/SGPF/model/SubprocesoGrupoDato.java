@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "SubprocesoGrupoDato.findAll", query = "SELECT s FROM SubprocesoGrupoDato s")
+    , @NamedQuery(name = "SubprocesoGrupoDato.findByIdSP", query = "SELECT s FROM SubprocesoGrupoDato s where s.idSubProceso = :sp")
     , @NamedQuery(name = "SubprocesoGrupoDato.findByIdsubprocesoGrupoDato", query = "SELECT s FROM SubprocesoGrupoDato s WHERE s.idsubprocesoGrupoDato = :idsubprocesoGrupoDato")})
 public class SubprocesoGrupoDato implements Serializable {
 
