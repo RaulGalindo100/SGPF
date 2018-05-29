@@ -112,6 +112,7 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Actividad</th>
+							<th scope="col"># SP</th>
 							<th scope="col">Descripción</th>
 							<th scope="col">Usuario funcional</th>
 							<th scope="col">Acción</th>
@@ -132,6 +133,7 @@
 							<%if (inter.getIndice() == 1) {contador++;%>
 							<td><%=contador%></td>
 							<td><%=inter.getActividad()%></td>
+							<td><%=inter.getIndice()%></td>
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
@@ -220,6 +222,7 @@
 							<%} else {contador++;%>
 							<td><%=contador%></td>
 							<td></td>
+							<td><%=inter.getIndice()%></td>
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
@@ -325,8 +328,8 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Actividad</th>
+                                                        <th scope="col"># SP</th>
 							<th scope="col">Descripción</th>
-							<th scope="col">Indice de SP</th>
 							<th scope="col">Usuario funcional</th>
 							<th scope="col">Acción</th>
 							<th scope="col">Grupo de datos</th>
@@ -344,8 +347,8 @@
 						<tr>
 							<td><%=contador2%></td>
 							<td><%=inter.getActividad()%></td>
+                                                        <td><%=pf.getIndice() %></td>
 							<td><%=inter.getDescripcion()%></td>
-							<td><%=pf.getIndice() %></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
 							<td><%=gd.getNomGD()%></td>

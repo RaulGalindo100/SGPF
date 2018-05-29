@@ -61,19 +61,11 @@
 							name="descripcionFA" required>
 
 					</div>
-					<div class="form-group">
-						<label>Usuario funcional</label> <select class="form-control"
-							name="usuarioFuncionalFA" required>
-							<%
-               List<UsuarioFuncional> usuarioFuncionalCat = (List<UsuarioFuncional>) session.getAttribute("ufCatalogo");
-							for (UsuarioFuncional usuarioF : usuarioFuncionalCat) {
-								if (usuarioF.getActivo() == 1) {%>
-								<option value="<%=usuarioF.getIdusuarioFuncional()%>">
-									<%=usuarioF.getNomUF()%> --
-									<%=usuarioF.getDescripcion()%>
-								</option>
-							<% } } %>
-						</select>
+                                        <div class="form-group">
+					    <label>Usuario funcional</label> 
+                                            <input class="form-control" type="text" value="Sistema" disabled>	
+                                            <input class="form-control" type="hidden" name="usuarioFuncionalFA"
+                                                   value="1">	
 					</div>
 					<div class="form-group">
 						<label>Acción</label> <select class="form-control" name="accionFA"

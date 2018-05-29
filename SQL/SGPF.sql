@@ -671,7 +671,7 @@ INSERT INTO `accion` VALUES (1,'Mensaje de error','S','Mensaje de error',1),(2,'
 
 INSERT INTO `grupodato` VALUES (1,'N/A','N/A',1),(2,'estudiante Registrador','Estudiante del IIMAS',0),(3,'Juano','Sisg',1),(4,'Juano','Feith',1),(5,'Pedro','kbjhb',1);
 
-INSERT INTO `usuariofuncional` VALUES (1,'Registradores','Registrador del IIMAST',1,1),(2,'C-Reg','Sistema C-Reg',1,1),(3,'Registrador','Registrador C-Reg',1,1),(4,'Juano','FHKLI',1,1);
+INSERT INTO `usuariofuncional` VALUES (1,'Sistema','Sistema',1,1),(2,'C-Reg','Sistema C-Reg',1,1),(3,'Registrador','Registrador C-Reg',1,1),(4,'Juano','FHKLI',1,1),(5,'Registradores','Registrador del IIMAS',1,1);
 
 INSERT INTO `subproceso` VALUES (1,'los datos de',2,1,1,2,'Inicio de PF',1,1),(2,'los datos de',2,1,1,2,'Inicio de PF',2,1),(3,'los datos de',2,1,1,2,'Valida',1,1),(4,'los datos de',2,1,1,2,'Valida',2,1),(5,'canjlewnlk',1,1,2,5,'Inicio de Proceso Funcional',1,1),(6,'caenew',1,1,2,5,'Inicio de Proceso Funcional',2,1);
 
