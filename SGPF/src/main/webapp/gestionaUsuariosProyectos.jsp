@@ -53,12 +53,24 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% for(InterUP iter : ListaInterUP){%>
+                                            <%int tipoUsuario = Integer.parseInt(session.getAttribute("tipoUsuario").toString());
+                                             if(tipoUsuario==1){%>
+                                                <% for(InterUP iter : ListaInterUP){%>
 						<tr>
 							<td><%=iter.getIdusuario().getNomUsuario()%></td>
 							<td><%=iter.getIdproyecto().getNomProy()%></td>
 						</tr>
 						<%}%>
+                                            <%}else{if(tipoUsuario==2){%>
+                                                <% for(InterUP iter : ListaInterUP){ 
+                                                    if(iter.getIdusuario().getUsuTipo1()==null){%>
+						<tr>
+							<td><%=iter.getIdusuario().getNomUsuario()%></td>
+							<td><%=iter.getIdproyecto().getNomProy()%></td>
+						</tr>
+						<%}}%>
+                                            <%}}%>
+						
 					</tbody>
 				</table>
 			</div>

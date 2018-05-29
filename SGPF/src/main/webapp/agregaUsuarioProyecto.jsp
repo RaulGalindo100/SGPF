@@ -73,12 +73,10 @@
 						<label>Usuario</label> <select class="form-control"
 							name="IdUsuario">
 							<%
-								for (Usuario iter : ListaUsuario) {
+							for (Usuario iter : ListaUsuario) {
 							%>
 							<option value="<%=iter.getIdusuario()%>"><%=iter.getNomUsuario()%></option>
-							<%
-								}
-							%>
+							<% } %>
 						</select>
 					</div>
 					<div class="form-group">
