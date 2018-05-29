@@ -1,8 +1,10 @@
-<%@page import="unam.mx.SGPF.model.controller.SubprocesoGrupoDatoJpaController"%>
+<%@page
+	import="unam.mx.SGPF.model.controller.SubprocesoGrupoDatoJpaController"%>
 <%@page import="unam.mx.SGPF.model.controller.GrupoDatoJpaController"%>
 <%@page import="unam.mx.SGPF.model.controller.SubProcesoJpaController"%>
 <%@page import="unam.mx.SGPF.model.EntityProvider"%>
-<%@page import="unam.mx.SGPF.model.controller.ProcesoFuncionalJpaController"%>
+<%@page
+	import="unam.mx.SGPF.model.controller.ProcesoFuncionalJpaController"%>
 <%@page import="unam.mx.SGPF.model.FlujoAlterno"%>
 <%@page import="unam.mx.SGPF.model.Proyecto"%>
 <%@page import="unam.mx.SGPF.model.ProcesoFuncional"%>
@@ -121,11 +123,12 @@
 							<th scope="col">Acción</th>
 							<th scope="col">Grupo de datos</th>
 							<th scope="col" colspan="2">Opciones</th>
-							<th scope="col"><th>
+							<th scope="col">
+							<th>
 						</tr>
 					</thead>
 					<tbody>
-		<%for (SubProceso inter : spList) {
+						<%for (SubProceso inter : spList) {
             	UsuarioFuncional uf = new UsuarioFuncional();
               Accion acc = new Accion();
               GrupoDato gd = new GrupoDato();
@@ -146,15 +149,18 @@
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
-                                                        <td><select>
-                                                                <% for(SubprocesoGrupoDato actual : listaSPGD){
-                                                                grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
-                                                                <option>
-                                                                    <%=grupoDato.getNomGD()%>
-                                                                </option>
-                                                                <%}%>
-                                                            </select>
-                                                        </td>
+							<td>
+								<div class="form-group">
+									<select class="selectpicker form-control">
+										<% for(SubprocesoGrupoDato actual : listaSPGD){
+                    grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
+										<option>
+											<%=grupoDato.getNomGD()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+							</td>
 							<%if ( p.getEstatus() == 1) {%>
 							<td>
 								<div class="dropdown">
@@ -170,42 +176,43 @@
 												type="hidden" name="idSubProceso"
 												value="<%=inter.getIdsubProceso()%>" /> <input
 												class="dropdown-item btn btn-outline-info .btn-sm"
-												style="font-size: 10pt;" type="submit"
-												value="SP Después" />
+												style="font-size: 10pt;" type="submit" value="SP Después" />
 										</form>
 										<form action="agregaFlujoAlterno" method="POST">
 											<input type="hidden" name="idSubProceso"
 												value="<%=inter.getIdsubProceso()%>" /> <input
 												type="hidden" name="opcion" value="3" /> <input
 												class="dropdown-item btn btn-outline-info"
-												style="font-size: 10pt;" type="submit"
-												value="Flujo Alterno" />
+												style="font-size: 10pt;" type="submit" value="Flujo Alterno" />
 										</form>
 										<form action="agregaGrupoDatos" method="POST">
-											<input type="hidden" name="idSubProceso" value="<%=inter.getIdsubProceso()%>" /> 
-                      <input class="dropdown-item btn btn-outline-info" style="font-size: 10pt;" type="submit"
-											value="Grupo de Datos" />
+											<input type="hidden" name="idSubProceso"
+												value="<%=inter.getIdsubProceso()%>" /> <input
+												class="dropdown-item btn btn-outline-info"
+												style="font-size: 10pt;" type="submit"
+												value="Grupo de Datos" />
 										</form>
 									</div>
 								</div>
 							</td>
 							<td>
-							<form action="modActividad" method="POST">
-											<input type="hidden" name="idSubProceso"
-												value="<%=inter.getIdsubProceso()%>" /> <input
-												class="btn btn-outline-info .btn-sm text-white"
-												style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Modificar" />
-										</form>
+								<form action="modActividad" method="POST">
+									<input type="hidden" name="idSubProceso"
+										value="<%=inter.getIdsubProceso()%>" /> <input
+										class="btn btn-outline-info .btn-sm text-white"
+										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										type="submit" value="Modificar" />
+								</form>
 							</td>
 							<td>
-			
 								<%if (!inter.getActividad().equals("Inicio de Proceso Funcional") && inter.getIndice() == 1) {%>
 								<div class="container">
 									<button type="button"
 										class="btn btn-outline-info .btn-sm text-white"
 										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 										style="font-size: 10pt;" data-toggle="modal"
-										data-target="#eliAct-<%=inter.getIdsubProceso()%>">Eliminar Act.</button>
+										data-target="#eliAct-<%=inter.getIdsubProceso()%>">Eliminar
+										Act.</button>
 									<div class="modal fade"
 										id="eliAct-<%=inter.getIdsubProceso()%>" role="dialog">
 										<div class="modal-dialog">
@@ -218,8 +225,7 @@
 												<div class="modal-footer">
 													<form action="eliActividad" method="POST">
 														<input type="hidden" name="idSubProceso"
-															value="<%=inter.getIdsubProceso()%>" />
-													 <input
+															value="<%=inter.getIdsubProceso()%>" /> <input
 															class="btn btn-outline-info .btn-sm text-white"
 															style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 															type="submit" value="Aceptar" />
@@ -243,15 +249,18 @@
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
-							<td><select>
-                                                                <% for(SubprocesoGrupoDato actual : listaSPGD){
-                                                                grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
-                                                                <option>
-                                                                    <%=grupoDato.getNomGD()%>
-                                                                </option>
-                                                                <%}%>
-                                                            </select>
-                                                        </td>
+							<td>
+								<div class="form-group">
+									<select class="selectpicker form-control">
+										<% for(SubprocesoGrupoDato actual : listaSPGD){
+                		grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
+										<option>
+											<%=grupoDato.getNomGD()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+							</td>
 							<td>
 								<%if (p.getEstatus() == 1) {%>
 								<div class="dropdown">
@@ -289,7 +298,8 @@
 												value="<%=inter.getIdsubProceso()%>" /> <input
 												type="hidden" name="opcion" value="4" /><input
 												class="dropdown-item btn btn-outline-info"
-												style="font-size: 10pt;" type="submit" value="Grupo de Datos" />
+												style="font-size: 10pt;" type="submit"
+												value="Grupo de Datos" />
 										</form>
 										<%}%>
 
@@ -306,8 +316,8 @@
 										style="font-size: 10pt;" data-toggle="modal"
 										data-target="#eliSP-<%=inter.getIdsubProceso()%>">Eliminar
 										SP</button>
-									<div class="modal fade"
-										id="eliSP-<%=inter.getIdsubProceso()%>" role="dialog">
+									<div class="modal fade" id="eliSP-<%=inter.getIdsubProceso()%>"
+										role="dialog">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-body">
@@ -353,7 +363,7 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Actividad</th>
-                                                        <th scope="col"># SP</th>
+							<th scope="col"># SP</th>
 							<th scope="col">Descripción</th>
 							<th scope="col">Usuario funcional</th>
 							<th scope="col">Acción</th>
@@ -372,18 +382,17 @@
 						<tr>
 							<td><%=contador2%></td>
 							<td><%=inter.getActividad()%></td>
-                                                        <td><%=pf.getIndice() %></td>
+							<td><%=pf.getIndice() %></td>
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
 							<td><%=gd.getNomGD()%></td>
 							<td>
-							<%if (tipoUsuario != 3 && p.getEstatus() == 1) { %>
+								<%if (tipoUsuario != 3 && p.getEstatus() == 1) { %>
 								<div class="container">
 									<button type="button"
 										class="btn btn-outline-info .btn-sm text-white"
-										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
-										style="font-size: 10pt;" data-toggle="modal"
+										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-toggle="modal"
 										data-target="#eliFA-<%=inter.getIdflujoAlterno()%>">Eliminar</button>
 									<div class="modal fade"
 										id="eliFA-<%=inter.getIdflujoAlterno()%>" role="dialog">
@@ -396,10 +405,9 @@
 												<div class="modal-footer">
 													<form action="eliFlujoAlterno" method="POST">
 														<input type="hidden" name="idFA"
-															value="<%=inter.getIdflujoAlterno()%>" /> 
-														<input type="hidden" name="idPF"
-															value="<%=detalle.getIdprocesoFuncional()%>" /> 	
-														<input
+															value="<%=inter.getIdflujoAlterno()%>" /> <input
+															type="hidden" name="idPF"
+															value="<%=detalle.getIdprocesoFuncional()%>" /> <input
 															class="btn btn-outline-info .btn-sm text-white"
 															style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 															type="submit" value="Aceptar" />
