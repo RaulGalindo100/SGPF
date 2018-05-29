@@ -77,6 +77,7 @@ public class AgregarProyecto extends HttpServlet {
         String alcance = request.getParameter("alcance");
         String proposito = request.getParameter("proposito");
         int Idescala = Integer.parseInt(request.getParameter("Idescala"));
+        
         double aux = Double.parseDouble(request.getParameter("esfuTotProy"));
         BigDecimal esfuTotProy = new BigDecimal(aux);
         aux = Double.parseDouble(request.getParameter("esfuPlaneProy"));
@@ -111,12 +112,29 @@ public class AgregarProyecto extends HttpServlet {
         BigDecimal tamFunProy = new BigDecimal(aux);
         aux = Double.parseDouble(request.getParameter("fpAjusProy"));
         BigDecimal fpAjusProy = new BigDecimal(aux);
+        
+        aux = Double.parseDouble(request.getParameter("estimacionCosto"));
+        BigDecimal estimacionCosto = new BigDecimal(aux);
+        aux = Double.parseDouble(request.getParameter("estimacionEsfuerzo"));
+        BigDecimal estimacionEsfuerzo = new BigDecimal(aux);
+        aux = Double.parseDouble(request.getParameter("estimacionDuracion"));
+        BigDecimal estimacionDuracion = new BigDecimal(aux);
+        int idescalaEstimacionDuracion = Integer.parseInt(request.getParameter("idescalaEstimacionDuracion"));
+        
         int IdmetMedicion = Integer.parseInt(request.getParameter("IdmetMedicion"));
         Short certModelo = (short)Integer.parseInt(request.getParameter("certModelo"));
         int expeMedMetProy = Integer.parseInt(request.getParameter("expeMedMetProy"));
         int IdconfInfo = Integer.parseInt(request.getParameter("IdconfInfo"));
         
         Proyecto proyecto = new Proyecto();
+        proyecto.setEstimacionCosto(estimacionCosto);
+        proyecto.setEstimacionEsfuerzo(estimacionEsfuerzo);
+        proyecto.setEstimacionDuracion(estimacionDuracion);
+        EscalaJpaController escalaJpa1 = new EscalaJpaController(EntityProvider.provider());
+        Escala escala1 = escalaJpa1.findEscala(idescalaEstimacionDuracion);
+        proyecto.setIdescalaEstimacionDuracion(escala1);
+        
+        
         proyecto.setNomProy(nombreProy);
         proyecto.setAnioProy(anio);
         proyecto.setOperProy(operProy);

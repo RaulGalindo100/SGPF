@@ -307,11 +307,11 @@
 							<div id="menu2" class="tab-pane fade">
 								<h3>Información de Recursos</h3>
 								<div class="form-group">
-									<label>Duración del Proyecto</label> <input
+									<label>Duración del Proyecto</label> 
+									<div class="form-inline">
+									<input
 										class="form-control" type="text" name="duraProy" required>
-								</div>
-								<div class="form-group">
-									<label>Escala</label> <select class="form-control"
+								<select class="form-control"
 										name="Idescala">
 										<%for(Escala i : ListaEscala){%>
 										<option value="<%=i.getIdescala() %>">
@@ -319,7 +319,7 @@
 										</option>
 										<%}%>
 									</select>
-
+									</div>
 								</div>
 								<div class="form-group">
 									<label>Esfuerzo Total del Proyecto [hh]</label> <input
@@ -385,6 +385,28 @@
 										class="form-control" type="text" name="costImpleDesProy"
 										required>
 								</div>
+								<h3>Estimación</h3>
+								<div class="form-group">
+									<label>Costo de estimación</label> <input class="form-control" type="text" name="estimacionCosto" required>
+								</div>
+								<div class="form-group">
+									<label>Esfuerzo estimado</label> <input class="form-control" type="text" name="estimacionEsfuerzo" required>
+								</div>
+								<div class="form-group">
+									<label>Duración estimada</label> 
+									<div class="form-inline">
+									<input class="form-control" type="text" name="estimacionDuracion" required>
+									<select class="form-control"
+										name="idescalaEstimacionDuracion">
+										<%for(Escala i : ListaEscala){%>
+										<option value="<%=i.getIdescala() %>">
+											<%=i.getEscala() %>
+										</option>
+										<%}%>
+									</select>
+									</div>
+									
+								</div>
 								<div class="form-group text-right">Continua con la pestaña de: Tamaño Funcional</div>
 							</div>
 							<div id="menu3" class="tab-pane fade">
@@ -433,6 +455,7 @@
 										método</label> <input class="form-control" type="text"
 										name="expeMedMetProy" required>
 								</div>
+								
 							</div>
 						</div>
 					</div>

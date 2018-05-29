@@ -268,6 +268,37 @@
 							</div>
 						</div>
 					</div>
+					
+					<div class="row">
+						<div class="col-md-8">Estimación</div>
+						<div class="col-md-2">
+							<button class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-toggle="collapse"
+								data-target="#esti">Más</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8">
+							<div id="esti" class="collapse">
+								<table class="table " style="border-width: 2px; border-style: solid; border-color: #2c3e50;">
+									<tbody>
+										<tr>
+											<td>Costo de estimación</td>
+											<td><%=p.getEstimacionCosto()%> </td>
+										</tr>
+										<tr>
+											<td>Esfuerzo estimado</td>
+											<td><%=p.getEstimacionEsfuerzo()%></td>
+										</tr>
+										<tr>
+											<td>Duración estimada</td>
+											<td><%=p.getEstimacionDuracion()%> <%=p.getIdescalaEstimacionDuracion().getEscala()%></td>
+									
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 
 					<div class="row">
 						<div class="col-md-8">Tamaño funcional</div>
