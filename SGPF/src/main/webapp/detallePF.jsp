@@ -387,6 +387,14 @@
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
 							<td><%=gd.getNomGD()%></td>
+                                                        <td>
+                                                             <form action="agregaGrupoDatosFlujoAlterno" method="POST">
+                                                             <input type="hidden" name="idFlujoAlterno" value="<%=inter.getIdflujoAlterno()%>" /> 
+                                                             <input class="btn btn-outline-info .btn-sm text-white"
+                                                             style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+                                                             type="submit" value="Agrega Grupo Datos" />
+                                                             </form>
+                                                        </td>
 							<td>
 								<%if (tipoUsuario != 3 && p.getEstatus() == 1) { %>
 								<div class="container">

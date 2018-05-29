@@ -40,7 +40,7 @@
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 					</ul>
-					<form action="BuscaProcesoFuncional" method="POST">
+					<form action="detallePF.jsp" method="POST">
 						<div class="btn-group" role="group">
 							<input class="btn btn-info" type="hidden"
 								name="idprocesoFuncional"

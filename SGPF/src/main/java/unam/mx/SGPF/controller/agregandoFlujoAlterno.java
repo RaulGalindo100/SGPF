@@ -16,10 +16,12 @@ import unam.mx.SGPF.model.EntityProvider;
 import unam.mx.SGPF.model.FlujoAlterno;
 import unam.mx.SGPF.model.GrupoDato;
 import unam.mx.SGPF.model.SubProceso;
+import unam.mx.SGPF.model.SubprocesoGrupoDato;
 import unam.mx.SGPF.model.UsuarioFuncional;
 import unam.mx.SGPF.model.controller.AccionJpaController;
 import unam.mx.SGPF.model.controller.FlujoAlternoJpaController;
 import unam.mx.SGPF.model.controller.GrupoDatoJpaController;
+import unam.mx.SGPF.model.controller.SubprocesoGrupoDatoJpaController;
 import unam.mx.SGPF.model.controller.UsuarioFuncionalJpaController;
 
 /**
@@ -59,12 +61,13 @@ public class agregandoFlujoAlterno extends HttpServlet{
         aux.setIdgrupoDato(MiGrupoDato);
         
         FlujoAlternoJpaController FlujoAlternoJPA = new FlujoAlternoJpaController(EntityProvider.provider());
-       
+        
+        SubprocesoGrupoDatoJpaController spgdJpa = new SubprocesoGrupoDatoJpaController(EntityProvider.provider());
+        
         try{
             FlujoAlternoJPA.create(aux);
             redireccion = "BuscaProcesoFuncional?idprocesoFuncional=";
             redireccion = redireccion.concat(Integer.toString(SubProceso.getIdprocesoFuncional().getIdprocesoFuncional()));
-            
         }catch(Exception e){
             redireccion = "detallePF.jsp";
         }

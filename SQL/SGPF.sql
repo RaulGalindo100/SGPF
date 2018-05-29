@@ -585,6 +585,7 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`flujoAlterno` (
   INDEX `FA_idaccion_fk_idx` (`idaccion` ASC),
   INDEX `FA_idgrupoDato_fk_idx` (`idgrupoDato` ASC),
   INDEX `FA_idsubProceso_fk_idx` (`idsubProceso` ASC),
+  UNIQUE INDEX `flujoAlternoGpoDato_idx` (`idsubProceso` ASC, `idgrupoDato` ASC),
   CONSTRAINT `FA_idusuarioFuncional_fk`
     FOREIGN KEY (`idusuarioFuncional`)
     REFERENCES `SGPF`.`usuariofuncional` (`idusuarioFuncional`)

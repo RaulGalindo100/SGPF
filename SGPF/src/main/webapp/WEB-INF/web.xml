@@ -193,7 +193,23 @@
         <servlet-name>consultaHistorico</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.consultaHistorico</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>agregaGrupoDatosFlujoAlterno</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.agregaGrupoDatosFlujoAlterno</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>agregagndoGrupoDatosFlujoAlterno</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.agregagndoGrupoDatosFlujoAlterno</servlet-class>
+    </servlet>
     
+    <servlet-mapping>
+        <servlet-name>agregagndoGrupoDatosFlujoAlterno</servlet-name>
+        <url-pattern>/agregagndoGrupoDatosFlujoAlterno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>agregaGrupoDatosFlujoAlterno</servlet-name>
+        <url-pattern>/agregaGrupoDatosFlujoAlterno</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>consultaHistorico</servlet-name>
         <url-pattern>/consultaHistorico</url-pattern>
