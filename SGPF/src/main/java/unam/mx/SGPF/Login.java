@@ -46,6 +46,8 @@ public class Login extends HttpServlet {
                                 tipoUsuario = 3;
                             }
                         }
+                        if(u.getActivo()==0)
+                            response.sendRedirect("index.html");
                         session.setAttribute("tipoUsuario", tipoUsuario);
 
 			InterUPJpaController ijpa = new InterUPJpaController(EntityProvider.provider());
