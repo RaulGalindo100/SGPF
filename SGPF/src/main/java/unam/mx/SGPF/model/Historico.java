@@ -25,8 +25,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Historico.findByNombreProy", query = "SELECT h FROM Historico h WHERE h.nombreProy = :nombreProy")
     , @NamedQuery(name = "Historico.findByAlcanceProy", query = "SELECT h FROM Historico h WHERE h.alcanceProy = :alcanceProy")
     , @NamedQuery(name = "Historico.findByNombrePF", query = "SELECT h FROM Historico h WHERE h.nombrePF = :nombrePF")
+    , @NamedQuery(name = "Historico.findHistoricoByIdProyecto", query = "SELECT h FROM Historico h WHERE h.idProy = :idPF group by h.fecha order by h.fecha asc")
+    , @NamedQuery(name = "Historico.findHistoricoByIdProyectoFecha", query = "SELECT h FROM Historico h WHERE h.idProy = :idPF and h.fecha = :fecha")
     , @NamedQuery(name = "Historico.findByDescripcionPF", query = "SELECT h FROM Historico h WHERE h.descripcionPF = :descripcionPF")
-    , @NamedQuery(name = "Historico.findByTamanioPF", query = "SELECT h FROM Historico h WHERE h.tamanioPF = :tamanioPF")
+    , @NamedQuery(name = "Historico.findByTamanioPF", query = "SELECT h FROM Historico h WHERE h.tamanio = :tamanio")
     , @NamedQuery(name = "Historico.findByEventoDesPF", query = "SELECT h FROM Historico h WHERE h.eventoDesPF = :eventoDesPF")
     , @NamedQuery(name = "Historico.findByDescripcionSP", query = "SELECT h FROM Historico h WHERE h.descripcionSP = :descripcionSP")
     , @NamedQuery(name = "Historico.findByFecha", query = "SELECT h FROM Historico h WHERE h.fecha = :fecha")
@@ -62,7 +64,7 @@ public class Historico implements Serializable {
     private String descripcionPF;
     @Basic(optional = false)
     @Column(nullable = false)
-    private int tamanioPF;
+    private int tamanio;
     @Basic(optional = false)
     @Column(nullable = false, length = 250)
     private String eventoDesPF;
@@ -155,11 +157,11 @@ public class Historico implements Serializable {
     }
 
     public int getTamanioPF() {
-        return tamanioPF;
+        return tamanio;
     }
 
     public void setTamanioPF(int tamanioPF) {
-        this.tamanioPF = tamanioPF;
+        this.tamanio = tamanioPF;
     }
 
     public String getEventoDesPF() {

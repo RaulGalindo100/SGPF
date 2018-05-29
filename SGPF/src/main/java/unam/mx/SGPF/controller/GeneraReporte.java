@@ -609,27 +609,32 @@ public class GeneraReporte extends HttpServlet {
                     auxi++;
                     //Inserciones en Histórico
                     HistoricoJpaController hjpac = new HistoricoJpaController(EntityProvider.provider());
-                    Historico historico = new Historico();
-                    historico.setIdProy(proy.getIdproyecto());
-                    historico.setNombreProy(proy.getNomProy());
-                    historico.setProposito(proy.getProposito());
-                    historico.setAlcanceProy(proy.getAlcance());
-                    historico.setNombrePF(proceso.getNomPF());
-                    historico.setDescripcionPF(proceso.getDescripcion());
-                    historico.setTamanioPF(proceso.getTamPF());
-                    historico.setEventoDesPF(proceso.getEventoDes());
-                    historico.setDescripcionSP(sub.getDescripcion());
-                    Date fecha = new Date();
-                    historico.setFecha(fecha);
-                    historico.setNombreGD(grupoDato.getNomGD());
-                    historico.setDescripcionGD(grupoDato.getDescripcion());
-                    historico.setNombreUF(usuario.getNomUF());
-                    historico.setDescripcionUF(usuario.getDescripcion());
-                    historico.setUsuarioSistemaUF(usuario.getUsuarioSistema());
-                    historico.setNombreAccion(accion.getNomAccion());
-                    historico.setMovDatos(String.format("%c", accion.getMovDatos()));
+                    
+                    List<Historico> listaHistorico = hjpac.findHistoricoByIdProyectoFecha(proy);
+                    System.out.println("El tamaño de la lista >> "+listaHistorico.size());
+                    if(listaHistorico==null || listaHistorico.isEmpty()){
+                        Historico historico = new Historico();
+                        historico.setIdProy(proy.getIdproyecto());
+                        historico.setNombreProy(proy.getNomProy());
+                        historico.setProposito(proy.getProposito());
+                        historico.setAlcanceProy(proy.getAlcance());
+                        historico.setNombrePF(proceso.getNomPF());
+                        historico.setDescripcionPF(proceso.getDescripcion());
+                        historico.setTamanioPF(proceso.getTamPF());
+                        historico.setEventoDesPF(proceso.getEventoDes());
+                        historico.setDescripcionSP(sub.getDescripcion());
+                        Date fecha = new Date();
+                        historico.setFecha(fecha);
+                        historico.setNombreGD(grupoDato.getNomGD());
+                        historico.setDescripcionGD(grupoDato.getDescripcion());
+                        historico.setNombreUF(usuario.getNomUF());
+                        historico.setDescripcionUF(usuario.getDescripcion());
+                        historico.setUsuarioSistemaUF(usuario.getUsuarioSistema());
+                        historico.setNombreAccion(accion.getNomAccion());
+                        historico.setMovDatos(String.format("%c", accion.getMovDatos()));
 
-                    hjpac.create(historico);
+                        hjpac.create(historico);
+                    }
                     //Fin de Inserciones en Històrico
                 }
 

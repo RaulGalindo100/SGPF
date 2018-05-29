@@ -101,7 +101,7 @@
 											href="GeneraReporte?idProyecto=<%=p.getIdproyecto()%>">
 											Generar Reporte </a>
 										<a class="dropdown-item btn btn-outline-info .btn-sm"
-											href="Historico?idProyecto=<%=p.getIdproyecto()%>">
+											href="consultaHistorico?idProyecto=<%=p.getIdproyecto()%>&nomProy=<%=p.getNomProy()%>">
 											Histórico</a>
 										<% if(tipoUsuario!=3){%>
 										<form action="eliminaProyecto" method="post">

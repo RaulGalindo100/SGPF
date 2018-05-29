@@ -1,3 +1,5 @@
+<%@page import="unam.mx.SGPF.model.controller.SubprocesoGrupoDatoJpaController"%>
+<%@page import="unam.mx.SGPF.model.controller.GrupoDatoJpaController"%>
 <%@page import="unam.mx.SGPF.model.controller.SubProcesoJpaController"%>
 <%@page import="unam.mx.SGPF.model.EntityProvider"%>
 <%@page import="unam.mx.SGPF.model.controller.ProcesoFuncionalJpaController"%>
@@ -8,6 +10,7 @@
 <%@page import="unam.mx.SGPF.model.Accion"%>
 <%@page import="unam.mx.SGPF.model.GrupoDato"%>
 <%@page import="unam.mx.SGPF.model.SubProceso"%>
+<%@page import="unam.mx.SGPF.model.SubprocesoGrupoDato"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE html>
@@ -122,13 +125,19 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%for (SubProceso inter : spList) {
+		<%for (SubProceso inter : spList) {
             	UsuarioFuncional uf = new UsuarioFuncional();
               Accion acc = new Accion();
               GrupoDato gd = new GrupoDato();
               uf = inter.getIdusuarioFuncional();
               acc = inter.getIdaccion();
-              gd = inter.getIdgrupoDato();%>
+              gd = inter.getIdgrupoDato();
+            //Obtener todos los grupos de datos del PF:
+            SubprocesoGrupoDatoJpaController spgdJpa = new SubprocesoGrupoDatoJpaController(EntityProvider.provider());
+            List<SubprocesoGrupoDato> listaSPGD = spgdJpa.findByIdSP(inter); 
+            GrupoDatoJpaController gdJpa = new GrupoDatoJpaController(EntityProvider.provider());
+            GrupoDato grupoDato; 
+            %>
 						<tr>
 							<%if (inter.getIndice() == 1) {contador++;%>
 							<td><%=contador%></td>
@@ -137,7 +146,15 @@
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
-							<td><%=gd.getNomGD()%></td>
+                                                        <td><select>
+                                                                <% for(SubprocesoGrupoDato actual : listaSPGD){
+                                                                grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
+                                                                <option>
+                                                                    <%=grupoDato.getNomGD()%>
+                                                                </option>
+                                                                <%}%>
+                                                            </select>
+                                                        </td>
 							<%if ( p.getEstatus() == 1) {%>
 							<td>
 								<div class="dropdown">
@@ -226,7 +243,15 @@
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
-							<td><%=gd.getNomGD()%></td>
+							<td><select>
+                                                                <% for(SubprocesoGrupoDato actual : listaSPGD){
+                                                                grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
+                                                                <option>
+                                                                    <%=grupoDato.getNomGD()%>
+                                                                </option>
+                                                                <%}%>
+                                                            </select>
+                                                        </td>
 							<td>
 								<%if (p.getEstatus() == 1) {%>
 								<div class="dropdown">

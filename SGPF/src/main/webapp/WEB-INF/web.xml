@@ -185,11 +185,19 @@
         <servlet-name>agregagndoGrupoDatos</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.agregagndoGrupoDatos</servlet-class>
     </servlet>
-     <servlet>
+    <servlet>
         <servlet-name>eliFlujoAlterno</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.eliFlujoAlterno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>consultaHistorico</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.consultaHistorico</servlet-class>
+    </servlet>
     
+    <servlet-mapping>
+        <servlet-name>consultaHistorico</servlet-name>
+        <url-pattern>/consultaHistorico</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>eliFlujoAlterno</servlet-name>
         <url-pattern>/eliFlujoAlterno</url-pattern>

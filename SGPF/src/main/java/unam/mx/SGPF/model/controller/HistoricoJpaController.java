@@ -1,6 +1,7 @@
 package unam.mx.SGPF.model.controller;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,6 +10,7 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import unam.mx.SGPF.model.Historico;
+import unam.mx.SGPF.model.Proyecto;
 import unam.mx.SGPF.model.controller.exceptions.NonexistentEntityException;
 
 public class HistoricoJpaController implements Serializable {
@@ -125,5 +127,20 @@ public class HistoricoJpaController implements Serializable {
             em.close();
         }
     }
-
+    
+    public List<Historico> findHistoricoByIdProyecto(Proyecto idProyecto){
+    	EntityManager em = getEntityManager();
+    	Query q = em.createNamedQuery("Historico.findHistoricoByIdProyecto")
+    			.setParameter("idPF", idProyecto.getIdproyecto());
+    	return q.getResultList();
+    }
+    
+    public List<Historico> findHistoricoByIdProyectoFecha(Proyecto idProyecto){
+    	EntityManager em = getEntityManager();
+        Date hoy = new Date();
+        Query q = em.createNamedQuery("Historico.findHistoricoByIdProyectoFecha")
+                .setParameter("idPF", idProyecto.getIdproyecto())
+                .setParameter("fecha", hoy);
+    	return q.getResultList();
+    }
 }

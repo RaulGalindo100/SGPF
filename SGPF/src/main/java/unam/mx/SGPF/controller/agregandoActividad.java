@@ -14,9 +14,11 @@ import unam.mx.SGPF.model.controller.SubProcesoJpaController;
 import java.util.List;
 import unam.mx.SGPF.model.Accion;
 import unam.mx.SGPF.model.GrupoDato;
+import unam.mx.SGPF.model.SubprocesoGrupoDato;
 import unam.mx.SGPF.model.UsuarioFuncional;
 import unam.mx.SGPF.model.controller.AccionJpaController;
 import unam.mx.SGPF.model.controller.GrupoDatoJpaController;
+import unam.mx.SGPF.model.controller.SubprocesoGrupoDatoJpaController;
 import unam.mx.SGPF.model.controller.UsuarioFuncionalJpaController;
 
 public class agregandoActividad extends HttpServlet {
@@ -68,6 +70,13 @@ public class agregandoActividad extends HttpServlet {
         try {
             if(redireccion.isEmpty())
                 subPjpa.create(aux);
+            //Insertar subprocesogrupodato
+            SubprocesoGrupoDato spgd = new SubprocesoGrupoDato();
+            spgd.setIdGrupoDato(MiGrupoDato);
+            aux.setIdsubProceso(subPjpa.findLastSP().getIdsubProceso());
+            spgd.setIdSubProceso(aux);
+            SubprocesoGrupoDatoJpaController spgdJpa = new SubprocesoGrupoDatoJpaController(EntityProvider.provider());
+            spgdJpa.create(spgd);
         } catch (Exception e) {
             redireccion = "addActividad.jsp";
             return;

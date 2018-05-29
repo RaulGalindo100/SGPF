@@ -10,7 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import unam.mx.SGPF.model.EntityProvider;
 import unam.mx.SGPF.model.GrupoDato;
 import unam.mx.SGPF.model.SubProceso;
@@ -39,18 +38,15 @@ public class agregagndoGrupoDatos extends HttpServlet{
         aux2.setIdGrupoDato(MiGrupoDato);
         aux2.setIdSubProceso(auxSP);
         SubprocesoGrupoDatoJpaController spgdjpa = new SubprocesoGrupoDatoJpaController(EntityProvider.provider());
+        
         try{
             spgdjpa.create(aux2);
             redireccion = "BuscaProcesoFuncional?idprocesoFuncional=";
-            HttpSession session = request.getSession(true);
-            SubProceso SubProceso = (SubProceso) session.getAttribute("SubProceso");
-            redireccion = redireccion.concat(Integer.toString(SubProceso.getIdprocesoFuncional().getIdprocesoFuncional()));
+            redireccion = redireccion.concat(Integer.toString(auxSP.getIdprocesoFuncional().getIdprocesoFuncional()));
         }catch(Exception e){
-        	redireccion="agregaGrupoDatos.jsp?error=1";
-        }
-        finally{
-        	response.sendRedirect(redireccion);
-        }
-        
+             redireccion="agregaGrupoDatos.jsp?error=1";
+        }finally{
+            response.sendRedirect(redireccion);
+        }     
     }
 }
