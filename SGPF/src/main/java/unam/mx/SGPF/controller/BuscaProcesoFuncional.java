@@ -46,7 +46,7 @@ public class BuscaProcesoFuncional extends HttpServlet{
             List<FlujoAlterno> flujoAlterno = new ArrayList<>();
             flujoAlterno = fajpa.findByIdSubProceso(inter);
             if(flujoAlterno!=null && !flujoAlterno.isEmpty()){
-                flujoAl.addAll(flujoAlterno);
+                flujoAl.add(flujoAlterno.get(0));
             }
             
         }

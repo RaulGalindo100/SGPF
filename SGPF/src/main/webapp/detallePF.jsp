@@ -1,3 +1,4 @@
+<%@page import="unam.mx.SGPF.model.controller.FlujoAlternoJpaController"%>
 <%@page
 	import="unam.mx.SGPF.model.controller.SubprocesoGrupoDatoJpaController"%>
 <%@page import="unam.mx.SGPF.model.controller.GrupoDatoJpaController"%>
@@ -253,7 +254,7 @@
 								<div class="form-group">
 									<select class="selectpicker form-control">
 										<% for(SubprocesoGrupoDato actual : listaSPGD){
-                		grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
+                                                                                grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
 										<option>
 											<%=grupoDato.getNomGD()%>
 										</option>
@@ -378,7 +379,13 @@
                 UsuarioFuncional uf = inter.getIdusuarioFuncional();
                 Accion acc = inter.getIdaccion();
                 GrupoDato gd = inter.getIdgrupoDato();
-                contador2++;%>
+                contador2++;
+                //Obtener todos los grupos de datos del FA
+                FlujoAlternoJpaController faJpa = new FlujoAlternoJpaController(EntityProvider.provider());
+                List<FlujoAlterno> listaFAGD = faJpa.findByIdSubProcesoActividad(pf, pf.getActividad());
+                GrupoDatoJpaController gdJpa = new GrupoDatoJpaController(EntityProvider.provider());
+                GrupoDato grupoDato; 
+                                                %>
 						<tr>
 							<td><%=contador2%></td>
 							<td><%=inter.getActividad()%></td>
@@ -386,7 +393,18 @@
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
-							<td><%=gd.getNomGD()%></td>
+							<td>
+                                                        <div class="form-group">
+									<select class="selectpicker form-control">
+										<% for(FlujoAlterno actual : listaFAGD){
+                                                                                grupoDato = gdJpa.findGrupoDato(actual.getIdgrupoDato().getIdgrupoDato());%>
+										<option>
+											<%=grupoDato.getNomGD()%>
+										</option>
+										<%}%>
+									</select>
+								</div>
+                                                        </td>
                                                         <td>
                                                              <form action="agregaGrupoDatosFlujoAlterno" method="POST">
                                                              <input type="hidden" name="idFlujoAlterno" value="<%=inter.getIdflujoAlterno()%>" /> 
@@ -396,7 +414,7 @@
                                                              </form>
                                                         </td>
 							<td>
-								<%if (tipoUsuario != 3 && p.getEstatus() == 1) { %>
+								<%if ( p.getEstatus() == 1) { %>
 								<div class="container">
 									<button type="button"
 										class="btn btn-outline-info .btn-sm text-white"

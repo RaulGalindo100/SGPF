@@ -7,13 +7,8 @@ package unam.mx.SGPF.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -32,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "FlujoAlterno.findAll", query = "SELECT f FROM FlujoAlterno f")
     , @NamedQuery(name = "FlujoAlterno.findByIdflujoAlterno", query = "SELECT f FROM FlujoAlterno f WHERE f.idflujoAlterno = :idflujoAlterno")
     , @NamedQuery(name = "FlujoAlterno.findByDescripcion", query = "SELECT f FROM FlujoAlterno f WHERE f.descripcion = :descripcion")
+    , @NamedQuery(name = "FlujoAlterno.findByIdSubProcesoActividad", query = "SELECT f FROM FlujoAlterno f WHERE f.idsubProceso= :idsubProceso AND f.actividad = :Actividad")
     , @NamedQuery(name = "FlujoAlterno.findByIdSubProceso", query = "SELECT distinct f FROM FlujoAlterno f WHERE f.idsubProceso = :idsubProceso order by f.actividad")
     , @NamedQuery(name = "FlujoAlterno.findByActividad", query = "SELECT f FROM FlujoAlterno f WHERE f.actividad = :actividad")})
 public class FlujoAlterno implements Serializable {

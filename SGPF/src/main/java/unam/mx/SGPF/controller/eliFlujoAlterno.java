@@ -11,10 +11,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import unam.mx.SGPF.model.EntityProvider;
 import unam.mx.SGPF.model.FlujoAlterno;
+import unam.mx.SGPF.model.SubProceso;
 import unam.mx.SGPF.model.controller.FlujoAlternoJpaController;
+import unam.mx.SGPF.model.controller.SubProcesoJpaController;
 
 public class eliFlujoAlterno extends HttpServlet  {
 	 @Override
@@ -22,12 +23,17 @@ public class eliFlujoAlterno extends HttpServlet  {
 		 String redireccion="";
 		 int idFA = Integer.parseInt(request.getParameter("idFA"));
 		 int idpf = Integer.parseInt(request.getParameter("idPF"));
+//                 SubProcesoJpaController spJpa = new SubProcesoJpaController(EntityProvider.provider());
+//                 SubProceso subproceso = spJpa.findSubProceso
+                 
 		 FlujoAlternoJpaController faJpa = new FlujoAlternoJpaController(EntityProvider.provider());
 		 FlujoAlterno aux = faJpa.findFlujoAlterno(idFA);
-		 
-		 
+                 List<FlujoAlterno> listaFlujoEliminar = faJpa.findByIdSubProcesoActividad(aux.getIdsubProceso(), aux.getActividad());
+                 
 		 try {
-			 faJpa.destroy(aux.getIdflujoAlterno());
+                        if(listaFlujoEliminar!=null && !listaFlujoEliminar.isEmpty())
+                            for(FlujoAlterno FA_Eliminar : listaFlujoEliminar)
+                                faJpa.destroy(FA_Eliminar.getIdflujoAlterno());
 			 redireccion = "BuscaProcesoFuncional?idprocesoFuncional=";
 	         redireccion = redireccion.concat(Integer.toString(idpf));
 		 }catch(Exception e){
