@@ -100,6 +100,9 @@
 										<a class="dropdown-item btn btn-outline-info .btn-sm"
 											href="GeneraReporte?idProyecto=<%=p.getIdproyecto()%>">
 											Generar Reporte </a>
+										<a class="dropdown-item btn btn-outline-info .btn-sm"
+											href="Historico?idProyecto=<%=p.getIdproyecto()%>">
+											Histórico</a>
 										<% if(tipoUsuario!=3){%>
 										<form action="eliminaProyecto" method="post">
 											<input type="hidden" name="idProyecto"
@@ -108,6 +111,7 @@
 												type="submit" value="Cambiar Estatus" />
 										</form>
 										<% } %>
+										
 
 									</div>
 								</div>
