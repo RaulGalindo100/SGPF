@@ -557,13 +557,13 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`subprocesoGrupoDato` (
   CONSTRAINT `SubProceso_GrupoDato_Fk`
     FOREIGN KEY (`idGrupoDato`)
     REFERENCES `SGPF`.`grupodato` (`idgrupoDato`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `subProceso_SubProceso_fk`
     FOREIGN KEY (`idSubProceso`)
     REFERENCES `SGPF`.`subproceso` (`idsubProceso`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -665,13 +665,13 @@ INSERT INTO `procesofuncional` VALUES (1,'cualquiera','descripcion','entrada des
                               (4,'Mi Proceso Funcional','Esta es una descripción para el proceso funcional.','Esta es una instancia de evento desencadenante',2,0,0),
                               (5,'Nuevo','hkjekj','nhjhkj',3,0,0);
 
-INSERT INTO `accion` VALUES (1,'ingresaSz','M','entrada de datos',1),(2,'envia','X','envia de datos',0),
+INSERT INTO `accion` VALUES (1,'Mensaje de error','S','Mensaje de error',1),(2,'envia','X','envia de datos',0),
 (3,'solicita','R','pide de datos',0),(4,'Prueba','X','This',1),(5,'Prueba2','E','22',1),(6,'Prueba','X','C',1),
-(7,'Bombón','M','D',1),(8,'Prueba','E','This is the description',1);
+(7,'Bombón','M','D',1),(8,'Prueba','E','This is the description',1),(9,'ingresa','M','entrada de datos',1);
 
-INSERT INTO `grupodato` VALUES (1,'estudianteR','Estudiante del IIMAZ',0),(2,'Juano','Sisg',1),(3,'','',1),(4,'','',1),(5,'','',1),(6,'','',1),(7,'df','',1),(8,'fe','ef',1),(9,'Juano','Feith',1),(10,'Peio','kbjhb',1);
+INSERT INTO `grupodato` VALUES (1,'N/A','N/A',1),(2,'estudiante Registrador','Estudiante del IIMAS',0),(3,'Juano','Sisg',1),(4,'Juano','Feith',1),(5,'Pedro','kbjhb',1);
 
-INSERT INTO `usuariofuncional` VALUES (1,'Registradores','Registrador del IIMAST',1,1),(2,'C-Reg','Sistema C-Reg',1,1),(3,'Registrador','Registrador C-Reg',1,1),(4,'Juano','FHKLI',1,1);
+INSERT INTO `usuariofuncional` VALUES (1,'Sistema','Sistema',1,1),(2,'C-Reg','Sistema C-Reg',1,1),(3,'Registrador','Registrador C-Reg',1,1),(4,'Juano','FHKLI',1,1),(5,'Registradores','Registrador del IIMAS',1,1);
 
 INSERT INTO `subproceso` VALUES (1,'los datos de',2,1,1,2,'Inicio de PF',1,1),(2,'los datos de',2,1,1,2,'Inicio de PF',2,1),(3,'los datos de',2,1,1,2,'Valida',1,1),(4,'los datos de',2,1,1,2,'Valida',2,1),(5,'canjlewnlk',1,1,2,5,'Inicio de Proceso Funcional',1,1),(6,'caenew',1,1,2,5,'Inicio de Proceso Funcional',2,1);
 

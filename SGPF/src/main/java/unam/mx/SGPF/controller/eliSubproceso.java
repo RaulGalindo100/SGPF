@@ -11,8 +11,10 @@ import unam.mx.SGPF.model.EntityProvider;
 import unam.mx.SGPF.model.FlujoAlterno;
 import unam.mx.SGPF.model.ProcesoFuncional;
 import unam.mx.SGPF.model.SubProceso;
+import unam.mx.SGPF.model.SubprocesoGrupoDato;
 import unam.mx.SGPF.model.controller.FlujoAlternoJpaController;
 import unam.mx.SGPF.model.controller.SubProcesoJpaController;
+import unam.mx.SGPF.model.controller.SubprocesoGrupoDatoJpaController;
 
 public class eliSubproceso extends HttpServlet {
      @Override
@@ -34,6 +36,12 @@ public class eliSubproceso extends HttpServlet {
             });
         }
         
+         SubprocesoGrupoDatoJpaController subgdJpa = new SubprocesoGrupoDatoJpaController(EntityProvider.provider());
+         List<SubprocesoGrupoDato> listaSubprocesoGrupoDato = subgdJpa.findByIdSP(aux);
+         if(listaSubprocesoGrupoDato!=null && !listaSubprocesoGrupoDato.isEmpty())
+             listaSubprocesoGrupoDato.forEach((iterador)->{
+                 try{ subgdJpa.destroy(iterador.getIdsubprocesoGrupoDato());}catch(Exception w){}
+             });
         try{
             
             int idPF = aux.getIdprocesoFuncional().getIdprocesoFuncional();

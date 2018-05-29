@@ -44,7 +44,7 @@
 							href="gestionUsuarios"> Gestión de Usuarios </a> <% } %>
 						</li>
 
-						<%if(tipoUsuario == 1){%>
+						<%if(tipoUsuario == 1 || tipoUsuario == 2){%>
 						<li class="nav-item active"><a class="nav-link"
 							href="gestionUsuariosProyectos"> Gestión de
 								Usuarios-Proyectos </a></li>

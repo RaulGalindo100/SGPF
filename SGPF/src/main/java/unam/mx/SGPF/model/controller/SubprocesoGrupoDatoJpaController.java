@@ -194,4 +194,11 @@ public class SubprocesoGrupoDatoJpaController implements Serializable {
         }
     }
     
+    public List<SubprocesoGrupoDato> findByIdSP(SubProceso sp){
+   	EntityManager em = getEntityManager();
+   	Query q = em.createNamedQuery("SubprocesoGrupoDato.findByIdSP")
+   	.setParameter("sp", sp);
+   	return q.getResultList();
+   } 
+    
 }
