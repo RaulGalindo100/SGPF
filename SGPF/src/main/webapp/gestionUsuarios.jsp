@@ -6,7 +6,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Gestión de Usuarios</title>
-        <% List<Usuario> usuarios = (List<Usuario>) session.getAttribute("CatalogoUsuarios"); %>
+        <% List<Usuario> usuarios = (List<Usuario>) session.getAttribute("CatalogoUsuarios"); 
+           Usuario usuarioAtual = (Usuario) session.getAttribute("usuario"); 
+        %>
         <meta name="viewport"
 	content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
 <!--===============================================================================================-->
@@ -56,7 +58,7 @@
 							</tr>
 						</thead>
 						<tbody>
-						 <%for(Usuario usuario : usuarios){%>
+                                                    <%for(Usuario usuario : usuarios){ if(!usuarioAtual.getNomUsuario().equals(usuario.getNomUsuario())){ %>
             <tr>
                 <td>
                     <%=usuario.getNomUsuario()%>
@@ -138,7 +140,7 @@
                 </td>
 
             </tr>
-            <%}%>
+            <%}}%>
             <tr>
 						</tbody>
 				</table>
