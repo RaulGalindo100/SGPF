@@ -91,6 +91,10 @@
 				<table class="table ">
 					<tbody>
 						<tr>
+							<th scope ="col">Nombre del Proyecto:</th>
+							<td><%=p.getNomProy()%></td>
+						</tr>
+						<tr>
 							<th scope="col">Nombre Proceso Funcional:</th>
 							<td><%=detalle.getNomPF()%></td>
 						</tr>
