@@ -49,6 +49,10 @@ public class GrupoDato implements Serializable {
     private String descripcion;
     @Column(nullable = false)
     private short activo;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idproyecto")
+    private Integer idproyecto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idgrupoDato")
     private List<SubProceso> subProcesoList;
 
@@ -78,6 +82,14 @@ public class GrupoDato implements Serializable {
     }
 
     public GrupoDato() {
+    }
+
+    public Integer getIdproyecto() {
+        return idproyecto;
+    }
+
+    public void setIdproyecto(Integer idproyecto) {
+        this.idproyecto = idproyecto;
     }
 
     public GrupoDato(Integer idgrupoDato) {

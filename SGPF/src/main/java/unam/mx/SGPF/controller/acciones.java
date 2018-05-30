@@ -1,6 +1,7 @@
 package unam.mx.SGPF.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import unam.mx.SGPF.model.Accion;
 import unam.mx.SGPF.model.EntityProvider;
+import unam.mx.SGPF.model.FlujoAlterno;
+import unam.mx.SGPF.model.InterUP;
 import unam.mx.SGPF.model.controller.AccionJpaController;
 
 
@@ -20,9 +23,17 @@ public class acciones extends HttpServlet{
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		
+                List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");
+                
 		AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
-		List<Accion> ac = ajpa.findAccionOrdered();
-		session.setAttribute("action",ac);
+                
+                ArrayList<Accion> listaAcciones = new ArrayList<Accion>();
+                inters.forEach((iter)->{
+                    List<Accion> ac = ajpa.findAccionOrdered(iter.getIdproyecto());
+                    listaAcciones.addAll(ac);
+                });
+		
+		session.setAttribute("action",listaAcciones);
 		
 		response.sendRedirect("acciones.jsp");
 	}
@@ -31,10 +42,18 @@ public class acciones extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		
+                
+		List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");
+                
 		AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
-		List<Accion> ac = ajpa.findAccionOrdered();
-		session.setAttribute("action",ac);
+                
+                ArrayList<Accion> listaAcciones = new ArrayList<Accion>();
+                inters.forEach((iter)->{
+                    List<Accion> ac = ajpa.findAccionOrdered(iter.getIdproyecto());
+                    listaAcciones.addAll(ac);
+                });
+		
+		session.setAttribute("action",listaAcciones);
 		
 		response.sendRedirect("acciones.jsp");
 	}

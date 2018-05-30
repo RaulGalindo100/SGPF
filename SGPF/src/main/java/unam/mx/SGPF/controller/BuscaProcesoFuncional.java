@@ -12,6 +12,7 @@ import unam.mx.SGPF.model.Accion;
 import unam.mx.SGPF.model.EntityProvider;
 import unam.mx.SGPF.model.FlujoAlterno;
 import unam.mx.SGPF.model.GrupoDato;
+import unam.mx.SGPF.model.InterUP;
 import unam.mx.SGPF.model.ProcesoFuncional;
 import unam.mx.SGPF.model.SubProceso;
 import unam.mx.SGPF.model.UsuarioFuncional;
@@ -60,13 +61,28 @@ public class BuscaProcesoFuncional extends HttpServlet{
         
         //
        
-        UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
-        List<UsuarioFuncional> uf = (List<UsuarioFuncional>) ufjpa.findUsuarioFuncionalOrdered();
-        session.setAttribute("ufCatalogo", uf);
+        List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");
+                
+                UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
+                
+                ArrayList<UsuarioFuncional> listaUsuarioFuncional = new ArrayList<UsuarioFuncional>();
+                inters.forEach((iter)->{
+                    List<UsuarioFuncional> uf = ufjpa.findUsuarioFuncionalOrdered(iter.getIdproyecto());
+                    listaUsuarioFuncional.addAll(uf);
+                });
+		
+	session.setAttribute("usuarioFuncional",listaUsuarioFuncional);
         
-        AccionJpaController juano = new AccionJpaController(EntityProvider.provider());
-        List<Accion> accion = (List<Accion>) juano.findAccionOrdered();
-        session.setAttribute("accCatalogo", accion);
+        
+        AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
+                
+                ArrayList<Accion> listaAcciones = new ArrayList<Accion>();
+                inters.forEach((iter)->{
+                    List<Accion> ac = ajpa.findAccionOrdered(iter.getIdproyecto());
+                    listaAcciones.addAll(ac);
+                });
+		
+	session.setAttribute("action",listaAcciones);
 
         GrupoDatoJpaController gruposDatos = new GrupoDatoJpaController(EntityProvider.provider());
         List<GrupoDato> grupoDatos = (List<GrupoDato>) gruposDatos.findGrupoDatoOrdered();
@@ -117,13 +133,27 @@ public class BuscaProcesoFuncional extends HttpServlet{
             flujoAlternos = 1;
         session.setAttribute("flujoAlternos", flujoAlternos);
         
-        UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
-        List<UsuarioFuncional> uf = (List<UsuarioFuncional>) ufjpa.findUsuarioFuncionalOrdered();
-        session.setAttribute("ufCatalogo", uf);
+        List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");
+                
+                UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
+                
+                ArrayList<UsuarioFuncional> listaUsuarioFuncional = new ArrayList<UsuarioFuncional>();
+                inters.forEach((iter)->{
+                    List<UsuarioFuncional> uf = ufjpa.findUsuarioFuncionalOrdered(iter.getIdproyecto());
+                    listaUsuarioFuncional.addAll(uf);
+                });
+		
+		session.setAttribute("usuarioFuncional",listaUsuarioFuncional);
         
-        AccionJpaController juano = new AccionJpaController(EntityProvider.provider());
-        List<Accion> accion = (List<Accion>) juano.findAccionOrdered();
-        session.setAttribute("accCatalogo", accion);
+        AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
+                
+                ArrayList<Accion> listaAcciones = new ArrayList<Accion>();
+                inters.forEach((iter)->{
+                    List<Accion> ac = ajpa.findAccionOrdered(iter.getIdproyecto());
+                    listaAcciones.addAll(ac);
+                });
+		
+	session.setAttribute("action",listaAcciones);
 
         GrupoDatoJpaController gruposDatos = new GrupoDatoJpaController(EntityProvider.provider());
         List<GrupoDato> grupoDatos = (List<GrupoDato>) gruposDatos.findGrupoDatoOrdered();

@@ -15,6 +15,7 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import unam.mx.SGPF.model.Accion;
+import unam.mx.SGPF.model.Proyecto;
 import unam.mx.SGPF.model.SubProceso;
 import unam.mx.SGPF.model.controller.exceptions.IllegalOrphanException;
 import unam.mx.SGPF.model.controller.exceptions.NonexistentEntityException;
@@ -199,9 +200,10 @@ public class AccionJpaController implements Serializable {
         }
     }
     
-    public List<Accion> findAccionOrdered(){
+    public List<Accion> findAccionOrdered(Proyecto aux){
     	EntityManager em = getEntityManager();
-    	Query q = em.createNamedQuery("Accion.findAccionOrdered");
+    	Query q = em.createNamedQuery("Accion.findAccionOrdered")
+                .setParameter("idProy", aux.getIdproyecto());
     	return q.getResultList();
     }
 }
