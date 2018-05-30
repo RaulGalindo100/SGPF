@@ -31,7 +31,7 @@ public class Login extends HttpServlet {
 		Usuario u = ujpa.getUsuarioByUserAndPass(usuario, pass);
                 
 		if (u == null || u.getActivo()==0) {
-			response.sendRedirect("index?error=1.jsp");
+			response.sendRedirect("index.jsp?error=1");
 		} else {
 			// Objeto que establece la sesión
                         HttpSession session = request.getSession(true);

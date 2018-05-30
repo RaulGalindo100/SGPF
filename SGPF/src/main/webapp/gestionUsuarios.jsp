@@ -1,17 +1,17 @@
+
 <%@page import="unam.mx.SGPF.model.Usuario"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Gestiï¿½n de Usuarios</title>
-        <% List<Usuario> usuarios = (List<Usuario>) session.getAttribute("CatalogoUsuarios");
-           Usuario usuarioAtual = (Usuario) session.getAttribute("usuario");
-        %>
-        <meta name="viewport"
-
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Gestión de Usuarios</title>
+<% List<Usuario> usuarios = (List<Usuario>) session.getAttribute("CatalogoUsuarios");
+             Usuario usuarioAtual = (Usuario) session.getAttribute("usuario");
+          %>
+<meta name="viewport"
 	content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
 <!--===============================================================================================-->
 <link rel="stylesheet"
@@ -46,58 +46,31 @@
 	<div class="container py-5">
 		<section class="row">
 			<div class="col-md-12">
-				<h2>Gestiï¿½n de Usuarios</h2>
+				<h2>Gestión de Usuarios</h2>
 			</div>
 			<div class="table-responsive">
 				<table class="table ">
 					<thead>
-<<<<<<< HEAD
 						<tr>
 							<th scope="col">Nombre</th>
 							<th scope="col">Tipo usuario</th>
 							<th scope="col">Opciones</th>
-							<th></th>
+							<th scope="col"></th>
 						</tr>
 					</thead>
 					<tbody>
-						<%for(Usuario usuario : usuarios){%>
+						<%for(Usuario usuario : usuarios){ if(!usuarioAtual.getNomUsuario().equals(usuario.getNomUsuario())){ %>
 						<tr>
 							<td><%=usuario.getNomUsuario()%></td>
-=======
-							<tr>
-								<th scope="col">Nombre</th>
-								<th scope="col">Tipo usuario</th>
-								<th scope="col">Opciones</th>
-								<th scope="col"></th>
-							</tr>
-						</thead>
-						<tbody>
-                                                    <%for(Usuario usuario : usuarios){ if(!usuarioAtual.getNomUsuario().equals(usuario.getNomUsuario())){ %>
-            <tr>
-                <td>
-                    <%=usuario.getNomUsuario()%>
-                </td>
-                <td>
-                    <%if(usuario.getUsuTipo1()!=null){%>Administrador
-                    <%}else{if(usuario.getUsuTipo2()!=null){%>Gestor de Proyecto
-                    <%}else{if(usuario.getUsuTipo3()!=null){%>Consultor
-                    <%}else{%> = Inactivo = <%}}}%>
-                </td>
-                <td>
-						<% if (usuario.getActivo() == 1) { %>
-
->>>>>>> 4934c36e68d46f44516695c13092851bcf91b8e8
 							<td>
 								<%if(usuario.getUsuTipo1()!=null){%>Administrador <%}else{if(usuario.getUsuTipo2()!=null){%>Gestor
 								de Proyecto <%}else{if(usuario.getUsuTipo3()!=null){%>Consultor <%}else{%>
 								= Inactivo = <%}}}%>
 							</td>
 
-
-								<% if (usuario.getActivo() == 1) { %>
+							<% if (usuario.getActivo() == 1) { %>
 
 							<td>
-
 								<div class="container">
 									<!-- Trigger the modal with a button -->
 									<button type="button"
@@ -137,8 +110,8 @@
 									type="submit" value="Modificar">
 							</a></td>
 							<%
-								} else {
-							%>
+  								} else {
+  							%>
 							<td>
 								<div class="container">
 									<!-- Trigger the modal with a button -->
@@ -155,7 +128,7 @@
 											<!-- Modal content-->
 											<div class="modal-content">
 												<div class="modal-body">
-													<p>El usuario funcional serï¿½ activado.</p>
+													<p>El usuario funcional será activado.</p>
 												</div>
 												<div class="modal-footer">
 													<a class="btn btn-outline-info .btn-sm text-white"
@@ -173,22 +146,18 @@
 
 							</td>
 							<%
-								}
+  								}
 
-							%>
+  							%>
 
-<<<<<<< HEAD
+
 
 						</tr>
-						<%}%>
 
+			<%}} %>
 					</tbody>
-=======
-            </tr>
-            <%}}%>
-            <tr>
-						</tbody>
->>>>>>> 4934c36e68d46f44516695c13092851bcf91b8e8
+
+
 				</table>
 			</div>
 		</section>

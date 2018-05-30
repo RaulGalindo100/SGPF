@@ -13,7 +13,7 @@ public class cerrarSesion extends HttpServlet {
 			throws ServletException, IOException {
             HttpSession session = request.getSession(true);
             session.invalidate();
-            response.sendRedirect("index.html");
+            response.sendRedirect("index.jsp");
             
     }
 }
