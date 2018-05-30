@@ -52,9 +52,9 @@
 						<textarea class="form-control" name="descripcionUF" rows="3" required></textarea>
 					</div>
 					<div class="form-group">
-                                                <input class="form-check-input" type="checkbox" name="usuarioSistema"
-							value="true"> <label class="form-check-label">
-                                                    Otro Sistema UF</label>
+            <input class="form-check-input" type="checkbox" name="usuarioSistema"
+							value="true"> 
+						<label class="form-check-label">Sistema / Dispositivo</label>
 					</div>
 					<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Guardar">
 				</form>
