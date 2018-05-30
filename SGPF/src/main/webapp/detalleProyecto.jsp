@@ -177,7 +177,7 @@
 											<td><%=p.getComCertModelo()%></td>
 										</tr>
 										<tr>
-											<td>Contabilidad de la información</td>
+											<td>Confiabilidad de la información</td>
 											<td><%=p.getIdconfInfo().getConfInfo()%></td>
 										</tr>
 									<tbody>

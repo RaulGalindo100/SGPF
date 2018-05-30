@@ -296,7 +296,7 @@
 										class="form-control" type="text" name="comCertModelo" required>
 								</div>
 								<div class="form-group">
-									<label>Contabilidad de la información</label> <select class="form-control" name="IdconfInfo">
+									<label>Confiabilidad de la información</label> <select class="form-control" name="IdconfInfo">
 										<%for(ConfInfo i : ListaConfInfo){%>
 										<option value="<%=i.getIdconfInfo() %>">
 											<%=i.getConfInfo() %>
