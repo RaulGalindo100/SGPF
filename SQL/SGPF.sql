@@ -667,12 +667,12 @@ INSERT INTO `procesofuncional` VALUES (1,'cualquiera','descripcion','entrada des
                               (5,'Nuevo','hkjekj','nhjhkj',3,0,0);
 
 INSERT INTO `accion` VALUES (1,'Mensaje de error','S','Mensaje de error',1),(2,'envia','X','envia de datos',0),
-(3,'solicita','R','pide de datos',0),(4,'Prueba','X','This',1),(5,'Prueba2','E','22',1),(6,'Prueba','X','C',1),
-(7,'Bombón','M','D',1),(8,'Prueba','E','This is the description',1),(9,'ingresa','M','entrada de datos',1);
+(3,'solicita','R','pide de datos',0),(4,'Muestra','X','Los datos de las operaciones',1),(5,'Recibe','E','El registrador captura los datos',1),(6,'Envia','X','Los registros actuales',1),
+(7,'Escribe','W','Guarda en la BD',1),(8,'Actualiza','W','Guardalos cambios',1);
 
-INSERT INTO `grupodato` VALUES (1,'N/A','N/A',1),(2,'estudiante Registrador','Estudiante del IIMAS',0),(3,'Juano','Sisg',1),(4,'Juano','Feith',1),(5,'Pedro','kbjhb',1);
+INSERT INTO `grupodato` VALUES (1,'N/A','N/A',1),(2,'Estudiante Registrador','Estudiante del IIMAS',0),(3,'Admon Registrador','Empleado Administrativo',1),(4,'Sistema','Datos del sistema',1),(5,'Estudiante','Calificaciones de estudiante',1);
 
-INSERT INTO `usuariofuncional` VALUES (1,'Sistema','Sistema',1,1),(2,'C-Reg','Sistema C-Reg',1,1),(3,'Registrador','Registrador C-Reg',1,1),(4,'Juano','FHKLI',1,1),(5,'Registradores','Registrador del IIMAS',1,1);
+INSERT INTO `usuariofuncional` VALUES (1,'Sistema','Sistema',1,1),(2,'C-Reg','Sistema C-Reg',1,1),(3,'Registrador','Registrador C-Reg',1,1),(4,'Registrador','Registrador Administrativo',1,1),(5,'Sistema de Pagos','Sistema externo de Pagos',1,1);
 
 INSERT INTO `subproceso` VALUES (1,'los datos de',2,1,1,2,'Inicio de PF',1,1),(2,'los datos de',2,1,1,2,'Inicio de PF',2,1),(3,'los datos de',2,1,1,2,'Valida',1,1),(4,'los datos de',2,1,1,2,'Valida',2,1),(5,'canjlewnlk',1,1,2,5,'Inicio de Proceso Funcional',1,1),(6,'caenew',1,1,2,5,'Inicio de Proceso Funcional',2,1);
 

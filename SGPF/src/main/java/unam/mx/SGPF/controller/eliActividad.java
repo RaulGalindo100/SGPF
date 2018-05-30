@@ -50,13 +50,11 @@ public class eliActividad extends HttpServlet{
         for(SubProceso iter : listaSPEliminar){
                 //Obtener la lista de Subproceso-grupoDato del SP
                 List<SubprocesoGrupoDato> listaSubprocesoGrupoDato = subgdJpa.findByIdSP(iter);
-                System.out.println("Tamaño de SubGD >> "+listaSubprocesoGrupoDato.size());
                 if(listaSubprocesoGrupoDato!=null && !listaSubprocesoGrupoDato.isEmpty())
                     listaSPGDEliminar.addAll(listaSubprocesoGrupoDato);
         
                 //Obtener la lista de FA del SP
                 List<FlujoAlterno> listaFlujosAlterno = FlujoAlternoJPA.findByIdSubProceso(iter);
-                System.out.println("Tamaño de FA >> "+listaFlujosAlterno.size());
                 if(listaFlujosAlterno!=null && !listaFlujosAlterno.isEmpty())
                     listaFAEliminar.addAll(listaFlujosAlterno);
         }
