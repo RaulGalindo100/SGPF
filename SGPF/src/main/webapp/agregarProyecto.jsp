@@ -327,6 +327,7 @@
 								<div class="form-group">
 									<label>Esfuerzo Total del Proyecto [hh]</label> <input
 										class="form-control" type="text" name="esfuTotProy" >
+										<div class="form-group text-right" style="color: red; font-size:small;">Este campo debe coincidir con la suma de los esfuezos individuales.</div>
 								</div>
 
 								<div class="form-group">
@@ -359,6 +360,8 @@
 								<div class="form-group">
 									<label>Costo Total del Proyecto $(MNX)</label> <input
 										class="form-control" type="text" name="costTotProy" >
+									<div class="form-group text-right" style="color: red; font-size:small;">Este campo debe coincidir con la suma de los costos individuales.</div>
+										
 								</div>
 
 								<div class="form-group">
