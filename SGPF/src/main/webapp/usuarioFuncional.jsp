@@ -24,7 +24,7 @@
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item active">
-					 <a class="nav-link" href="agregarUF.jsp">Agregar Usuario</a>
+					 <a class="nav-link" href="agregarUF.jsp">Agregar Usuario Funcional</a>
 					</li>
 	
 					</ul>
