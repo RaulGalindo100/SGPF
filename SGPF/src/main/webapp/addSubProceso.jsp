@@ -37,7 +37,7 @@
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 					</ul>
-					<form action="BuscaProcesoFuncional" method="POST">
+					<form action="detallePF.jsp" method="POST">
 						<input type="hidden" name="idprocesoFuncional"
 							value="<%=SubProceso.getIdprocesoFuncional().getIdprocesoFuncional()%>" />
 						<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Cancelar" />
