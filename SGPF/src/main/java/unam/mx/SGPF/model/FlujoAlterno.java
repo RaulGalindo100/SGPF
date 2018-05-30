@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "FlujoAlterno.findByDescripcion", query = "SELECT f FROM FlujoAlterno f WHERE f.descripcion = :descripcion")
     , @NamedQuery(name = "FlujoAlterno.findByIdSubProcesoActividad", query = "SELECT f FROM FlujoAlterno f WHERE f.idsubProceso= :idsubProceso AND f.actividad = :Actividad")
     , @NamedQuery(name = "FlujoAlterno.findByIdSubProceso", query = "SELECT distinct f FROM FlujoAlterno f WHERE f.idsubProceso = :idsubProceso order by f.actividad")
+    , @NamedQuery(name = "FlujoAlterno.findByIdSubProceso2", query = "SELECT f FROM FlujoAlterno f WHERE f.idsubProceso = :idsubProceso order by f.actividad")
     , @NamedQuery(name = "FlujoAlterno.findByActividad", query = "SELECT f FROM FlujoAlterno f WHERE f.actividad = :actividad")})
 public class FlujoAlterno implements Serializable {
 
