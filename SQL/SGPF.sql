@@ -654,27 +654,99 @@ INSERT INTO metMedicion(metMedicion) VALUES("COSMIC ISO 19761"),("IFPUG ISO 2092
 
 INSERT INTO `usuario` VALUES (1,'Olga','pass',1,NULL,NULL,1),(2,'Juan','pass',NULL,1,NULL,1),(3,'Pancho','pass',NULL,NULL,1,1);
 
-INSERT INTO `proyecto` VALUES (1,'C-Reg','1993',1,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,1,0,1,1,'foo',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Propósito','Alcance',10.21,11.33,14.26,1),
-                              (2,'SGPF','1993',1,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,1,0,1,1,'foo',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Propósito','Alcance',10.21,11.33,14.26,1),
-                              (3,'Olgasss','2015',1,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,1,0,1,1,'Olgasss',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Propósito','Alcance',10.21,11.33,14.26,1),
-                              (4,'C-Reg691ffeaafe23','2015',1,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,10.00,1,0,1,1,'C-Reg69123',12.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Propósito','Alcance',10.21,11.33,14.26,1);
+INSERT INTO `proyecto` VALUES
+(1,'Ejemplo 1.02 Medición','2017',0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.00,0.00,0,0,0,0,'Ningún comentario',0.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Determinar el tamaño funcional del cso de uso Administrar Factores','Global. Se considera toda la funcionalidad del caso de uso',0.00,0.00,0.00,1);
 
-INSERT INTO `interUP` VALUES (1,1,1),(2,1,2),(3,2,2),(4,1,3),(5,2,1),(6,3,2),(7,3,1);
+INSERT INTO `interUP` VALUES (1,1,1),(2,2,1),(3,3,1);
 
-INSERT INTO `procesofuncional` VALUES (1,'cualquiera','descripcion','entrada desencadenante',2,0,1),
-                              (2,'cualquiera','descripcion','entrada desencadenenante',2,0,0),(3,'Pancho','Nuevo','Genial',2,0,1),
-                              (4,'Mi Proceso Funcional','Esta es una descripción para el proceso funcional.','Esta es una instancia de evento desencadenante',2,0,0),
-                              (5,'Nuevo','hkjekj','nhjhkj',3,0,0);
+INSERT INTO `usuariofuncional` VALUES
+(1,'Sistema','Sistema Administrar Factores',1,1),
+(2,'Administrador','Adminstrador del sistema Adminsitrar Factores',1,0),
+(3,'Usuario AF','Usuario del sistema Administrar Factores',1,1);
 
-INSERT INTO `accion` VALUES (1,'Mensaje de error','S','Mensaje de error',1),(2,'envia','X','envia de datos',0),
-(3,'solicita','R','pide de datos',0),(4,'Muestra','X','Los datos de las operaciones',1),(5,'Recibe','E','El registrador captura los datos',1),(6,'Envia','X','Los registros actuales',1),
-(7,'Escribe','W','Guarda en la BD',1),(8,'Actualiza','W','Guardalos cambios',1);
+INSERT INTO `grupodato` VALUES
+(1,'N/A','N/A',1),
+(2,'Datos de factor','El objeto de interés es Factor',1),
+(3,'Tipo de Factor','El objeto de interés es Tipo de Factor',1),
+(4,'Datos de Bitácora','El objeto de interés es Bitácora de movimientos',1),
+(5,'Comando','Comando para solicitar alguna información',1);
 
-INSERT INTO `grupodato` VALUES (1,'N/A','N/A',1),(2,'Estudiante Registrador','Estudiante del IIMAS',0),(3,'Admon Registrador','Empleado Administrativo',1),(4,'Sistema','Datos del sistema',1),(5,'Estudiante','Calificaciones de estudiante',1);
+INSERT INTO `procesofuncional` VALUES
+(1,'Consultar factores','Consultar factores','Usuario desea consultar los factores registrados en el sistema',1,4,1),
+(2,'Agregar factor','Agregar factor','Usuario desea crear un factor',1,7,1),
+(3,'Modificar factor','Modificar factor','Usuario desea modificar la información de un factor',1,7,1),
+(4,'Eliminar factor','Eliminar factor','Usuario desea eliminar un factor',1,5,1);
 
-INSERT INTO `usuariofuncional` VALUES (1,'Sistema','Sistema',1,1),(2,'C-Reg','Sistema C-Reg',1,1),(3,'Registrador','Registrador C-Reg',1,1),(4,'Registrador','Registrador Administrativo',1,1),(5,'Sistema de Pagos','Sistema externo de Pagos',1,1);
+INSERT INTO `subproceso` VALUES
+(1,'Administrador selecciona del menú Administrar la opción Catálogo Factor',2,2,5,1,'Inicio de Proceso Funcional',1,1),
+(2,'Sistema consulta los factores registrados en el sistema.',1,3,2,1,'Inicio de Proceso Funcional',2,1),
+(3,'Sistema despliega la pantalla Consultar factor, donde se muestra la tabla de consutla de factores registrados en el sistema',1,4,2,1,'Inicio de Proceso Funcional',3,1),
+(4,'Administrador ingresa la información solicitada en el formulario y confirma guardar el registro',2,5,2,2,'Inicio de Proceso Funcional',1,1),
+(5,'Sistema consulta los Tipos de Factores registrados en el sistema',1,6,3,2,'Inicio de Proceso Funcional',2,1),
+(6,'Sistema muestra el formulario de captura con lista desplegable de Tipo.',1,4,3,2,'Inicio de Proceso Funcional',3,1),
+(7,'Sistema realiza validaciones para: 1) Campo vacío 2) Información registrada previamente',1,7,2,2,'Inicio de Proceso Funcional',4,1),
+(8,'Sistema guarda el registro en Base de datos y cierra la pantalla de captura',1,8,2,2,'Inicio de Proceso Funcional',5,1),
+(9,'Sistema guarda el registro del movimiento en la bitácora en base de datos',1,9,4,2,'Inicio de Proceso Funcional',6,1),
+(10,'Sistema muestra mensaje FACTOR GUARDADO CORRECTAMENTE o mensaje de error si no son válidos',1,1,1,2,'Inicio de Proceso Funcional',7,1),
+(11,'Administrador modifica la información que desea del formulario. Confirma guardar el registro',2,10,2,3,'Inicio de Proceso Funcional',1,1),
+(12,'Sistema consulta los Tipos de Factores registrados en el sistema',1,6,3,3,'Inicio de Proceso Funcional',2,1),
+(13,'Sistema muestra el formulario de captura con lista desplegable de Tipo.',1,4,3,3,'Inicio de Proceso Funcional',3,1),
+(14,'Sistema realiza validaciones para: 1) Campo vacío 2) Información registrada previamente',1,7,2,3,'Inicio de Proceso Funcional',4,1),
+(15,'Sistema guarda el registro en Base de datos y cierra la pantalla de captura',1,8,2,3,'Inicio de Proceso Funcional',5,1),
+(16,'Sistema guarda el registro del movimiento en la bitácora en base de datos',1,9,4,3,'Inicio de Proceso Funcional',6,1),
+(17,'Sistema muestra mensaje FACTOR GUARDADO CORRECTAMENTE o mensaje de error si no son válidos',1,1,1,3,'Inicio de Proceso Funcional',7,1),
+(18,'Usuario selecciona la opción Eliminar factor',2,12,5,4,'Inicio de Proceso Funcional',1,1),
+(19,'Sistema despliega mensaje ¿Está seguro que desea eliminar el factor [Nombre]?',1,11,2,4,'Inicio de Proceso Funcional',2,1),
+(20,'Sistema elimina el registro en base de datos',1,13,2,4,'Inicio de Proceso Funcional',3,1),
+(21,'Sistema guarda el registro del movimiento en la bitácora en base de datos',1,9,4,4,'Inicio de Proceso Funcional',4,1),
+(22,'Sistema muestra mensaje FACTOR GUARDADO CORRECTAMENTE o mensaje de error si no son válidos',1,1,1,4,'Inicio de Proceso Funcional',5,1);
 
-INSERT INTO `subproceso` VALUES (1,'los datos de',2,1,1,2,'Inicio de PF',1,1),(2,'los datos de',2,1,1,2,'Inicio de PF',2,1),(3,'los datos de',2,1,1,2,'Valida',1,1),(4,'los datos de',2,1,1,2,'Valida',2,1),(5,'canjlewnlk',1,1,2,5,'Inicio de Proceso Funcional',1,1),(6,'caenew',1,1,2,5,'Inicio de Proceso Funcional',2,1);
+
+
+INSERT INTO `flujoAlterno` VALUES
+(1,'Si en la consulta no hay factores registrados en el sistema, despliega un mensaje NO HAY FACTORES REGISTRADOS EN EL SISTEMA.',1,1,1,3,'Inicio de Proceso Funcional'),
+(2,'Si el campo validado está vacío muestra el mensaje de error INFORMACIÓN INCOMPLETA',1,1,1,2,'Inicio de Proceso Funcional'),
+(3,'Si el campo validado está vacío muestra el mensaje de error INFORMACIÓN INCOMPLETA',1,1,1,17,'Inicio de Proceso Funcional');
+
+INSERT INTO `accion` VALUES
+(1,'Mensaje de error','S','Mensaje de error',1),
+(2,'Seleccionar Catálogo factor','E','Solicita información ',1),
+(3,'Consultar factores','R','Solicita los factores registrados',1),
+(4,'Desplegar en pantalla','X','Se despliega información en pantalla',1),
+(5,'Ingresar información','E','Ingresa la información solicitada en el formulario',1),
+(6,'Consultar Tipo de factor','E','Solicita los tipos de factores registrados',1),
+(7,'Validar de datos','R','Se realiza una validación de datos en sistema',1),
+(8,'Guardar registro','W','Se guarda el registro en base de datos',1),
+(9,'Guardar registro en bitácora','W','Se guarda el movimiento en bitácora',1),
+(10,'Modificar información','E','Se modifica la información en el formulario',1),
+(11,'Mensaje de error con datos','X','Mensaje de error con grupo de datos',1),
+(12,'Seleccionar eliminar factor','E','Selecciona eliminar el factor',1),
+(13,'Eliminar factor de BD','W','Se elimina el factor de base de datos',1);
+
+
+INSERT INTO `subprocesoGrupoDato` VALUES
+(1,5,1),
+(2,2,2),
+(3,2,3),
+(4,2,4),
+(5,3,5),
+(6,3,6),
+(7,2,7),
+(8,2,8),
+(9,4,9),
+(10,1,10),
+(11,2,11),
+(12,3,12),
+(13,3,13),
+(14,2,14),
+(15,2,15),
+(16,4,16),
+(17,1,17),
+(18,5,18),
+(19,2,19),
+(20,2,20),
+(21,4,21),
+(22,1,22);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

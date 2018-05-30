@@ -156,11 +156,11 @@ public class Historico implements Serializable {
         this.descripcionPF = descripcionPF;
     }
 
-    public int getTamanioPF() {
+    public int getTamanio() {
         return tamanio;
     }
 
-    public void setTamanioPF(int tamanioPF) {
+    public void setTamanio(int tamanioPF) {
         this.tamanio = tamanioPF;
     }
 
