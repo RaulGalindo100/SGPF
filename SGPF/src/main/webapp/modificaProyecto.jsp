@@ -166,7 +166,7 @@
 									</select>
 								</div>
 								<div class="form-group">
-									<label>Sector de la Organización Usuaria</label> <select
+									<label>Ámbito de la Organización Usuaria</label> <select
 										class="form-control" name="IdsectorOrganizacion">
 										<%for(SectorOrganizacion iter : ListaSectorOrganizacion){%>
 										<option value="<%=iter.getIdsectorOrganizacion()%>"
@@ -178,7 +178,7 @@
 									</select>
 								</div>
 								<div class="form-group">
-									<label>Tipo Organización Usuaria</label> <select
+									<label>Sector de la Organización Usuaria</label> <select
 										class="form-control" name="IdtipoOrganizacion">
 										<%for(TipoOrganizacion i : ListaTipoOrg){%>
 										<option value="<%=i.getIdtipoOrganizacion() %>"

@@ -93,11 +93,11 @@
 											<td><%=p.getIdTipoDesarrollo().getTipodeDesarrollo()%></td>
 										</tr>
 										<tr>
-											<td>Sector de la Organización Usuaria</td>
+											<td>Ámbito de la Organización Usuaria</td>
 											<td><%=p.getIdsectorOrganizacion().getSectorOrganizacion()%></td>
 										</tr>
 										<tr>
-											<td>Tipo Organización Usuaria</td>
+											<td>Sector de la Organización Usuaria</td>
 											<td><%=p.getIdtipoOrganizacion().getTipoOrganizacion()%></td>
 										</tr>
 										<tr>
