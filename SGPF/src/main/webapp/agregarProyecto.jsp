@@ -113,6 +113,7 @@
 
 						<div class="tab-content">
 							<div id="home" class="tab-pane active">
+								<div class="form-group text-right" style="color: red;  text-align: right;">Continua con la pestaña de: Contexto de desarrollo</div>
 								<h3>Información del Proyecto</h3>
 								<div class="form-group">
 									<label>Nombre del Proyecto</label> <input class="form-control"
@@ -197,9 +198,10 @@
 
 									</select>
 								</div>
-								<div class="form-group text-right">Continua con la pestaña de: Contexto de desarrollo</div>
+								<div class="form-group text-right" style="color: red;">Continua con la pestaña de: Contexto de desarrollo</div>
 							</div>
 							<div id="menu1" class="tab-pane fade">
+							<div class="form-group text-right" style="color: red; text-align: right;">Continua con la pestaña de: Información de recursos</div>
 								<h3>Contexto de Desarrollo</h3>
 								<div class="form-group">
 									<label>Arquitectura de Proyecto</label> <select
@@ -302,9 +304,10 @@
 										<%}%>
 									</select>
 								</div>
-								<div class="form-group text-right">Continua con la pestaña de: Información de recursos</div>
+								<div class="form-group text-right" style="color: red;">Continua con la pestaña de: Información de recursos</div>
 							</div>
 							<div id="menu2" class="tab-pane fade">
+								<div class="form-group text-right" style="color: red; text-align: right;">Continua con la pestaña de: Tamaño Funcional</div>
 								<h3>Información de Recursos</h3>
 								<div class="form-group">
 									<label>Duración del Proyecto</label> 
@@ -407,7 +410,7 @@
 									</div>
 									
 								</div>
-								<div class="form-group text-right">Continua con la pestaña de: Tamaño Funcional</div>
+								<div class="form-group text-right" style="color: red;">Continua con la pestaña de: Tamaño Funcional</div>
 							</div>
 							<div id="menu3" class="tab-pane fade">
 								<h3>Tamaño Funcional</h3>
