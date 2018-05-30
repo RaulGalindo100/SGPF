@@ -1,6 +1,8 @@
 package unam.mx.SGPF.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,35 +26,51 @@ public class eliActividad extends HttpServlet{
     	String redireccion="";
         int idSubProceso = Integer.parseInt(request.getParameter("idSubProceso"));
         
-        
+        //Obtener el Subproceso - ACTIVIDAD
         SubProcesoJpaController SubProcesoJPA = new SubProcesoJpaController(EntityProvider.provider());
         SubProceso aux = SubProcesoJPA.findSubProceso(idSubProceso);
+        
+        //Guardo los ìndices
         int indiceAnteriorActividad = aux.getIndiceActividad();
         int idPFAnterior = aux.getIdprocesoFuncional().getIdprocesoFuncional();
+        
         ProcesoFuncional PF_Actual = aux.getIdprocesoFuncional();
+        
+        //Obtener los SP de la actividad
         List<SubProceso> listaSPEliminar = SubProcesoJPA.findSPByActividadyPF(aux.getActividad(),aux.getIdprocesoFuncional());
         FlujoAlternoJpaController FlujoAlternoJPA = new FlujoAlternoJpaController(EntityProvider.provider());
+        
+        SubprocesoGrupoDatoJpaController subgdJpa = new SubprocesoGrupoDatoJpaController(EntityProvider.provider());
+        
+        //Ontener dependencias
+        ArrayList<FlujoAlterno> listaFAEliminar = new ArrayList<FlujoAlterno>();
+        ArrayList<SubprocesoGrupoDato> listaSPGDEliminar = new ArrayList<SubprocesoGrupoDato>();
+        //List<FlujoAlterno> listaFAEliminar = Collections.emptyList();
+        //List<SubprocesoGrupoDato> listaSPGDEliminar = Collections.emptyList();
+        for(SubProceso iter : listaSPEliminar){
+                //Obtener la lista de Subproceso-grupoDato del SP
+                List<SubprocesoGrupoDato> listaSubprocesoGrupoDato = subgdJpa.findByIdSP(iter);
+                if(listaSubprocesoGrupoDato!=null && !listaSubprocesoGrupoDato.isEmpty())
+                    listaSPGDEliminar.addAll(listaSubprocesoGrupoDato);
+        
+                //Obtener la lista de FA del SP
+                List<FlujoAlterno> listaFlujosAlterno = FlujoAlternoJPA.findByIdSubProceso(iter);
+                if(listaFlujosAlterno!=null && !listaFlujosAlterno.isEmpty())
+                    listaFAEliminar.addAll(listaFlujosAlterno);
+        }
+        
+        int idPF = aux.getIdprocesoFuncional().getIdprocesoFuncional();
         try{
-        	int idPF = aux.getIdprocesoFuncional().getIdprocesoFuncional();
-            if(listaSPEliminar!=null && !listaSPEliminar.isEmpty())
-            listaSPEliminar.forEach((action) -> {
-                //Eliminar Flujos Alternos
-                List<FlujoAlterno> listaFlujosAlterno = FlujoAlternoJPA.findByIdSubProceso(aux);
-                if(listaFlujosAlterno!=null && !listaFlujosAlterno.isEmpty()){
-                    listaFlujosAlterno.forEach((iter) -> {
-                    try{ FlujoAlternoJPA.destroy(iter.getIdflujoAlterno()); }catch(Exception r){}});
-                }
-                
-             //Elimina dependencias de Subproceso-grupoDato
-            SubprocesoGrupoDatoJpaController subgdJpa = new SubprocesoGrupoDatoJpaController(EntityProvider.provider());
-            List<SubprocesoGrupoDato> listaSubprocesoGrupoDato = subgdJpa.findByIdSP(aux);
-            if(listaSubprocesoGrupoDato!=null && !listaSubprocesoGrupoDato.isEmpty())
-                listaSubprocesoGrupoDato.forEach((iterador)->{
-                 try{ subgdJpa.destroy(iterador.getIdsubprocesoGrupoDato());}catch(Exception w){}});
-         
-         //Elimina al subproceso
-            try{SubProcesoJPA.destroy(action.getIdsubProceso());}catch(Exception J){}
-
+            listaFAEliminar.forEach((iter)->{
+                try{FlujoAlternoJPA.destroy(iter.getIdflujoAlterno());}catch(Exception w){}
+            });
+            
+            listaSPGDEliminar.forEach((iter)->{
+                try{subgdJpa.destroy(iter.getIdsubprocesoGrupoDato());}catch(Exception s){}
+            });
+            
+            listaSPEliminar.forEach((iter)->{ 
+                try{SubProcesoJPA.destroy(iter.getIdsubProceso());}catch(Exception t){}
             });
             
             //Actualizar los índices de las actividades

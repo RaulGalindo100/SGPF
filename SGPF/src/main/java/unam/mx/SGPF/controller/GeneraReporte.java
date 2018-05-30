@@ -96,32 +96,32 @@ public class GeneraReporte extends HttpServlet {
             cell.setHorizontalAlignment(Element.ALIGN_LEFT);
             tableh.addCell(cell);
             
-            cell = new PdfPCell(new Paragraph("Hoja #" + (document.getPageNumber()+1), fontVer));
+            cell = new PdfPCell(new Paragraph("Reporte", fontVer1));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             tableh.addCell(cell);
             
-            cell = new PdfPCell(new Paragraph("Medición de Software", fontVer));
+            cell = new PdfPCell(new Paragraph("Medición de Software", fontVer1));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             tableh.addCell(cell);
-
+            
             cell = new PdfPCell(new Paragraph("Reporte de Aproximación de Tamaño Funcional para Proyecto '"
-                    + proy.getNomProy() + "'", fontVer2));
+                    + proy.getNomProy() + "'", fontVer));
             cell.setColspan(1);
             cell.setRowspan(2);
             cell.setHorizontalAlignment(Element.ALIGN_LEFT);
             tableh.addCell(cell);
 
-            cell = new PdfPCell(new Paragraph(proy.getNomProy(), fontVer));
+            cell = new PdfPCell(new Paragraph(proy.getNomProy(), fontVer1));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             tableh.addCell(cell);
             
-            cell = new PdfPCell(new Paragraph(fechaActual, fontVer));
+            cell = new PdfPCell(new Paragraph(fechaActual, fontVer1));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             tableh.addCell(cell);
             document.add(tableh);
             
             Image imgUnam = Image.getInstance(logoUnam);
-            imgUnam.setAbsolutePosition(81, 509);
+            imgUnam.setAbsolutePosition(81, 510);
             document.add(imgUnam);
             //Fin de Header
 
@@ -162,25 +162,71 @@ public class GeneraReporte extends HttpServlet {
             
             //Inicio Header
             document.add(tableh);
-            
             document.add(imgUnam);
             //Fin Header
+            BaseColor color = new BaseColor(44, 62, 80);
+            BaseColor colorGris = new BaseColor(0, 0, 0, 0.05f);
+            BaseColor colorAzul = new BaseColor(21, 60, 100);
+            Font fuenteBlanca = new Font(FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.WHITE);
+            Font fuenteAzul = new Font(FontFamily.TIMES_ROMAN, 16, Font.NORMAL, colorAzul);
+            Font fuenteAzul2 = new Font(FontFamily.TIMES_ROMAN, 14, Font.NORMAL, colorAzul);
             
             document.add(new Paragraph("   "));
-            document.add(new Paragraph("    1.  DATOS DEL PROYECTO", fontNormal2));
-            document.add(new Paragraph("        Nombre del Proyecto: " + proy.getNomProy(), fontNormal2));
-            document.add(new Paragraph("        Número Total de Procesos Funcionales: " + listaPF.size(), fontNormal2));
-            document.add(new Paragraph("        Propósito del Proyecto: " + proy.getProposito(), fontNormal2));
-            document.add(new Paragraph("        Alcance del Proyecto: " + proy.getAlcance(), fontNormal2));
+            document.add(new Paragraph("        1.  DATOS DEL PROYECTO", fuenteAzul));
+            document.add(new Paragraph("   "));
+            PdfPTable tableD = new PdfPTable(2);
+            tableD.setHorizontalAlignment(Element.ALIGN_LEFT);
+            tableD.setTotalWidth(350f);
+            tableD.setLockedWidth(true);
+            tableD.setWidths(new float[]{1.1f, 1.9f});
+            
+            PdfPCell cellD = new PdfPCell(new Paragraph("Nombre:", fontNormal));
+            cellD.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cellD.setBackgroundColor(colorGris);
+            cellD.setBorderColor(colorAzul);
+            tableD.addCell(cellD);
+            cellD = new PdfPCell(new Paragraph(" "+proy.getNomProy(), fontNormal));
+            cellD.setBorderColor(colorAzul);
+            tableD.addCell(cellD);
+            
+            cellD = new PdfPCell(new Paragraph("Número de PF:", fontNormal));
+            cellD.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cellD.setBackgroundColor(colorGris);
+            cellD.setBorderColor(colorAzul);
+            tableD.addCell(cellD);
+            cellD = new PdfPCell(new Paragraph(" "+listaPF.size(), fontNormal));
+            cellD.setBorderColor(colorAzul);
+            tableD.addCell(cellD);
+            
+            cellD = new PdfPCell(new Paragraph("Propósito:", fontNormal));
+            cellD.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cellD.setBackgroundColor(colorGris);
+            cellD.setBorderColor(colorAzul);
+            tableD.addCell(cellD);
+            cellD = new PdfPCell(new Paragraph(" "+proy.getProposito(), fontNormal));
+            cellD.setBorderColor(colorAzul);
+            tableD.addCell(cellD);
+            
+            cellD = new PdfPCell(new Paragraph("Alcance:", fontNormal));
+            cellD.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            cellD.setBackgroundColor(colorGris);
+            cellD.setBorderColor(colorAzul);
+            tableD.addCell(cellD);
+            cellD = new PdfPCell(new Paragraph(" "+proy.getAlcance(), fontNormal));
+            cellD.setBorderColor(colorAzul);
+            tableD.addCell(cellD);
+            
+            document.add(tableD);
+            
             //document.add(new Paragraph("    Arquitectura del Proyecto: " + proy.getAlcance() ));
             document.add(new Paragraph("  "));
             //Fin Datos del Proyecto
 
             //Resumen Medición /#PF, #UF, #GD, MD Totales (tabla, porcentaje) , Diag Ctx Total, Matriz FP
-            document.add(new Paragraph("    2.  RESUMEN DE MEDICIÓN", fontNormal2));
+            document.add(new Paragraph("        2.  RESUMEN DE MEDICIÓN", fuenteAzul));
 
             //# Procesos Funcionales
-            document.add(new Paragraph("        Procesos Funcionales", fontNormal2));
+            document.add(new Paragraph("        Procesos Funcionales", fuenteAzul2));
             int pfCont = 1;
             for (ProcesoFuncional pf : listaPF) {
 
@@ -192,7 +238,7 @@ public class GeneraReporte extends HttpServlet {
 
             //#UF
             document.add(new Paragraph("  "));
-            document.add(new Paragraph("        Usuarios Funcionales", fontNormal2));
+            document.add(new Paragraph("        Usuarios Funcionales", fuenteAzul2));
 
             List<UsuarioFuncional> listaUF = new ArrayList<>();
             SubProcesoJpaController spjpa2 = new SubProcesoJpaController(EntityProvider.provider());
@@ -229,7 +275,7 @@ public class GeneraReporte extends HttpServlet {
 
             //# GD
             document.add(new Paragraph("  "));
-            document.add(new Paragraph("        Grupos de Datos", fontNormal2));
+            document.add(new Paragraph("        Grupos de Datos", fuenteAzul2));
 
             List<GrupoDato> listaGD = new ArrayList<>();
             listaGD.add(subProcesos2.get(0).getIdgrupoDato());
@@ -263,7 +309,8 @@ public class GeneraReporte extends HttpServlet {
 
             //Sumatoria de MD
             document.add(new Paragraph("  "));
-            document.add(new Paragraph("        Sumatoria de Movimientos de Datos", fontNormal2));
+            document.add(new Paragraph("  "));
+            document.add(new Paragraph("        Sumatoria de Movimientos de Datos", fuenteAzul2));
             document.add(new Paragraph("  "));
             PdfPTable tableResumenPF = new PdfPTable(5);
             tableResumenPF.setTotalWidth(400f);
@@ -272,31 +319,31 @@ public class GeneraReporte extends HttpServlet {
 
             PdfPCell cellRX = new PdfPCell(new Paragraph("X"));
             cellRX.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellRX.setBorderColor(BaseColor.BLUE);
+            cellRX.setBorderColor(colorAzul);
             cellRX.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellRX);
 
             PdfPCell cellRL = new PdfPCell(new Paragraph("L"));
             cellRL.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellRL.setBorderColor(BaseColor.BLUE);
+            cellRL.setBorderColor(colorAzul);
             cellRL.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellRL);
 
             PdfPCell cellRE = new PdfPCell(new Paragraph("E"));
             cellRE.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellRE.setBorderColor(BaseColor.BLUE);
+            cellRE.setBorderColor(colorAzul);
             cellRE.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellRE);
 
             PdfPCell cellRW = new PdfPCell(new Paragraph("W"));
             cellRW.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellRW.setBorderColor(BaseColor.BLUE);
+            cellRW.setBorderColor(colorAzul);
             cellRW.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellRW);
 
             PdfPCell cellTot = new PdfPCell(new Paragraph("Total"));
             cellTot.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellTot.setBorderColor(BaseColor.BLUE);
+            cellTot.setBorderColor(colorAzul);
             cellTot.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellTot);
 
@@ -322,63 +369,63 @@ public class GeneraReporte extends HttpServlet {
             }
             PdfPCell cellSumX = new PdfPCell(new Paragraph("" + sumaX));
             cellSumX.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellSumX.setBorderColor(BaseColor.BLUE);
+            cellSumX.setBorderColor(colorAzul);
             cellSumX.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellSumX);
 
             PdfPCell cellSumR = new PdfPCell(new Paragraph("" + sumaR));
             cellSumR.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellSumR.setBorderColor(BaseColor.BLUE);
+            cellSumR.setBorderColor(colorAzul);
             cellSumR.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellSumR);
 
             PdfPCell cellSumE = new PdfPCell(new Paragraph("" + sumaE));
             cellSumE.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellSumE.setBorderColor(BaseColor.BLUE);
+            cellSumE.setBorderColor(colorAzul);
             cellSumE.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellSumE);
 
             PdfPCell cellSumW = new PdfPCell(new Paragraph("" + sumaW));
             cellSumW.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellSumW.setBorderColor(BaseColor.BLUE);
+            cellSumW.setBorderColor(colorAzul);
             cellSumW.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellSumW);
 
             int sumaTotal = sumaX + sumaR + sumaE + sumaW;
             PdfPCell cellT = new PdfPCell(new Paragraph("" + sumaTotal));
             cellT.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellT.setBorderColor(BaseColor.BLUE);
+            cellT.setBorderColor(colorAzul);
             cellT.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellT);
 
             DecimalFormat df = new DecimalFormat("#.00");
             PdfPCell cellSumX1 = new PdfPCell(new Paragraph("" + df.format((double) sumaX / (double) sumaTotal * 100) + "%"));
             cellSumX1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellSumX1.setBorderColor(BaseColor.BLUE);
+            cellSumX1.setBorderColor(colorAzul);
             cellSumX1.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellSumX1);
 
             PdfPCell cellSumR1 = new PdfPCell(new Paragraph("" + df.format((double) sumaR / (double) sumaTotal * 100) + "%"));
             cellSumR1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellSumR1.setBorderColor(BaseColor.BLUE);
+            cellSumR1.setBorderColor(colorAzul);
             cellSumR1.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellSumR1);
 
             PdfPCell cellSumE1 = new PdfPCell(new Paragraph("" + df.format((double) sumaE / (double) sumaTotal * 100) + "%"));
             cellSumE1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellSumE1.setBorderColor(BaseColor.BLUE);
+            cellSumE1.setBorderColor(colorAzul);
             cellSumE1.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellSumE1);
 
             PdfPCell cellSumW1 = new PdfPCell(new Paragraph("" + df.format((double) sumaW / (double) sumaTotal * 100) + "%"));
             cellSumW1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellSumW1.setBorderColor(BaseColor.BLUE);
+            cellSumW1.setBorderColor(colorAzul);
             cellSumW1.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellSumW1);
 
             PdfPCell cellSumT1 = new PdfPCell(new Paragraph("100.00 %"));
             cellSumT1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellSumT1.setBorderColor(BaseColor.BLUE);
+            cellSumT1.setBorderColor(colorAzul);
             cellSumT1.setBorderWidth(1.5f);
             tableResumenPF.addCell(cellSumT1);
 
@@ -390,19 +437,18 @@ public class GeneraReporte extends HttpServlet {
             document.add(tableh);
             document.add(imgUnam);
             document.add(new Paragraph("   "));
-            document.add(new Paragraph("   "));
-            document.add(new Paragraph("    Diagrama Global de Contexto", fontNormal2));
+            document.add(new Paragraph("        Diagrama Global de Contexto", fuenteAzul));
             Font helvetica = new Font(FontFamily.HELVETICA, 12);
             BaseFont bf_helv = helvetica.getCalculatedBaseFont(false);
             PdfContentByte under = writer.getDirectContentUnder();
             under.saveState();
-            under.setColorStroke(BaseColor.ORANGE);
-            under.roundRectangle(50, 225, 140, 40, 7);
+            under.setColorStroke(colorAzul);
+            under.roundRectangle(60, 239, 120, 22, 5);
             under.setLineWidth(2);
             under.stroke();
-            under.setFontAndSize(bf_helv, 15);
+            under.setFontAndSize(bf_helv, 12);
             //under.showTextAligned(Element.ALIGN_LEFT, usuarioCtx.getNomUF(), 60, 315, 0);
-            under.showTextAligned(Element.ALIGN_LEFT, "Usuario Funcional", 60, 240, 0);
+            under.showTextAligned(Element.ALIGN_CENTER, "Usuario Funcional", 120, 245, 0);
             under.restoreState();
 
             Image img = Image.getInstance(arrowR);
@@ -429,22 +475,22 @@ public class GeneraReporte extends HttpServlet {
 
             PdfContentByte under2 = writer.getDirectContentUnder(); 
             under2.saveState();
-            under2.setColorStroke(BaseColor.BLUE);
-            under2.roundRectangle(335, 265, 180, 120, 10);
-            under2.setLineWidth(3);
+            under2.setColorStroke(colorAzul);
+            under2.roundRectangle(355, 290, 150, 70, 7);
+            under2.setLineWidth(2);
             under2.stroke();
-            under2.setFontAndSize(bf_helv, 18);
-            under2.showTextAligned(Element.ALIGN_LEFT, proy.getNomProy(), 400, 315, 0);
+            under2.setFontAndSize(bf_helv, 15);
+            under2.showTextAligned(Element.ALIGN_CENTER, proy.getNomProy(), 430, 319, 0);
             under2.restoreState();
 
             PdfContentByte under3 = writer.getDirectContentUnder();
             under3.saveState();
-            under3.setColorStroke(BaseColor.RED);
-            under3.roundRectangle(645, 300, 150, 40, 7);
+            under3.setColorStroke(colorAzul);
+            under3.roundRectangle(645, 310, 120, 25, 5);
             under3.setLineWidth(2);
             under3.stroke();
-            under3.setFontAndSize(bf_helv, 15);
-            under3.showTextAligned(Element.ALIGN_LEFT, "Sistema de Pagos", 650, 315, 0);
+            under3.setFontAndSize(bf_helv, 12);
+            under3.showTextAligned(Element.ALIGN_CENTER, "Sistema de Pagos", 705, 317, 0);
             under3.restoreState();
             //Fin Diagrama de Contexto Total
 
@@ -453,7 +499,7 @@ public class GeneraReporte extends HttpServlet {
             document.add(tableh);
             document.add(imgUnam);
             document.add(new Paragraph("   "));
-            document.add(new Paragraph("                                                            Formato Para Medición y Rastreo de Requerimientos", fontNormal2));
+            document.add(new Paragraph("                                                            Formato Para Medición y Rastreo de Requerimientos", fuenteAzul2));
             document.add(new Paragraph("  "));
             PdfPTable table = new PdfPTable(9);
             table.setTotalWidth(800f);
@@ -464,62 +510,62 @@ public class GeneraReporte extends HttpServlet {
             PdfPCell cell3 = new PdfPCell(p3);
             cell3.setNoWrap(false);
             cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell3.setBackgroundColor(colorGris);
             table.addCell(cell3);
 
             Phrase p4 = new Phrase("Proceso Funcional", fontVer1);
             PdfPCell cell4 = new PdfPCell(p4);
             cell4.setNoWrap(false);
             cell4.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell4.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell4.setBackgroundColor(colorGris);
             table.addCell(cell4);
 
             Phrase p5 = new Phrase("Evento Desencadenante", fontVer1);
             PdfPCell cell5 = new PdfPCell(p5);
             cell5.setNoWrap(false);
             cell5.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell5.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell5.setBackgroundColor(colorGris);
             table.addCell(cell5);
 
             Phrase p6 = new Phrase("Actor", fontVer1);
             PdfPCell cell6 = new PdfPCell(p6);
             cell6.setNoWrap(false);
             cell6.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell6.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell6.setBackgroundColor(colorGris);
             table.addCell(cell6);
-            Phrase p7 = new Phrase("Descripci�n de Subproceso", fontVer1);
+            Phrase p7 = new Phrase("Descripción de Subproceso", fontVer1);
             PdfPCell cell7 = new PdfPCell(p7);
             cell7.setNoWrap(false);
             cell7.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell7.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell7.setBackgroundColor(colorGris);
             table.addCell(cell7);
 
             Phrase p8 = new Phrase("GD", fontVer1);
             PdfPCell cell8 = new PdfPCell(p8);
             cell8.setNoWrap(false);
             cell8.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell8.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell8.setBackgroundColor(colorGris);
             table.addCell(cell8);
 
             Phrase p9 = new Phrase("MD", fontVer1);
             PdfPCell cell9 = new PdfPCell(p9);
             cell9.setNoWrap(false);
             cell9.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell9.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell9.setBackgroundColor(colorGris);
             table.addCell(cell9);
 
             Phrase p10 = new Phrase("CFP", fontVer1);
             PdfPCell cell10 = new PdfPCell(p10);
             cell10.setNoWrap(false);
             cell10.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell10.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell10.setBackgroundColor(colorGris);
             table.addCell(cell10);
 
             Phrase p11 = new Phrase("Suma", fontVer1);
             PdfPCell cell11 = new PdfPCell(p11);
             cell11.setNoWrap(false);
             cell11.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cell11.setBackgroundColor(BaseColor.LIGHT_GRAY);
+            cell11.setBackgroundColor(colorGris);
             table.addCell(cell11);
 
             UsuarioFuncional usuarioCtx = new UsuarioFuncional();
@@ -539,7 +585,7 @@ public class GeneraReporte extends HttpServlet {
                         cellId = new PdfPCell(new Phrase(""));
                     }
                     if (auxi % 2 == 0) {
-                        cellId.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                        cellId.setBackgroundColor(colorGris);
                     }
                     cellId.setHorizontalAlignment(Element.ALIGN_CENTER);
                     table.addCell(cellId);
@@ -547,14 +593,14 @@ public class GeneraReporte extends HttpServlet {
                     PdfPCell cellPF = new PdfPCell(new Phrase(proceso.getNomPF(), fontNormal));
                     cellPF.setHorizontalAlignment(Element.ALIGN_CENTER);
                     if (auxi % 2 == 0) {
-                        cellPF.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                        cellPF.setBackgroundColor(colorGris);
                     }
                     table.addCell(cellPF);
 
                     PdfPCell cellED = new PdfPCell(new Phrase(proceso.getEventoDes(), fontNormal));
                     cellED.setHorizontalAlignment(Element.ALIGN_CENTER);
                     if (auxi % 2 == 0) {
-                        cellED.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                        cellED.setBackgroundColor(colorGris);
                     }
                     table.addCell(cellPF);
 
@@ -564,14 +610,14 @@ public class GeneraReporte extends HttpServlet {
                     PdfPCell cellUF = new PdfPCell(new Phrase(usuario.getNomUF(), fontNormal));
                     cellUF.setHorizontalAlignment(Element.ALIGN_CENTER);
                     if (auxi % 2 == 0) {
-                        cellUF.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                        cellUF.setBackgroundColor(colorGris);
                     }
                     table.addCell(cellUF);
 
                     PdfPCell cellSP = new PdfPCell(new Phrase(sub.getDescripcion(), fontNormal));
                     cellSP.setHorizontalAlignment(Element.ALIGN_CENTER);
                     if (auxi % 2 == 0) {
-                        cellSP.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                        cellSP.setBackgroundColor(colorGris);
                     }
                     table.addCell(cellSP);
 
@@ -580,7 +626,7 @@ public class GeneraReporte extends HttpServlet {
                     PdfPCell cellGD = new PdfPCell(new Phrase(grupoDato.getNomGD(), fontNormal));
                     cellGD.setHorizontalAlignment(Element.ALIGN_CENTER);
                     if (auxi % 2 == 0) {
-                        cellGD.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                        cellGD.setBackgroundColor(colorGris);
                     }
                     table.addCell(cellGD);
 
@@ -589,52 +635,47 @@ public class GeneraReporte extends HttpServlet {
                     PdfPCell cellAc = new PdfPCell(new Phrase("" + accion.getMovDatos(), fontNormal));
                     cellAc.setHorizontalAlignment(Element.ALIGN_CENTER);
                     if (auxi % 2 == 0) {
-                        cellAc.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                        cellAc.setBackgroundColor(colorGris);
                     }
                     table.addCell(cellAc);
 
                     PdfPCell cellCFP = new PdfPCell(new Phrase("1", fontNormal));
                     cellCFP.setHorizontalAlignment(Element.ALIGN_CENTER);
                     if (auxi % 2 == 0) {
-                        cellCFP.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                        cellCFP.setBackgroundColor(colorGris);
                     }
                     table.addCell(cellCFP);
 
                     PdfPCell cellSumaCFP = new PdfPCell(new Phrase(""));
                     if (auxi % 2 == 0) {
-                        cellSumaCFP.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                        cellSumaCFP.setBackgroundColor(colorGris);
                     }
                     table.addCell(cellSumaCFP);
 
                     auxi++;
                     //Inserciones en Histórico
                     HistoricoJpaController hjpac = new HistoricoJpaController(EntityProvider.provider());
-                    
-                    List<Historico> listaHistorico = hjpac.findHistoricoByIdProyectoFecha(proy);
-                    System.out.println("El tamaño de la lista >> "+listaHistorico.size());
-                    if(listaHistorico==null || listaHistorico.isEmpty()){
-                        Historico historico = new Historico();
-                        historico.setIdProy(proy.getIdproyecto());
-                        historico.setNombreProy(proy.getNomProy());
-                        historico.setProposito(proy.getProposito());
-                        historico.setAlcanceProy(proy.getAlcance());
-                        historico.setNombrePF(proceso.getNomPF());
-                        historico.setDescripcionPF(proceso.getDescripcion());
-                        historico.setTamanioPF(proceso.getTamPF());
-                        historico.setEventoDesPF(proceso.getEventoDes());
-                        historico.setDescripcionSP(sub.getDescripcion());
-                        Date fecha = new Date();
-                        historico.setFecha(fecha);
-                        historico.setNombreGD(grupoDato.getNomGD());
-                        historico.setDescripcionGD(grupoDato.getDescripcion());
-                        historico.setNombreUF(usuario.getNomUF());
-                        historico.setDescripcionUF(usuario.getDescripcion());
-                        historico.setUsuarioSistemaUF(usuario.getUsuarioSistema());
-                        historico.setNombreAccion(accion.getNomAccion());
-                        historico.setMovDatos(String.format("%c", accion.getMovDatos()));
+                    Historico historico = new Historico();
+                    historico.setIdProy(proy.getIdproyecto());
+                    historico.setNombreProy(proy.getNomProy());
+                    historico.setProposito(proy.getProposito());
+                    historico.setAlcanceProy(proy.getAlcance());
+                    historico.setNombrePF(proceso.getNomPF());
+                    historico.setDescripcionPF(proceso.getDescripcion());
+                    historico.setTamanio(proceso.getTamPF());
+                    historico.setEventoDesPF(proceso.getEventoDes());
+                    historico.setDescripcionSP(sub.getDescripcion());
+                    Date fecha = new Date();
+                    historico.setFecha(fecha);
+                    historico.setNombreGD(grupoDato.getNomGD());
+                    historico.setDescripcionGD(grupoDato.getDescripcion());
+                    historico.setNombreUF(usuario.getNomUF());
+                    historico.setDescripcionUF(usuario.getDescripcion());
+                    historico.setUsuarioSistemaUF(usuario.getUsuarioSistema());
+                    historico.setNombreAccion(accion.getNomAccion());
+                    historico.setMovDatos(String.format("%c", accion.getMovDatos()));
 
-                        hjpac.create(historico);
-                    }
+                    hjpac.create(historico);
                     //Fin de Inserciones en Històrico
                 }
 
@@ -664,7 +705,7 @@ public class GeneraReporte extends HttpServlet {
             table.addCell("");
             PdfPCell cellSuma = new PdfPCell(new Phrase("Total: " + suma, fontNormal));
             cellSuma.setHorizontalAlignment(Element.ALIGN_CENTER);
-            cellSuma.setBackgroundColor(BaseColor.YELLOW);
+            cellSuma.setBackgroundColor(BaseColor.LIGHT_GRAY);
             table.addCell(cellSuma);
 
             document.add(table);
@@ -675,7 +716,7 @@ public class GeneraReporte extends HttpServlet {
             document.add(new Paragraph("  "));
             document.add(new Paragraph("  "));
             document.add(new Paragraph("  "));
-            document.add(new Paragraph("    3. INFORMACIÓN DETALLADA POR PROCESO FUNCIONAL", fontNormal2));
+            document.add(new Paragraph("        3. INFORMACIÓN DETALLADA POR PROCESO FUNCIONAL", fuenteAzul));
             document.add(new Paragraph("  "));
 
             for (ProcesoFuncional proc : listaPF) {
@@ -687,7 +728,7 @@ public class GeneraReporte extends HttpServlet {
                 document.add(new Paragraph("   "));
 
                 //Sumatoria de MD
-                document.add(new Paragraph("    Sumatoria de Movimientos de Datos del Proceso Funcional", fontNormal2));
+                document.add(new Paragraph("    Sumatoria de Movimientos de Datos del Proceso Funcional", fuenteAzul2));
                 document.add(new Paragraph("  "));
                 PdfPTable tableResumenPF1 = new PdfPTable(5);
                 tableResumenPF1.setTotalWidth(400f);
@@ -696,35 +737,35 @@ public class GeneraReporte extends HttpServlet {
 
                 PdfPCell cellRX1 = new PdfPCell(new Paragraph("X"));
                 cellRX1.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellRX1.setBorderColor(BaseColor.BLUE);
+                cellRX1.setBorderColor(colorAzul);
                 cellRX1.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellRX1);
 
                 PdfPCell cellRL1 = new PdfPCell(new Paragraph("L"));
                 cellRL1.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellRL1.setBorderColor(BaseColor.BLUE);
+                cellRL1.setBorderColor(colorAzul);
                 cellRL1.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellRL1);
 
                 PdfPCell cellRE1 = new PdfPCell(new Paragraph("E"));
                 cellRE1.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellRE1.setBorderColor(BaseColor.BLUE);
+                cellRE1.setBorderColor(colorAzul);
                 cellRE1.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellRE1);
 
                 PdfPCell cellRW1 = new PdfPCell(new Paragraph("W"));
                 cellRW1.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellRW1.setBorderColor(BaseColor.BLUE);
+                cellRW1.setBorderColor(colorAzul);
                 cellRW1.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellRW1);
 
                 PdfPCell cellTot1 = new PdfPCell(new Paragraph("Total"));
                 cellTot1.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellTot1.setBorderColor(BaseColor.BLUE);
+                cellTot1.setBorderColor(colorAzul);
                 cellTot1.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellTot1);
 
-                int sumaX1 = 0, sumaR1 = 0, sumaE1 = 0, sumaW1 = 0;
+                int sumaX1 = 0, sumaR1 = 0, sumaE1 = 0, sumaW1 = 0, sumaTotal1 = 0;
                 SubProcesoJpaController spjpa = new SubProcesoJpaController(EntityProvider.provider());
                 List<SubProceso> subProcesos = spjpa.findSPByIdProcesoFuncionalR(proc.getIdprocesoFuncional());
 
@@ -732,78 +773,77 @@ public class GeneraReporte extends HttpServlet {
                     AccionJpaController acjpa = new AccionJpaController(EntityProvider.provider());
                     Accion accion = acjpa.findAccion(sub.getIdaccion().getIdaccion());
                     if (String.format("%s", accion.getMovDatos()).equals("E")) {
-                        sumaE = sumaE + 1;
+                        sumaE1 = sumaE1 + 1;
                     } else if (String.format("%s", accion.getMovDatos()).equals("X")) {
-                        sumaX = sumaX + 1;
+                        sumaX1 = sumaX1 + 1;
                     } else if (String.format("%s", accion.getMovDatos()).equals("R")) {
-                        sumaR = sumaR + 1;
+                        sumaR1 = sumaR1 + 1;
                     } else if (String.format("%s", accion.getMovDatos()).equals("W")) {
-                        sumaW = sumaW + 1;
+                        sumaW1 = sumaW1 + 1;
                     }
                 }
                 PdfPCell cellSumX11 = new PdfPCell(new Paragraph("" + sumaX1));
                 cellSumX11.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellSumX11.setBorderColor(BaseColor.BLUE);
+                cellSumX11.setBorderColor(colorAzul);
                 cellSumX11.setBorderWidth(1.5f);
-                tableResumenPF1.addCell(cellSumX1);
+                tableResumenPF1.addCell(cellSumX11);
 
                 PdfPCell cellSumR11 = new PdfPCell(new Paragraph("" + sumaR1));
                 cellSumR11.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellSumR11.setBorderColor(BaseColor.BLUE);
+                cellSumR11.setBorderColor(colorAzul);
                 cellSumR11.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellSumR11);
 
                 PdfPCell cellSumE11 = new PdfPCell(new Paragraph("" + sumaE1));
                 cellSumE11.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellSumE11.setBorderColor(BaseColor.BLUE);
+                cellSumE11.setBorderColor(colorAzul);
                 cellSumE11.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellSumE11);
 
                 PdfPCell cellSumW11 = new PdfPCell(new Paragraph("" + sumaW1));
                 cellSumW11.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellSumW11.setBorderColor(BaseColor.BLUE);
+                cellSumW11.setBorderColor(colorAzul);
                 cellSumW11.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellSumW11);
 
-                int sumaTotal1 = sumaX1 + sumaR1 + sumaE1 + sumaW1;
+                sumaTotal1 = sumaX1 + sumaR1 + sumaE1 + sumaW1;
                 PdfPCell cellT1 = new PdfPCell(new Paragraph("" + sumaTotal1));
                 cellT1.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellT1.setBorderColor(BaseColor.BLUE);
+                cellT1.setBorderColor(colorAzul);
                 cellT1.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellT1);
 
-                DecimalFormat df1 = new DecimalFormat("#.00");
                 PdfPCell cellSumX10 = new PdfPCell(new Paragraph("" + df.format((double) sumaX1 / (double) sumaTotal1 * 100) + "%"));
                 cellSumX10.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellSumX10.setBorderColor(BaseColor.BLUE);
+                cellSumX10.setBorderColor(colorAzul);
                 cellSumX10.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellSumX10);
 
                 PdfPCell cellSumR10 = new PdfPCell(new Paragraph("" + df.format((double) sumaR1 / (double) sumaTotal1 * 100) + "%"));
                 cellSumR10.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellSumR10.setBorderColor(BaseColor.BLUE);
+                cellSumR10.setBorderColor(colorAzul);
                 cellSumR10.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellSumR10);
 
                 PdfPCell cellSumE10 = new PdfPCell(new Paragraph("" + df.format((double) sumaE1 / (double) sumaTotal1 * 100) + "%"));
                 cellSumE10.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellSumE10.setBorderColor(BaseColor.BLUE);
+                cellSumE10.setBorderColor(colorAzul);
                 cellSumE10.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellSumE10);
 
                 PdfPCell cellSumW10 = new PdfPCell(new Paragraph("" + df.format((double) sumaW1 / (double) sumaTotal1 * 100) + "%"));
                 cellSumW10.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellSumW10.setBorderColor(BaseColor.BLUE);
+                cellSumW10.setBorderColor(colorAzul);
                 cellSumW10.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellSumW10);
 
                 PdfPCell cellSumT10 = new PdfPCell(new Paragraph("100.00 %"));
                 cellSumT10.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cellSumT10.setBorderColor(BaseColor.BLUE);
+                cellSumT10.setBorderColor(colorAzul);
                 cellSumT10.setBorderWidth(1.5f);
                 tableResumenPF1.addCell(cellSumT10);
 
-                document.add(tableResumenPF);
+                document.add(tableResumenPF1);
                 //Fin Sumatoria MD
 
                 //Diagrama de Actividades
@@ -821,7 +861,7 @@ public class GeneraReporte extends HttpServlet {
                     PdfPCell cellAct = new PdfPCell(phrase);
                     cellAct.setNoWrap(false);
                     cellAct.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    cellAct.setBackgroundColor(BaseColor.YELLOW);
+                    cellAct.setBackgroundColor(colorGris);
                     table1.addCell(cellAct);
 
                     document.add(table1);
@@ -872,55 +912,9 @@ public class GeneraReporte extends HttpServlet {
                     posMD -= 35;
                 }
                 //Fin Diagrama de Secuencia
-
-//                //Diagrama de Actividades
-//                Image image = Image.getInstance(userFunc2);
-//                image.setAbsolutePosition(630, 435);
-//                document.add(image);
-//
-//                UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
-//                UsuarioFuncional usuarioFunc = ufjpa.findUsuarioFuncional(subProcesos.get(0).getIdusuarioFuncional().getIdusuarioFuncional());
-//                under4.saveState();
-//                under4.setColorStroke(BaseColor.BLACK);
-//                under4.roundRectangle(595, 400, 150, 25, 7);
-//                under4.setLineWidth(1.5);
-//                under4.stroke();
-//                under4.setFontAndSize(bf_helv, 12);
-//                under4.showTextAligned(Element.ALIGN_LEFT, usuarioFunc.getNomUF(), 605, 410, 0);
-//                under4.restoreState();
-//
-//                Image image2 = Image.getInstance(arrowUpDown2);
-//                image2.setAbsolutePosition(664, 355);
-//                document.add(image2);
-//
-//                under4.saveState();
-//                under4.setColorStroke(BaseColor.BLACK);
-//                under4.roundRectangle(595, 270, 150, 70, 10);
-//                under4.setLineWidth(1.5);
-//                under4.stroke();
-//                under4.setFontAndSize(bf_helv, 13);
-//                under4.showTextAligned(Element.ALIGN_LEFT, proy.getNomProy(), 605, 300, 0);
-//                under4.restoreState();
-//                
-//                Image image3 = Image.getInstance(arrowUpDown2);
-//                image3.setAbsolutePosition(664, 227);
-//                document.add(image3);
-//                
-//                under4.saveState();
-//                under4.setColorStroke(BaseColor.BLACK);
-//                under4.roundRectangle(595, 185, 150, 25, 7);
-//                under4.setLineWidth(1.5);
-//                under4.stroke();
-//                under4.setFontAndSize(bf_helv, 12);
-//                under4.showTextAligned(Element.ALIGN_LEFT, "Sistema de Pagos", 605, 194, 0);
-//                under4.restoreState();
-                //Fin Diagrama de Actividades
             }
             //Fin Información Detalla por Proceso Funcional
-//                //Fin Diagrama de Actividades
-//            }
-//            //Fin Informacion Detalla por Proceso Funcional
-
+            
             document.close();
             archivo.flush();
             archivo.close();

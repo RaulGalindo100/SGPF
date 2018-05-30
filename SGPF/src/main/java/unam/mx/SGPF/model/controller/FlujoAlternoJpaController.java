@@ -226,7 +226,7 @@ public class FlujoAlternoJpaController implements Serializable {
 
     public List<FlujoAlterno> findByIdSubProceso(SubProceso idsubProceso) {
         EntityManager em = getEntityManager();
-        Query q = em.createNamedQuery("FlujoAlterno.findByIdSubProceso")
+        Query q = em.createNamedQuery("FlujoAlterno.findByIdSubProceso2")
                 .setParameter("idsubProceso", idsubProceso);
         if (q.getResultList().isEmpty()) {
             return null;
