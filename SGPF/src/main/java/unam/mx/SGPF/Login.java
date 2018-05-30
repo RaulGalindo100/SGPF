@@ -30,8 +30,8 @@ public class Login extends HttpServlet {
 		UsuarioJpaController ujpa = new UsuarioJpaController(EntityProvider.provider());
 		Usuario u = ujpa.getUsuarioByUserAndPass(usuario, pass);
                 
-		if (u == null) {
-			response.sendRedirect("index.html");
+		if (u == null || u.getActivo()==0) {
+			response.sendRedirect("index?error=1.jsp");
 		} else {
 			// Objeto que establece la sesión
                         HttpSession session = request.getSession(true);
@@ -46,8 +46,6 @@ public class Login extends HttpServlet {
                                 tipoUsuario = 3;
                             }
                         }
-                        if(u.getActivo()==0)
-                            response.sendRedirect("index.html");
                         session.setAttribute("tipoUsuario", tipoUsuario);
 
 			InterUPJpaController ijpa = new InterUPJpaController(EntityProvider.provider());

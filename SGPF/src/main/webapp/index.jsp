@@ -42,10 +42,10 @@
 										<div class="invalid-feedback">Es requerido.</div>
 									</div>
 									<div class="form-group">
-										<label>ContraseÃ±a</label> <input
+										<label>Contraseña</label> <input
 											class="form-control form-control-lg rounded-0"
 											type="password" name="psw"
-											placeholder="Ingrese su contraseÃ±a" value="" required>
+											placeholder="Ingrese su contraseña" value="" required>
 										<div class="invalid-feedback">Es requerido.</div>
 									</div>
 									<button type="submit"
