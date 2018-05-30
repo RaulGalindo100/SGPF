@@ -53,66 +53,16 @@
                             <input class="form-control" type="text" name="nombreAccion" value="<%=accion.getNomAccion()%>" required>
                         </div>
                         <div class="form-group">
-                            <label>Movimiento de datos</label>
-                            <%
-                                if (accion.getMovDatos().equals("E")) {
-                            %>
+                            <label>Movimiento de datos <%=accion.getMovDatos() %></label>
+                            
                             <select class="form-control" name="movDatos">
-                                <option value="E" selected>E</option>
-                                <option value="X">X</option>
-                                <option value="R">R</option>
-                                <option value="W">W</option>
-                                <option value="S">S</option>
+                                <option value="E" <%if (accion.getMovDatos().equals('E')) {%>selected<%}%>>E</option>
+                                <option value="X" <%if (accion.getMovDatos().equals('X')) {%>selected<%}%>>X</option>
+                                <option value="R" <%if (accion.getMovDatos().equals('R')) {%>selected<%}%>>R</option>
+                                <option value="W" <%if (accion.getMovDatos().equals('W')) {%>selected<%}%>>W</option>
+                                <option value="S" <%if (accion.getMovDatos().equals('S')) {%>selected<%}%>>S</option>
                             </select>
-                            <%
-                            } else {
-                                if (accion.getMovDatos().equals("X")) {
-                            %>
-                            <select class="form-control" name="movDatos">
-                                <option value="E">E</option>
-                                <option value="X" selected>X</option>
-                                <option value="R">R</option>
-                                <option value="W">W</option>
-                                <option value="S">S</option>
-                            </select>
-                            <%
-                            } else {
-                                if (accion.getMovDatos().equals("R")) {
-                            %>
-                            <select class="form-control" name="movDatos">
-                                <option value="E">E</option>
-                                <option value="X">X</option>
-                                <option value="R" selected>R</option>
-                                <option value="W">W</option>
-                                <option value="S">S</option>
-                            </select>
-                            <%
-                            } else {
-                                if (accion.getMovDatos().equals("W")) {
-                            %>
-                            <select class="form-control" name="movDatos">
-                                <option value="E">E</option>
-                                <option value="X">X</option>
-                                <option value="R">R</option>
-                                <option value="W" selected>W</option>
-                                <option value="S">S</option>
-                            </select>
-                            <%
-                            } else {
-                            %>
-                            <select class="form-control" name="movDatos">
-                                <option value="E">E</option>
-                                <option value="X">X</option>
-                                <option value="R">R</option>
-                                <option value="W">W</option>
-                                <option value="S" selected>S</option>
-                            </select>
-                            <%
-                                            }
-                                        }
-                                    }
-                                }
-                            %>
+                            
                         </div>
                         <div class="form-group">
                             <label>Descripción</label>
@@ -132,7 +82,7 @@
                                     <!-- Modal content-->
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            <p>Estos cambios se aplicarán a todos los Procesos Funcionales que utilizan ésta acción.</p>
+                                            <p>Estos cambios se aplicarán a todos los Proceso Guncionales registrados con esta acción previamente.</p>
                                             <p>¿Desea continuar?</p>
                                         </div>
                                         <div class="modal-footer">
