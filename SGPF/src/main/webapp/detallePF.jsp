@@ -123,7 +123,11 @@
 							<th scope="col">Usuario funcional</th>
 							<th scope="col">Acción</th>
 							<th scope="col">Grupo de datos</th>
+<<<<<<< HEAD
+							<th scope="col" >Opciones</th>
+=======
 							<th scope="col">Opciones</th>
+>>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
 							<th scope="col"></th>
 						</tr>
 					</thead>
@@ -151,7 +155,7 @@
 							<td><%=acc.getNomAccion()%></td>
 							<td>
 								<div class="form-group">
-									<select class="selectpicker form-control">
+									<select class="selectpicker form-control" data-width="fit">
 										<% for(SubprocesoGrupoDato actual : listaSPGD){
                     grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
 										<option>
@@ -203,7 +207,11 @@
 										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 										type="submit" value="Modificar" />
 								</form>
+<<<<<<< HEAD
+								<br>
+=======
                                                                                 <br>
+>>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
 								<%if (!inter.getActividad().equals("Inicio de Proceso Funcional") && inter.getIndice() == 1) {%>
 								<div class="container">
 									<button type="button"
@@ -250,9 +258,13 @@
 							<td><%=acc.getNomAccion()%></td>
 							<td>
 								<div class="form-group">
+<<<<<<< HEAD
+									<select class="selectpicker form-control" style="width: 150px;">
+=======
 									<select class="selectpicker form-control" style="width:150px;">
+>>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
 										<% for(SubprocesoGrupoDato actual : listaSPGD){
-                                                                                grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
+                     grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
 										<option>
 											<%=grupoDato.getNomGD()%>
 										</option>
@@ -304,9 +316,14 @@
 
 									</div>
 								</div> <%}%>
+<<<<<<< HEAD
+								</td>
+								<td>
+=======
 							</td>
 							
 							<td>
+>>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
 								<%if ( p.getEstatus() == 1) {%>
 								<div class="container">
 									<button type="button"
@@ -392,16 +409,33 @@
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
 							<td>
+<<<<<<< HEAD
+								<div class="form-group">
+									<select class="selectpicker form-control" style="width: 150px;">
+=======
                                                         <div class="form-group">
 									<select class="selectpicker form-control" style="width:150px;">
+>>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
 										<% for(FlujoAlterno actual : listaFAGD){
-                                                                                grupoDato = gdJpa.findGrupoDato(actual.getIdgrupoDato().getIdgrupoDato());%>
+                     grupoDato = gdJpa.findGrupoDato(actual.getIdgrupoDato().getIdgrupoDato());%>
 										<option>
 											<%=grupoDato.getNomGD()%>
 										</option>
 										<%}%>
 									</select>
 								</div>
+<<<<<<< HEAD
+							</td>
+							<td>
+								<form action="agregaGrupoDatosFlujoAlterno" method="POST">
+									<input type="hidden" name="idFlujoAlterno"
+										value="<%=inter.getIdflujoAlterno()%>" /> <input
+										class="btn btn-outline-info .btn-sm text-white"
+										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										type="submit" value="Agregar GD" />
+								</form>
+								<br>
+=======
                                                         </td>
                                                         <td>
                                                              <form action="agregaGrupoDatosFlujoAlterno" method="POST">
@@ -411,11 +445,13 @@
                                                              type="submit" value="Agrega Grupo Datos" />
                                                              </form>
                                                              <br>
+>>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
 								<%if ( p.getEstatus() == 1) { %>
 								<div class="container">
 									<button type="button"
 										class="btn btn-outline-info .btn-sm text-white"
-										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-toggle="modal"
+										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										data-toggle="modal"
 										data-target="#eliFA-<%=inter.getIdflujoAlterno()%>">Eliminar</button>
 									<div class="modal fade"
 										id="eliFA-<%=inter.getIdflujoAlterno()%>" role="dialog">
