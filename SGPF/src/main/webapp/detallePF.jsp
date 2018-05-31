@@ -120,18 +120,13 @@
 				<table class="table ">
 					<thead>
 						<tr>
-							<th scope="col">#</th>
 							<th scope="col">Actividad</th>
 							<th scope="col"># SP</th>
 							<th scope="col">Descripción</th>
 							<th scope="col">Usuario funcional</th>
 							<th scope="col">Acción</th>
 							<th scope="col">Grupo de datos</th>
-<<<<<<< HEAD
-							<th scope="col" >Opciones</th>
-=======
 							<th scope="col">Opciones</th>
->>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
 							<th scope="col"></th>
 						</tr>
 					</thead>
@@ -150,8 +145,8 @@
             GrupoDato grupoDato; 
             %>
 						<tr>
-							<%if (inter.getIndice() == 1) {contador++;%>
-							<td><%=contador%></td>
+							<%if (inter.getIndice() == 1) {%>
+							
 							<td><%=inter.getActividad()%></td>
 							<td><%=inter.getIndice()%></td>
 							<td><%=inter.getDescripcion()%></td>
@@ -174,7 +169,7 @@
 								<div class="dropdown">
 									<button
 										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle text-white"
-										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50; width:100px;"
 										type="button" id="dropdownMenu2" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">Agregar</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -204,23 +199,23 @@
 								</div>
 							</td>
 							<td>
+								<div class="container">
 								<form action="modActividad" method="POST">
 									<input type="hidden" name="idSubProceso"
 										value="<%=inter.getIdsubProceso()%>" /> <input
 										class="btn btn-outline-info .btn-sm text-white"
-										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50; width:100px;"
 										type="submit" value="Modificar" />
 								</form>
-<<<<<<< HEAD
+								</div>
+								
 								<br>
-=======
-                                                                                <br>
->>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
+
 								<%if (!inter.getActividad().equals("Inicio de Proceso Funcional") && inter.getIndice() == 1) {%>
 								<div class="container">
 									<button type="button"
 										class="btn btn-outline-info .btn-sm text-white"
-										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50; width:100px;"
 										style="font-size: 10pt;" data-toggle="modal"
 										data-target="#eliAct-<%=inter.getIdsubProceso()%>">Eliminar
 										Act.</button>
@@ -253,8 +248,7 @@
 							</td>
 							<!--  -->
 							<%}%>
-							<%} else {contador++;%>
-							<td><%=contador%></td>
+							<%} else {%>
 							<td></td>
 							<td><%=inter.getIndice()%></td>
 							<td><%=inter.getDescripcion()%></td>
@@ -262,11 +256,8 @@
 							<td><%=acc.getNomAccion()%></td>
 							<td>
 								<div class="form-group">
-<<<<<<< HEAD
 									<select class="selectpicker form-control" style="width: 150px;">
-=======
-									<select class="selectpicker form-control" style="width:150px;">
->>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
+
 										<% for(SubprocesoGrupoDato actual : listaSPGD){
                      grupoDato = gdJpa.findGrupoDato(actual.getIdGrupoDato().getIdgrupoDato());%>
 										<option>
@@ -281,7 +272,7 @@
 								<div class="dropdown">
 									<button
 										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle text-white"
-										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50; width:100px;"
 										type="button" id="dropdownMenu2" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">Agregar</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -320,19 +311,17 @@
 
 									</div>
 								</div> <%}%>
-<<<<<<< HEAD
+
 								</td>
-								<td>
-=======
-							</td>
+
 							
 							<td>
->>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
+
 								<%if ( p.getEstatus() == 1) {%>
 								<div class="container">
 									<button type="button"
 										class="btn btn-outline-info .btn-sm text-white"
-										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50; width:100px;"
 										style="font-size: 10pt;" data-toggle="modal"
 										data-target="#eliSP-<%=inter.getIdsubProceso()%>">Eliminar
 										SP</button>
@@ -381,7 +370,6 @@
 				<table class="table ">
 					<thead>
 						<tr>
-							<th scope="col">#</th>
 							<th scope="col">Actividad</th>
 							<th scope="col"># SP</th>
 							<th scope="col">Descripción</th>
@@ -406,20 +394,17 @@
                 GrupoDato grupoDato; 
                                                 %>
 						<tr>
-							<td><%=contador2%></td>
+
 							<td><%=inter.getActividad()%></td>
 							<td><%=pf.getIndice() %></td>
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
 							<td><%=acc.getNomAccion()%></td>
 							<td>
-<<<<<<< HEAD
+
 								<div class="form-group">
 									<select class="selectpicker form-control" style="width: 150px;">
-=======
-                                                        <div class="form-group">
-									<select class="selectpicker form-control" style="width:150px;">
->>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
+
 										<% for(FlujoAlterno actual : listaFAGD){
                      grupoDato = gdJpa.findGrupoDato(actual.getIdgrupoDato().getIdgrupoDato());%>
 										<option>
@@ -428,33 +413,26 @@
 										<%}%>
 									</select>
 								</div>
-<<<<<<< HEAD
+
 							</td>
 							<td>
-								<form action="agregaGrupoDatosFlujoAlterno" method="POST">
+							<div class="container">
+							<form action="agregaGrupoDatosFlujoAlterno" method="POST">
 									<input type="hidden" name="idFlujoAlterno"
 										value="<%=inter.getIdflujoAlterno()%>" /> <input
 										class="btn btn-outline-info .btn-sm text-white"
-										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50; width:100px;"
 										type="submit" value="Agregar GD" />
 								</form>
+							</div>
+								
 								<br>
-=======
-                                                        </td>
-                                                        <td>
-                                                             <form action="agregaGrupoDatosFlujoAlterno" method="POST">
-                                                             <input type="hidden" name="idFlujoAlterno" value="<%=inter.getIdflujoAlterno()%>" /> 
-                                                             <input class="btn btn-outline-info .btn-sm text-white"
-                                                             style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
-                                                             type="submit" value="Agrega Grupo Datos" />
-                                                             </form>
-                                                             <br>
->>>>>>> 8b8e9793aaad6d20ba6435c7594e5392e477228d
+
 								<%if ( p.getEstatus() == 1) { %>
 								<div class="container">
 									<button type="button"
 										class="btn btn-outline-info .btn-sm text-white"
-										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50; width:100px;"
 										data-toggle="modal"
 										data-target="#eliFA-<%=inter.getIdflujoAlterno()%>">Eliminar</button>
 									<div class="modal fade"

@@ -391,7 +391,7 @@
 									 -->
 								<div class="container">
 									<!-- Trigger the modal with a button -->
-									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50; width:100px;"
 										data-toggle="modal"
 										data-target="#myModal-<%=inter.getIdprocesoFuncional()%>">
 										Eliminar</button>

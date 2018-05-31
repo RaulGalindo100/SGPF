@@ -92,7 +92,7 @@
 								<div class="dropdown">
 									<button
 										class="btn btn-outline-info .btn-sm btn-secondary dropdown-toggle text-white"
-										style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50; width:100px;"
 										type="button" id="dropdownMenu2" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">Opciones</button>
 									<div class="dropdown-menu" aria-labelledby="dropdownMenu2">

@@ -29,7 +29,7 @@
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item active">
-					<a class="nav-link" href="agregarGrupoDatos.jsp">Agregar Grupo</a>
+					<a class="nav-link" href="agregarGrupoDatos.jsp">Agregar Grupo de Datos</a>
 					</li>
 	
 					</ul>
@@ -42,7 +42,7 @@
 	<div class="container py-5">
 		<section class="row">
 			<div class="col-md-12">
-				<h2>Gestión de Grupo de datos</h2>
+				<h2>Gestión de Grupo de Datos</h2>
 			</div>
 			<div class="table-responsive ">
 				<table class="table ">
