@@ -61,6 +61,7 @@
                                 <option value="R" <%if (accion.getMovDatos().equals('R')) {%>selected<%}%>>R</option>
                                 <option value="W" <%if (accion.getMovDatos().equals('W')) {%>selected<%}%>>W</option>
                                 <option value="S" <%if (accion.getMovDatos().equals('S')) {%>selected<%}%>>S</option>
+                                <option value="-" <%if (accion.getMovDatos().equals('-')) {%>selected<%}%>>-</option>
                             </select>
                             
                         </div>

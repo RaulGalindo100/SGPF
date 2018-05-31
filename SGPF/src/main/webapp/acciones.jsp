@@ -66,7 +66,7 @@
 						%>
 						<tr>
 							<td><%=accion.getNomAccion()%></td>
-                                                        <td><%=accion.getDescripcion()%></td>
+              <td><%=accion.getDescripcion()%></td>
 							<td><%=accion.getMovDatos()%></td>
 							
 							<td>

@@ -57,6 +57,7 @@
 						<option value="R">R</option>
 						<option value="W">W</option>
 						<option value="S">S</option>
+						<option value="-">-</option>
 					</select>
 				</div>
 				<div class="form-group">
