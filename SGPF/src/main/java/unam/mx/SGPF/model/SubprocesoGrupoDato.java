@@ -19,10 +19,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author miguel
- */
 @Entity
 @Table(name = "subprocesoGrupoDato", catalog = "SGPF", schema = "")
 @XmlRootElement
