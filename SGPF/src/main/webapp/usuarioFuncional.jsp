@@ -1,3 +1,4 @@
+<%@page import="unam.mx.SGPF.model.InterUP"%>
 <%@page import="unam.mx.SGPF.model.UsuarioFuncional"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
@@ -36,6 +37,7 @@
 	</header>
 	 <%
    	List<UsuarioFuncional> uf = (List<UsuarioFuncional>) session.getAttribute("usuarioFuncional");
+        List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");
 	 %>
 	<div class="container py-5">
 		<section class="row">
@@ -48,6 +50,7 @@
 						<tr>
 							<th scope="col">Nombre del Usuario Funcional</th>
 							<th scope="col">Descripción</th>
+							<th scope="col">Proyecto Asociado</th>
 							<th scope="col">Activo</th>
 							<th scope="col" colspan=2>Opciones</th>
 							
@@ -60,6 +63,11 @@
 						<tr>
 							<td><%=iter.getNomUF()%></td>
 							<td><%=iter.getDescripcion()%></td>
+                                                        <td><%for(InterUP iterador : inters){
+                                                            if(iterador.getIdproyecto().getIdproyecto()==iter.getIdproyecto()){%>
+                                                                <%=iterador.getIdproyecto().getNomProy()%>
+                                                            <%}}%>
+                                                        </td>
 							<td>
 								<%
 									if (iter.getActivo() == 1) {

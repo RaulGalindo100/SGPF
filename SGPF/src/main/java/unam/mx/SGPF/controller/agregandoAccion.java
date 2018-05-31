@@ -16,6 +16,7 @@ public class agregandoAccion extends HttpServlet{
     	String nombreAccion = request.getParameter("nombreAccion");
         String movDatos = request.getParameter("movDatos");
         String descripcion = request.getParameter("descripcion");
+        int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
         Short activo = 1;
 
         Accion accion = new Accion();
@@ -23,6 +24,7 @@ public class agregandoAccion extends HttpServlet{
         accion.setMovDatos(movDatos.trim().charAt(0));
         accion.setDescripcion(descripcion);
         accion.setActivo(activo);
+        accion.setIdproyecto(idProyecto);
 
     	AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
     	try{

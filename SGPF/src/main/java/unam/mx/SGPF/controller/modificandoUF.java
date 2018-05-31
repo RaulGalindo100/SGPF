@@ -16,11 +16,13 @@ public class modificandoUF extends HttpServlet{
     	String nombreAccion = request.getParameter("nombreUF");
         String descripcion = request.getParameter("descripcionUF");
         int idUF = Integer.parseInt(request.getParameter("idUF"));
+        int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
         
         UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
         UsuarioFuncional UF = ufjpa.findUsuarioFuncional(idUF);
         UF.setNomUF(nombreAccion);
         UF.setDescripcion(descripcion);
+        UF.setIdproyecto(idProyecto);
         
     	try{
             ufjpa.edit(UF);

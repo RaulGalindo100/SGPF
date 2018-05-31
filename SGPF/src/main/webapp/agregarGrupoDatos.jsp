@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="unam.mx.SGPF.model.InterUP"%>
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE html>
 <html>
@@ -15,6 +17,7 @@
 	href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="css/estilos.css">
     </head>
+    <% List<InterUP> inters = (List<InterUP>) session.getAttribute("inters"); %>
 	<body>
 	<header>
 		<div class="container">
@@ -51,6 +54,18 @@
 				<div class="form-group">
 					<label>Descripción</label>
 					<textarea class="form-control" name="descripcionGD" rows="3"></textarea>
+				</div>
+                                    <div class="form-group">
+					<label>Proyecto relacionado</label>
+				</div>
+				<div class="form-group">
+					<select class="form-control" name="idProyecto">
+                                            <% for(InterUP iter : inters){%>
+                                                <option value="<%=iter.getIdproyecto().getIdproyecto()%>">
+                                                    <%=iter.getIdproyecto().getNomProy()%>
+                                                </option>
+                                            <%}%>
+					</select>
 				</div>
 				<input class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" type="submit" value="Guardar">
 				</form>

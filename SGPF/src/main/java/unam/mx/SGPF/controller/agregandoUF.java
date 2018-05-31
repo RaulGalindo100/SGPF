@@ -16,6 +16,7 @@ public class agregandoUF extends HttpServlet{
     	String nombreUF = request.getParameter("nombreUF");
         String descripcionUF = request.getParameter("descripcionUF");
         String aux = request.getParameter("usuarioSistema");
+        int idProyecto = Integer.parseInt(request.getParameter("idProyecto"));
         Short usuarioSistema = 0;
         if(aux!=null){
             usuarioSistema = 1;
@@ -27,6 +28,8 @@ public class agregandoUF extends HttpServlet{
         usuarioFuncional.setDescripcion(descripcionUF);
         usuarioFuncional.setActivo(activo);
         usuarioFuncional.setUsuarioSistema(usuarioSistema);
+        usuarioFuncional.setIdproyecto(idProyecto);
+        
     	UsuarioFuncionalJpaController ufjpa = new UsuarioFuncionalJpaController(EntityProvider.provider());
     	try{
             ufjpa.create(usuarioFuncional);

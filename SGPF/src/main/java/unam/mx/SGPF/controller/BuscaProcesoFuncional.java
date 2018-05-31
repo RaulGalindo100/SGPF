@@ -71,7 +71,7 @@ public class BuscaProcesoFuncional extends HttpServlet{
                     listaUsuarioFuncional.addAll(uf);
                 });
 		
-	session.setAttribute("usuarioFuncional",listaUsuarioFuncional);
+	session.setAttribute("ufCatalogo",listaUsuarioFuncional);
         
         
         AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
@@ -82,12 +82,17 @@ public class BuscaProcesoFuncional extends HttpServlet{
                     listaAcciones.addAll(ac);
                 });
 		
-	session.setAttribute("action",listaAcciones);
-
-        GrupoDatoJpaController gruposDatos = new GrupoDatoJpaController(EntityProvider.provider());
-        List<GrupoDato> grupoDatos = (List<GrupoDato>) gruposDatos.findGrupoDatoOrdered();
-        if(grupoDatos!=null && !grupoDatos.isEmpty())
-            session.setAttribute("grupoDatosCatalogo", grupoDatos);
+	session.setAttribute("accCatalogo",listaAcciones);
+                
+	GrupoDatoJpaController gdjpa = new GrupoDatoJpaController(EntityProvider.provider());
+                
+        ArrayList<GrupoDato> listaGrupoDatos = new ArrayList<GrupoDato>();
+        inters.forEach((iter)->{
+            List<GrupoDato> gd = gdjpa.findGrupoDatoOrdered(iter.getIdproyecto());
+            listaGrupoDatos.addAll(gd);
+        });
+	
+        session.setAttribute("grupoDatosCatalogo", listaGrupoDatos);
         
         if(pfDetalle!=null){
             List<ProcesoFuncional> pf = pfjpa.findPFByIdProyectoActivo(pfDetalle.getIdproyecto().getIdproyecto());
@@ -143,7 +148,8 @@ public class BuscaProcesoFuncional extends HttpServlet{
                     listaUsuarioFuncional.addAll(uf);
                 });
 		
-		session.setAttribute("usuarioFuncional",listaUsuarioFuncional);
+	session.setAttribute("ufCatalogo",listaUsuarioFuncional);
+        
         
         AccionJpaController ajpa = new AccionJpaController(EntityProvider.provider());
                 
@@ -153,11 +159,17 @@ public class BuscaProcesoFuncional extends HttpServlet{
                     listaAcciones.addAll(ac);
                 });
 		
-	session.setAttribute("action",listaAcciones);
-
-        GrupoDatoJpaController gruposDatos = new GrupoDatoJpaController(EntityProvider.provider());
-        List<GrupoDato> grupoDatos = (List<GrupoDato>) gruposDatos.findGrupoDatoOrdered();
-        session.setAttribute("grupoDatosCatalogo", grupoDatos);
+	session.setAttribute("accCatalogo",listaAcciones);
+                
+	GrupoDatoJpaController gdjpa = new GrupoDatoJpaController(EntityProvider.provider());
+                
+        ArrayList<GrupoDato> listaGrupoDatos = new ArrayList<GrupoDato>();
+        inters.forEach((iter)->{
+            List<GrupoDato> gd = gdjpa.findGrupoDatoOrdered(iter.getIdproyecto());
+            listaGrupoDatos.addAll(gd);
+        });
+	
+        session.setAttribute("grupoDatosCatalogo", listaGrupoDatos);
         
         List<ProcesoFuncional> pf = pfjpa.findPFByIdProyectoActivo(pfDetalle.getIdproyecto().getIdproyecto());
         if(pf!=null && !pf.isEmpty())

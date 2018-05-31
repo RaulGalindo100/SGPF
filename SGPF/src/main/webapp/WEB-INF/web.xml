@@ -201,6 +201,15 @@
         <servlet-name>agregagndoGrupoDatosFlujoAlterno</servlet-name>
         <servlet-class>unam.mx.SGPF.controller.agregagndoGrupoDatosFlujoAlterno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>eliUsuarioProyecto</servlet-name>
+        <servlet-class>unam.mx.SGPF.controller.eliUsuarioProyecto</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>eliUsuarioProyecto</servlet-name>
+        <url-pattern>/eliUsuarioProyecto</url-pattern>
+    </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>agregagndoGrupoDatosFlujoAlterno</servlet-name>

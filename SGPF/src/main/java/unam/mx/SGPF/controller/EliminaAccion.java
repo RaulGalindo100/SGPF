@@ -36,11 +36,8 @@ public class EliminaAccion extends HttpServlet {
 	    	}catch(Exception e) {
 	    		e.printStackTrace();
 	    	}
-	    	HttpSession session = request.getSession(true);
-			
-			List<Accion> acc = ajpa.findAccionEntities();
-			session.setAttribute("action",acc);
-	        response.sendRedirect("acciones.jsp");
+	    	
+	        response.sendRedirect("acciones");
 	    }
 
 }

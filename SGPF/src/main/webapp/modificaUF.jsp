@@ -1,3 +1,5 @@
+<%@page import="unam.mx.SGPF.model.InterUP"%>
+<%@page import="java.util.List"%>
 <%@page import="unam.mx.SGPF.model.UsuarioFuncional"%>
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE html>
@@ -16,7 +18,8 @@
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css?family=Inconsolata">
         <link rel="stylesheet" href="css/estilos.css">
-        <% UsuarioFuncional uf = (UsuarioFuncional) session.getAttribute("usuarioFuncionalMod");%>
+        <% UsuarioFuncional uf = (UsuarioFuncional) session.getAttribute("usuarioFuncionalMod");
+           List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");%>
     </head>
     <body>
         <header>
@@ -55,6 +58,20 @@
                             <textarea class="form-control" name="descripcionUF" rows="3" required><%=uf.getDescripcion()%></textarea>
 
                         </div>
+                            <div class="form-group">
+				<select class="form-control" name="idProyecto">
+                                    <% for(InterUP iter : inters){
+                                        if(iter.getIdproyecto().getIdproyecto()==uf.getIdproyecto()){%>
+                                            <option value="<%=iter.getIdproyecto().getIdproyecto()%>" selected>
+                                                <%=iter.getIdproyecto().getNomProy()%>
+                                            </option>
+                                        <%}else{%>
+                                            <option value="<%=iter.getIdproyecto().getIdproyecto()%>">
+                                                <%=iter.getIdproyecto().getNomProy()%>
+                                            </option>
+                                        <%}}%>
+			       </select>
+                            </div>
                             <div class="form-group">
                                                 <% if(uf.getUsuarioSistema()==1){%>
                                                 <input class="form-check-input" type="checkbox" name="usuarioSistema"

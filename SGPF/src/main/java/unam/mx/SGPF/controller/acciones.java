@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import unam.mx.SGPF.model.Accion;
 import unam.mx.SGPF.model.EntityProvider;
-import unam.mx.SGPF.model.FlujoAlterno;
 import unam.mx.SGPF.model.InterUP;
 import unam.mx.SGPF.model.controller.AccionJpaController;
 

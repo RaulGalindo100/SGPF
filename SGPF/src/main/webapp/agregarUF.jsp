@@ -1,3 +1,5 @@
+<%@page import="unam.mx.SGPF.model.InterUP"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE html>
 <html>
@@ -15,6 +17,7 @@
 	href="https://fonts.googleapis.com/css?family=Inconsolata">
 <link rel="stylesheet" href="css/estilos.css">
     </head>
+    <% List<InterUP> inters = (List<InterUP>) session.getAttribute("inters"); %>
 <body>
 	<header>
 		<div class="container">
@@ -51,8 +54,17 @@
 						<label>Descripción del Usuario Funcional</label>
 						<textarea class="form-control" name="descripcionUF" rows="3" required></textarea>
 					</div>
+                                        <div class="form-group">
+					<select class="form-control" name="idProyecto">
+                                            <% for(InterUP iter : inters){%>
+                                                <option value="<%=iter.getIdproyecto().getIdproyecto()%>">
+                                                    <%=iter.getIdproyecto().getNomProy()%>
+                                                </option>
+                                            <%}%>
+					</select>
+                                        </div>
 					<div class="form-group">
-            <input class="form-check-input" type="checkbox" name="usuarioSistema"
+                                        <input class="form-check-input" type="checkbox" name="usuarioSistema"
 							value="true"> 
 						<label class="form-check-label">Sistema / Dispositivo</label>
 					</div>

@@ -219,4 +219,14 @@ public class UsuarioJpaController implements Serializable {
         }
         return (List<Usuario>) q.getResultList();
     }
+    
+    public List<Usuario> getUsuariosAdmin() {
+        EntityManager em = getEntityManager();
+        Query q = em.createNamedQuery("Usuario.findAdminUser")
+                .setParameter("activo", 1);
+        if (q.getResultList().isEmpty()) {
+            return null;
+        }
+        return (List<Usuario>) q.getResultList();
+    }
 }

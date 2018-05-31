@@ -3,6 +3,7 @@ package unam.mx.SGPF.controller;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +45,7 @@ import unam.mx.SGPF.model.controller.TamOrgJpaController;
 import unam.mx.SGPF.model.controller.TipoCapDesJpaController;
 import unam.mx.SGPF.model.controller.TipoOrganizacionJpaController;
 import unam.mx.SGPF.model.controller.TipodeDesarrolloJpaController;
+import unam.mx.SGPF.model.controller.UsuarioJpaController;
 
 public class AgregarProyecto extends HttpServlet {
     @Override
@@ -62,7 +64,7 @@ public class AgregarProyecto extends HttpServlet {
         int IdsectorOrganizacion = Integer.parseInt(request.getParameter("IdsectorOrganizacion"));
         int IdtipoOrganizacion = Integer.parseInt(request.getParameter("IdtipoOrganizacion"));
         int IdtipoCapDes = Integer.parseInt(request.getParameter("IdtipoCapDes"));
-        int IdtamOrgDes = Integer.parseInt(request.getParameter("IdtamOrgDes"));
+        int IdtamOrgDes = Integer.parseInt(request.getParameter("IdtamOrgDes").toString());
         int tamOrgUsa = Integer.parseInt(request.getParameter("tamOrgUsa"));
         int idarqProyecto = Integer.parseInt(request.getParameter("idarqProyecto"));
         int Idlenguaje = Integer.parseInt(request.getParameter("Idlenguaje"));
@@ -77,53 +79,118 @@ public class AgregarProyecto extends HttpServlet {
         String alcance = request.getParameter("alcance");
         String proposito = request.getParameter("proposito");
         int Idescala = Integer.parseInt(request.getParameter("Idescala"));
+        Double aux=0.0;
+        BigDecimal esfuTotProy = new BigDecimal(0.0);
+        BigDecimal esfuPlaneProy  = new BigDecimal(0.0);
+        BigDecimal duraProy  = new BigDecimal(0.0);
+        BigDecimal esfuEsReqProy  = new BigDecimal(0.0);
+        BigDecimal esfuAnaDisProy = new BigDecimal(0.0);
+        BigDecimal esfuConstProy = new BigDecimal(0.0);
+        BigDecimal esfuPrueProy = new BigDecimal(0.0);
+        BigDecimal esfuImpleDesProy = new BigDecimal(0.0);
+        BigDecimal costTotProy = new BigDecimal(0.0);
+        BigDecimal costPlanProy = new BigDecimal(0.0);
+        BigDecimal costEsReqProy = new BigDecimal(0.0);
+        BigDecimal costAnaDisProy = new BigDecimal(0.0);
+        BigDecimal costConstProy = new BigDecimal(0.0);
+        BigDecimal costPrueProy = new BigDecimal(0.0);
+        BigDecimal costImpleDesProy = new BigDecimal(0.0);
+        BigDecimal tamFunProy = new BigDecimal(0.0);
+        BigDecimal fpAjusProy = new BigDecimal(0.0);
+        BigDecimal estimacionCosto = new BigDecimal(0.0);
+        BigDecimal estimacionEsfuerzo = new BigDecimal(0.0);
+        BigDecimal estimacionDuracion = new BigDecimal(0.0);
         
-        double aux = Double.parseDouble(request.getParameter("esfuTotProy"));
-        BigDecimal esfuTotProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("esfuPlaneProy"));
-        BigDecimal esfuPlaneProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("duraProy"));
-        BigDecimal duraProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("esfuEsReqProy"));
-        BigDecimal esfuEsReqProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("esfuAnaDisProy"));
-        BigDecimal esfuAnaDisProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("esfuConstProy"));
-        BigDecimal esfuConstProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("esfuPrueProy"));
-        BigDecimal esfuPrueProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("esfuImpleDesProy"));
-        BigDecimal esfuImpleDesProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("costTotProy"));
-        BigDecimal costTotProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("costPlanProy"));
-        BigDecimal costPlanProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("costEsReqProy"));
-        BigDecimal costEsReqProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("costAnaDisProy"));
-        BigDecimal costAnaDisProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("costConstProy"));
-        BigDecimal costConstProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("costPrueProy"));
-        BigDecimal costPrueProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("costImpleDesProy"));
-        BigDecimal costImpleDesProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("tamFunProy"));
-        BigDecimal tamFunProy = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("fpAjusProy"));
-        BigDecimal fpAjusProy = new BigDecimal(aux);
+        String valor = request.getParameter("esfuTotProy");
+        if (valor!=null&&!valor.isEmpty())
+            esfuTotProy = new BigDecimal(Double.parseDouble(valor));
         
-        aux = Double.parseDouble(request.getParameter("estimacionCosto"));
-        BigDecimal estimacionCosto = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("estimacionEsfuerzo"));
-        BigDecimal estimacionEsfuerzo = new BigDecimal(aux);
-        aux = Double.parseDouble(request.getParameter("estimacionDuracion"));
-        BigDecimal estimacionDuracion = new BigDecimal(aux);
+        valor = request.getParameter("esfuPlaneProy");
+        if (valor!=null&&!valor.isEmpty())
+            esfuPlaneProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("duraProy");
+        if (valor!=null&&!valor.isEmpty())
+            duraProy  = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("esfuEsReqProy");
+        if (valor!=null&&!valor.isEmpty())
+            esfuEsReqProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("esfuAnaDisProy");
+        if (valor!=null&&!valor.isEmpty())
+            esfuAnaDisProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("esfuConstProy");
+        if (valor!=null&&!valor.isEmpty())
+            esfuConstProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("esfuPrueProy");
+        if (valor!=null&&!valor.isEmpty())
+            esfuPrueProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("esfuImpleDesProy");
+        if (valor!=null&&!valor.isEmpty())
+            esfuImpleDesProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("costTotProy");
+        if (valor!=null&&!valor.isEmpty())
+            costTotProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("costPlanProy");
+        if (valor!=null&&!valor.isEmpty())
+            costPlanProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("costEsReqProy");
+        if (valor!=null&&!valor.isEmpty())
+            costEsReqProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("costAnaDisProy");
+        if (valor!=null&&!valor.isEmpty())
+            costAnaDisProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("costConstProy");
+        if (valor!=null&&!valor.isEmpty())
+            costConstProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("costPrueProy");
+        if (valor!=null&&!valor.isEmpty())
+            costPrueProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("costImpleDesProy");
+        if (valor!=null&&!valor.isEmpty())
+            costImpleDesProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("tamFunProy");
+        if (valor!=null&&!valor.isEmpty())
+            tamFunProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("fpAjusProy");
+        if (valor!=null&&!valor.isEmpty())
+            fpAjusProy = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("estimacionCosto");
+        if (valor!=null&&!valor.isEmpty())
+            estimacionCosto = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("estimacionEsfuerzo");
+        if (valor!=null&&!valor.isEmpty())
+            estimacionEsfuerzo = new BigDecimal(Double.parseDouble(valor));
+        
+        valor = request.getParameter("estimacionDuracion");
+        if (valor!=null&&!valor.isEmpty())
+            estimacionDuracion = new BigDecimal(Double.parseDouble(valor));
+        
         int idescalaEstimacionDuracion = Integer.parseInt(request.getParameter("idescalaEstimacionDuracion"));
         
         int IdmetMedicion = Integer.parseInt(request.getParameter("IdmetMedicion"));
         Short certModelo = (short)Integer.parseInt(request.getParameter("certModelo"));
-        int expeMedMetProy = Integer.parseInt(request.getParameter("expeMedMetProy"));
+        String a = request.getParameter("expeMedMetProy");
+        
+        int expeMedMetProy = 0;
+        if(!a.isEmpty())
+            expeMedMetProy = Integer.parseInt(a);
+        
         int IdconfInfo = Integer.parseInt(request.getParameter("IdconfInfo"));
         
         Proyecto proyecto = new Proyecto();
@@ -215,8 +282,10 @@ public class AgregarProyecto extends HttpServlet {
         HttpSession session = request.getSession(true);
         Usuario u = (Usuario) session.getAttribute("usuario");
         InterUPJpaController ijpa = new InterUPJpaController(EntityProvider.provider());
-
+        UsuarioJpaController userJpa = new UsuarioJpaController(EntityProvider.provider());
+        List<Usuario> listaAdmins = userJpa.getUsuariosAdmin();
         ProyectoJpaController pjpa = new ProyectoJpaController(EntityProvider.provider());
+        short z = 1;
         
         try {
             pjpa.create(proyecto);
@@ -224,11 +293,20 @@ public class AgregarProyecto extends HttpServlet {
             InterUP up = new InterUP();
             up.setIdproyecto(proyecto);
             up.setIdusuario(u);
+            up.setActivo(z);
             ijpa.create(up);
             List<InterUP> inters = ijpa.getProyectosUsuario(u);
             // Apuntador al objeto u
             session.setAttribute("usuario", u);
             session.setAttribute("inters", inters);
+            
+            for(Usuario iter : listaAdmins)
+                if(!Objects.equals(iter.getIdusuario(), u.getIdusuario())){
+                    up.setIdusuario(iter);
+                    up.setActivo(z);
+                    ijpa.create(up);
+                }
+            
             redireccion = "proyectos.jsp";
         } catch (Exception e) {
             e.printStackTrace();

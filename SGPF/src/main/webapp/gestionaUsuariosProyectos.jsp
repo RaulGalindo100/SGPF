@@ -50,23 +50,91 @@
 						<tr>
 							<th scope="col">Usuario</th>
 							<th scope="col">Proyecto</th>
+							<th scope="col">Activo</th>
+                                                        <th></th>
 						</tr>
 					</thead>
 					<tbody>
                                             <%int tipoUsuario = Integer.parseInt(session.getAttribute("tipoUsuario").toString());
                                              if(tipoUsuario==1){%>
-                                                <% for(InterUP iter : ListaInterUP){%>
+                                                <% for(InterUP iter : ListaInterUP){
+                                                    if(!iter.getIdproyecto().getNomProy().equals("GENERALES")){%>
 						<tr>
 							<td><%=iter.getIdusuario().getNomUsuario()%></td>
 							<td><%=iter.getIdproyecto().getNomProy()%></td>
+                                                        <%if(iter.getActivo()==1){%>
+							<td>
+                                                            Activo
+                                                        </td>
+                                                        <td>
+                                                             <div class="container">
+									<!-- Trigger the modal with a button -->
+									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										data-toggle="modal" data-target="#myModal-<%=iter.getIdinterUP()%>">
+										Desactivar</button>
+									<!-- Modal -->
+									<div class="modal fade"
+										id="myModal-<%=iter.getIdinterUP()%>" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-body">
+													<p>El Usuario será desactivado.</p>
+												</div>
+												<div class="modal-footer">
+													<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+														href="eliUsuarioProyecto?idusuproy=<%=iter.getIdinterUP()%>">Aceptar</a>
+														<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+                                                            
+                                                        </td>
+                                                        <%}else{%>
+                                                        <td>Inactivo</td>
+                                                        <td><div class="container">
+									<!-- Trigger the modal with a button -->
+									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+										data-toggle="modal"
+										data-target="#myModalact-<%=iter.getIdinterUP()%>">
+										Activar</button>
+									<!-- Modal -->
+									<div class="modal fade"
+										id="myModalact-<%=iter.getIdinterUP()%>" role="dialog">
+										<div class="modal-dialog">
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-body">
+													<p>El Usuario será activado.</p>
+												</div>
+												<div class="modal-footer">
+													<a class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
+														href="eliUsuarioProyecto?idusuproy=<%=iter.getIdinterUP()%>">Aceptar</a>
+														<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;" data-dismiss="modal">Cancelar</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+                                                        </td>
+                                                        <%}%>
+                                                      
 						</tr>
-						<%}%>
+						<%}}%>
                                             <%}else{if(tipoUsuario==2){%>
                                                 <% for(InterUP iter : ListaInterUP){ 
                                                     if(iter.getIdusuario().getUsuTipo1()==null){%>
 						<tr>
 							<td><%=iter.getIdusuario().getNomUsuario()%></td>
 							<td><%=iter.getIdproyecto().getNomProy()%></td>
+                                                        <td><%if(iter.getActivo()==1){%>
+                                                            Activo
+                                                        <%}else{%>
+                                                            Inactivo
+                                                        <%}%>
+                                                        </td>
 						</tr>
 						<%}}%>
                                             <%}}%>

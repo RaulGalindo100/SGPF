@@ -1,3 +1,4 @@
+<%@page import="unam.mx.SGPF.model.InterUP"%>
 <%@page import="unam.mx.SGPF.model.Accion"%>
 <%@page import="java.util.List"%>
 <%@page import="unam.mx.SGPF.model.Proyecto"%>
@@ -22,6 +23,7 @@
 <body>
 	<%
 		List<Accion> acciones = (List<Accion>) session.getAttribute("action");
+                List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");
 	%>
 	<header>
 		<div class="container">
@@ -54,7 +56,7 @@
 							<th scope="col">Nombre de la acción</th>
                                                         <th scope="col">Descripción</th>
 							<th scope="col">Movimiento de datos relacionado</th>
-							
+							<th scope="col">Proyecto Asociado</th>
 							<th scope="col">Activa</th>
 							<th></th>
 							<th></th>
@@ -68,7 +70,11 @@
 							<td><%=accion.getNomAccion()%></td>
               <td><%=accion.getDescripcion()%></td>
 							<td><%=accion.getMovDatos()%></td>
-							
+							<td><%for(InterUP iter : inters){
+                                                            if(iter.getIdproyecto().getIdproyecto()==accion.getIdproyecto()){%>
+                                                                <%=iter.getIdproyecto().getNomProy()%>
+                                                            <%}}%>
+                                                        </td>
 							<td>
 								<%
 									if (accion.getActivo() == 1) {

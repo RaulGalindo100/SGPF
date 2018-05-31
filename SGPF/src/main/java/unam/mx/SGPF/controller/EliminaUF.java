@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import unam.mx.SGPF.model.Accion;
 import unam.mx.SGPF.model.EntityProvider;
 import unam.mx.SGPF.model.UsuarioFuncional;
 import unam.mx.SGPF.model.controller.UsuarioFuncionalJpaController;
@@ -33,10 +32,6 @@ public class EliminaUF extends HttpServlet{
 	}catch(Exception e) {
 	    e.printStackTrace();
 	}
-	HttpSession session = request.getSession(true);
-			
-	List<UsuarioFuncional> ufs = ufjpa.findUsuarioFuncionalEntities();
-	session.setAttribute("usuarioFuncional",ufs);
-	response.sendRedirect("usuarioFuncional.jsp");
+	response.sendRedirect("usuarioFuncional");
     }
 }

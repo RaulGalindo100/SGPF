@@ -16,6 +16,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import unam.mx.SGPF.model.GrupoDato;
+import unam.mx.SGPF.model.Proyecto;
 import unam.mx.SGPF.model.controller.exceptions.IllegalOrphanException;
 import unam.mx.SGPF.model.controller.exceptions.NonexistentEntityException;
 
@@ -200,9 +201,10 @@ public class GrupoDatoJpaController implements Serializable {
         }
     }
     
-    public List<GrupoDato> findGrupoDatoOrdered(){
+    public List<GrupoDato> findGrupoDatoOrdered(Proyecto aux){
     	EntityManager em = getEntityManager();
-    	Query q = em.createNamedQuery("GrupoDato.findGrupoDatoOrdered");
+    	Query q = em.createNamedQuery("GrupoDato.findGrupoDatoOrdered")
+                .setParameter("idProy", aux.getIdproyecto());
     	return q.getResultList();
     }
 }

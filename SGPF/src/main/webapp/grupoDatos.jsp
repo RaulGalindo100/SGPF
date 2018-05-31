@@ -1,3 +1,4 @@
+<%@page import="unam.mx.SGPF.model.InterUP"%>
 <%@page import="unam.mx.SGPF.model.GrupoDato"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
@@ -18,7 +19,8 @@
 <link rel="stylesheet" href="css/estilos.css">
        
     </head>
-     <% List<GrupoDato> grupoDatos = (List<GrupoDato>) session.getAttribute("grupoDatos"); %>
+     <% List<GrupoDato> grupoDatos = (List<GrupoDato>) session.getAttribute("grupoDatos");
+        List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");%>
     <body>
     <header>
 		<div class="container">
@@ -50,6 +52,7 @@
 					<tr>
 							<th scope="col">Nombre del grupo</th>
 							<th scope="col">Descripción</th>
+							<th scope="col">Proyecto Asociado</th>
 							<th scope="col">Activo</th>
 							<th></th>
 							<th></th>
@@ -60,6 +63,11 @@
 						<tr>
 							<td><%=iter.getNomGD()%></td>
 							<td><%=iter.getDescripcion()%></td>
+                                                        <td><%for(InterUP iterador : inters){
+                                                            if(iterador.getIdproyecto().getIdproyecto()==iter.getIdproyecto()){%>
+                                                                <%=iterador.getIdproyecto().getNomProy()%>
+                                                            <%}}%>
+                                                        </td>
 							<% if(iter.getActivo()==1){%>
 							<td>Si</td>
 							<td>
@@ -98,11 +106,11 @@
 									<!-- Trigger the modal with a button -->
 									<button type="button" class="btn btn-outline-info .btn-sm text-white" style="border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50;"
 										data-toggle="modal"
-										data-target="#myModal-<%=iter.getIdgrupoDato()%>">
+										data-target="#myModalact-<%=iter.getIdgrupoDato()%>">
 										Activar</button>
 									<!-- Modal -->
 									<div class="modal fade"
-										id="myModal-<%=iter.getIdgrupoDato()%>" role="dialog">
+										id="myModalact-<%=iter.getIdgrupoDato()%>" role="dialog">
 										<div class="modal-dialog">
 											<!-- Modal content-->
 											<div class="modal-content">

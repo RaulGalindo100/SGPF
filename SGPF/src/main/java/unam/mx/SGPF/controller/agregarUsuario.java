@@ -6,7 +6,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import unam.mx.SGPF.model.EntityProvider;
+import unam.mx.SGPF.model.InterUP;
+import unam.mx.SGPF.model.Proyecto;
 import unam.mx.SGPF.model.Usuario;
+import unam.mx.SGPF.model.controller.InterUPJpaController;
 import unam.mx.SGPF.model.controller.UsuarioJpaController;
 
 public class agregarUsuario extends HttpServlet{
@@ -22,6 +25,8 @@ public class agregarUsuario extends HttpServlet{
         UsuarioJpaController ujpa = new UsuarioJpaController(EntityProvider.provider());
         usuario.setNomUsuario(nomUsuario);
         usuario.setPwdUsuario(pwdUsuario);
+        InterUPJpaController iup = new InterUPJpaController(EntityProvider.provider());
+        InterUP aux2 = new InterUP();
         switch (usuTipo) {
             case 1:
                 usuario.setUsuTipo1(aux);
@@ -37,6 +42,11 @@ public class agregarUsuario extends HttpServlet{
         usuario.setActivo(a);
         try{
         ujpa.create(usuario);
+        aux2.setIdusuario(usuario);
+        Proyecto proye = new Proyecto();
+        proye.setIdproyecto(1);
+        aux2.setIdproyecto(proye);
+        iup.create(aux2);
         }catch(Exception e){
         }finally{
             response.sendRedirect("gestionUsuarios");

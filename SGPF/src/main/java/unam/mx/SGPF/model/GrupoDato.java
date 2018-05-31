@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "GrupoDato.findAll", query = "SELECT g FROM GrupoDato g")
     , @NamedQuery(name = "GrupoDato.findByIdgrupoDato", query = "SELECT g FROM GrupoDato g WHERE g.idgrupoDato = :idgrupoDato")
-    , @NamedQuery(name = "GrupoDato.findGrupoDatoOrdered", query = "SELECT g FROM GrupoDato g order by g.nomGD asc")
+    , @NamedQuery(name = "GrupoDato.findGrupoDatoOrdered", query = "SELECT g FROM GrupoDato g WHERE g.idproyecto = :idProy order by g.nomGD asc")
     , @NamedQuery(name = "GrupoDato.findByNomGD", query = "SELECT g FROM GrupoDato g WHERE g.nomGD = :nomGD")})
 public class GrupoDato implements Serializable {
 

@@ -675,7 +675,8 @@ INSERT INTO metMedicion(metMedicion) VALUES("COSMIC ISO 19761"),("IFPUG ISO 2092
 INSERT INTO `usuario` VALUES (1,'Olga','pass',1,NULL,NULL,1),(2,'Juan','pass',NULL,1,NULL,1),(3,'Pancho','pass',NULL,NULL,1,1);
 
 INSERT INTO `proyecto` VALUES
-(1,'Ejemplo 1.02 Medición','2017',0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.00,0.00,0,0,0,0,'Ningún comentario',0.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Determinar el tamaño funcional del cso de uso Administrar Factores','Global. Se considera toda la funcionalidad del caso de uso',0.00,0.00,0.00,1);
+(1,'GENERALES','2000',0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.00,0.00,0,0,0,0,'Ningún comentario',0.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Determinar el tamaño funcional del cso de uso Administrar Factores','Global. Se considera toda la funcionalidad del caso de uso',0.00,0.00,0.00,1),
+(2,'Ejemplo 1.02 Medición','2017',0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.00,0.00,0,0,0,0,'Ningún comentario',0.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Determinar el tamaño funcional del cso de uso Administrar Factores','Global. Se considera toda la funcionalidad del caso de uso',0.00,0.00,0.00,1);
 
 INSERT INTO `interUP` VALUES (1,1,1,1),(2,2,1,1),(3,3,1,1);
 

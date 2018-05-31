@@ -33,10 +33,7 @@ public class EliminaGrupoDato extends HttpServlet{
 	}catch(Exception e) {
 	    e.printStackTrace();
 	}
-	HttpSession session = request.getSession(true);
-			
-	List<GrupoDato> grupoDatos = gdjpa.findGrupoDatoEntities();
-	session.setAttribute("grupoDatos",grupoDatos);
-	response.sendRedirect("grupoDatos.jsp");
+        
+	response.sendRedirect("grupoDatos");
     }
 }

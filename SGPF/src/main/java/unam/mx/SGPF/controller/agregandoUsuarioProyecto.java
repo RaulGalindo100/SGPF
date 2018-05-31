@@ -12,8 +12,6 @@ import unam.mx.SGPF.model.InterUP;
 import unam.mx.SGPF.model.Proyecto;
 import unam.mx.SGPF.model.Usuario;
 import unam.mx.SGPF.model.controller.InterUPJpaController;
-import unam.mx.SGPF.model.controller.ProyectoJpaController;
-import unam.mx.SGPF.model.controller.UsuarioJpaController;
 
 public class agregandoUsuarioProyecto extends HttpServlet{
     @Override
@@ -28,8 +26,12 @@ public class agregandoUsuarioProyecto extends HttpServlet{
         interUP.setIdproyecto(proyecto);
         interUP.setIdusuario(usuario);
         InterUPJpaController ijpa = new InterUPJpaController(EntityProvider.provider());
+        HttpSession session = request.getSession(true);
         try{
            ijpa.create(interUP);
+           Usuario usu = (Usuario) session.getAttribute("usuario");
+            List<InterUP> inters = ijpa.getProyectosUsuario(usu);
+            session.setAttribute("inters", inters);
            redireccion="gestionUsuariosProyectos";
         }catch(Exception e){
            redireccion="agregaUsuarioProyecto.jsp?error=1";

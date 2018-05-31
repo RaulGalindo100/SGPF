@@ -1,3 +1,5 @@
+<%@page import="unam.mx.SGPF.model.InterUP"%>
+<%@page import="java.util.List"%>
 <%@page import="unam.mx.SGPF.model.controller.AccionJpaController"%>
 <%@page import="unam.mx.SGPF.model.EntityProvider"%>
 <%@page import="unam.mx.SGPF.model.Accion"%>
@@ -19,7 +21,8 @@
         <link rel="stylesheet" href="css/estilos.css">
     </head>
     <body>
-        <% Accion accion = (Accion) session.getAttribute("accionMod");%>
+        <% Accion accion = (Accion) session.getAttribute("accionMod");
+        List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");%>
         <header>
             <div class="container">
                 <h1>Sistema Gestor de Procesos Funcionales</h1>
@@ -69,6 +72,23 @@
                             <label>Descripción</label>
                             <textarea class="form-control" name="descripcion" rows="3"><%=accion.getDescripcion()%></textarea>
                         </div>
+                        <div class="form-group">
+			    <label>Proyecto relacionado</label>
+                        </div>
+				<div class="form-group">
+					<select class="form-control" name="idProyecto">
+                                            <% for(InterUP iter : inters){
+                                                if(iter.getIdproyecto().getIdproyecto()==accion.getIdproyecto()){%>
+                                                <option value="<%=iter.getIdproyecto().getIdproyecto()%>" selected>
+                                                    <%=iter.getIdproyecto().getNomProy()%>
+                                                </option>
+                                                <%}else{%>
+                                                <option value="<%=iter.getIdproyecto().getIdproyecto()%>">
+                                                    <%=iter.getIdproyecto().getNomProy()%>
+                                                </option>
+                                            <%}}%>
+					</select>
+				</div>
                         <!-- -->
 
                         <div class="container">

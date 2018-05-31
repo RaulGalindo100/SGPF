@@ -6,10 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import unam.mx.SGPF.model.Accion;
 import unam.mx.SGPF.model.EntityProvider;
 import unam.mx.SGPF.model.GrupoDato;
-import unam.mx.SGPF.model.controller.AccionJpaController;
 import unam.mx.SGPF.model.controller.GrupoDatoJpaController;
 
 public class modificaGrupoDato extends HttpServlet{

@@ -36,7 +36,7 @@
 					%> <a class="nav-link" href="agregaProyecto">Agregar Proyecto</a> <% } %>
 						</li>
 						<li class="nav-item active">
-							<%if(tipoUsuario==1){%> <a class="nav-link"
+							<%if(tipoUsuario!=3){%> <a class="nav-link"
 							href="crudCatalogos.jsp"> Gestión de Catálogos </a> <% } %>
 						</li>
 						<li class="nav-item active ">
