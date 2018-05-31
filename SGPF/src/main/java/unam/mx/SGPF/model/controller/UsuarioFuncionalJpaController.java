@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import unam.mx.SGPF.model.Proyecto;
 import unam.mx.SGPF.model.UsuarioFuncional;
 import unam.mx.SGPF.model.controller.exceptions.IllegalOrphanException;
 import unam.mx.SGPF.model.controller.exceptions.NonexistentEntityException;
@@ -196,9 +197,10 @@ public class UsuarioFuncionalJpaController implements Serializable {
         }
     }
     
-    public List<UsuarioFuncional> findUsuarioFuncionalOrdered(){
+    public List<UsuarioFuncional> findUsuarioFuncionalOrdered(Proyecto aux){
     	EntityManager em = getEntityManager();
-    	Query q = em.createNamedQuery("UsuarioFuncional.findUsuarioFuncionalOrdered");
+    	Query q = em.createNamedQuery("UsuarioFuncional.findUsuarioFuncionalOrdered")
+                .setParameter("idProy", aux.getIdproyecto());
     	return q.getResultList();
     }
 

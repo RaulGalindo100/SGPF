@@ -19,38 +19,6 @@ DROP SCHEMA IF EXISTS `SGPF` ;
 CREATE SCHEMA IF NOT EXISTS `SGPF` DEFAULT CHARACTER SET utf8 ;
 USE `SGPF` ;
 
--- -----------------------------------------------------
--- Table `SGPF`.`accion`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `SGPF`.`accion` ;
-
-CREATE TABLE IF NOT EXISTS `SGPF`.`accion` (
-  `idaccion` INT(11) NOT NULL AUTO_INCREMENT,
-  `nomAccion` VARCHAR(45) NOT NULL,
-  `movDatos` CHAR(1) NOT NULL,
-  `descripcion` VARCHAR(250) NOT NULL,
-  `activo` TINYINT(4) NOT NULL,
-  PRIMARY KEY (`idaccion`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 9
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `SGPF`.`grupodato`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `SGPF`.`grupodato` ;
-
-CREATE TABLE IF NOT EXISTS `SGPF`.`grupodato` (
-  `idgrupoDato` INT(11) NOT NULL AUTO_INCREMENT,
-  `nomGD` VARCHAR(45) NOT NULL,
-  `descripcion` VARCHAR(250) NOT NULL,
-  `activo` TINYINT(4) NOT NULL,
-  PRIMARY KEY (`idgrupoDato`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 11
-DEFAULT CHARACTER SET = utf8;
-
 
 -- -----------------------------------------------------
 -- Table `SGPF`.`TipodeDesarrollo`
@@ -395,6 +363,73 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `SGPF`.`accion`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `SGPF`.`accion` ;
+
+CREATE TABLE IF NOT EXISTS `SGPF`.`accion` (
+  `idaccion` INT(11) NOT NULL AUTO_INCREMENT,
+  `nomAccion` VARCHAR(45) NOT NULL,
+  `movDatos` CHAR(1) NOT NULL,
+  `descripcion` VARCHAR(250) NOT NULL,
+  `activo` TINYINT(4) NOT NULL,
+  `idproyecto` INT(11) NOT NULL,
+  PRIMARY KEY (`idaccion`),
+  CONSTRAINT `idproyecto_fk_accion`
+    FOREIGN KEY (`idproyecto`)
+    REFERENCES `SGPF`.`proyecto` (`idproyecto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 9
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `SGPF`.`grupodato`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `SGPF`.`grupodato` ;
+
+CREATE TABLE IF NOT EXISTS `SGPF`.`grupodato` (
+  `idgrupoDato` INT(11) NOT NULL AUTO_INCREMENT,
+  `nomGD` VARCHAR(45) NOT NULL,
+  `descripcion` VARCHAR(250) NOT NULL,
+  `activo` TINYINT(4) NOT NULL,
+  `idproyecto` INT(11) NOT NULL,
+  PRIMARY KEY (`idgrupoDato`),
+  CONSTRAINT `idproyecto_fk_GD`
+    FOREIGN KEY (`idproyecto`)
+    REFERENCES `SGPF`.`proyecto` (`idproyecto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 11
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `SGPF`.`usuariofuncional`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `SGPF`.`usuariofuncional` ;
+
+CREATE TABLE IF NOT EXISTS `SGPF`.`usuariofuncional` (
+  `idusuarioFuncional` INT(11) NOT NULL AUTO_INCREMENT,
+  `nomUF` VARCHAR(45) NOT NULL,
+  `descripcion` VARCHAR(250) NOT NULL,
+  `activo` TINYINT(4) NOT NULL,
+  `usuarioSistema` TINYINT NOT NULL,
+  `idproyecto` INT(11) NOT NULL,
+  PRIMARY KEY (`idusuarioFuncional`),
+  CONSTRAINT `idproyecto_fk_UF`
+    FOREIGN KEY (`idproyecto`)
+    REFERENCES `SGPF`.`proyecto` (`idproyecto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8;
+
+-- -----------------------------------------------------
 -- Table `SGPF`.`usuario`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `SGPF`.`usuario` ;
@@ -422,6 +457,7 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`interUP` (
   `idinterUP` INT(11) NOT NULL AUTO_INCREMENT,
   `idusuario` INT(11) NOT NULL,
   `idproyecto` INT(11) NOT NULL,
+  `activo` TINYINT(4) NOT NULL,
   PRIMARY KEY (`idinterUP`),
   INDEX `idusuario_idx` (`idusuario` ASC),
   INDEX `idproyecto_idx` (`idproyecto` ASC),
@@ -457,23 +493,6 @@ CREATE TABLE IF NOT EXISTS `SGPF`.`procesofuncional` (
     REFERENCES `SGPF`.`proyecto` (`idproyecto`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 8
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `SGPF`.`usuariofuncional`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `SGPF`.`usuariofuncional` ;
-
-CREATE TABLE IF NOT EXISTS `SGPF`.`usuariofuncional` (
-  `idusuarioFuncional` INT(11) NOT NULL AUTO_INCREMENT,
-  `nomUF` VARCHAR(45) NOT NULL,
-  `descripcion` VARCHAR(250) NOT NULL,
-  `activo` TINYINT(4) NOT NULL,
-  `usuarioSistema` TINYINT NOT NULL,
-  PRIMARY KEY (`idusuarioFuncional`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -658,19 +677,19 @@ INSERT INTO `usuario` VALUES (1,'Olga','pass',1,NULL,NULL,1),(2,'Juan','pass',NU
 INSERT INTO `proyecto` VALUES
 (1,'Ejemplo 1.02 Medición','2017',0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,4.00,0.00,0,0,0,0,'Ningún comentario',0.00,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,'Determinar el tamaño funcional del cso de uso Administrar Factores','Global. Se considera toda la funcionalidad del caso de uso',0.00,0.00,0.00,1);
 
-INSERT INTO `interUP` VALUES (1,1,1),(2,2,1),(3,3,1);
+INSERT INTO `interUP` VALUES (1,1,1,1),(2,2,1,1),(3,3,1,1);
 
 INSERT INTO `usuariofuncional` VALUES
-(1,'Sistema','Sistema Administrar Factores',1,1),
-(2,'Administrador','Adminstrador del sistema Adminsitrar Factores',1,0),
-(3,'Usuario AF','Usuario del sistema Administrar Factores',1,1);
+(1,'Sistema','Sistema Administrar Factores',1,1,1),
+(2,'Administrador','Adminstrador del sistema Adminsitrar Factores',1,0,1),
+(3,'Usuario AF','Usuario del sistema Administrar Factores',1,1,1);
 
 INSERT INTO `grupodato` VALUES
-(1,'N/A','N/A',1),
-(2,'Datos de factor','El objeto de interés es Factor',1),
-(3,'Tipo de Factor','El objeto de interés es Tipo de Factor',1),
-(4,'Datos de Bitácora','El objeto de interés es Bitácora de movimientos',1),
-(5,'Comando','Comando para solicitar alguna información',1);
+(1,'N/A','N/A',1,1),
+(2,'Datos de factor','El objeto de interés es Factor',1,1),
+(3,'Tipo de Factor','El objeto de interés es Tipo de Factor',1,1),
+(4,'Datos de Bitácora','El objeto de interés es Bitácora de movimientos',1,1),
+(5,'Comando','Comando para solicitar alguna información',1,1);
 
 INSERT INTO `procesofuncional` VALUES
 (1,'Consultar factores','Consultar factores','Usuario desea consultar los factores registrados en el sistema',1,4,1),
@@ -710,19 +729,19 @@ INSERT INTO `flujoAlterno` VALUES
 (3,'Si el campo validado está vacío muestra el mensaje de error INFORMACIÓN INCOMPLETA',1,1,1,17,'Inicio de Proceso Funcional');
 
 INSERT INTO `accion` VALUES
-(1,'Mensaje de error','S','Mensaje de error',1),
-(2,'Seleccionar Catálogo factor','E','Solicita información ',1),
-(3,'Consultar factores','R','Solicita los factores registrados',1),
-(4,'Desplegar en pantalla','X','Se despliega información en pantalla',1),
-(5,'Ingresar información','E','Ingresa la información solicitada en el formulario',1),
-(6,'Consultar Tipo de factor','E','Solicita los tipos de factores registrados',1),
-(7,'Validar de datos','R','Se realiza una validación de datos en sistema',1),
-(8,'Guardar registro','W','Se guarda el registro en base de datos',1),
-(9,'Guardar registro en bitácora','W','Se guarda el movimiento en bitácora',1),
-(10,'Modificar información','E','Se modifica la información en el formulario',1),
-(11,'Mensaje de error con datos','X','Mensaje de error con grupo de datos',1),
-(12,'Seleccionar eliminar factor','E','Selecciona eliminar el factor',1),
-(13,'Eliminar factor de BD','W','Se elimina el factor de base de datos',1);
+(1,'Mensaje de error','S','Mensaje de error',1,1),
+(2,'Seleccionar Catálogo factor','E','Solicita información ',1,1),
+(3,'Consultar factores','R','Solicita los factores registrados',1,1),
+(4,'Desplegar en pantalla','X','Se despliega información en pantalla',1,1),
+(5,'Ingresar información','E','Ingresa la información solicitada en el formulario',1,1),
+(6,'Consultar Tipo de factor','E','Solicita los tipos de factores registrados',1,1),
+(7,'Validar de datos','R','Se realiza una validación de datos en sistema',1,1),
+(8,'Guardar registro','W','Se guarda el registro en base de datos',1,1),
+(9,'Guardar registro en bitácora','W','Se guarda el movimiento en bitácora',1,1),
+(10,'Modificar información','E','Se modifica la información en el formulario',1,1),
+(11,'Mensaje de error con datos','X','Mensaje de error con grupo de datos',1,1),
+(12,'Seleccionar eliminar factor','E','Selecciona eliminar el factor',1,1),
+(13,'Eliminar factor de BD','W','Se elimina el factor de base de datos',1,1);
 
 
 INSERT INTO `subprocesoGrupoDato` VALUES

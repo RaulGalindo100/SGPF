@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "UsuarioFuncional.findByIdusuarioFuncional", query = "SELECT u FROM UsuarioFuncional u WHERE u.idusuarioFuncional = :idusuarioFuncional")
     , @NamedQuery(name = "UsuarioFuncional.findByNomUF", query = "SELECT u FROM UsuarioFuncional u WHERE u.nomUF = :nomUF")
     , @NamedQuery(name = "UsuarioFuncional.findByDescripcion", query = "SELECT u FROM UsuarioFuncional u WHERE u.descripcion = :descripcion")
-    , @NamedQuery(name = "UsuarioFuncional.findUsuarioFuncionalOrdered", query = "SELECT u FROM UsuarioFuncional u order by u.nomUF asc")
+    , @NamedQuery(name = "UsuarioFuncional.findUsuarioFuncionalOrdered", query = "SELECT u FROM UsuarioFuncional u WHERE u.idproyecto = :idProy order by u.nomUF asc")
     , @NamedQuery(name = "UsuarioFuncional.findByActivo", query = "SELECT u FROM UsuarioFuncional u WHERE u.activo = :activo")})
 public class UsuarioFuncional implements Serializable {
 
@@ -49,6 +49,11 @@ public class UsuarioFuncional implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private short usuarioSistema;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idproyecto")
+    private Integer idproyecto;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuarioFuncional")
     private List<SubProceso> subprocesoList;
 
@@ -64,6 +69,14 @@ public class UsuarioFuncional implements Serializable {
         this.nomUF = nomUF;
         this.descripcion = descripcion;
         this.activo = activo;
+    }
+    
+    public Integer getIdproyecto() {
+        return idproyecto;
+    }
+
+    public void setIdproyecto(Integer idproyecto) {
+        this.idproyecto = idproyecto;
     }
 
     public Integer getIdusuarioFuncional() {

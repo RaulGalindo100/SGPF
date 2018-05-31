@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Accion.findByIdaccion", query = "SELECT a FROM Accion a WHERE a.idaccion = :idaccion")
     , @NamedQuery(name = "Accion.findByNomAccion", query = "SELECT a FROM Accion a WHERE a.nomAccion = :nomAccion")
     , @NamedQuery(name = "Accion.findByMovDatos", query = "SELECT a FROM Accion a WHERE a.movDatos = :movDatos")
-    , @NamedQuery(name = "Accion.findAccionOrdered", query = "SELECT a FROM Accion a order by a.nomAccion asc")
+    , @NamedQuery(name = "Accion.findAccionOrdered", query = "SELECT a FROM Accion a WHERE a.idproyecto = :idProy order by a.nomAccion asc")
     , @NamedQuery(name = "Accion.findByDescripcion", query = "SELECT a FROM Accion a WHERE a.descripcion = :descripcion")
     , @NamedQuery(name = "Accion.findByActivo", query = "SELECT a FROM Accion a WHERE a.activo = :activo")})
 public class Accion implements Serializable {
@@ -50,7 +50,12 @@ public class Accion implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private short activo;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idproyecto")
+    private Integer idproyecto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idaccion")
+    
     private List<SubProceso> subprocesoList;
 
     public Accion() {
@@ -83,7 +88,14 @@ public class Accion implements Serializable {
     public void setNomAccion(String nomAccion) {
         this.nomAccion = nomAccion;
     }
+    
+    public Integer getIdproyecto() {
+        return idproyecto;
+    }
 
+    public void setIdproyecto(Integer idproyecto) {
+        this.idproyecto = idproyecto;
+    }
     public Character getMovDatos() {
         return movDatos;
     }

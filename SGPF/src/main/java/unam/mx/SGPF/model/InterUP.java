@@ -41,6 +41,17 @@ public class InterUP implements Serializable {
     @JoinColumn(name = "idusuario", referencedColumnName = "idusuario", nullable = false)
     @ManyToOne(optional = false)
     private Usuario idusuario;
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private short activo;
+
+    public short getActivo() {
+        return activo;
+    }
+
+    public void setActivo(short activo) {
+        this.activo = activo;
+    }
 
     public InterUP() {
     }
