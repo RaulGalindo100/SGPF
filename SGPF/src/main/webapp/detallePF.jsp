@@ -65,10 +65,10 @@
 								<input type="hidden" name="idProcesoFuncional"
 									value="<%=detalle.getIdprocesoFuncional()%>"> <input
 									type="hidden" name="idProyecto" value="<%=p.getIdproyecto()%>">
-								<input
+								<!--<input
 									class="nav-link border-top-0 border-bottom-0 border-right-0"
 									style="color: rgba(0, 0, 0, .9); border-style: none; background-color: transparent; cursor: pointer; cursor: hand;"
-									type="submit" value="Agregar Actividad" />
+									type="submit" value="Agregar Actividad" />-->
 							</form> <%}%>
 						</li>
 						<li class="nav-item active"></li>
@@ -120,7 +120,7 @@
 				<table class="table ">
 					<thead>
 						<tr>
-							<th scope="col">Actividad</th>
+							<!--<th scope="col">Actividad</th>-->
 							<th scope="col"># SP</th>
 							<th scope="col">Descripción</th>
 							<th scope="col">Usuario funcional</th>
@@ -147,7 +147,7 @@
 						<tr>
 							<%if (inter.getIndice() == 1) {%>
 							
-							<td><%=inter.getActividad()%></td>
+							<!--<td><%//=inter.getActividad()%></td>-->
 							<td><%=inter.getIndice()%></td>
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
@@ -199,16 +199,16 @@
 								</div>
 							</td>
 							<td>
-								<div class="container">
+								<!--<div class="container">
 								<form action="modActividad" method="POST">
 									<input type="hidden" name="idSubProceso"
-										value="<%=inter.getIdsubProceso()%>" /> <input
+										value="<%//=inter.getIdsubProceso()%>" /> <input
 										class="btn btn-outline-info .btn-sm text-white"
 										style="font-size: 10pt; border-width: 2px; border-style: solid; border-color: #2c3e50; background-color: #2c3e50; width:100px;"
 										type="submit" value="Modificar" />
 								</form>
 								</div>
-								
+								-->
 								<br>
 
 								<%if (!inter.getActividad().equals("Inicio de Proceso Funcional") && inter.getIndice() == 1) {%>
@@ -249,7 +249,7 @@
 							<!--  -->
 							<%}%>
 							<%} else {%>
-							<td></td>
+							<!--<td></td>-->
 							<td><%=inter.getIndice()%></td>
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>
@@ -370,7 +370,7 @@
 				<table class="table ">
 					<thead>
 						<tr>
-							<th scope="col">Actividad</th>
+<!--							<th scope="col">Actividad</th>-->
 							<th scope="col"># SP</th>
 							<th scope="col">Descripción</th>
 							<th scope="col">Usuario funcional</th>
@@ -394,8 +394,7 @@
                 GrupoDato grupoDato; 
                                                 %>
 						<tr>
-
-							<td><%=inter.getActividad()%></td>
+			<!--				<td><%//=inter.getActividad()%></td>-->
 							<td><%=pf.getIndice() %></td>
 							<td><%=inter.getDescripcion()%></td>
 							<td><%=uf.getNomUF()%></td>

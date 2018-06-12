@@ -52,10 +52,10 @@
 		<div class="row">
 			<div class="col-md-8">
 				<form action="agregandoFlujoAlterno" method="post">
-					<div class="form-group">
+					<!--<div class="form-group">
 						<label>Actividad</label> <input class="form-control" type="text"
-							value="<%=SubProceso.getActividad()%>" disabled>
-					</div>
+							value="<%//=SubProceso.getActividad()%>" disabled>
+					</div>-->
 					<div class="form-group">
 						<label>Descripción</label> <input class="form-control" type="text"
 							name="descripcionFA" required>

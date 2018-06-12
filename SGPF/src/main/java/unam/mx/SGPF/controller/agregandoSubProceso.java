@@ -74,7 +74,7 @@ public class agregandoSubProceso extends HttpServlet {
                     redireccion = "addSubProceso.jsp";
                     Logger.getLogger(agregandoSubProceso.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
-                    redireccion = "detallePF.jsp";
+                    redireccion = "BuscaProcesoFuncional?idprocesoFuncional="+PF.getIdprocesoFuncional();
                 }
             }
             aux = subPjpa.findLastSP();
@@ -98,7 +98,8 @@ public class agregandoSubProceso extends HttpServlet {
                     redireccion = "addSubProceso.jsp";
                     Logger.getLogger(agregandoSubProceso.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
-                    redireccion = "detallePF.jsp";
+                    //redireccion = "detallePF.jsp";
+                    redireccion = "BuscaProcesoFuncional?idprocesoFuncional="+PF.getIdprocesoFuncional();
                 }
             }else redireccion = "detallePF.jsp";
             
@@ -121,7 +122,6 @@ public class agregandoSubProceso extends HttpServlet {
 
         int flujoAlternos = 0;
         session.setAttribute("flujoAlternos", flujoAlternos);
-        
         response.sendRedirect(redireccion);
     }
 }

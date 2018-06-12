@@ -47,7 +47,7 @@
 						<%if(tipoUsuario == 1 || tipoUsuario == 2){%>
 						<li class="nav-item active"><a class="nav-link"
 							href="gestionUsuariosProyectos"> Gestión de
-								Usuarios-Proyectos </a></li>
+								Usuario-Proyecto </a></li>
 						<% } %>
 					</ul>
 					<form class="col-md-2" action="cerrarSesion" method="post">
@@ -80,6 +80,7 @@
 						<%
 								for (InterUP inter : inters) {
 									Proyecto p = inter.getIdproyecto();
+                                                                        if(inter.getIdproyecto().getIdproyecto()!=1){
 							%>
 						<tr>
 							<td><a
@@ -118,7 +119,7 @@
 							</td>
 						</tr>
 						<%
-								}
+								}}
 							%>
 					
 					<tbody>

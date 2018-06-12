@@ -137,6 +137,8 @@ public class BuscaProcesoFuncional extends HttpServlet{
         if(!flujoAl.isEmpty())
             flujoAlternos = 1;
         session.setAttribute("flujoAlternos", flujoAlternos);
+        session.setAttribute("subProc", sp);
+        session.setAttribute("ListaflujoAlternos", flujoAl);
         
         List<InterUP> inters = (List<InterUP>) session.getAttribute("inters");
                 
