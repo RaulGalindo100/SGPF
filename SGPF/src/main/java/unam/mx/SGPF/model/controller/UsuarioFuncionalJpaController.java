@@ -203,5 +203,12 @@ public class UsuarioFuncionalJpaController implements Serializable {
                 .setParameter("idProy", aux.getIdproyecto());
     	return q.getResultList();
     }
+    
+    public List<UsuarioFuncional> findUFByProy(Integer idProy){
+    	EntityManager em = getEntityManager();
+    	Query q = em.createNamedQuery("UsuarioFuncional.findUFByProy")
+    			.setParameter("idUF", idProy);
+    	return q.getResultList();
+    }
 
 }

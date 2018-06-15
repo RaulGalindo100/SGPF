@@ -411,6 +411,7 @@ public class SubProcesoJpaController implements Serializable {
    	ProcesoFuncional pf = new ProcesoFuncional(idPF);
    	Query q = em.createNamedQuery("SubProceso.findSPByIdProcesoFuncional")
    	.setParameter("idPF", pf);
+        //.setParameter("param", "N/A");
    	return q.getResultList();
    }    
      public List<SubProceso> findAddUp(Integer idPF,String Actividad, Integer indice){
